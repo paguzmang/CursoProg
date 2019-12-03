@@ -1,5 +1,17 @@
-book_filename: "bookdown-demo"
+book_filename: "out"
+output_dir: "docs"
+#delete_merged_file: yes
+#new_session: yes
+keep_md: false
 language:
+  label:
+    fig: 'Figura '
+    tab: 'Tabla '
+    eq: 'Ecuación '
   ui:
-    chapter_name: "Chapter "
-delete_merged_file: true
+    edit: Edit
+    chapter_name: ''
+
+#rmd_files:
+#  [
+#    "index.Rmd",

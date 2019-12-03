@@ -1,14 +1,14 @@
 --- 
-title: "Notas para curso: Bioestadística (1 y 2)"
-author: "paguzmang | Maestría en Ciencias Biológicas - U.CES"
-date: "`r Sys.Date()`"
+title: "_Programación_ para Biológos"
+author: "paguzmang | Programa de Biología - U.CES"
+date: "Dic 2019"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book
-bibliography: [packages.bib]
+bibliography: [packages.bib, ref.bib]
 biblio-style: apalike
 link-citations: yes
-github-repo: paguzmang/TalleresCursos/CursoBioestad_2_Posgrado
+github-repo: paguzmang/CursoProg
 description: "This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook."
 ---
 
@@ -21,9 +21,7 @@ knitr::write_bib(c(
 
 # Presentación
 
-Estas notas contienen  material o contenido guía para apoyar cursos de **Bioestadística** 1 y 2 a nivel de maestría para estudiantes de ciencias Biológicas y afines. En este contexto, asumimos que el estudiante ya tiene bases sobre estadística al menos a nivel de _Estadística descriptiva_ (gráficos básicos como histograma, boxplot o diagrama de dispersión, y medidas de resumen tales como la media, la mediana, los  cuantiles, la varianza o la desviación estándar).
-
-Se usa como software principal **R**, ejecutado desde la IDE **Rstudio**. No obstante se hará mención a otros software tales como **PAST**.
+Estas notas contienen  el material o contenido guía para apoyar un curso sobre **Programación** en nivel de pregrado para estudiantes de Biología. El curso esta diseñado para complementar, de forma computacional, conceptos adquiridos en los cursos previos de Matemáticas y ofrecer elementos adicionales sobre el uso de la programación en el quehacer del Biológo. Se usa como software principal **R**, ejecutado desde la IDE **Rstudio**.
 
 
 
