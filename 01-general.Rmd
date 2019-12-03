@@ -1,9 +1,10 @@
+
 ```{r setup, include=FALSE}
 library(knitr)
 opts_chunk$set(fig.align = 'center', warning = F, message = F, comment = NULL, prompt=TRUE)
 ```
 
-# Generalidades {#basicos}
+# Generalidades {#general}
 
 En esta sección se revisan aspectos básicos sobre el software **R** tales como conocer sus ventanas, identificar el prompt y trabajar en la línea de comandos,  crear, manejar y guardar scripts básicos, establecer el director de trabajo, conocer el manejo de un comando, paquetes y su instalación, etc. 
 
@@ -16,7 +17,7 @@ Cuando abriemos **R** aparece una ventana llamada la **consola**. En esta ventan
 El prompt (`>`) en la consola indica que el **R** esta listo para una nueva orden. El renglón cuyo inicio es marcado por el prompt se conoce como _línea de comandos_; en ella se escriben ordenes para **R**, y estas ordenes se ejecutan con un `enter` (Figura \@ref(fig:prompt)).
 
 ```{r prompt, echo = F, out.width='60%',  fig.cap='Consola del R mostrando el prompt (`>`) y la línea de comandos'}
-include_graphics('consola_prompt.png')
+include_graphics('images/consola_prompt.png')
 ```
 
 Aquí un ejemplo del prompt con una orden para **R** en la línea de comandos:
@@ -101,7 +102,7 @@ Si sabemos el nombre de un comando podemos ir directamente a la archivo de ayuda
 
 
 ```{r ayudaSeq, echo = F, out.width='60%',  fig.cap='Ayuda del comando `seq`'}
-include_graphics('ayuda_seq.png')
+include_graphics('images/ayuda_seq.png')
 ```
 
 La figura \@ref(fig:ayudaSeq) muestra la ayuda del comando `seq`. Otra forma de solicitar ayuda es con el comando `help`:
@@ -149,7 +150,7 @@ Algunas necesidades relevantes con paquetes son las siguientes:
 - Identificar todos los comandos pertenecientes a cierto paquete: Consulte la ayuda del paquete. Para esto, siga la ruta: Menu Ayuda -> Ayuda HTML -> Paquetes -> Seleccione el paquete -> Lista de comandos. La Figura \@ref(fig:ayudaPaq) muestra esta ruta hasta seleccionar la lista de comandos del paquete `abd` [@middleton2015], este es un paquete con bases de datos del libro de @whitlock2015.
 
     ```{r ayudaPaq, echo = F, out.width='99%',  fig.cap='A. Página principal de la ayuda HTML. Se marca la opción _Packages_. B. Inicio de la página de la lista de paquetes luego de acceder por la opción _Packages_. Se selecciona el paquete `abd`. C. Lista de comandos del paquete `abd`. Este paquete no viene instalado con el **R**. Para instalación de paquetes vaya a [aquí](#instalPaq)'}
-include_graphics('ayudaPaquetes.png')
+include_graphics('images/ayudaPaquetes.png')
 ```
 
 
@@ -612,5 +613,4 @@ farmPest$total <- rowSums(farmPest[, 2:4])
     j. Agregue una línea al código que guarde un archivo llamado `pesticidas.RData` con todos los objetos usados durante la sesión. Note que como este archivo tiene el mismo nombre que el inicial, será reemplazado.
     k. A este momento debe tener tres archivos en su directorio de trabajo. ¿Cuáles? **Comprima** la carpeta con estos tres archivos y envíela por correo al pguzman@ces.edu.co.
 
-## Referencias
 
