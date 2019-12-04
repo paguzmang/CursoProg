@@ -1,0 +1,16 @@
+
+# Ambientes de desarrollo integrado {#ides}
+
+Un ambiente de desarrollo integrado (IDE, de sus siglas en ingles: Integrated developmetn enviroment) es una interfaz gráfica que se integra con R para facilitar la gestión de una sesión de trabajo con R. <https://www.slant.co/topics/2897/~best-r-ides> Aquí nos centraremos en Rstudio.
+
+## RStudio 1
+
+Cuando abriemos **R** aparece una ventana llamada la **consola**. En esta ventana escribimos ordenes para **R** y se imprimen los resultados de tales ordenes. Enseguida se describen algunos aspectos relevantes del trabajo en la consola.
+
+## Rstudio 2
+
+El prompt (`>`) en la consola indica que el **R** esta listo para una nueva orden. El renglón cuyo inicio es marcado por el prompt se conoce como _línea de comandos_; en ella se escriben ordenes para **R**, y estas ordenes se ejecutan con un `enter` (Figura \@ref(fig:prompt)).
+
+
+
+

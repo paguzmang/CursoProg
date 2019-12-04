@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2 Generalidades | Programación para Biológos</title>
+  <title>Cápitulo2 Generalidades | Programación para Biológos</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2 Generalidades | Programación para Biológos" />
+  <meta property="og:title" content="Cápitulo2 Generalidades | Programación para Biológos" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="paguzmang/CursoProg" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2 Generalidades | Programación para Biológos" />
+  <meta name="twitter:title" content="Cápitulo2 Generalidades | Programación para Biológos" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="index.html">
-
+<link rel="next" href="ides.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -149,6 +149,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2.6" data-path="general.html"><a href="general.html#ejercicios"><i class="fa fa-check"></i><b>2.6</b> Ejercicios</a></li>
 </ul></li>
+<li class="chapter" data-level="3" data-path="ides.html"><a href="ides.html"><i class="fa fa-check"></i><b>3</b> Ambientes de desarrollo integrado</a><ul>
+<li class="chapter" data-level="3.1" data-path="ides.html"><a href="ides.html#rstudio-1"><i class="fa fa-check"></i><b>3.1</b> RStudio 1</a></li>
+<li class="chapter" data-level="3.2" data-path="ides.html"><a href="ides.html#rstudio-2"><i class="fa fa-check"></i><b>3.2</b> Rstudio 2</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="vectores-y-tipos-de-datos.html"><a href="vectores-y-tipos-de-datos.html"><i class="fa fa-check"></i><b>4</b> Vectores y tipos de datos</a><ul>
+<li class="chapter" data-level="4.1" data-path="vectores-y-tipos-de-datos.html"><a href="vectores-y-tipos-de-datos.html#vectores"><i class="fa fa-check"></i><b>4.1</b> Vectores</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="vectores-y-tipos-de-datos.html"><a href="vectores-y-tipos-de-datos.html#creando-vectores"><i class="fa fa-check"></i><b>4.1.1</b> Creando vectores</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="vectores-y-tipos-de-datos.html"><a href="vectores-y-tipos-de-datos.html#creando-vectores-de-secuencias"><i class="fa fa-check"></i><b>4.2</b> Creando vectores de secuencias</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="vectores-y-tipos-de-datos.html"><a href="vectores-y-tipos-de-datos.html#operaciones-aritmeticas-con-vectores"><i class="fa fa-check"></i><b>4.2.1</b> Operaciones aritméticas con vectores</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="vectores-y-tipos-de-datos.html"><a href="vectores-y-tipos-de-datos.html#tipos-de-datos"><i class="fa fa-check"></i><b>4.3</b> Tipos de datos</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="vectores-y-tipos-de-datos.html"><a href="vectores-y-tipos-de-datos.html#validando-el-tipo-de-datos"><i class="fa fa-check"></i><b>4.3.1</b> Validando el tipo de datos</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="vectores-y-tipos-de-datos.html"><a href="vectores-y-tipos-de-datos.html#expresiones-logicas"><i class="fa fa-check"></i><b>4.4</b> Expresiones lógicas</a></li>
+</ul></li>
 </ul>
 
       </nav>
@@ -167,7 +183,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="general" class="section level1">
-<h1><span class="header-section-number">2</span> Generalidades</h1>
+<h1><span class="header-section-number">Cápitulo2</span> Generalidades</h1>
 <p>En esta sección se revisan aspectos básicos sobre el software <strong>R</strong> tales como conocer sus ventanas, identificar el prompt y trabajar en la línea de comandos, crear, manejar y guardar scripts básicos, establecer el director de trabajo, conocer el manejo de un comando, paquetes y su instalación, etc.</p>
 <div id="ventanas-de-r-consola-y-script" class="section level2">
 <h2><span class="header-section-number">2.1</span> Ventanas de R: Consola y script</h2>
@@ -424,7 +440,7 @@ Figura 2.3: A. Página principal de la ayuda HTML. Se marca la opción <em>Packa
 <a class="sourceLine" id="cb52-5" title="5"><span class="kw">plot</span>(<span class="dt">x =</span> pa, <span class="dt">y =</span> pb, <span class="dt">pch =</span> <span class="dv">15</span> <span class="dt">cex =</span> <span class="dv">20</span>, <span class="dt">col =</span> <span class="st">&#39;red&#39;</span>)  </a></code></pre></div>
 <p>Al corregir el código y ejecutarlo se debe producir el siguiente gráfico:</p></li>
 </ol>
-<p><img src="out_files/figure-html/unnamed-chunk-42-1.png" width="288" style="display: block; margin: auto;" /></p>
+<p><img src="out_files/figure-html/unnamed-chunk-43-1.png" width="288" style="display: block; margin: auto;" /></p>
 <ol start="7" style="list-style-type: decimal">
 <li><p>En cada caso muestre el código requerido para crear los siguientes patrones de números o texto:</p>
 <ol style="list-style-type: lower-alpha">
@@ -522,17 +538,6 @@ Figura 2.3: A. Página principal de la ayuda HTML. Se marca la opción <em>Packa
 </ol></li>
 </ol>
 
-<div id="refs" class="references">
-<div>
-<p>Middleton, K. M., &amp; Pruim, R. (2015). <em>abd: The Analysis of Biological Data</em>. Retrieved from <a href="https://CRAN.R-project.org/package=abd">https://CRAN.R-project.org/package=abd</a></p>
-</div>
-<div>
-<p>Paradis, E., &amp; Schliep, K. (2018). ape 5.0: An environment for modern phylogenetics and evolutionary analyses in R. <em>Bioinformatics</em>, <em>35</em>, 526–528.</p>
-</div>
-<div>
-<p>Whitlock, M. C., &amp; Schluter, D. (2015). <em>The Analysis of Biological Data</em> (2nd ed.). Roberts and Company Publishers.</p>
-</div>
-</div>
 </div>
 </div>
 <h3>References</h3>
@@ -552,8 +557,8 @@ Figura 2.3: A. Página principal de la ayuda HTML. Se marca la opción <em>Packa
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ides.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

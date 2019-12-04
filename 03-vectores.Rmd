@@ -1,0 +1,165 @@
+
+# Vectores y tipos de datos
+
+En este archivo introducmos el **vector**, el objeto más básico que tiene el **R** y revisaremos los tipos de datos que podemos almacenar o guardar en un vector así como también un conjunto de expresiones lógicas que nos permitirán manipular vectores.
+
+## Vectores
+
+El **R** tiene diferentes tipos de objetos que permiten almacenar información. El **vector** es el objeto más sencillo. Otros tipos son las matrices, los data.frame o las listas.
+
+### Creando vectores
+
+Un **vector** se crea con el comando `c`, primera letra del verbo `c`oncatenar. El comando `c` _concatena_ (o junta) datos en un vector. Aquí un par de ejemplos:
+
+
+```{r}
+# Creacion de dos vectores 
+x <- c(2, 4, 8)                     # vector con tres numeros
+x                                   # se imprime el contenido
+y <- c('pedro', 'judas', 'pablo')   # vector con tres palabras
+y                                   # se imprime el contenido
+```
+
+Crear un vector usando `c` tiene sentido cuando se deben juntar mínimo dos datos. Cuando es sólo uno, no se requiere el comando `c`.
+
+```{r}
+w <- 16  # se crea un vector de un solo elemento
+w        # se imprime 
+```
+
+Puede validar si un objeto es un vector usando el comando `is.vector`:
+
+```{r}
+is.vector(x)   # ¿x es un vector?
+is.vector(w)   # ¿w es un vector?
+```
+
+Puede usar `c` para juntar datos individuales con otro vector
+
+```{r}
+z <- c(x, w, 32)   # se juntan x, w y el 32 en otro vector
+z                  # mire el resultados
+```
+
+#### Ejercicio
+
+El siguiente código crea dos vectores, `f1` y `f2`. Adicione una línea de código que genere un vector llamado `ft` que contenga los elementos de `f1` y de `f2`, finalice con una cuarta línea que imprima el vector `ft`
+ 
+```{r suma, exercise = T}
+f1 <- c(34, 44, 54)
+f2 <- c(2, 4, 6)
+
+```
+
+
+
+
+
+
+## Creando vectores de secuencias
+
+Considere las siguientes expresiones, comandos y objetos que nos permiten crear **vectores** con cierta secuencia de números o texto:
+
+```{r}
+1:10         # la expresion : crea una secuencia de uno en uno.
+-5:5         
+seq(from = 2, to = 10, by = 2)  # crea una secuencia con cierto tamano de paso
+letters      # vector que contiene todas las letras del abecedario en minuscula
+LETTERS      # vector que contiene todas las letras del abecedario en mayuscula
+rep(x = 1:3, each  = 4)   # el comando rep crea vectores con patrones de repeticion especificos
+rep(x = 1:3, times = 4)   # el comando rep crea vectores con patrones de repeticion especificos
+rep(x = c('a', 'b', 'c'), each = 3)
+```
+
+
+### Operaciones aritméticas con vectores
+
+Cuando uno o más vectores se involucran en operaciones aritméticas ($+$, $\times$, $\div$), estas se hacen **elemento por elemento**. Considere los siguientes ejemplos y su resultado:
+
+```{r}
+x <- c(2,4,8,16,32)  # se crea un vector
+y <- 1:5             # se crea otro vector
+x + 1                # se suma 1 a cada elemento de x
+log2(x)              # se saca log en base 2 a cada numero de x
+x^2                  # se eleva al cuadrado cada numero de x
+x + y                # se suma cada elemento de x a cada elemento de y
+(x + y)/2            # se suman los elementos de 'x' con 'y', luego el resultado se divide por 2
+```
+
+
+## Tipos de datos
+
+En un vector podemos almacenar principalmente los siguientes tipos de datos:
+
++ numeric = números con decimales (separador decimal: punto). También se llaman de _punto flotante_ o de tipo _double_.
++ integer = números enteros.
++ character = texto (se escribe entre comillas, sencillas o dobles).
++ logical  = TRUE (o T), FALSE (o F). Resultado de expresiones lógicas.
++ Date = fecha (aaaa-mm-dd).
++ Inf = Infinito. También existe `-Inf`
++ NA  = dato perdido o faltante
++ NaN = no se puede calcular, "No un número"
++ NULL = No existe o no hay nada.
+
+
+```{r}
+# Ejemplo de escritura datos de diferente tipo
+a <- c(5.89, 10, 23.4)        # numero con decimales (double)
+b <- c(5L, 6L, 7L)            # numero entero (integer)
+x <- 'semillero'              # texto
+y <- c(TRUE, FALSE, F, F)     # valor logico
+f1 <- as.Date('2018-08-01')   # fecha: aaaa-mm-dd
+f2 <- as.Date('2018-08-30')   # fecha: aaaa-mm-dd
+d <- c(NA, 7, 4, NA)          # vector con datos perdidos (not available)
+w <- 0/0                      # No se puede calcular (NaN = Not a Number)
+z <- 10/0                     # Infinito (Inf)
+h <- sqrt(-2)                 # No se puede calcular (NaN = Not a Number)
+```
+
+
+### Validando el tipo de datos
+
+El comando `typeof` permite preguntar por el tipo de dato contenido en el objeto:
+
+```{r}
+typeof(a)
+typeof(b)
+typeof(x)
+typeof(y)
+typeof(f1)
+typeof(d)
+typeof(w)
+typeof(z)           
+```
+
+Los comandos `is.numeric`, `is.logical`, `is.character`, `is.na`, `is.nan`, etc. permiten preguntar si un objeto es de cierto tipo o no:
+
+
+```{r}
+# ¿es numeric?, ¿es logical?, ¿es character?, ¿es NA?
+is.numeric(a)
+is.logical(y)
+is.character(x)
+is.na(d)
+```
+
+
+## Expresiones lógicas
+
+Una expresión lógica hace una pregunta sobre si uno o más objetos cumplen una condición y devuelve verdadero (TRUE) o false (FALSE). Las principales formas de crear expresiones lógicas son:
+
+```{r}
+a > 10               # mayor que ...
+a >= 10              # mayor o igual que ...
+a < 10               # menor que ...
+a <= 10              # menor o igual que ...
+x == 'semillero'     # igual a ...
+x != 'semillero'     # diferente de ...
+a > 2 & a < 10       # ... y ... (2 < a < 10)
+a < 2 | a > 10       # ... o ... (a < 2 o a > 10)
+! (a < 2)            # negacion (! = convierte el T en F y viceversa)
+is.na(a)             # ¿a esta perdido?
+! is.na(a)           # ¿a no esta perdido?
+is.nan(h)            # ¿h tienen elementos NaN?
+```
+
