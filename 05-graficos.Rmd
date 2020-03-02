@@ -1,0 +1,17 @@
+
+# Elementos básicos sobre gráficos
+
+El software **R** es excelente para gráficar. Actulamente existen tres sistemas de graficación que actuan asi mismo como paquetes de **R**. Estos sistemas son: `graphics`; `lattice`, y `ggplot2`. Otros paquetes en **R** apoyan o complementan estos sistemas de graficación. A continuación estudiaremos conceptos básicos sobre el sistema o paquete `graphics`.
+
+## Comandos de alto y bajo nivel {#altoBajoNiv}
+
+En el sistema o paquete `graphics`, existen dos tipos de comando, aquellos de _alto nivel_ y aquellos de _bajo nivel_.
+
+## Ejercicios {#ejGraf}
+
+Bla Bla Bla
+
+
+
+
+

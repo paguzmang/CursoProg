@@ -1,0 +1,541 @@
+
+```{r setupApp, include=FALSE}
+library(tidyverse)
+library(stringr)
+library(openxlsx)
+library(DT)   # para datatable
+library(cowplot)
+mis.op <- list(mar = c(3.5,3.5,1,1), mgp = c(1.8, 0.6, 0), cex = 0.9, bty = 'l')
+op <- par(mar = c(3.5,3.5,1,1), mgp = c(1.8, 0.6, 0), cex = 0.9, bty = 'l')
+```
+
+
+## Encontrando ceros {#ceros}
+
+Considere la función 
+
+$$f(x) = x^4 + 2x^3 -12x^2 + 14x - 5$$
+
+cuya gráfica se muestra en la Figura \@ref(fig:ceros) y que se obtuvo con el siguiente código:
+
+```{r ceros, echo = -c(1,6), fig.cap = 'Curva de $f(x) = x^4 + 2x^3 -12x^2 + 14x - 5$'}
+par(mis.op)
+f <- function(x) x^4 + 2*x^3 -12*x^2 + 14*x - 5
+curve(f, from = -10, to = 10, ylim = c(-200,500))
+abline(h = 0, v = 0, lty = 3)
+points(x = c(1,-5), y = c(0,0), pch = 19, col = 'red', cex = 1.2)
+par(op)
+```
+
+Observe que $f(x)$ (Figura \@ref(fig:ceros)) se puede factorizar como:
+
+$$f(x) = x^4 + 2x^3 -12x^2 + 14x - 5 = (x-1)^3(x + 5)$$
+
+de modo que en $x = 1$ y en $x = -5$ se cumple que $f(1) = 0$ y $f(-5) = 0$. Así, $x = 1$ y $x = -5$ son **ceros** de $f(x)$. Los puntos rojos en la Figura \@ref(fig:ceros) se ubican precisamente en las coordenadas $(-5,0)$ y $(1, 0)$. 
+
+En general los **ceros** (o **raíces**) de una función son aquellos valores de $x$ donde $f(x) = 0$. Estos ceros se pueden encontrar analíticamente resolviendo $f(x) = 0$ para $x$. No obstante, dependiendo de la función, este procedimiento puede ser complejo. 
+
+El problema ya ha sido resuelto numéricamente. El método de **bisección** es una forma numérica para encontrar los ceros [@zill1992, pág: 224], y métodos como este ya se encuentran programados en algoritmos computacionales. Los comandos  `findZeros` del paquete **mosaicCalc** [@kaplan2017], o `findzeros` del paquete **pracma** [@borchers2019] para **R** son dos ejemplos de ello.
+
+
+```{r, eval = F, include = F}
+solve(f(x) == 0 ~ x, xlim = c(-30, 30))
+solve(x^4 + 2*x^3 -12*x^2 + 14*x - 5 == 0 ~ x )
+solve(x^2 + 4*x == -4 ~ x, npts = 1000000 )
+solve((10-2*x)/3 == 0 ~ x )
+solve(-x^2 + 6*x == 0 ~ x )
+solve((0.5*x-2)^2 == 0 ~ x )
+solve((x+3)^2 == 0 ~ x )
+findzeros(f = f, a = -200, b = 200, n = 1000)
+
+f <- function(x) (x-4)^2 
+curve(f, from = -10, to = 10, ylim = c(-10, 10))
+abline(h = 0, v = 0, lty = 3)
+findZeros(f(x) ~ x )
+findZeros((x-4)^2 -4 ~ x)
+findzeros(f, a = 0, b = 10)
+```
+
+### Usando `findZeros` (paquete: MosaicCalc) {#findZeros}
+
+El comando `findZeros` solicita como único argumento obligatorio una fórmula que involucra la función a resolver. Enseguida se muestra su uso para el ejemplo dado arriba (Figura \@ref(fig:ceros)):
+
+```{r}
+f <- function(x) x^4 + 2*x^3 -12*x^2 + 14*x - 5    # Se define la funcion
+findZeros(f(x) ~ x)                                # Uso de findZeros
+```
+
+Con el comando `findZeros` no es necesario definir la función primero, esta se puede escribir directamente en la fórmula del 1er. argumento.
+
+```{r}
+findZeros(x^4 + 2*x^3 -12*x^2 + 14*x - 5 ~ x)    # Escribiendo la funcion directamente
+```
+
+El comando `findZeros` permite limitar el rango en $x$ sobre el cual se realizará la busqueda de los ceros:
+
+```{r}
+# Limitando la busqueda en x:
+findZeros(x^4 + 2*x^3 -12*x^2 + 14*x - 5 ~ x, xlim = c(-10, 0))    
+```
+
+### Usando `findzeros` (paquete: pracma)
+
+El comando `findzeros` solicita tres argumentos obligatorios: la función a resolver y los límites del eje $x$ donde se restringirá la busqueda.
+
+```{r}
+f <- function(x) x^4 + 2*x^3 -12*x^2 + 14*x - 5    # Se define la funcion
+findzeros(f = f, a = -10, b = 10)                  # Uso de findzeros
+```
+
+Usted puede ampliar de manera grande el intervalo de busqueda:
+
+```{r}
+findzeros(f = f, a = -1e6, b = 1e6)   # ampliando el rango de busqueda
+```
+
+Para algunas funciones, el comando `findZeros` (**mosaicCalc**) puede fallar cuando el comando `findzeros` (**pracma**) no. Este el caso de las funciones cuadráticas de la forma $f(x) = (x + b)^2$. Por ejemplo, considere la siguiente comparación:
+
+```{r, warning=T}
+f <- function(x) (x + 2)^2   # el cero esta en x = -2
+findZeros(f(x) ~ x)
+findzeros(f = f, a = -100, b = 100)
+```
+
+
+## Derivadas {#deriv}
+
+La derivada, $f'(x) = \frac{df}{dx} = \frac{d}{dx}f(x)$, de una función $f(x)$ nos permite calcular la pendiente de la recta tangente a $f(x)$ en cualquier valor $x$. Por ejemplo, la derivada de la función $f(x) = (x-2)^2$ es $f'(x) = 2x + 4$; sus gráficas se muestran en la Figura \@ref(fig:deriv).
+
+```{r deriv, echo = F, fig.width=6, fig.cap = "Curvas de (A) la función $f(x) = (x+2)^2$ y (B) su derivada $f'(x) = 2x + 4$"}
+par(mfrow = c(1,2))
+par(mis.op)
+f <- function(x) (x-2)^2
+fd <- function(x) 2*x - 4
+xp <- c(1, 2, 7)
+curve(f, from =  -1, to = 10, main = 'A' )
+abline(h = 0, v = 0, lty = 3)
+points(x = xp, y = f(xp), pch = 19, col = 'red', cex = 1.2)
+curve(fd, from = -1, to = 10, ylab = 'df/dx', main = 'B')
+abline(h = 0, v = 0, lty = 3)
+points(x = xp, y = fd(xp), pch = 19, col = 'red', cex = 1.2)
+par(op)
+```
+
+Como ejemplo de interpretación, para la función dada en la Figura \@ref(fig:deriv), suponga que $x$ está en segundos (s) y $f(x)$ en metros (m). Entonces en $x = 1$ s, $f(1) = `r round(f(1),1)`$ m, y la función decae a una tasa de $f'(1) = `r round(fd(1),1)`$ m/s. Por otro lado, en $x = 2$ s, la función vale $f(2) = `r round(f(2),1)`$ m y ni crece o decrece puesto que su tasa es $f'(2) = `r round(fd(2),1)`$ m/s. Finalmente, a los $x = 7$ s, se ha alcanzado los $f(7) = `r round(f(7),1)`$ m y crece a una tasa de $f'(7) = `r round(fd(7),1)`$ m/s (ver puntos rojos en Figura \@ref(fig:deriv)).
+
+Si bien muchas funciones se pueden derivar analíticamente aplicando las fórmulas de derivación, algunas funciones son complejas y puede ser necesario el uso de algoritmos computacionales para encontrar la derivada en cierto valor de $x$. Los comandos `D` (paquete: **mosaicCalc**) y `numdiff` (paquete **pracma**) realizan derivación numérica.
+
+### Derivando con `D` (mosaicCalc)
+
+El comando `D` trabaja similar a [`findZeros`](#findZeros). Recibe una fórmula que involucra la función que se desea derivar y devuelve otra función (objeto tipo `function`) que representa la derivada. Aquí un ejemplo con la función de la Figura \@ref(fig:deriv):
+
+```{r}
+g <- function(x) (x-2)^2
+
+# Uso 1: Utilizando funcion definida previamente:
+D(g(x) ~ x) 
+
+# Uso 2: Definiendo la funcion al interior del comando
+D((x-2)^2 ~ x)
+```
+
+El objeto resultante del comando `D` (otra función) debe guardarse para emplearse en cálculos posteriores:
+
+```{r}
+# Se guarda la derivada (como una funcion):
+df <- D((x-2)^2 ~ x)
+
+# Se evalua la derivada obtenida en diferentes valores de x
+df(x = c(1, 2, 7))
+```
+
+El comando `D` también permite obtener **derivadas parciales** en funciones de múltiples variables. Por ejemplo, suponga la función en dos variables:
+
+$$f(x,y) = x^3 + x^2y^3 - 2y^2$$
+
+La derivada parcial de $f$ con respecto a $x$ se obtiene asumiendo que $y$ es constante y derivando $f$ con respecto a $x$:
+
+$$\dfrac{\delta f}{\delta x} = 3x^2 + 2xy^3$$
+
+Obtener esta derivada parcial (así como $\delta f / \delta y$) es directo con el comando `D`:
+
+```{r}
+# Derivada parcial de f con respecto a x
+dfx <- D(x^3 + x^2*y^3 - 2*y^2 ~  x)  
+dfx
+# Derivada parcial de f con respecto a y
+dfy <- D(x^3 + x^2*y^3 - 2*y^2 ~  y)
+dfy
+```
+
+Note que los objetos resultantes son de tipo `function`, de tal forma que se pueden usar para evaluarlos en alguna pareja de valores $(x, y)$:
+
+```{r}
+# Se evalua la derivada parcial con respecto a x 
+# en un par de valores x, y:
+dfx(x = 2, y = 1) 
+# Se evalua la derivada parcial con respecto a y 
+# en un par de valores x, y:
+dfy(x = 2, y = 1) 
+```
+
+
+### Derivando con `numdiff` (pracma)
+
+El comando `numdiff` no entrega un objeto tipo `function` sino que entrega directamente el valor de la derivada en uno o más valores de $x$. Tiene dos argumentos: la función a derivar y un vector con los valores de $x$ donde se evaluará la derivada. Aquí un ejemplo usando la función de la Figura \@ref(fig:deriv):
+
+```{r}
+g <- function(x) (x-2)^2
+numdiff(f = g, x = c(1, 2, 7))
+```
+
+Si busca obtener derivadas parciales con `numdiff` debe definir una función donde ningún argumento se llame `x` y debe asignar un valor a la otra variable que se asume constante en la derivación:
+
+```{r}
+# Se define funcion de dos variables:
+f <- function(w,y) w^3 + w^2*y^3 - 2*y^2
+
+# Derivada parcial con respecto a 'w', en w = 2
+# manteniendo constante 'y' en 1:
+numdiff(f = f, x = 2, y = 1)
+# Derivada parcial con respecto a 'y', en y = 1
+# manteniendo constante 'w' en 2:
+numdiff(f = f, x = 1, w = 2)
+```
+
+
+## Integrando {#integ}
+
+La integral de una función $f(x)$ es otra función que mide el área bajo la curva de $f(x)$ en un intervalo de $x$ determinado. El concepto es ilustrado en la Figura \@ref(fig:garea).
+
+```{r, include = F}
+source('https://raw.githubusercontent.com/paguzmang/funciones/master/area_xy.R')
+```
+
+```{r garea, echo = F, fig.cap='Curva de la función $f(x) = e^{-5x}$. La sombra indica el área bajo la curva entre $x = 0.1$ y $x = 0.6$.'}
+f <- function(x) exp(-5*x)  # se define la funcion
+rp <- area_xy(x0 = 0.1, x1 = 0.6, fun = f)  # se aplica area_xy
+par(mis.op)
+curve(f, from = 0, to = 1.5, lwd = 2, col = 'blue')
+polygon(rp, border = NA, col = 'grey70')
+segments(x0 = c(0.1,0.6), x1 = c(0.1,0.6), y0 = c(0,0), y1 = f(c(0.1,0.6)), lty = 2)
+```
+
+Los comandos `integrate` (paquete **stats**),   `antiD` (paquete **mosaicCalc**) e `integral` (paquete **pracma**) realizan el cálculo de integrales usando diferentes algoritmos. 
+
+### Integrando con `antiD` (mosaicCalc)
+
+El comando `antiD` realice integrales e incluso puede mostrar la forma simbólica de la integral. Entrega un objeto tipo función (al igual que el comando `D` para derivadas) y este puede ser evaluado en los valores de $x$ requeridos. Por ejemplo, considere la integral indefinida de la función $f(x) = e^{-5x}$  (Figura \@ref(fig:garea)), es decir,
+
+$$ H = \int e^{-5x} dx $$
+
+La integral se puede obtener, con el comando `antiD`, como:
+
+```{r}
+H <- antiD(exp(-5*x) ~ x)
+H
+```
+
+Observe que `H` es una función y note que la forma simbólica incluye la constante de integración $C$. Ahora suponga que se desea obtener la integral definida entre $x = 0.1$ y $x = 0.6$ (Figura \@ref(fig:garea)), es decir:
+
+
+$$ \int_{0.1}^{0.6} e^{-5x} dx = H(0.6) - H(0.1)$$
+
+El área (o integral) solicitada esta dada por:
+
+```{r}
+H(0.6) - H(0.1)
+```
+
+Es posible que el comando `antiD` no pueda encontrar la forma simbólica, pero aún así, realiza integración numérica. En este caso también entrega un objeto tipo función que puede ser evaluado en el valor de $x$ buscado. Considere el siguiente ejemplo:
+
+```{r}
+G <- antiD(exp(x^2) ~ x)
+G
+```
+
+Note que no se imprime una forma simbólica, pero el resultado continua siendo un objeto tipo función que se puede evaluar en cualquier valor de $x$:
+
+```{r}
+G(3) - G(0.5)
+```
+
+
+### Integrando con `integral` (pracma)
+
+El comando `integral` realiza una integración numérica (no muestra la forma simbólica) y requiere ademas los limites de la integración. Enseguida mostramos el uso de este comando para mismo ejemplo desarrollado arriba.
+
+```{r}
+f <- function(x) exp(-5*x)  # se define la funcion
+integral(fun = f, xmin = 0.1, xmax = 0.6)
+```
+
+De la misma librería **pracma**, los comandos `integral2` e `integral3` calculan integrales dobles y triples respectivamente.
+
+## Ejercicios
+
+### Ej. 1. Encontrando ceros
+
+Encuentre los ceros de las siguientes funciones, luego gráfique cada función y adicione puntos rojos para identificar los ceros hallados:
+
+$$\begin{array}{ll}
+(a)\quad f(x) = 3x^4 - 10x^3 - 3x^2 + 8x - 2 &  (b) \quad f(x) = \log_{10}(x+10) \\[3ex]
+(c)\quad f(x) = 4\, \mathrm{sen}(3x) - 2 &   \\
+\end{array}$$
+
+
+**Ayuda**: La función del numeral ($c$) es trigonométrica. Este tipo de funciones son periódicas y  cruzan el cero en muchos puntos. Si usa el comando `findZeros`, debe usar el argumento `xlim` para limitar la busqueda a cierto intervalo (p.e., entre $-10$ y $10$) y el argumento `nearest` con un valor grande (por ejemplo 100)  para que el comando entregue todos los ceros en el intervalo solicitado, ya que por defecto, el argumento `nearest = 10`; es decir, sólo entrega los 10 ceros más cercanos a $x = 0$.
+
+```{r, include = F, eval = F}
+fa <- function(x) 3*x^4 - 10*x^3 - 3*x^2 + 8*x - 2
+curve(fa(x), from = -4, to = 4, ylim = c(-50,50))
+abline(h = 0, v = 0, lty = 3)
+ceros.fa <- findZeros(fa(x) ~ x )
+points(x = ceros.fa$x, y = rep(0, length(ceros.fa$x)), 
+       col = 'red', cex = 1.2, pch = 19)
+```
+
+```{r, include = F,  eval = F}
+fb <- function(x) log10(x + 10)
+curve(fb(x), from = -9.99999, to = 40, ylim = c(-3, 3))
+abline(h = 0, v = c(-10,0), lty = 3)
+ceros.fb <- findZeros(fb(x) ~ x )
+points(x = ceros.fb$x, y = rep(0, length(ceros.fb$x)), 
+       col = 'red', cex = 1.2, pch = 19)
+```
+
+
+```{r, include = F, eval = F}
+fc <- function(x) 4*sin(3*x) - 2
+curve(fc(x), from = -10, to = 10)
+abline(h = 0, v = 0, lty = 3)
+ceros.fc <- findZeros(fc(x) ~ x, xlim = c(-10.1,10.1), nearest = 100 )
+points(x = ceros.fc$x, y = rep(0, length(ceros.fc$x)), 
+       col = 'red', cex = 1.2, pch = 19)
+```
+
+
+```{r, include = F, eval = F}
+findZeros(x^3 -3*x - 1 ~ x, xlim = c(-2,1))
+findZeros(x^3 -3*x - 1 ~ x, xlim = c(-1,0))
+findZeros(x^3 -3*x - 1 ~ x, xlim = c(-1,0))
+```
+
+### Ej. 2. ¿Cuánto se hunde la esfera?
+
+Los cuerpos solidos con menor densidad que el agua flotan pero quedan parcialmente sumergidos. De acuerdo al ejercicio 4.7-7 de @zill1992, una esfera de madera de radio $r$ se coloca en el agua. Para determinar la profundidad $h$ que la esfera tendrá sumergida igualamos la masa del agua desplazada con la masa de la esfera (principio de Arquímedes)^[Realmente se debe igualar el empuje del agua (que es igual al peso del agua desplazada por la porción de volumen sumergida de la esfera según el principio de Arquímedes) con el peso de la esfera. La ecuación dada considera el equilibrio de las fuerzas, donde la acelaración $g$ fue previamente cancelada]:
+
+$$\dfrac{\pi}{3}\rho_w h^2(3r - h) = \dfrac{4\pi}{3}\rho_br^3$$
+
+donde $\rho_w$ y $\rho_b$ son las densidades del agua y la madera respectivamente (Figura \@ref(fig:esfera)).
+
+```{r esfera, echo = F, fig.cap='Esfera parcialmente sumergida (Tomado de @zill1992)', out.width='40%'}
+include_graphics(path = 'esfera_sumergida.jpg')
+```
+
+Suponga que $\rho_b = 0.4\rho_w$ y $r = 2$ pulgadas. Utilice el comando `findzeros` (**pracma**) para encontrar la profundidad $h$ que estaría sumergida la esfera en cuestión. (**Ayuda**: tenga presente que la esfera no podrá hundirse completamente).
+
+```{r, include = F, eval = F}
+# determinacion de h para ejercicio de la esfera parcialmente sumergida
+findZeros(h^2*(6-h)-12.8 ~ h, h.lim = c(0, 2*2) )  # respuesta (0 < h < 2r)
+```
+
+
+### Ej. 3. Derivando
+
+Para las siguientes funciones, encuentre su derivada y gráfique $f$ y $f'$
+
+$$\begin{array}{ll}
+(a)\quad f(x) = \dfrac{x^2 + x - 2}{x^3 + 6} &  (b) \quad f(x) = \log_{10}(x+10) \\[3ex]
+(c)\quad f(x) = \dfrac{3.67x}{0.4 + x} &  (d) \quad f(x) = \dfrac{e^x}{1+x^2} \\
+\end{array}$$
+
+**Comentario:** A veces, el comando `D` (**mosaicCalc**) puede no ser capaz de generar la forma simbólica de la derivada. No obstante, este comando si puede realizar la derivación de tipo numérico. En este caso, igualmente entrega un objeto tipo `function` sólo que al imprimirlo no veremos la forma simbólica, pero este objeto si sirve para evaluar la función de la derivada en uno o más valores de $x$.
+
+### Ej. 4. Derivando funciones con dos variables
+
+Encuentre la derivada parcial de $f$ con respecto a $x$ en las siguientes funciones de dos variables:
+
+$$\begin{array}{ll}
+(a)\quad f(x,y) = 4-x^2-2y^2 \quad \quad \quad &  (b) \quad f(x,y) =  \log_e(x + \sqrt{x^2 + y^2})
+\end{array}$$
+
+Luego, gráfique en el plano 2D $f$ y $\delta f/\delta x$ en función de $x$ y fijando un valor para $y$.
+
+```{r,eval=F, include = F}
+f <- function(x) {(x^2 + x - 2)/(x^3 + 6)}
+df <- D(f(x) ~ x)
+
+f <- function(x) log10(x + 10)
+df <- D(f(x) ~ x)
+
+f <- function(x) 3.67*x / (0.4 + x)
+df <- D(f(x) ~ x)
+
+f <- function(x) exp(x) / (1 + x^2)
+df <- D(f(x) ~ x)
+df(x = 1)
+f(x = 1)
+exp(1)/2
+
+dfo <- function(x) exp(x)*(1-x)^2 / ((1+x^2)^2)
+plot(x = -10:10, y = df(x = -10:10), type = 'l' )
+lines(x = -10:10, y = dfo(x = -10:10), type = 'l', col = 'red' )
+
+f <- function(x,y) log(x + sqrt(x^2 + y^2) )
+df <- D(f(x,y) ~ x)
+curve(f(x, y = 5), from = -10, to = 10)
+curve(df(x, y = 5), from = -10, to = 10, add = T)
+```
+
+
+### Ej. 5. Gráficos de varias variables
+
+a. Use el comando `persp3d` de la librería `rgl` para gráficar las siguientes funciones en dos variables:
+  $$\begin{array}{ll}
+(i)\quad f(x,y) = (x^2 + 3y^2)e^{-x^2-y^2} \quad \quad \quad &  (ii) \quad f(x,y) = -xye^{-x^2-y^2} \\[3ex]
+(iii)\quad f(x) = \sin x + \sin y &   \\
+\end{array}$$ 
+
+    Utilice los intervalos $-3 < x < 3$, y $-3 < y < 3$ como `xlim` y `ylim` en el comando  `persp3d`.
+
+```{r, eval=F, include = F}
+f <- function(x,y) (x^2 + 3*y^2)*exp(-x^2-y^2)
+persp3d(f, xlim = c(-3,3), ylim = c(-3,3))
+
+f <- function(x,y) sin(x) + sin(y)
+persp3d(f, xlim = c(-5,5), ylim = c(-5,5))
+
+f <- function(x,y) -x*y*exp(-x^2-y^2)
+persp3d(f, xlim = c(-5,5), ylim = c(-5,5))
+```
+
+b. Use el comando `persp` para gráficar la función (\,$ii$\,) de la parte (a) con $x$ y $y$ en el intervalo $(-2,2)$. Utilice una escala de colores seleccionada por usted y presente varias vistas del gráfico usando los argumentos (angulos) `theta` y `phi`. Describa como los colores de la superficie ayudan a identificar donde  el valor de $f(x,y)$ es más alto o más bajo.
+
+```{r, eval=F, include = F}
+f <- function(x,y) -x*y*exp(-x^2-y^2)
+x <- y <- seq(-2,2,0.1)
+z <- outer(X = x, Y = y, FUN = f)
+col <- hcl.colors(n = 30, palette = 'Spectral')
+persp(x = x, y = y, z = z, theta = -30, phi = 90, col = drapecol(z,col))
+```
+
+    **Recomendación:** Use un vector de colores generado por `hcl.colors(n = 30, palette = 'Spectral')`. Para los angulos `theta` y `phi` use las siguientes tres combinaciones: `theta = -40`, `phi = 30`; `theta = 30`, `phi = 30` y `theta = -40`, `phi = -90`.
+
+c. Utilice los comandos  `image` y `contour` para gráficar la misma función (\,$ii$\,) de la parte (a). Las líneas de contorno agreguelas al mapa de color. Seleccione un vector de colores en gradiente para el gráfico con `image`. Describa como los colores aplicados al gráfico ayudan a identificar donde  el valor de $f(x,y)$ es más alto o más bajo.
+
+```{r, eval=F, include = F}
+image(x = x, y = x, z = z, ylab = 'y', col = col)
+contour(x = x, y = x, z = z, add = T, col = 'black')
+```
+
+
+### Ej. 6. Control de la dispersión de una enfermedad
+
+Una cantidad de importancia central en la dispersión de una enfermedad infecciosa es el número básico de reproducción $R_0$. Este es el número medio de nuevas infecciones que cada individuo infectado produce cuando es introducido en una población completamente suceptible. Modelos para la dispersión del SARS (Sindrome respiratorio agudo y grave) se han construido para determinar el efecto de la vacunación y la cuarentena sobre $R_0$. Un modelo de estos es [@stewart2015]:
+
+$$R_0(d,v) = 5(1-v)\dfrac{d}{1+d}$$
+
+donde $v$ es la fracción de la población que esta vacunada y $d$ es el número medio de días que los individuos infectados permanecen en la población suceptible. Note que un programa de vacunación aumenta $v$, mientras que un programa de cuarentena reduce $d$.
+
+a. Realice un gráfico de la función $R_0$ usando `persp` y usando `contour`. Los días ($d$) ubiquelos entre $0$ y $20$, y la fracción de vacunados ($v$) entre $0$ y $1$ (note que $1$ significa que toda o el 100% de la población esta vacunada).  Use alguno de los dos gráficos para describir lo que ocurre con $R_0$ cuando $v$ y $d$ incrementan.
+
+b. Suponga que un episodio fuerte de la enfermedad ocurre en una población suceptible en la cual no hay vacunación ($v = 0$), también suponga que no existe un programa de cuarentena, y que los individuos infectados circulan libremente en la población durante $d = 4$ días. Calcule las derivadas parciales $\delta R_0 / \delta d$ y $\delta R_0 / \delta v$ y evalue cada una en el punto ($d = 4;\ v = 0$). Utilice el comando `D` para realizar el cálculo.
+
+
+```{r, eval = F, include = F}
+t <- seq(80,100,5)
+h <- seq(20,70,10)
+z <- matrix(
+  data = c(77,82,87,93,99,
+           78,84,90,96,104,
+           79,86,93,101,110,
+           81,88,96,107,120,
+           82,90,100,114,132,
+           83,93,106,124,144),
+  ncol = 6, dimnames = list(t = t, h = h)
+)
+par(mar = c(3,3,1,1), mgp = c(2,1,0), cex = 0.7)
+persp(x = t, y = h, z = z, theta = 30, phi = 20, 
+      ticktype = 'detailed', col = drapecol(z) )
+```
+
+
+```{r, eval = F, include = F}
+fitness <- function(R,S) 4.2 + 0.008*R + 0.102*S + 0.017*R^2 - 0.034*S^2 - 0.268*R*S
+R <- S <- 0:5
+fitn <- outer(R,S,fitness)
+persp(R,S,fitn, theta = 120, phi = 19, ticktype = 'detailed', 
+      col = drapecol(fitn,heat.colors(20, rev = T)))
+```
+
+
+```{r, eval = F, include = F}
+R0 <- function(d,v) 5*(1-v)*d/(1+d)
+d <- 0:20
+v <- seq(0,1,0.01)
+R0 <- outer(d,v,R0)
+persp(d,v,R0, theta = 40, phi = 20, ticktype = 'detailed', 
+      col = drapecol(R0,heat.colors(20, rev = T)))
+image(d,v,R0,col = heat.colors(20, rev = T))
+contour(d,v,R0, labcex = 1.3, add = T)
+```
+
+### Ej. 7. Valor medio, varianza y probabilidad
+
+La integral tiene aplicaciones en Estadística en una clase de funciones matemáticas llamadas **modelos de densidad de probabilidad**. Una función $f(x)$ es una función de densidad de probabilidad si cumple dos condiciones: $f(x) > 0$ para todo $x$ y la $\int_{-\infty}^{\infty} f(x)dx = 1$. Por ejemplo, considere la siguiente función:
+
+\begin{equation}f(x) = \dfrac{1}{\sqrt{2\pi}}\,e^{-0.5x^2}\ , \quad \text{con } -\infty < x < \infty
+(\#eq:dnorm)
+\end{equation}
+
+a. Gráfique la función \@ref(eq:dnorm) con $-4 < x < 4$ mediante el comando `curve`. Además, usando el comando `antiD` o `integral` muestre que $f(x)$ es una función de densidad de probabilidad. Como límites de integración use `-Inf` e `Inf`.
+
+```{r,eval=F,include=F}
+fnorm <- function(x) 1/sqrt(2*pi)*exp(-0.5*x^2)
+curve(fnorm, from = -4, to = 4)
+library(mosaicCalc)
+Fnorm <- antiD(fnorm(x) ~ x)
+Fnorm(Inf) - Fnorm(-Inf)
+mu.norm <- antiD(x*fnorm(x) ~ x)
+mu.norm(Inf) - mu.norm(-Inf)
+var.norm <- antiD((x-0)^2*fnorm(x) ~ x)
+var.norm(Inf) - var.norm(-Inf)
+library(pracma)
+integral(fun = fnorm, xmin = -Inf, xmax = Inf)
+integral(fun = fnorm, xmin = -1.96, xmax = 1.96)
+```
+
+
+b. El valor medio ($\mu$) de una función de densidad de probabilidad es un valor de $x$ que cumple con 
+
+    $$\mu = \int xf(x)dx$$
+    Usando el comando `integral` o `antiD`, muestre que el valor medio $\mu$ para la función dada en \@ref(eq:dnorm) es $0$. Como límites de integración use `-Inf` e `Inf`.
+
+c. La varianza ($\theta$) de una función de densidad de probabilidad está dada por:
+
+    $$\theta = \int (x-\mu)^2f(x)dx$$
+
+    donde $\mu$ es el valor medio obtenido con la ecuación del punto (b).  Usando el comando `integral` o `antiD`, muestre que la varianza $\theta$ para la función dada en \@ref(eq:dnorm) es $1$. Como límites de integración use `-Inf` e `Inf`.
+    
+d. El área bajo la curva en cierto intervalo de $x$ en una función de densidad de probabilidad representa precisamente la probabilidad de que la variable $x$ tome o caiga en dicho intervalo. Es decir:
+
+    $$\text{Probabilidad de que } x \text{ caiga entre }x = a \text{ y } x=b \text{ es } \int_{a}^{b} f(x)dx$$
+    Utilice este criterio para encontrar, en la función \@ref(eq:dnorm), la probabilidad de que $x$ caiga entre $x = -1.96$ y $x = 1.96$. Para esto, utilice el comando `antiD` o el comando `integral`. (Respuesta: `0.95`).
+    
+    
+### Ej. 8. Antibiótico en sangre
+
+Cuando se toma una tableta de antibiótico, la concentración (en $\mu g/$mL) del antibiótico en la corriente sanguínea es modelada con respecto al tiempo (en horas) como:
+
+$$g(t) = 8(e^{-0.4t} - e^{-0.6t})$$
+Mediante el comando `antiD` o el comando `integral`, cálcule el área bajo la curva entre las $5$ y las $10$ horas de haberse tomado la tableta.
+
+```{r, include=F, eval = F}
+g <- function(x) 8*(exp(-0.4*x) - exp(-0.6*x))
+curve(g, from = 0, to = 20)
+antiD(g(x) ~ x)(10) - antiD(g(x) ~ x)(5)
+```
+
+
+

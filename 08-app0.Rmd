@@ -1,0 +1,5 @@
+
+# (PART) Aplicaciones {-} 
+
+En esta parte revisaremos aplicaciones de programas (comandos y paquetes) que nos permiten ejecutar tareas en el área de ciencias biológicas y afines con relativa facilidad. Estudiaremos como ejecutar operaciones matemáticas (p.e., derivación, integración) de solución analítica díficil y construir gráficas de funciones en varias variables; también revisaremos paquetes para descargar (desde servicios de internet tal como **gbif**) y manipular registros con datos de distribución (espacial) de especies biológicas, y en la misma línea, como descargar (desde servicios de internet tal como **NCBI**) y manipular información genética asociada especies de interés.
+

@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>6.1 Gráficos de funciones en varias variables | Programación para Biólogos</title>
+  <meta name="description" content="Conceptos básicos de programación para biólogos con R" />
+  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="6.1 Gráficos de funciones en varias variables | Programación para Biólogos" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Conceptos básicos de programación para biólogos con R" />
+  <meta name="github-repo" content="paguzmang/CursoProg" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="6.1 Gráficos de funciones en varias variables | Programación para Biólogos" />
+  
+  <meta name="twitter:description" content="Conceptos básicos de programación para biólogos con R" />
+  
+
+<meta name="author" content="paguzmang | Programa de Biología - U.CES" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="6-appmat.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Presentación</a></li>
+<li class="part"><span><b>I Iniciando con R y Rstudio</b></span><ul>
+<li class="chapter" data-level="0.1" data-path="0-1-ventanasR.html"><a href="0-1-ventanasR.html"><i class="fa fa-check"></i><b>0.1</b> Ventanas de R: Consola y script</a><ul>
+<li class="chapter" data-level="0.1.1" data-path="0-1-ventanasR.html"><a href="0-1-ventanasR.html#prompt-y-linea-de-comandos"><i class="fa fa-check"></i><b>0.1.1</b> Prompt y línea de comandos</a></li>
+<li class="chapter" data-level="0.1.2" data-path="0-1-ventanasR.html"><a href="0-1-ventanasR.html#escribiendo-en-el-script"><i class="fa fa-check"></i><b>0.1.2</b> Escribiendo en el script</a></li>
+</ul></li>
+<li class="chapter" data-level="0.2" data-path="0-2-com.html"><a href="0-2-com.html"><i class="fa fa-check"></i><b>0.2</b> Comandos</a><ul>
+<li class="chapter" data-level="0.2.1" data-path="0-2-com.html"><a href="0-2-com.html#sintaxis-de-un-comando"><i class="fa fa-check"></i><b>0.2.1</b> Sintaxis de un comando</a></li>
+<li class="chapter" data-level="0.2.2" data-path="0-2-com.html"><a href="0-2-com.html#ayuda-sobre-comandos"><i class="fa fa-check"></i><b>0.2.2</b> Ayuda sobre comandos</a></li>
+<li class="chapter" data-level="0.2.3" data-path="0-2-com.html"><a href="0-2-com.html#orden-de-los-argumentos"><i class="fa fa-check"></i><b>0.2.3</b> Orden de los argumentos</a></li>
+</ul></li>
+<li class="chapter" data-level="0.3" data-path="0-3-paquetes.html"><a href="0-3-paquetes.html"><i class="fa fa-check"></i><b>0.3</b> Paquetes o librerías</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="1-ides.html"><a href="1-ides.html"><i class="fa fa-check"></i><b>1</b> Ambientes de desarrollo integrado</a><ul>
+<li class="chapter" data-level="1.1" data-path="1-1-rstudio1.html"><a href="1-1-rstudio1.html"><i class="fa fa-check"></i><b>1.1</b> RStudio 1</a></li>
+<li class="chapter" data-level="1.2" data-path="1-2-rstudio2.html"><a href="1-2-rstudio2.html"><i class="fa fa-check"></i><b>1.2</b> Rstudio 2</a></li>
+</ul></li>
+<li class="part"><span><b>II Objetos, datos y gráficos</b></span><ul>
+<li class="chapter" data-level="1.3" data-path="1-3-vectores.html"><a href="1-3-vectores.html"><i class="fa fa-check"></i><b>1.3</b> Vectores</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="1-3-vectores.html"><a href="1-3-vectores.html#creando-vectores"><i class="fa fa-check"></i><b>1.3.1</b> Creando vectores</a></li>
+<li class="chapter" data-level="1.3.2" data-path="1-3-vectores.html"><a href="1-3-vectores.html#creando-vectores-de-secuencias"><i class="fa fa-check"></i><b>1.3.2</b> Creando vectores de secuencias</a></li>
+<li class="chapter" data-level="1.3.3" data-path="1-3-vectores.html"><a href="1-3-vectores.html#operaciones-aritmeticas-con-vectores"><i class="fa fa-check"></i><b>1.3.3</b> Operaciones aritméticas con vectores</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="1-4-tiposDatos.html"><a href="1-4-tiposDatos.html"><i class="fa fa-check"></i><b>1.4</b> Tipos de datos</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="1-4-tiposDatos.html"><a href="1-4-tiposDatos.html#validando-el-tipo-de-datos"><i class="fa fa-check"></i><b>1.4.1</b> Validando el tipo de datos</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="1-5-logicas.html"><a href="1-5-logicas.html"><i class="fa fa-check"></i><b>1.5</b> Expresiones lógicas</a></li>
+<li class="chapter" data-level="1.6" data-path="1-6-ejvecTiposDatos.html"><a href="1-6-ejvecTiposDatos.html"><i class="fa fa-check"></i><b>1.6</b> Ejercicios</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="2-otros-tipos-de-objeto.html"><a href="2-otros-tipos-de-objeto.html"><i class="fa fa-check"></i><b>2</b> Otros tipos de objeto</a><ul>
+<li class="chapter" data-level="2.1" data-path="2-1-matriz.html"><a href="2-1-matriz.html"><i class="fa fa-check"></i><b>2.1</b> Matrices</a></li>
+<li class="chapter" data-level="2.2" data-path="2-2-df.html"><a href="2-2-df.html"><i class="fa fa-check"></i><b>2.2</b> Marcos de datos (data.frame)</a></li>
+<li class="chapter" data-level="2.3" data-path="2-3-listas.html"><a href="2-3-listas.html"><i class="fa fa-check"></i><b>2.3</b> Listas</a></li>
+<li class="chapter" data-level="2.4" data-path="2-4-ejObj.html"><a href="2-4-ejObj.html"><i class="fa fa-check"></i><b>2.4</b> Ejercicios</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="3-elementos-basicos-sobre-graficos.html"><a href="3-elementos-basicos-sobre-graficos.html"><i class="fa fa-check"></i><b>3</b> Elementos básicos sobre gráficos</a><ul>
+<li class="chapter" data-level="3.1" data-path="3-1-altoBajoNiv.html"><a href="3-1-altoBajoNiv.html"><i class="fa fa-check"></i><b>3.1</b> Comandos de alto y bajo nivel</a></li>
+<li class="chapter" data-level="3.2" data-path="3-2-ejGraf.html"><a href="3-2-ejGraf.html"><i class="fa fa-check"></i><b>3.2</b> Ejercicios</a></li>
+</ul></li>
+<li class="part"><span><b>III Programación</b></span></li>
+<li class="chapter" data-level="4" data-path="4-basicProg.html"><a href="4-basicProg.html"><i class="fa fa-check"></i><b>4</b> Conceptos básicos</a><ul>
+<li class="chapter" data-level="4.1" data-path="4-1-tema1.html"><a href="4-1-tema1.html"><i class="fa fa-check"></i><b>4.1</b> Tema 1</a></li>
+<li class="chapter" data-level="4.2" data-path="4-2-fun.html"><a href="4-2-fun.html"><i class="fa fa-check"></i><b>4.2</b> Funciones</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="4-2-fun.html"><a href="4-2-fun.html#un-ejemplo"><i class="fa fa-check"></i><b>4.2.1</b> Un ejemplo</a></li>
+<li class="chapter" data-level="4.2.2" data-path="4-2-fun.html"><a href="4-2-fun.html#controlando-el-objeto-de-salida"><i class="fa fa-check"></i><b>4.2.2</b> Controlando el objeto de salida</a></li>
+<li class="chapter" data-level="4.2.3" data-path="4-2-fun.html"><a href="4-2-fun.html#argumentos-por-defecto"><i class="fa fa-check"></i><b>4.2.3</b> Argumentos por defecto</a></li>
+<li class="chapter" data-level="4.2.4" data-path="4-2-fun.html"><a href="4-2-fun.html#entregando-texto-variable"><i class="fa fa-check"></i><b>4.2.4</b> Entregando texto variable</a></li>
+<li class="chapter" data-level="4.2.5" data-path="4-2-fun.html"><a href="4-2-fun.html#argumentos-logicos"><i class="fa fa-check"></i><b>4.2.5</b> Argumentos lógicos</a></li>
+<li class="chapter" data-level="4.2.6" data-path="4-2-fun.html"><a href="4-2-fun.html#documentacion-de-la-funcion"><i class="fa fa-check"></i><b>4.2.6</b> Documentación de la función</a></li>
+<li class="chapter" data-level="4.2.7" data-path="4-2-fun.html"><a href="4-2-fun.html#compartiendo-la-funcion"><i class="fa fa-check"></i><b>4.2.7</b> Compartiendo la función</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="4-3-ejFun.html"><a href="4-3-ejFun.html"><i class="fa fa-check"></i><b>4.3</b> Ejercicios</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="4-3-ejFun.html"><a href="4-3-ejFun.html#ej.-1.-numero-de-datos-perdidos"><i class="fa fa-check"></i><b>4.3.1</b> Ej. 1. Número de datos perdidos</a></li>
+<li class="chapter" data-level="4.3.2" data-path="4-3-ejFun.html"><a href="4-3-ejFun.html#ej.-2.-factura-con-iva."><i class="fa fa-check"></i><b>4.3.2</b> Ej. 2. Factura con IVA.</a></li>
+<li class="chapter" data-level="4.3.3" data-path="4-3-ejFun.html"><a href="4-3-ejFun.html#ej.-3.-area-bajo-la-curva"><i class="fa fa-check"></i><b>4.3.3</b> Ej. 3. Área bajo la curva</a></li>
+<li class="chapter" data-level="4.3.4" data-path="4-3-ejFun.html"><a href="4-3-ejFun.html#ej.-4.-revisando-la-salida-de-una-funcion"><i class="fa fa-check"></i><b>4.3.4</b> Ej. 4. Revisando la salida de una función</a></li>
+<li class="chapter" data-level="4.3.5" data-path="4-3-ejFun.html"><a href="4-3-ejFun.html#ej.-5.-el-vertice-de-una-parabola"><i class="fa fa-check"></i><b>4.3.5</b> Ej. 5. El vertice de una parábola</a></li>
+<li class="chapter" data-level="4.3.6" data-path="4-3-ejFun.html"><a href="4-3-ejFun.html#ej.-6.-encontrando-minimos-o-maximos"><i class="fa fa-check"></i><b>4.3.6</b> Ej. 6. Encontrando mínimos o máximos</a></li>
+<li class="chapter" data-level="4.3.7" data-path="4-3-ejFun.html"><a href="4-3-ejFun.html#ej.-7.-aplicacion-de-una-parabola-y-maximizacion"><i class="fa fa-check"></i><b>4.3.7</b> Ej. 7. Aplicación de una parábola y maximización</a></li>
+<li class="chapter" data-level="4.3.8" data-path="4-3-ejFun.html"><a href="4-3-ejFun.html#ej.-8.-creciente-o-decreciente"><i class="fa fa-check"></i><b>4.3.8</b> Ej. 8. ¿Creciente o decreciente?</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="4-4-solucion-a-ejercicios-seleccionados.html"><a href="4-4-solucion-a-ejercicios-seleccionados.html"><i class="fa fa-check"></i><b>4.4</b> Solución a ejercicios seleccionados</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="4-4-solucion-a-ejercicios-seleccionados.html"><a href="4-4-solucion-a-ejercicios-seleccionados.html#ej.-2.-factura-con-iva"><i class="fa fa-check"></i><b>4.4.1</b> Ej. 2. Factura con IVA</a></li>
+<li class="chapter" data-level="4.4.2" data-path="4-4-solucion-a-ejercicios-seleccionados.html"><a href="4-4-solucion-a-ejercicios-seleccionados.html#ej.-6.-encontrando-minimos-o-maximos-1"><i class="fa fa-check"></i><b>4.4.2</b> Ej. 6. Encontrando mínimos o máximos</a></li>
+<li class="chapter" data-level="4.4.3" data-path="4-4-solucion-a-ejercicios-seleccionados.html"><a href="4-4-solucion-a-ejercicios-seleccionados.html#ej.-8.-creciente-o-decreciente-1"><i class="fa fa-check"></i><b>4.4.3</b> Ej. 8. ¿Creciente o decreciente?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="5-Prog2.html"><a href="5-Prog2.html"><i class="fa fa-check"></i><b>5</b> Estructuras de programación</a><ul>
+<li class="chapter" data-level="5.1" data-path="5-1-cond.html"><a href="5-1-cond.html"><i class="fa fa-check"></i><b>5.1</b> Condicionales</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="5-1-cond.html"><a href="5-1-cond.html#solo-si"><i class="fa fa-check"></i><b>5.1.1</b> Sólo si …</a></li>
+<li class="chapter" data-level="5.1.2" data-path="5-1-cond.html"><a href="5-1-cond.html#si-entonces"><i class="fa fa-check"></i><b>5.1.2</b> Si … Entonces</a></li>
+<li class="chapter" data-level="5.1.3" data-path="5-1-cond.html"><a href="5-1-cond.html#condiciones-con-mutiples-alternativas"><i class="fa fa-check"></i><b>5.1.3</b> Condiciones con mútiples alternativas</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="5-2-ciclos.html"><a href="5-2-ciclos.html"><i class="fa fa-check"></i><b>5.2</b> Repitiendo una acción</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="5-2-ciclos.html"><a href="5-2-ciclos.html#ciclo-for"><i class="fa fa-check"></i><b>5.2.1</b> Ciclo <code>for</code></a></li>
+<li class="chapter" data-level="5.2.2" data-path="5-2-ciclos.html"><a href="5-2-ciclos.html#ciclo-while"><i class="fa fa-check"></i><b>5.2.2</b> Ciclo <code>while</code></a></li>
+<li class="chapter" data-level="5.2.3" data-path="5-2-ciclos.html"><a href="5-2-ciclos.html#ciclo-repeat"><i class="fa fa-check"></i><b>5.2.3</b> Ciclo <code>repeat</code></a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="5-3-stop.html"><a href="5-3-stop.html"><i class="fa fa-check"></i><b>5.3</b> Deteniendo la ejecución de una función</a></li>
+<li class="chapter" data-level="5.4" data-path="5-4-vectoriz.html"><a href="5-4-vectoriz.html"><i class="fa fa-check"></i><b>5.4</b> Vectorización</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="5-4-vectoriz.html"><a href="5-4-vectoriz.html#eficiencia-en-la-vectorizacion"><i class="fa fa-check"></i><b>5.4.1</b> Eficiencia en la vectorización</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="5-5-famApply.html"><a href="5-5-famApply.html"><i class="fa fa-check"></i><b>5.5</b> Comandos de la familia apply</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="5-5-famApply.html"><a href="5-5-famApply.html#apply"><i class="fa fa-check"></i><b>5.5.1</b> <code>apply</code></a></li>
+<li class="chapter" data-level="5.5.2" data-path="5-5-famApply.html"><a href="5-5-famApply.html#tapply"><i class="fa fa-check"></i><b>5.5.2</b> <code>tapply</code></a></li>
+<li class="chapter" data-level="5.5.3" data-path="5-5-famApply.html"><a href="5-5-famApply.html#sapply"><i class="fa fa-check"></i><b>5.5.3</b> <code>sapply</code></a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="5-6-ejProg2.html"><a href="5-6-ejProg2.html"><i class="fa fa-check"></i><b>5.6</b> Ejercicios</a><ul>
+<li><a href="5-6-ejProg2.html#ej.-1.-basico-o-acido-ej.-2.-basico-o-acido-en-multiples-muestras"><span class="toc-section-number">5.6.1</span> Ej. 1. Básico o Ácido<em>
+### Ej. 2. Básico o Ácido en múltiples muestras</em></a></li>
+<li><a href="5-6-ejProg2.html#ej.-3.-condicional-vectorizado-ej.-4.-diferencias"><span class="toc-section-number">5.6.2</span> Ej. 3. Condicional vectorizado<em>
+### Ej. 4. Diferencias</em></a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="5-7-solejProg2.html"><a href="5-7-solejProg2.html"><i class="fa fa-check"></i><b>5.7</b> Solución a ejercicios seleccionados</a><ul>
+<li class="chapter" data-level="5.7.1" data-path="5-7-solejProg2.html"><a href="5-7-solejProg2.html#ej.-1.-basico-o-acido"><i class="fa fa-check"></i><b>5.7.1</b> Ej. 1. Básico o Ácido</a></li>
+<li class="chapter" data-level="5.7.2" data-path="5-7-solejProg2.html"><a href="5-7-solejProg2.html#ej.-2.-basico-o-acido-en-multiples-muestras"><i class="fa fa-check"></i><b>5.7.2</b> Ej. 2. Básico o Ácido en múltiples muestras</a></li>
+<li class="chapter" data-level="5.7.3" data-path="5-7-solejProg2.html"><a href="5-7-solejProg2.html#ej.-3.-condicional-vectorizado"><i class="fa fa-check"></i><b>5.7.3</b> Ej. 3. Condicional vectorizado</a></li>
+<li class="chapter" data-level="5.7.4" data-path="5-7-solejProg2.html"><a href="5-7-solejProg2.html#ej.-4.-diferencias"><i class="fa fa-check"></i><b>5.7.4</b> Ej. 4. Diferencias</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>IV Aplicaciones</b></span></li>
+<li class="chapter" data-level="6" data-path="6-appmat.html"><a href="6-appmat.html"><i class="fa fa-check"></i><b>6</b> Aplicaciones en matemáticas</a><ul>
+<li class="chapter" data-level="6.1" data-path="6-1-xyz.html"><a href="6-1-xyz.html"><i class="fa fa-check"></i><b>6.1</b> Gráficos de funciones en varias variables</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="6-1-xyz.html"><a href="6-1-xyz.html#introduccion"><i class="fa fa-check"></i><b>6.1.1</b> Introducción</a></li>
+<li class="chapter" data-level="6.1.2" data-path="6-1-xyz.html"><a href="6-1-xyz.html#tipos-de-graficos-para-funciones-de-tres-variables"><i class="fa fa-check"></i><b>6.1.2</b> Tipos de gráficos para funciones de tres variables</a></li>
+<li class="chapter" data-level="6.1.3" data-path="6-1-xyz.html"><a href="6-1-xyz.html#opciones-graficas-en-r"><i class="fa fa-check"></i><b>6.1.3</b> Opciones gráficas en <strong>R</strong></a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"><em>Programación</em> para Biólogos</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="xyz" class="section level2">
+<h2><span class="header-section-number">6.1</span> Gráficos de funciones en varias variables</h2>
+<div id="introduccion" class="section level3">
+<h3><span class="header-section-number">6.1.1</span> Introducción</h3>
+<p>Las funciones (o modelos) en varias variables son comunes en ciencias biológicas y afines. Como ejemplo considere el <strong>índice de viento-enfriamiento (<em>wind-chill index</em>)</strong> el cual, de acuerdo <span class="citation">Stewart &amp; Day (<a href="#ref-stewart2015" role="doc-biblioref">2015</a>)</span>, es usado para medir la severidad del clima frío que ocurre en regiones invernales. Este índice (<span class="math inline">\(W\)</span>) se mide en función de la temperatura (<span class="math inline">\(t\)</span>) y la velocidad del viento (<span class="math inline">\(v\)</span>); es decir, <span class="math inline">\(W = f(t,v)\)</span>. La Tabla <a href="6-1-xyz.html#tab:indiceW">6.1</a> muestra los valores que toma <span class="math inline">\(W\)</span> para algunas combinaciones de <span class="math inline">\(t\)</span> y <span class="math inline">\(v\)</span>.</p>
+<pre><code>## 
+## Attaching package: &#39;kableExtra&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:dplyr&#39;:
+## 
+##     group_rows</code></pre>
+<table class="table table-bordered table-responsive" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:indiceW">Tabla 6.1: </span>Índice W de viento-enfriamiento para algunas combinaciones de tempertura (<span class="math inline">\(t\)</span>, en <span class="math inline">\(^{\circ}\)</span>F) y velocidad del viento (<span class="math inline">\(v\)</span>, en km/h). Tomado de <span class="citation">Stewart &amp; Day (<a href="#ref-stewart2015" role="doc-biblioref">2015</a>)</span>.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(v = 10\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(v = 20\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(v = 30\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(v = 40\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(v = 50\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(v = 60\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(v = 70\)</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(t = -30\)</span>
+</td>
+<td style="text-align:right;">
+-39.2
+</td>
+<td style="text-align:right;">
+-43.1
+</td>
+<td style="text-align:right;">
+-45.7
+</td>
+<td style="text-align:right;">
+-47.6
+</td>
+<td style="text-align:right;">
+-49.1
+</td>
+<td style="text-align:right;">
+-50.4
+</td>
+<td style="text-align:right;">
+-51.5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(t = -25\)</span>
+</td>
+<td style="text-align:right;">
+-33.2
+</td>
+<td style="text-align:right;">
+-36.8
+</td>
+<td style="text-align:right;">
+-39.1
+</td>
+<td style="text-align:right;">
+-40.9
+</td>
+<td style="text-align:right;">
+-42.3
+</td>
+<td style="text-align:right;">
+-43.4
+</td>
+<td style="text-align:right;">
+-44.5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(t = -20\)</span>
+</td>
+<td style="text-align:right;">
+-27.2
+</td>
+<td style="text-align:right;">
+-30.5
+</td>
+<td style="text-align:right;">
+-32.6
+</td>
+<td style="text-align:right;">
+-34.2
+</td>
+<td style="text-align:right;">
+-35.4
+</td>
+<td style="text-align:right;">
+-36.5
+</td>
+<td style="text-align:right;">
+-37.4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(t = -15\)</span>
+</td>
+<td style="text-align:right;">
+-21.2
+</td>
+<td style="text-align:right;">
+-24.2
+</td>
+<td style="text-align:right;">
+-26.0
+</td>
+<td style="text-align:right;">
+-27.4
+</td>
+<td style="text-align:right;">
+-28.6
+</td>
+<td style="text-align:right;">
+-29.5
+</td>
+<td style="text-align:right;">
+-30.4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(t = -10\)</span>
+</td>
+<td style="text-align:right;">
+-15.2
+</td>
+<td style="text-align:right;">
+-17.8
+</td>
+<td style="text-align:right;">
+-19.5
+</td>
+<td style="text-align:right;">
+-20.7
+</td>
+<td style="text-align:right;">
+-21.7
+</td>
+<td style="text-align:right;">
+-22.6
+</td>
+<td style="text-align:right;">
+-23.3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(t = -5\)</span>
+</td>
+<td style="text-align:right;">
+-9.2
+</td>
+<td style="text-align:right;">
+-11.5
+</td>
+<td style="text-align:right;">
+-12.9
+</td>
+<td style="text-align:right;">
+-14.0
+</td>
+<td style="text-align:right;">
+-14.9
+</td>
+<td style="text-align:right;">
+-15.6
+</td>
+<td style="text-align:right;">
+-16.3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(t = 0\)</span>
+</td>
+<td style="text-align:right;">
+-3.2
+</td>
+<td style="text-align:right;">
+-5.2
+</td>
+<td style="text-align:right;">
+-6.4
+</td>
+<td style="text-align:right;">
+-7.3
+</td>
+<td style="text-align:right;">
+-8.1
+</td>
+<td style="text-align:right;">
+-8.7
+</td>
+<td style="text-align:right;">
+-9.2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<span class="math inline">\(t = 5\)</span>
+</td>
+<td style="text-align:right;">
+2.8
+</td>
+<td style="text-align:right;">
+1.2
+</td>
+<td style="text-align:right;">
+0.2
+</td>
+<td style="text-align:right;">
+-0.6
+</td>
+<td style="text-align:right;">
+-1.2
+</td>
+<td style="text-align:right;">
+-1.7
+</td>
+<td style="text-align:right;">
+-2.2
+</td>
+</tr>
+</tbody>
+</table>
+<p>La organización de los valores de <span class="math inline">\(W\)</span> en la Tabla <a href="6-1-xyz.html#tab:indiceW">6.1</a> es adecuada en tanto que permite identificar como cambia <span class="math inline">\(W\)</span> cuando el viento permanece constante (en algún valor) y la temperatura cambia, o viceversa. Por ejemplo, a una temperatura constante de <span class="math inline">\(t = -15\,^{\circ}\)</span>F, el índice <span class="math inline">\(W\)</span> se hace más negativo a medida que la velocidad del viento incrementa.</p>
+<p>De modo más general, en la Tabla <a href="6-1-xyz.html#tab:indiceW">6.1</a> se logra identificar que a temperaturas más bajas (p.e., <span class="math inline">\(t = -25\,^{\circ}\)</span>F o <span class="math inline">\(t = -30\,^{\circ}\)</span>F) y vientos con mayor velocidad (p.e., <span class="math inline">\(v = 40\)</span> o <span class="math inline">\(v = 50\)</span> km/h), el índice <span class="math inline">\(W\)</span> se vuelve más negativo, representando una mayor severidad del clima frío.</p>
+<p>A partir de datos reales se ha podido estimar el siguiente modelo para el índice <span class="math inline">\(W\)</span> <span class="citation">(Stewart &amp; Day, <a href="#ref-stewart2015" role="doc-biblioref">2015</a>, ejercicio 9.1-4)</span>:</p>
+<p><span class="math display" id="eq:W">\[\begin{equation}
+W = f(t,v) = 13.2 + 0.62t - 11.37v^{0.16} + 0.4tv^{0.16} 
+\tag{6.1} 
+\end{equation}\]</span></p>
+<p>Usando la función <a href="6-1-xyz.html#eq:W">(6.1)</a> se calcularon los valores de <span class="math inline">\(W\)</span> de la Tabla <a href="6-1-xyz.html#tab:indiceW">6.1</a>. En <strong>R</strong>, para obtener los valores de <span class="math inline">\(W\)</span> de la Tabla <a href="6-1-xyz.html#tab:indiceW">6.1</a> y, aún más, organizados de esa forma, se puede usar el comando <code>outer</code> el cual recibe tres argumentos, un vector <code>X</code>, un vector <code>Y</code> y una función <code>FUN</code> en la cual se evaluaran las combinaciones de valores dados en <code>X</code> e <code>Y</code>.</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" title="1"><span class="co"># Se define la funcion de W:</span></a>
+<a class="sourceLine" id="cb35-2" title="2">fw &lt;-<span class="st"> </span><span class="cf">function</span>(t,v) <span class="fl">13.2</span> <span class="op">+</span><span class="st"> </span><span class="fl">0.62</span><span class="op">*</span>t <span class="op">-</span><span class="st"> </span><span class="fl">11.37</span><span class="op">*</span>(v<span class="op">^</span><span class="fl">0.16</span>) <span class="op">+</span><span class="st"> </span><span class="fl">0.4</span><span class="op">*</span>t<span class="op">*</span>(v<span class="op">^</span><span class="fl">0.16</span>)</a>
+<a class="sourceLine" id="cb35-3" title="3"></a>
+<a class="sourceLine" id="cb35-4" title="4"><span class="co"># Se definen los vectores para t, v:</span></a>
+<a class="sourceLine" id="cb35-5" title="5">v &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from =</span>  <span class="dv">10</span>, <span class="dt">to =</span> <span class="dv">70</span>, <span class="dt">by =</span> <span class="dv">10</span>)  <span class="co"># </span></a>
+<a class="sourceLine" id="cb35-6" title="6">t &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">-30</span>, <span class="dt">to =</span> <span class="dv">5</span>,  <span class="dt">by =</span> <span class="dv">5</span>)  </a>
+<a class="sourceLine" id="cb35-7" title="7"></a>
+<a class="sourceLine" id="cb35-8" title="8"><span class="co"># Se evalua la funcion en todas las combinaciones de (t, v) mediante</span></a>
+<a class="sourceLine" id="cb35-9" title="9"><span class="co"># el comando outer:</span></a>
+<a class="sourceLine" id="cb35-10" title="10">W &lt;-<span class="st"> </span><span class="kw">outer</span>(<span class="dt">X =</span> t, <span class="dt">Y =</span> v, <span class="dt">FUN =</span> fw)</a>
+<a class="sourceLine" id="cb35-11" title="11"></a>
+<a class="sourceLine" id="cb35-12" title="12"><span class="co"># Dado que la matriz W queda sin nombres de fila y de columna, se</span></a>
+<a class="sourceLine" id="cb35-13" title="13"><span class="co"># adicionan nombres de fila y columna:</span></a>
+<a class="sourceLine" id="cb35-14" title="14"><span class="kw">rownames</span>(W) &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&#39;t = &#39;</span>, t)</a>
+<a class="sourceLine" id="cb35-15" title="15"><span class="kw">colnames</span>(W) &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&#39;v = &#39;</span>, v)</a>
+<a class="sourceLine" id="cb35-16" title="16"></a>
+<a class="sourceLine" id="cb35-17" title="17"><span class="co"># Se imprime el resultado</span></a>
+<a class="sourceLine" id="cb35-18" title="18"><span class="kw">round</span>(W, <span class="dv">1</span>)</a></code></pre></div>
+<pre><code>##         v = 10 v = 20 v = 30 v = 40 v = 50 v = 60 v = 70
+## t = -30  -39.2  -43.1  -45.7  -47.6  -49.1  -50.4  -51.5
+## t = -25  -33.2  -36.8  -39.1  -40.9  -42.3  -43.4  -44.5
+## t = -20  -27.2  -30.5  -32.6  -34.2  -35.4  -36.5  -37.4
+## t = -15  -21.2  -24.2  -26.0  -27.4  -28.6  -29.5  -30.4
+## t = -10  -15.2  -17.8  -19.5  -20.7  -21.7  -22.6  -23.3
+## t = -5    -9.2  -11.5  -12.9  -14.0  -14.9  -15.6  -16.3
+## t = 0     -3.2   -5.2   -6.4   -7.3   -8.1   -8.7   -9.2
+## t = 5      2.8    1.2    0.2   -0.6   -1.2   -1.7   -2.2</code></pre>
+</div>
+<div id="tipos-de-graficos-para-funciones-de-tres-variables" class="section level3">
+<h3><span class="header-section-number">6.1.2</span> Tipos de gráficos para funciones de tres variables</h3>
+<p>Para gráficar funciones del tipo <span class="math inline">\(z = f(x,y)\)</span> tres alternativas de uso común son:</p>
+<ul>
+<li><p><strong>Gráficos en tres dimiensiones (3D)</strong> Este tipo de gráfico (Figuras <a href="6-1-xyz.html#fig:graf3D">6.1</a>A y <a href="6-1-xyz.html#fig:graf3D">6.1</a>B) tiene la ventaja de que muestra directamente el patrón de la superficie que se genera por la combinación de los puntos <span class="math inline">\((x, y, z)\)</span>, pero tiene la desventaja que, dependiendo del angulo del gráfico, esconde algún lado del mismo. Por esto puede ser necesario mostrar el mismo gráfico en al menos dos angulos diferentes. Adicionalmente, la visualización mejora si se agrega un gradiente de colores a la superficie.</p></li>
+<li><p><strong>Gráficos de contorno (2D)</strong>: En este tipo de gráficos (Figura <a href="6-1-xyz.html#fig:graf3D">6.1</a>C), los pares de valores <span class="math inline">\((x, y)\)</span> se ubican en un plano cartesiano tradicional y los valores <span class="math inline">\(z\)</span> se muestran como curvas de nivel (o de contorno). El patrón de la superficie queda implicito en las curvas de nivel y toma un poco más de tiempo su lectura. No obstante, todo el patrón puede ser apreciado.</p></li>
+<li><p><strong>Mapas de colores (2D)</strong>: Este tipo de gráficos (Figura <a href="6-1-xyz.html#fig:graf3D">6.1</a>D) es similar al de contorno, sólo que ahora el eje <span class="math inline">\(z\)</span> se muestra con una escala de colores que representaría el gradiente de valores que toma <span class="math inline">\(z\)</span>. Los mapas de color se pueden complementar con las curvas de nivel del gráfico de contorno para enfatizar el patrón de la superficie.</p></li>
+</ul>
+<div class="figure"><span id="fig:graf3D"></span>
+<img src="out_files/figure-html/graf3D-1.png" alt="Tres alternativas para mostrar funciones del tipo $z = f(x,y)$. A y B: Gráfico 3D en dos angulos diferentes; C: Gráfico de contorno; D: Mapa de colores con curvas de nivel o contorno superimpuestas. La función graficada es $f(x,y) = x^2 + y^2.$" width="576" />
+<p class="caption">
+Figura 6.1: Tres alternativas para mostrar funciones del tipo <span class="math inline">\(z = f(x,y)\)</span>. A y B: Gráfico 3D en dos angulos diferentes; C: Gráfico de contorno; D: Mapa de colores con curvas de nivel o contorno superimpuestas. La función graficada es <span class="math inline">\(f(x,y) = x^2 + y^2.\)</span>
+</p>
+</div>
+</div>
+<div id="opciones-graficas-en-r" class="section level3">
+<h3><span class="header-section-number">6.1.3</span> Opciones gráficas en <strong>R</strong></h3>
+<p>Para gráficar funciones del tipo <span class="math inline">\(z = f(x,y)\)</span> en <strong>R</strong>, como aquella del índice <span class="math inline">\(W\)</span>, existen varias alternativas, algunas de ellas son:</p>
+<ul>
+<li>Comandos <code>persp</code>, <code>contour</code> e <code>image</code> del paquete <strong>graphics</strong> (este es el paquete base de <strong>R</strong> para realizar gráficos). Con estos comandos se realizaron los gráficos de la figura <a href="6-1-xyz.html#fig:graf3D">6.1</a>.</li>
+<li>El comando <code>plotFun</code> del paquete <strong>mosaic</strong> produce, por defecto, un gráfico de contorno con colores, basado en el paquete <strong>lattice</strong>. Tiene pocas opciones de personalización a no ser que se conozca a profundidad el sistema <strong>lattice</strong> de graficación.</li>
+<li>Comandos del paquete <strong>rgl</strong>, especialmente <code>persp3d</code>. Produce gráficos interactivos que se pueden girar con el ratón. La asignación de colores requiere algo de progrmación.</li>
+<li>Comandos del paquete <strong>scatterplot3d</strong>.</li>
+</ul>
+<div id="comando-persp-graphics" class="section level4">
+<h4><span class="header-section-number">6.1.3.1</span> Comando <code>persp</code> (graphics)</h4>
+<p>El comando <code>persp</code> (paquete <strong>graphics</strong>) permite gráficar superficies en el espacio <span class="math inline">\((x,y,z)\)</span>. Solicita tres argumentos, un vector <code>x</code>, un vector <code>y</code> y una matriz <code>z</code> que representa los resultados de evaluar la función en los pares (<code>x</code>, <code>y</code>). La matriz <code>z</code> es aquella generada por el comando <code>outer</code> mostrado arriba (Tabla <a href="6-1-xyz.html#tab:indiceW">6.1</a>). La Figura <a href="6-1-xyz.html#fig:gW">6.2</a> muestra este gráfico para la función del índice <span class="math inline">\(W = f(t,v)\)</span> con cuatro alternativas de color de la superficie.</p>
+<div class="figure"><span id="fig:gW"></span>
+<img src="out_files/figure-html/gW-1.png" alt="Gráficos 3D realizado con el comando `persp` para la función del índice $W = f(t,v)$. (A) Un sólo color (lightblue); (B) Paleta TealRose; (C) Paleta heat.colors; (D) Paleta femmecol (paquete **shape**)" width="768" />
+<p class="caption">
+Figura 6.2: Gráficos 3D realizado con el comando <code>persp</code> para la función del índice <span class="math inline">\(W = f(t,v)\)</span>. (A) Un sólo color (lightblue); (B) Paleta TealRose; (C) Paleta heat.colors; (D) Paleta femmecol (paquete <strong>shape</strong>)
+</p>
+</div>
+<p>El código que realiza la Figura <a href="6-1-xyz.html#fig:gW">6.2</a> es el siguiente:</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" title="1"><span class="co"># Se carga libreria shape</span></a>
+<a class="sourceLine" id="cb37-2" title="2"><span class="kw">library</span>(shape) <span class="co"># para comando drapecol, femmecol</span></a>
+<a class="sourceLine" id="cb37-3" title="3"></a>
+<a class="sourceLine" id="cb37-4" title="4"><span class="co"># Definicion de vectores, v, t, y matriz W:</span></a>
+<a class="sourceLine" id="cb37-5" title="5">v &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from =</span>  <span class="dv">10</span>, <span class="dt">to =</span> <span class="dv">70</span>, <span class="dt">by =</span> <span class="dv">2</span>) </a>
+<a class="sourceLine" id="cb37-6" title="6">t &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">-30</span>, <span class="dt">to =</span> <span class="dv">5</span>,  <span class="dt">by =</span> <span class="dv">2</span>)  </a>
+<a class="sourceLine" id="cb37-7" title="7">W &lt;-<span class="st"> </span><span class="kw">outer</span>(<span class="dt">X =</span> t, <span class="dt">Y =</span> v, <span class="dt">FUN =</span> fw)</a>
+<a class="sourceLine" id="cb37-8" title="8"></a>
+<a class="sourceLine" id="cb37-9" title="9"><span class="co"># Se definen tres gradientes de color:</span></a>
+<a class="sourceLine" id="cb37-10" title="10">colB &lt;-<span class="st"> </span><span class="kw">hcl.colors</span>(<span class="dt">n =</span> <span class="dv">16</span>, <span class="dt">palette =</span> <span class="st">&#39;TealRose&#39;</span> , <span class="dt">rev =</span> F)</a>
+<a class="sourceLine" id="cb37-11" title="11">colC &lt;-<span class="st"> </span><span class="kw">heat.colors</span>(<span class="dt">n =</span> <span class="dv">16</span>)   </a>
+<a class="sourceLine" id="cb37-12" title="12">colD &lt;-<span class="st"> </span><span class="kw">femmecol</span>()   <span class="co"># del paquete &#39;shape&#39;</span></a>
+<a class="sourceLine" id="cb37-13" title="13"></a>
+<a class="sourceLine" id="cb37-14" title="14"><span class="co"># Se inicia grafico:</span></a>
+<a class="sourceLine" id="cb37-15" title="15"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>), <span class="dt">mar =</span> <span class="kw">c</span>(<span class="fl">3.5</span>,<span class="fl">3.5</span>,<span class="dv">2</span>,<span class="fl">0.5</span>), <span class="dt">mgp =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">0</span>), <span class="dt">cex =</span> <span class="fl">0.9</span>)</a>
+<a class="sourceLine" id="cb37-16" title="16"><span class="kw">persp</span>(<span class="dt">x =</span> t, <span class="dt">y =</span> v, <span class="dt">z =</span> W, <span class="dt">ticktype =</span> <span class="st">&#39;detailed&#39;</span>, <span class="dt">theta =</span> <span class="dv">35</span>, </a>
+<a class="sourceLine" id="cb37-17" title="17">      <span class="dt">phi =</span> <span class="dv">6</span>, <span class="dt">col =</span> <span class="st">&#39;lightblue&#39;</span>, <span class="dt">main =</span> <span class="st">&#39;A. Un sólo color&#39;</span>)</a>
+<a class="sourceLine" id="cb37-18" title="18"><span class="kw">persp</span>(<span class="dt">x =</span> t, <span class="dt">y =</span> v, <span class="dt">z =</span> W, <span class="dt">ticktype =</span> <span class="st">&#39;detailed&#39;</span>, <span class="dt">theta =</span> <span class="dv">35</span>, </a>
+<a class="sourceLine" id="cb37-19" title="19">      <span class="dt">phi =</span> <span class="dv">6</span>, <span class="dt">col =</span> <span class="kw">drapecol</span>(W, <span class="dt">col =</span> colB) , <span class="dt">main =</span> <span class="st">&#39;B. Paleta TealRose&#39;</span>)</a>
+<a class="sourceLine" id="cb37-20" title="20"><span class="kw">persp</span>(<span class="dt">x =</span> t, <span class="dt">y =</span> v, <span class="dt">z =</span> W, <span class="dt">ticktype =</span> <span class="st">&#39;detailed&#39;</span>, <span class="dt">theta =</span> <span class="dv">35</span>, </a>
+<a class="sourceLine" id="cb37-21" title="21">      <span class="dt">phi =</span> <span class="dv">6</span>, <span class="dt">col =</span> <span class="kw">drapecol</span>(W, <span class="dt">col =</span> colC) , <span class="dt">main =</span> <span class="st">&#39;C. Paleta heat.colors&#39;</span>)</a>
+<a class="sourceLine" id="cb37-22" title="22"><span class="kw">persp</span>(<span class="dt">x =</span> t, <span class="dt">y =</span> v, <span class="dt">z =</span> W, <span class="dt">ticktype =</span> <span class="st">&#39;detailed&#39;</span>, <span class="dt">theta =</span> <span class="dv">35</span>, </a>
+<a class="sourceLine" id="cb37-23" title="23">      <span class="dt">phi =</span> <span class="dv">6</span>, <span class="dt">col =</span> <span class="kw">drapecol</span>(W, <span class="dt">col =</span> colD) , <span class="dt">main =</span> <span class="st">&#39;D. Paleta femmecol&#39;</span>)</a></code></pre></div>
+<p>Algunos aspectos a explicar del código anterior son:</p>
+<ul>
+<li><p>Los comandos <code>hcl.colors</code> y <code>heat.colors</code> y <code>femmecol</code> crean un vector de colores en gradiente. El comando <code>hcl.colors</code> permite aplicar una <code>palette</code> cuyos opciones se pueden consultar con el comando <code>hcl.pals</code>. Sólo digite <code>hcl.pals()</code> para ver las paletas disponibles. Además, escriba <code>?hcl.colors</code> para ver la ayuda de estos comandos y encontrar otros simialres. El comando <code>femmecol</code> (del paquete <strong>shape</strong>) también crea un vector de colores en gradiente con la combinación darkblue-blue-cyan-yellow-red-darkred.</p></li>
+<li><p>El comando <code>drapecol</code> (del paquete <strong>shape</strong>) recibe la matriz <code>z</code> que usamos en <code>persp</code> y un vector de colores (generados por un comando tal como <code>hcl.colors</code> o <code>femmecol</code>) y realiza la asignación adecuada de los colores a la superficie dibujada. Note que <code>drapecol</code> es un comando diseñado especialmente para usar dentro de <code>persp</code>.</p></li>
+</ul>
+
+<div id="refs" class="references">
+<div>
+<p>Stewart, J., &amp; Day, T. (2015). <em>Biocalculus: Calculus, probability, and statistics for the life sciences</em>. Cengage Learning.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- </div> -->
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-stewart2015">
+<p>Stewart, J., &amp; Day, T. (2015). <em>Biocalculus: Calculus, probability, and statistics for the life sciences</em>. Cengage Learning.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="6-appmat.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

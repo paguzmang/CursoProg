@@ -1,0 +1,681 @@
+<style>
+.column-left{
+  display: inline-block;
+  width: 48%;
+  text-align: left;
+}
+.column-right{
+  display: inline-block;
+  width: 48%;
+  text-align: left;
+}
+</style>
+
+
+# Estructuras de programación {#Prog2}
+
+Hasta ahora hemos creado rutinas o programas básicos donde un conjunto de unas pocas acciones se organizan de forma secuencial (una tras de otra). Sin embargo, es frecuente que surja la necesidad de introducir en nuestra rutina aspectos condicionales o, por otro lado, repetir la misma acción para una serie grande y variable de valores. Por ejemplo, suponga que usted quiere automatizar la tarea de contar el número de entradas perdidas (NA) en un vector. Para esto, usted puede crear una función en **R** de dos acciones:
+
+```{r}
+cuenta_na <- function(x){
+  donde.na <- is.na(x)  # se ubican los NA como TRUE y FALSE
+  sum( donde.na )       # se cuentan los NA
+}
+```
+
+No obstante, usted quiere que la función permita dos tipos de salida dependiendo de la preferencia del usuario: (1) podría entregar sólo el conteo de `NA`'s, o también, (2) entregar dos cálculos en un data.frame: el conteo y la proporción de `NA`'s. Para agregar este aspecto a la rutina debemos incluir una estrucutura condicional que evalue la preferencia del usuario y,  dependiendo de la misma, entregue un objeto u otro. En otro ejemplo, suponga que usted requiere incluir en una función un argumento que tome un porcentaje, es decir, un número entre 0 y 100, pero quiere "proteger" la rutina incluyendo algo que valide si el usuario introdujo un número indebido en la función (cualquiera que no este entre 0 y 100) o que la función se detenga y entregue un mensaje de error  para el usuario indicando que el argumento debe estar entre 0 y 100. De nuevo, para hacer esto, una opción es incluir una estructura condicional. 
+
+A continuación se describen algunas estructuras y estrategias que permiten evaluar condiciones y otras que permiten reptir la misma acción (o conjunto de acciones) muchas veces.
+
+## Condicionales {#cond}
+
+### Sólo si ...
+
+El comando `if` recibe una expresión lógica (condición) y dependiendo si resulta en verdadero o falso, ejecuta o no una acción. La sintaxis es la siguiente:
+
+```{r, eval = F}
+if(condición) {
+  acción
+}
+```
+
+La acción que se ejecutaría si la expresión lógica resulta verdadera puede estar descrita en _una_ sola línea de código o _en varias_ líneas de código. En este último caso, se requiere obligatoriamente encerrar en `{ }` las mútiples líneas de código. Un ejemplo es el siguiente:
+
+```{r}
+# Ejemplo 1 (la condicion resulta TRUE)
+x <- 2.9          # Se define x
+y <- 'Gana'       # Se define y
+if(x < 3) {
+  y <- 'Pierde'   # Se cambia y dependiendo de x
+}
+y                 # Se imprime y luego de evaluada la condicion
+
+# Ejemplo 2 (la condicion resulta FALSE)
+x <- 3.5          # Se define x
+y <- 'Gana'       # Se define y
+if(x < 3) {
+  y <- 'Pierde'   # Se cambia y dependiendo de x
+}
+y                 # Se imprime y luego de evaluada la condicion
+```
+
+En los dos ejemplos anteriores la acción se escribe en una sóla línea de código (`y <- 'Pierde'`). En el ejemplo siguiente la acción se evalua en dos líneas de código:
+
+```{r}
+# Ejemplo 3 (multiples lineas de codigo y la condicion resulta TRUE)
+x <- c(4, 5, NA, 3, NA)      # Se crea x
+n_na <- sum( is.na(x) )      # Se crea n_na
+res <- n_na                  # Se crea res
+p <- 'si'                    # Se crea p
+
+# Se construye la estructura condicional:
+if(p == 'si') {
+  p_na <- n_na / length(x)
+  res <- data.frame(n = n_na, p = p_na)
+}
+
+# Se imprime res luego de evaluada la condicion
+res           
+```
+
+En este 3er. ejemplo, si `p` es el texto `si` se realizan dos acciones: un cálculo adicional (`p_na`), y el objeto `res` se actualiza a ser un data.frame. Si `p` es cualquier otra cosa, el objeto `res` no se actualizará.
+
+```{r}
+# Ejemplo 4 (multiples lineas de codigo y la condicion resulta FALSE)
+x <- c(4, 5, NA, 3, NA)      # Se crea x
+n_na <- sum( is.na(x) )      # Se crea n_na
+res <- n_na                  # Se crea res
+p <- 'no'                    # Se crea p
+
+# Se construye la estructura condicional:
+if(p == 'si') {
+  p_na <- n_na / length(x)
+  res <- data.frame(n = n_na, p = p_na)
+}
+
+# Se imprime res luego de evaluada la condicion
+res           
+```
+
+### Si ... Entonces
+
+En los ejemplos anteriores sólo se ejecuta la acción si la condición es verdadera. Si la condición es falsa, no se hace nada. La pareja de comandos `if ... else` permite controlar lo que ocurre para ambos resultados: si la condición es verdadera o si la condición es falsa. La sintaxis de esta pareja de comandos es:
+
+```{r, eval = F}
+if(condición) {
+  acción_1 (si condición es TRUE)
+} else{
+  acción_2 (si condición es FALSE)
+}
+```
+
+La acción 1 se ejecuta si la condición es `TRUE`. La acción 2 se ejecutaría sólo sí la condición es `FALSE`. Aquí un ejemplo de `if ... else`:
+
+```{r}
+# Ejemplo 4: if ... else
+x <- c(4, 5, NA, 3, NA)      # Se crea x
+n_na <- sum( is.na(x) )      # Se crea n_na
+p <- 'no'                    # Se crea p
+
+# Se construye la estructura condicional (la condicion es FALSE)
+if(p == 'si') {
+  p_na <- n_na / length(x)
+  res <- data.frame(n = n_na, p = p_na)
+} else{
+  res <- n_na
+}
+
+# Se imprime res luego de evaluada la condicion
+res           
+```
+
+
+### Condiciones con mútiples alternativas
+
+La pareja de comandos `if ... else` permite manejar una condición que puede resultar en sólo dos alternativas `TRUE` o `FALSE`. Si la condición resulta en tres o más alternativas, por ejemplo: `a`, `b` y `c`, podemos emplear dos estrategias: (1) construir estructuras `if ... else` _anidadas_, o (2) usar el comando `swicth`.
+
+#### Estructuras `if ... else` anidadas
+
+Una sintaxis para una estructura `if ... else` anidada para tres acciones diferentes sería:
+
+<div class="column-left">
+```{r, eval = F}
+# Forma 1
+if(condición_1) {
+  acción_1
+} else {
+  if(condición_2) {
+  acción_2
+    } else {
+  acción_3
+    }
+}
+```
+</div> 
+<div class="column-right">
+```{r, eval = F}
+# Forma 2
+if(condición_1) {
+  acción_1
+} else if(condición_2) {
+  acción_2
+} else {
+  acción_3
+}
+```
+<br>
+<br>
+</div> 
+
+
+La sintaxis de las formas 1 y 2 son equivalentes, no obstante, la forma 2 es más corta. La forma 1 enfatiza la estructura _anidada_: dentro del 1er. `else` se incluye otro `if ... else`. Los `if ... else` anidados son útiles cuando se deben evaluar múltiples expresiones lógicas. Por ejemplo, suponga que se quiere programar la siguiente _función definda a trozos_:
+
+$$y = \left\{ \begin{array}{rl} 
+   -1 & \text{si } x < -1 \\
+    0 & \text{si } -1 \leq x < 0 \\
+    1 & \text{si } x \geq -1 
+    \end{array} \right.$$
+
+En este caso, se deben evaluar _dos_ expresiones lógicas sobre $x$ para producir tres posibles resultados. Aquí el código:
+
+
+<div class="column-left">
+```{r}
+# Forma 1
+x = -0.5
+if(x < -1) {
+  y = -1
+} else {
+  if(x < 0) {
+  y = 0
+    } else {
+  y = 1
+    }
+}
+y
+```
+</div> 
+<div class="column-right">
+```{r}
+# Forma 2
+x = -0.5
+if(x < -1) {
+  y = -1
+} else if(x < 0) {
+  y = 0
+} else {
+  y = 1
+}
+y
+```
+</div> 
+
+#### Comando `switch`
+
+Cuando se busca _seleccionar una_ acción de una lista de múltiples acciones (dos o más), el comando `switch` resultá más fácil de usar que emplear `if ... else` anidados. La sintaxis es:
+
+```{r, eval=F}
+switch(indicador,
+  etiqueta_1 = acción_1, 
+  etiqueta_2 = acción_2,
+  ...
+)
+```
+
+En la sintaxis de `switch`, el objeto `indicador` debe ser alguna (uno sólo) de las etiquetas (`etiqueta_1`, `etiqueta_2`, , etc.) dadas a las acciones (`acción_1`, `acción_2`, etc.). Si el indicador es un número entero, entonces, las etiquetas no deben usarse. El comando `switch` selecciona la acción que corresponda (match) con la posición o la etiqueta. Las acciones pueden estar escritas en una sóla línea de código o en varias líneas de código. En el último caso, las líneas de código deben estar encerradas en `{ }`.
+
+Por ejemplo, suponga que usted pudiese entregar un resultado compuesto de varios números en un vector, un data.frame o una lista, dependiendo de lo que el usuario prefiera. La preferencia del usuario se puede indicar en un objeto con letras tales como `v` (si quiere un vector), `d` (si un data.frame) o `l` (si desea una lista). Aqúi un ejemplo del código:
+
+
+```{r}
+# Se define la preferencia del usuario
+preferencia <- 'l'   
+
+# Se crean un par de vectores de ejemplo que son comunes
+# a las tres opciones de salida:
+x <- 5
+n <- 20
+
+# Uso de switch para seleccionar la opcion preferida
+switch(preferencia, 
+       v = x,
+       
+       d = {
+         p <- x/n
+         data.frame(x = 5, n = 20, p = p)
+         }, 
+       
+       l = {
+         p <- x/n
+         list(x = 5, p = p)
+         }
+       )
+```
+
+
+## Repitiendo una acción {#ciclos}
+
+### Ciclo `for`
+
+La estructura de programación más frecuente para repetir una acción es un ciclo `for`. El comando `for` permite repetir una acción haciendo cambiar los valores en un vector. La sintaxis es:
+
+
+```{r,eval=F}
+for(i in x){
+  acción (que tradicionalmente involucra i)
+}
+```
+
+
+El objeto `i` tomará cada valor (uno a la vez) del vector `x` en cada ejecución del ciclo (o repetición de la acción). El número de ciclos o veces que la acción será repetida es igual al número de elementos en  el vector `x`. La palabra `in` hace parte de la sintaxis de `for` y siempre debe estar presente. Similar a las expresiones en `if ... else` o `switch`, cuando la acción se escribe en dos o más líneas de código se debe poner obligatoriamente entre `{ }`.
+
+En el ejemplo siguiente se repite la acción de imprimir el número `2` cuatro veces:
+
+```{r}
+for(i in 1:4) print(2)
+```
+
+El comando `print` obliga a que se imprima el resultado en cada ejecución de la acción (o ciclo). Sin embargo, notése que la acción no involucra el índice `i`, y en parte por esto el resultado en cada ejecución es el mismo (el número `2`). Ahora considere el siguiente ejemplo donde se repite la acción de hacer la suma $i + 2$ donde $i$ es un número que toma valores $i = \{1, 2, 3, 4\}$: 
+
+```{r}
+for(i in 1:4) print(i + 2)
+```
+
+En este caso, el índice `i` se involucra en la acción y hace cambiar el resultado. En el siguiente ejemplo la variable `total` se inicia en `0` y se actualiza su valor sumando `1` en cada ejecución de la suma:
+
+```{r}
+total = 0   # Se crea (o se inicia) el objeto total
+for(i in 1:4) total = total + 1
+total  # se imprime para ver el resultado
+```
+
+En este ejemplo, la acción `total = total + 1` no involucra el índice `i`, sin embargo, el resultado en cada ejecución de la acción (`total`) cambia o se actualiza para la siguiente ejecución. Una descripción de este ciclo es la siguiente:
+
+$$\begin{array}{lll}
+\text{Antes de iniciar:} &  & \mathtt{total} = 0 \\
+\text{Ciclo 1:} & i = 1; & \mathtt{total} = 0 + 1 = 1 \\
+\text{Ciclo 2:} & i = 2, & \mathtt{total} = 1 + 1 = 2 \\
+\text{Ciclo 3:} & i = 3; & \mathtt{total} = 2 + 1 = 3 \\
+\text{Ciclo 4:} & i = 4; & \mathtt{total} = 3 + 1 = 4 \\
+\end{array}$$
+
+
+### Ciclo `while`
+
+Algunas veces, el número de repeticiones del ciclo no se conoce de antemano y se busca que el ciclo termine cuando una condición se cumpla. Un ciclo `while` permite incluir una condición (expresión lógica) de parada en el ciclo. Su sintaxis es:
+
+```{r,eval=F}
+while(condición){
+  acción 
+}
+```
+
+La acción se repetirá hasta que la condición (una expresión lógica) produzca `FALSE`. Considere el siguiente ejemplo:
+
+```{r}
+total = 0   # Se crea (o se inicia) el objeto total
+while(total < 10) total = total + 1
+total  # se imprime para ver el resultado
+```
+
+Note que la acción `total = total + 1` tuvo que llegar a producir 10 para que la condición `total < 10` fuera `FALSE` y de esa forma la repetición termine. 
+
+### Ciclo `repeat`
+
+La expresión `repeat` es similar a `while`, sólo que ahora la condición de parada se declara al final mediante la palabra clave `break` y con el uso de un condicional `if ... else`. Dos posibles formas de uso:
+
+<div class="column-left">
+```{r,eval=F}
+repeat{
+  acción
+  if(condición) break
+}
+```
+</div> 
+<div class="column-right">
+```{r,eval=F}
+repeat{
+  if(condición) acción else break
+}
+```
+</br>
+</div> 
+
+Algunos ejemplos de `repeat` son los siguientes:
+
+```{r}
+# Ejemplo 1:
+total = 0   # Se crea (o se inicia) el objeto total
+repeat{
+  total = total + 1
+  if(total < 10) break
+}
+total  # se imprime para ver el resultado
+
+# Ejemplo 2:
+total = 0   # Se crea (o se inicia) el objeto total
+repeat{
+  if(total < 10) total = total + 1 else break
+}
+total  # se imprime para ver el resultado
+
+# Ejemplo 3:
+total = 0   # Se crea (o se inicia) el objeto total
+repeat{
+  total = total + 1 
+  if(total >= 10) break
+}
+total  # se imprime para ver el resultado
+```
+
+
+## Deteniendo la ejecución de una función {#stop}
+
+El comando `stop` detiene la ejecución de una función y entrega una mensaje personalizado de error al usuario. Al emplearlo en conjunto con un condicional, permite poner puntos de control en la ejecución de una función. Considere el siguiente ejemplo:
+
+```{r, error=TRUE}
+# Se crea una funcion que saca un porcentaje a un numero pero el porcentaje
+# debe obligatoriamente ser un numero entre 0 y 100 y representar un porcentaje.
+calcula_iva <- function(prod, pct = 16){
+  mensaje <- 'pct debe ser un número entre 0 y 100 e indicar un porcentaje'
+  if((pct < 0 | pct > 100) | as.integer(pct) == 0) stop(mensaje)
+  prod*pct/100
+}
+
+# Se usa la funcion:
+calcula_iva(prod = 5000, pct = 19)     # uso correcto
+calcula_iva(prod = 5000, pct = 0.19)   # uso incorrecto (sale mensaje de error)
+calcula_iva(prod = 5000, pct = 103)    # uso incorrecto (sale mensaje de error)
+```
+
+
+## Vectorización {#vectoriz}
+
+Un calculo (o acción o un comando) es _vectorizado_ cuando opera sobre todos los elementos (uno por uno) de un vector (u otro objeto) sin necesidad de aplicar ciclos sobre el objeto.
+
+El comando `if` por ejemplo no actua de manera _vectorizada_, porque la condición que recibe este comando no puede producir más de un `TRUE` (o `FALSE`); observe el `warning` que produce el siguiente código:
+
+```{r, error=T, warning=TRUE}
+notas <- c(3.5, 4.2, 2.1, 3.1, 2.9)
+if(notas < 3.0) 'Pierde' else 'Gana'
+```
+
+Para lograr que la estructura `if ... else` se aplique a cada elemento del vector `notas` se debe crear un ciclo, que recorra el vector `notas`:
+
+```{r}
+# Definiciones:
+notas <- c(3.5, 4.2, 2.1, 3.1, 2.9)
+n <- length(notas)
+res <- rep(NA, n)
+
+# Ciclo for sobre el vector 'notas':
+for(i in 1:n){
+  res[i] <- if(notas[i] < 3) 'Pierde' else 'Gana'
+}
+
+# Se imprime res:
+res
+```
+
+En este código, antes del ciclo `for`, el vector `res` se crea con `NA`'s, y luego se llena dentro del ciclo `for`. El siguiente código realiza lo mismo, ahora si, en un contexto vectorizado:
+
+
+```{r}
+# Definiciones:
+notas <- c(3.5, 4.2, 2.1, 3.1, 2.9)
+
+# Evalucion:
+ifelse(notas < 3, 'Pierde', 'Gana')
+```
+
+Observe que el comando `ifelse` recibe un argumento de la misma longitud del vector `notas` y entrega un resultado consecuente. De esta forma, se dice que el comando `ifelse` es la versión _vectorizada_ de la pareja de expresiones `if ... else`.
+
+### Eficiencia en la vectorización
+
+Un código vectorizado usualmente toma menos tiempo de ejecución que el mismo código usando un ciclo (no vectorizado). El comando `system.time` mide el tiempo de ejecución de cualquier "pedazo" de código, y lo usaremos a continuación para comparar la ejecución de `ifelse` con la de `if ... else` dentro de un ciclo `for`. 
+
+```{r}
+# Se definie una funcion con if ... else y for:
+mi_ifelse <- function(x){
+  n <- length(x)
+  res <- rep(NA, n)
+  # Ciclo for sobre el vector 'x':
+  for(i in 1:n){
+    res[i] <- if(x[i] < 3) 'Pierde' else 'Gana'
+  }
+  # Se imprime res:
+  res
+}
+
+# Se crea un vector de notas con un millon de datos:
+notas <- round(runif(n = 1e6, min = 0, max = 5), 2)
+
+# Se mide el tiempo de ejcucion de 'mi_ifelse' (no vectorizado)
+system.time(expr = mi_ifelse(x = notas) )
+
+# # Se mide el tiempo de ejcucion de 'ifelse': (vectorizado)
+system.time(expr = ifelse(notas < 3, 'Pierde', 'Gana') )
+```
+
+
+El comando `system.time` entrega tres tiempos:
+
+- `user`: Es el "User CPU time", esto es el tiempo (en segundos) que la CPU gastó haciendo los cálculos
+- `system`: Es el "System CPU time", esto es el tiempo (en segundos) que el sistema operativo gastó respondiendo las peticiones del programa.
+- `elapsed`: Es la suma de las dos anteriores, más tiempos de espera en la ejecución del programa.
+
+Note que que el tiempo `elapsed` es menor para la rutina vectorizada (usando el comando `ifelse`) que para la rutina con la expresión `if ... else` dentro del ciclo `for`. En general, si usted puede trabajar con código vectorizado es preferible que utilizar ciclos. Sin embargo, en algunas ocasiones los ciclos son inevitables.
+
+
+## Comandos de la familia apply {#famApply}
+
+El software **R** tiene un conjunto de comandos cuyo nombre termina en **ply**, por ejemplo: `apply`, `tapply`, `lapply`, `sapply`, `vapply`, etc. Este grupo de comandos permiten **aplicar** una función a subconjuntos de elementos dentro de un objeto (vector, lista, matriz, etc.). Ellos son útiles en tanto que evitan el uso de ciclos (`for`). **R**, en particular, es más lento con los ciclos que empleando los comandos tipo `apply`. En seguida estudiaremos tres de estos comandos: `apply`, `tapply` y `sapply`.
+
+### `apply`
+
+El comando `apply` aplica una función a las filas o a las columnas de una **matriz**. Su forma de uso y argumentos son:
+
+```{r, eval = F}
+apply(X, MARGIN, FUN, ...)
+```
+
+donde `X` es la matriz que se quiere evaluar; `MARGIN` es el margen de `X` (`1` para filas, `2` para columnas) sobre el cual se quiere aplicar la función; y `FUN` es la función que se quiere aplicar. Los `...` indican que ahí se pueden poner argumentos adicionales que son propios de `FUN`.
+
+### `tapply`
+
+El comando `tapply` aplica una función sobre subconjuntos de elementos de un vector, donde los subconjuntos están indicados por otros vectores (de la misma longitud del vector a evaluar). Su forma de uso y argumentos son:
+
+```{r, eval = F}
+tapply(X, INDEX, FUN, ...)
+```
+
+donde `X` es el vector que se quiere evaluar; `INDEX` es el vector que indica los subconjuntos; este vector debe ser de la misma longitud de `X` y debería ser de texto o de valores discretos. `INDEX` también puede ser una lista de vectores en el caso de que los subconjuntos se formen por dos o más vectores. Finalmente el argumento `FUN` es la función que se desea aplicar. Los `...` indican que ahí se pueden poner argumentos adicionales que son propios de `FUN`.
+
+### `sapply`
+
+
+El comando `sapply` aplica una función sobre cada elemento de un vector o de una lista. Su forma de uso y argumentos son:
+
+```{r, eval = F}
+sapply(X, FUN, ...)
+```
+
+donde `X` es el vector o la lista que se quiere evaluar, y `FUN` es la función que se desea aplicar. Los `...` indican que ahí se pueden poner argumentos adicionales que son propios de `FUN`.
+
+
+## Ejercicios {#ejProg2}
+
+### Ej. 1. Básico o Ácido*
+
+Suponga que usted toma una muestra de cierta sustancia y registró su pH. Usando `if` o `if ... else` escriba código **R** que evalue el valor del pH y entregue como resultado si la sustancia es `básica` ó `ácida`. En detalle, si usa `if`, el código debería hacer lo siguiente:
+
+1. Guarde el valor del pH en un objeto llamado `pH`.
+2. Cree un objeto llamado `res` donde guarde la palabra `ácido`.
+2. Si el valor del objeto `pH` es mayor a 7,  haga `res` igual a la palabra `básico`.
+3. Imprima `res`.
+
+Si usa `if ... else`, el código debería hacer lo siguiente:
+
+1. Guarde el valor del pH en un objeto llamado `pH`.
+2. Si el valor del objeto `pH` es mayor a 7,  cree un objeto llamado `res` igual a la palabra `básico` en otro caso, cree un objeto llamado `res` igual a la palabra `ácido`
+3. Imprima `res`.
+
+### Ej. 2. Básico o Ácido en múltiples muestras*
+
+En el contexto del ejercicio (1), realice las siguientes actividades:
+
+a. Use el comando `function` para convertir las líneas de código del ejercicio (1) en una función llamada `eval_pH`. Esta función debe recibir un valor de `pH` y entregar `básico` ó `ácido`.
+b. Pruebe la función `eval_pH` con los siguientes valores de pH: `4.9`, `11.9` y `10.8`. Evalue uno por uno. Es decir, `eval_pH(4.9)`, `eval_pH(11.9)` y `eval_pH(10.8)`. 
+c. Pruebe la función `eval_pH` con los mismos valores de pH: `4.9`, `11.9` y `10.8`, pero en este caso, guarde los tres valores en un vector llamado `x` y pase este vector a la función `eval_pH`. Es decir, `x <- c(4.9, 11.9, 10.8)`  y luego `eval_pH(x)`. Describa y explique el resultado.
+
+### Ej. 3. Condicional vectorizado*
+
+En el contexto de los ejercicios (1) y (2), realice las siguientes actividades:
+
+a. Use un ciclo `for` para ejecutar correctamente la operación realizada en el ejercicio (2c).
+b. Use el comando `sapply` y la función `eval_pH` para ejecutar de forma correcta la operación realizada en el ejercicio (2c).
+a. Sin emplear la función `eval_pH`, utilice el comando `ifelse` para vectorizar la operación realizada en el ejercicio (2c).
+
+### Ej. 4. Diferencias*
+
+Cree una función que cálcule la diferencia entre dos números, $x$ y $y$ usando uno de dos métodos dependiendo de la necesidad del usuario. Los dos métodos son:
+
+$$ \text{Método 1: }\quad \mathtt{dif.abs} = x - y \ ; \hspace{1cm}  \text{Método 2: }\quad \mathtt{dif.pct} = \dfrac{x - y}{x} \times 100 $$
+
+El método 1 es una diferencia absoluta, el método 2 es una diferencia porcentual con respecto al valor de $x$. La función debe involucrar los siguientes aspectos:
+
+- Debe servir para un sólo par de números $x$ y $y$ o para un conjunto de pares de números. En el primer caso, entregaría una sólo diferencia. En el segundo caso, entregaría tantas diferencias como parejas de números exista.
+
+- Debe permitir que el usuario seleccione que método de cálculo aplicar.
+    
+## Solución a ejercicios seleccionados {#solejProg2}
+
+### Ej. 1. Básico o Ácido
+
+Si usamos `if` sólo:
+
+```{r}
+pH <- 4.5                    # paso 1
+res <-  'acido'              # paso 2
+if(pH > 7) res <- 'basico'   # paso 3
+res                          # paso 4
+```
+
+Si usamos `if ... else`:
+
+```{r}
+pH <- 4.5                                       # Paso 1
+if(pH > 7) res <- 'basico' else res <- 'acido'  # Paso 2
+res                                             # Paso 3
+```
+
+En el código anterior, dado que sólo se evalua un valor de pH, podríamos omitir la creación de `res` y con esto también omitir el paso 3:
+
+```{r}
+pH <- 4.5                            # Paso 1
+if(pH > 7) 'basico' else  'acido'    # Paso 2
+```
+
+### Ej. 2. Básico o Ácido en múltiples muestras
+
+**Parte (a)**: Se crea una función
+
+```{r}
+eval_pH <- function(pH){
+  if(pH > 7) 'basico' else  'acido'    
+}
+```
+
+**Parte (b)**: Se evalua la función en tres valores de forma individual:
+
+```{r, warning=T}
+eval_pH(pH = 4.9)
+eval_pH(pH = 11.9)
+eval_pH(pH = 10.8)
+```
+
+**Parte (c)**: Se evalua la función sobre un vector de valores:
+
+```{r, warning=T}
+eval_pH(pH = c(4.9, 11.9, 10.8))
+```
+
+La función sólo produjo un resultado (`acido`) y un mensaje de `warning` indicando que la condición tiene una longitud mayor que 1 y que sólo se uso el primer elemento para evaluar la función. Este mensaje de `warning` sale porque el comando `if` sólo permite que la condición produzca un TRUE o FALSE y no varios de ellos, que es lo que ocurre en este caso. En conclusión, la función `eval_pH` no esta hecha para vectores, esta hecha para recibir números únicos.
+
+### Ej. 3. Condicional vectorizado
+
+**Parte (a)**: Usando un ciclo `for`
+
+```{r}
+x <- c(4.9, 11.9, 10.8)    # Vector con los pH
+k <- length(x)             # longitud del vector
+res <- rep(NA, k)          # se crea un vector vacio para guardar los resultados
+for(i in 1:k) res[i] <- eval_pH(pH = x[i] )
+res                        # se imprime el resultado
+```
+
+**Parte (b)**: Usando `sapply`
+
+```{r}
+x <- c(4.9, 11.9, 10.8)    # Vector con los pH
+sapply(X = x, FUN = eval_pH)
+```
+
+**Parte (c)**: Usando `ifelse` sin emplear `eval_pH`
+
+```{r}
+x <- c(4.9, 11.9, 10.8)    # Vector con los pH
+ifelse(x > 7, 'basico', 'acido')
+```
+
+
+### Ej. 4. Diferencias
+
+Creamos la función:
+
+```{r}
+mi.dif <- function(x,y, metodo = c(1,2)){
+  # Argumentos:
+  # x = Vector numerico con uno o mas valores
+  # y = Vector numerico con uno o mas valores. Debe ser
+  #     de la misma longitud de x.
+  # metodo = Indica si se calcula la diferencia absoluta (1) o porcentual (2)
+  
+  # Codigo:
+  if(!metodo[1] %in% c(1,2)) stop('metodo debe ser 1 (para dif absoluta) ó 2 (para dif porcentual)')
+  if(length(x) != length(y)) stop('Los vectores x, y deben tener la misma longitud')
+  if(metodo[1] == 1) x - y else (x - y)/x*100
+}
+```
+
+Probamos la función con un sólo par de números:
+
+```{r}
+mi.dif(x = 10, y = 5, metodo = 1)
+mi.dif(x = 10, y = 5, metodo = 2)
+```
+
+Probamos la función con varios pares de números:
+
+```{r}
+mi.dif(x = c(10, 8, 6), y = c(5, 3, 1), metodo = 1)
+mi.dif(x = c(10, 8, 6), y = c(5, 3, 1), metodo = 2)
+```
+
+
+Probamos el mensaje de error si no se selecciona el metodo correcto:
+
+```{r, error=T}
+mi.dif(x = c(10, 8, 6), y = c(5, 3, 1), metodo = 3)
+```
+
+Probamos el mensaje de error si x, y son de diferente longitud:
+
+```{r, error=T}
+mi.dif(x = c(10, 8, 6), y = c(5, 3), metodo = 2)
+```
+
+
+
+
+

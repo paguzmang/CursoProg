@@ -1,0 +1,23 @@
+
+# Otros tipos de objeto
+
+Los vectores son el tipo más básico de objeto para guardar información (datos). A partir de estos, se pueden crear otros tipos de objeto tales como matrices, data.frame o listas.
+
+
+## Matrices {#matriz}
+
+Una matriz es una arreglo de datos del mismo tipo.
+
+## Marcos de datos (data.frame) {#df}
+
+Un marco de datos es una tabla, similar a una matriz, donde cada columna es un vector.
+
+## Listas {#listas}
+
+Una lista es objeto que permite almacenar cualquier otro tipo de objeto.
+
+## Ejercicios {#ejObj}
+
+Bla Bla Bla
+
+

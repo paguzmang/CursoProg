@@ -1,26 +1,28 @@
 --- 
-title: "_Programación_ para Biológos"
+title: "_Programación_ para Biólogos"
 author: "paguzmang | Programa de Biología - U.CES"
 date: "Dic 2019"
 site: bookdown::bookdown_site
-output: bookdown::gitbook
+output: 
+  bookdown::gitbook:
+    split_by: "section+number"
 documentclass: book
-bibliography: [packages.bib, ref.bib]
+bibliography: ref.bib
 csl: apa.csl
 biblio-style: apalike
 link-citations: yes
 github-repo: paguzmang/CursoProg
-description: "This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook."
+description: "Conceptos básicos de programación para biólogos con R"
 ---
 
-```{r include=FALSE}
+```{r include=FALSE, eval = F}
 # automatically create a bib database for R packages
 knitr::write_bib(c(
   .packages(), 'bookdown', 'knitr', 'rmarkdown'  
 ), 'packages.bib')
 ```
 
-# Presentación
+# Presentación {-}
 
 Estas notas contienen  el material o contenido guía para apoyar un curso sobre **Programación** en nivel de pregrado para estudiantes de Biología. El curso esta diseñado para complementar, de forma computacional, conceptos adquiridos en los cursos previos de Matemáticas y ofrecer elementos adicionales sobre el uso de la programación en el quehacer del Biológo. Se usa como software principal **R**, ejecutado desde la IDE **Rstudio**.
 

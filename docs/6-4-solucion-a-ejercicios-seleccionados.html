@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>6.4 Solución a ejercicios seleccionados | Programación para Biólogos</title>
+  <meta name="description" content="Conceptos básicos de programación para biólogos con R" />
+  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="6.4 Solución a ejercicios seleccionados | Programación para Biólogos" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Conceptos básicos de programación para biólogos con R" />
+  <meta name="github-repo" content="paguzmang/CursoProg" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="6.4 Solución a ejercicios seleccionados | Programación para Biólogos" />
+  
+  <meta name="twitter:description" content="Conceptos básicos de programación para biólogos con R" />
+  
+
+<meta name="author" content="paguzmang | Programa de Biología - U.CES" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="6-3-ejFun.html">
+<link rel="next" href="7-Prog2.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<link href="libs/rglwidgetClass-2/rgl.css" rel="stylesheet" />
+<script src="libs/rglwidgetClass-2/rglClass.src.js"></script>
+<script src="libs/CanvasMatrix4-2016/CanvasMatrix.src.js"></script>
+<script src="libs/rglWebGL-binding-0.100.26/rglWebGL.js"></script>
+<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Presentación</a></li>
+<li class="part"><span><b>I Iniciando con R y Rstudio</b></span></li>
+<li class="chapter" data-level="1" data-path="1-general.html"><a href="1-general.html"><i class="fa fa-check"></i><b>1</b> Generalidades</a><ul>
+<li class="chapter" data-level="1.1" data-path="1-1-ventanasR.html"><a href="1-1-ventanasR.html"><i class="fa fa-check"></i><b>1.1</b> Ventanas de R: Consola y script</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="1-1-ventanasR.html"><a href="1-1-ventanasR.html#prompt-y-linea-de-comandos"><i class="fa fa-check"></i><b>1.1.1</b> Prompt y línea de comandos</a></li>
+<li class="chapter" data-level="1.1.2" data-path="1-1-ventanasR.html"><a href="1-1-ventanasR.html#escribiendo-en-el-script"><i class="fa fa-check"></i><b>1.1.2</b> Escribiendo en el script</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="1-2-com.html"><a href="1-2-com.html"><i class="fa fa-check"></i><b>1.2</b> Comandos</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="1-2-com.html"><a href="1-2-com.html#sintaxis-de-un-comando"><i class="fa fa-check"></i><b>1.2.1</b> Sintaxis de un comando</a></li>
+<li class="chapter" data-level="1.2.2" data-path="1-2-com.html"><a href="1-2-com.html#ayuda-sobre-comandos"><i class="fa fa-check"></i><b>1.2.2</b> Ayuda sobre comandos</a></li>
+<li class="chapter" data-level="1.2.3" data-path="1-2-com.html"><a href="1-2-com.html#orden-de-los-argumentos"><i class="fa fa-check"></i><b>1.2.3</b> Orden de los argumentos</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="1-3-paquetes.html"><a href="1-3-paquetes.html"><i class="fa fa-check"></i><b>1.3</b> Paquetes o librerías</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="1-3-paquetes.html"><a href="1-3-paquetes.html#instalPaq"><i class="fa fa-check"></i><b>1.3.1</b> Instalando paquetes</a></li>
+<li class="chapter" data-level="1.3.2" data-path="1-3-paquetes.html"><a href="1-3-paquetes.html#activando-paquetes"><i class="fa fa-check"></i><b>1.3.2</b> Activando paquetes</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="1-4-guardarObj.html"><a href="1-4-guardarObj.html"><i class="fa fa-check"></i><b>1.4</b> Creando o guardando objetos</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="1-4-guardarObj.html"><a href="1-4-guardarObj.html#recomendaciones-para-darle-nombre-a-objetos"><i class="fa fa-check"></i><b>1.4.1</b> Recomendaciones para darle nombre a objetos</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="1-5-ambiente.html"><a href="1-5-ambiente.html"><i class="fa fa-check"></i><b>1.5</b> Ambiente de trabajo</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="1-5-ambiente.html"><a href="1-5-ambiente.html#borrarAmb"><i class="fa fa-check"></i><b>1.5.1</b> Listar y borrar objetos del ambiente de trabajo</a></li>
+<li class="chapter" data-level="1.5.2" data-path="1-5-ambiente.html"><a href="1-5-ambiente.html#guardando-el-ambiente-de-trabajo"><i class="fa fa-check"></i><b>1.5.2</b> Guardando el ambiente de trabajo</a></li>
+<li class="chapter" data-level="1.5.3" data-path="1-5-ambiente.html"><a href="1-5-ambiente.html#cambiando-el-directorio-de-trabajo"><i class="fa fa-check"></i><b>1.5.3</b> Cambiando el directorio de trabajo</a></li>
+<li class="chapter" data-level="1.5.4" data-path="1-5-ambiente.html"><a href="1-5-ambiente.html#cargando-objetos-al-ambiente-de-trabajo"><i class="fa fa-check"></i><b>1.5.4</b> Cargando objetos al ambiente de trabajo</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="1-6-ejercicios.html"><a href="1-6-ejercicios.html"><i class="fa fa-check"></i><b>1.6</b> Ejercicios</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="2-ides.html"><a href="2-ides.html"><i class="fa fa-check"></i><b>2</b> Ambientes de desarrollo integrado</a><ul>
+<li class="chapter" data-level="2.1" data-path="2-1-rstudio1.html"><a href="2-1-rstudio1.html"><i class="fa fa-check"></i><b>2.1</b> RStudio 1</a></li>
+<li class="chapter" data-level="2.2" data-path="2-2-rstudio2.html"><a href="2-2-rstudio2.html"><i class="fa fa-check"></i><b>2.2</b> Rstudio 2</a></li>
+</ul></li>
+<li class="part"><span><b>II Objetos, datos y gráficos</b></span></li>
+<li class="chapter" data-level="3" data-path="3-vecTiposDatos.html"><a href="3-vecTiposDatos.html"><i class="fa fa-check"></i><b>3</b> Vectores y tipos de datos</a><ul>
+<li class="chapter" data-level="3.1" data-path="3-1-vectores.html"><a href="3-1-vectores.html"><i class="fa fa-check"></i><b>3.1</b> Vectores</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="3-1-vectores.html"><a href="3-1-vectores.html#creando-vectores"><i class="fa fa-check"></i><b>3.1.1</b> Creando vectores</a></li>
+<li class="chapter" data-level="3.1.2" data-path="3-1-vectores.html"><a href="3-1-vectores.html#creando-vectores-de-secuencias"><i class="fa fa-check"></i><b>3.1.2</b> Creando vectores de secuencias</a></li>
+<li class="chapter" data-level="3.1.3" data-path="3-1-vectores.html"><a href="3-1-vectores.html#operaciones-aritmeticas-con-vectores"><i class="fa fa-check"></i><b>3.1.3</b> Operaciones aritméticas con vectores</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html"><i class="fa fa-check"></i><b>3.2</b> Tipos de datos</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#validando-el-tipo-de-datos"><i class="fa fa-check"></i><b>3.2.1</b> Validando el tipo de datos</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="3-3-logicas.html"><a href="3-3-logicas.html"><i class="fa fa-check"></i><b>3.3</b> Expresiones lógicas</a></li>
+<li class="chapter" data-level="3.4" data-path="3-4-ejvecTiposDatos.html"><a href="3-4-ejvecTiposDatos.html"><i class="fa fa-check"></i><b>3.4</b> Ejercicios</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="4-otros-tipos-de-objeto.html"><a href="4-otros-tipos-de-objeto.html"><i class="fa fa-check"></i><b>4</b> Otros tipos de objeto</a><ul>
+<li class="chapter" data-level="4.1" data-path="4-1-matriz.html"><a href="4-1-matriz.html"><i class="fa fa-check"></i><b>4.1</b> Matrices</a></li>
+<li class="chapter" data-level="4.2" data-path="4-2-df.html"><a href="4-2-df.html"><i class="fa fa-check"></i><b>4.2</b> Marcos de datos (data.frame)</a></li>
+<li class="chapter" data-level="4.3" data-path="4-3-listas.html"><a href="4-3-listas.html"><i class="fa fa-check"></i><b>4.3</b> Listas</a></li>
+<li class="chapter" data-level="4.4" data-path="4-4-ejObj.html"><a href="4-4-ejObj.html"><i class="fa fa-check"></i><b>4.4</b> Ejercicios</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="5-elementos-basicos-sobre-graficos.html"><a href="5-elementos-basicos-sobre-graficos.html"><i class="fa fa-check"></i><b>5</b> Elementos básicos sobre gráficos</a><ul>
+<li class="chapter" data-level="5.1" data-path="5-1-altoBajoNiv.html"><a href="5-1-altoBajoNiv.html"><i class="fa fa-check"></i><b>5.1</b> Comandos de alto y bajo nivel</a></li>
+<li class="chapter" data-level="5.2" data-path="5-2-ejGraf.html"><a href="5-2-ejGraf.html"><i class="fa fa-check"></i><b>5.2</b> Ejercicios</a></li>
+</ul></li>
+<li class="part"><span><b>III Programación</b></span></li>
+<li class="chapter" data-level="6" data-path="6-basicProg.html"><a href="6-basicProg.html"><i class="fa fa-check"></i><b>6</b> Conceptos básicos</a><ul>
+<li class="chapter" data-level="6.1" data-path="6-1-tema1.html"><a href="6-1-tema1.html"><i class="fa fa-check"></i><b>6.1</b> Tema 1</a></li>
+<li class="chapter" data-level="6.2" data-path="6-2-fun.html"><a href="6-2-fun.html"><i class="fa fa-check"></i><b>6.2</b> Funciones</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="6-2-fun.html"><a href="6-2-fun.html#un-ejemplo"><i class="fa fa-check"></i><b>6.2.1</b> Un ejemplo</a></li>
+<li class="chapter" data-level="6.2.2" data-path="6-2-fun.html"><a href="6-2-fun.html#controlando-el-objeto-de-salida"><i class="fa fa-check"></i><b>6.2.2</b> Controlando el objeto de salida</a></li>
+<li class="chapter" data-level="6.2.3" data-path="6-2-fun.html"><a href="6-2-fun.html#argumentos-por-defecto"><i class="fa fa-check"></i><b>6.2.3</b> Argumentos por defecto</a></li>
+<li class="chapter" data-level="6.2.4" data-path="6-2-fun.html"><a href="6-2-fun.html#entregando-texto-variable"><i class="fa fa-check"></i><b>6.2.4</b> Entregando texto variable</a></li>
+<li class="chapter" data-level="6.2.5" data-path="6-2-fun.html"><a href="6-2-fun.html#argumentos-logicos"><i class="fa fa-check"></i><b>6.2.5</b> Argumentos lógicos</a></li>
+<li class="chapter" data-level="6.2.6" data-path="6-2-fun.html"><a href="6-2-fun.html#documentacion-de-la-funcion"><i class="fa fa-check"></i><b>6.2.6</b> Documentación de la función</a></li>
+<li class="chapter" data-level="6.2.7" data-path="6-2-fun.html"><a href="6-2-fun.html#compartiendo-la-funcion"><i class="fa fa-check"></i><b>6.2.7</b> Compartiendo la función</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="6-3-ejFun.html"><a href="6-3-ejFun.html"><i class="fa fa-check"></i><b>6.3</b> Ejercicios</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="6-3-ejFun.html"><a href="6-3-ejFun.html#ej.-1.-numero-de-datos-perdidos"><i class="fa fa-check"></i><b>6.3.1</b> Ej. 1. Número de datos perdidos</a></li>
+<li class="chapter" data-level="6.3.2" data-path="6-3-ejFun.html"><a href="6-3-ejFun.html#ej.-2.-factura-con-iva."><i class="fa fa-check"></i><b>6.3.2</b> Ej. 2. Factura con IVA.</a></li>
+<li class="chapter" data-level="6.3.3" data-path="6-3-ejFun.html"><a href="6-3-ejFun.html#ej.-3.-area-bajo-la-curva"><i class="fa fa-check"></i><b>6.3.3</b> Ej. 3. Área bajo la curva</a></li>
+<li class="chapter" data-level="6.3.4" data-path="6-3-ejFun.html"><a href="6-3-ejFun.html#ej.-4.-revisando-la-salida-de-una-funcion"><i class="fa fa-check"></i><b>6.3.4</b> Ej. 4. Revisando la salida de una función</a></li>
+<li class="chapter" data-level="6.3.5" data-path="6-3-ejFun.html"><a href="6-3-ejFun.html#ej.-5.-el-vertice-de-una-parabola"><i class="fa fa-check"></i><b>6.3.5</b> Ej. 5. El vertice de una parábola</a></li>
+<li class="chapter" data-level="6.3.6" data-path="6-3-ejFun.html"><a href="6-3-ejFun.html#ej.-6.-encontrando-minimos-o-maximos"><i class="fa fa-check"></i><b>6.3.6</b> Ej. 6. Encontrando mínimos o máximos</a></li>
+<li class="chapter" data-level="6.3.7" data-path="6-3-ejFun.html"><a href="6-3-ejFun.html#ej.-7.-aplicacion-de-una-parabola-y-maximizacion"><i class="fa fa-check"></i><b>6.3.7</b> Ej. 7. Aplicación de una parábola y maximización</a></li>
+<li class="chapter" data-level="6.3.8" data-path="6-3-ejFun.html"><a href="6-3-ejFun.html#ej.-8.-creciente-o-decreciente"><i class="fa fa-check"></i><b>6.3.8</b> Ej. 8. ¿Creciente o decreciente?</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="6-4-solucion-a-ejercicios-seleccionados.html"><a href="6-4-solucion-a-ejercicios-seleccionados.html"><i class="fa fa-check"></i><b>6.4</b> Solución a ejercicios seleccionados</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="6-4-solucion-a-ejercicios-seleccionados.html"><a href="6-4-solucion-a-ejercicios-seleccionados.html#ej.-2.-factura-con-iva"><i class="fa fa-check"></i><b>6.4.1</b> Ej. 2. Factura con IVA</a></li>
+<li class="chapter" data-level="6.4.2" data-path="6-4-solucion-a-ejercicios-seleccionados.html"><a href="6-4-solucion-a-ejercicios-seleccionados.html#ej.-6.-encontrando-minimos-o-maximos-1"><i class="fa fa-check"></i><b>6.4.2</b> Ej. 6. Encontrando mínimos o máximos</a></li>
+<li class="chapter" data-level="6.4.3" data-path="6-4-solucion-a-ejercicios-seleccionados.html"><a href="6-4-solucion-a-ejercicios-seleccionados.html#ej.-8.-creciente-o-decreciente-1"><i class="fa fa-check"></i><b>6.4.3</b> Ej. 8. ¿Creciente o decreciente?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="7-Prog2.html"><a href="7-Prog2.html"><i class="fa fa-check"></i><b>7</b> Estructuras de programación</a><ul>
+<li class="chapter" data-level="7.1" data-path="7-1-cond.html"><a href="7-1-cond.html"><i class="fa fa-check"></i><b>7.1</b> Condicionales</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="7-1-cond.html"><a href="7-1-cond.html#solo-si"><i class="fa fa-check"></i><b>7.1.1</b> Sólo si …</a></li>
+<li class="chapter" data-level="7.1.2" data-path="7-1-cond.html"><a href="7-1-cond.html#si-entonces"><i class="fa fa-check"></i><b>7.1.2</b> Si … Entonces</a></li>
+<li class="chapter" data-level="7.1.3" data-path="7-1-cond.html"><a href="7-1-cond.html#condiciones-con-mutiples-alternativas"><i class="fa fa-check"></i><b>7.1.3</b> Condiciones con mútiples alternativas</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="7-2-ciclos.html"><a href="7-2-ciclos.html"><i class="fa fa-check"></i><b>7.2</b> Repitiendo una acción</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="7-2-ciclos.html"><a href="7-2-ciclos.html#ciclo-for"><i class="fa fa-check"></i><b>7.2.1</b> Ciclo <code>for</code></a></li>
+<li class="chapter" data-level="7.2.2" data-path="7-2-ciclos.html"><a href="7-2-ciclos.html#ciclo-while"><i class="fa fa-check"></i><b>7.2.2</b> Ciclo <code>while</code></a></li>
+<li class="chapter" data-level="7.2.3" data-path="7-2-ciclos.html"><a href="7-2-ciclos.html#ciclo-repeat"><i class="fa fa-check"></i><b>7.2.3</b> Ciclo <code>repeat</code></a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="7-3-stop.html"><a href="7-3-stop.html"><i class="fa fa-check"></i><b>7.3</b> Deteniendo la ejecución de una función</a></li>
+<li class="chapter" data-level="7.4" data-path="7-4-vectoriz.html"><a href="7-4-vectoriz.html"><i class="fa fa-check"></i><b>7.4</b> Vectorización</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="7-4-vectoriz.html"><a href="7-4-vectoriz.html#eficiencia-en-la-vectorizacion"><i class="fa fa-check"></i><b>7.4.1</b> Eficiencia en la vectorización</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="7-5-famApply.html"><a href="7-5-famApply.html"><i class="fa fa-check"></i><b>7.5</b> Comandos de la familia apply</a><ul>
+<li class="chapter" data-level="7.5.1" data-path="7-5-famApply.html"><a href="7-5-famApply.html#apply"><i class="fa fa-check"></i><b>7.5.1</b> <code>apply</code></a></li>
+<li class="chapter" data-level="7.5.2" data-path="7-5-famApply.html"><a href="7-5-famApply.html#tapply"><i class="fa fa-check"></i><b>7.5.2</b> <code>tapply</code></a></li>
+<li class="chapter" data-level="7.5.3" data-path="7-5-famApply.html"><a href="7-5-famApply.html#sapply"><i class="fa fa-check"></i><b>7.5.3</b> <code>sapply</code></a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="7-6-ejProg2.html"><a href="7-6-ejProg2.html"><i class="fa fa-check"></i><b>7.6</b> Ejercicios</a><ul>
+<li class="chapter" data-level="7.6.1" data-path="7-6-ejProg2.html"><a href="7-6-ejProg2.html#ej.-1.-basico-o-acido"><i class="fa fa-check"></i><b>7.6.1</b> Ej. 1. Básico o Ácido*</a></li>
+<li class="chapter" data-level="7.6.2" data-path="7-6-ejProg2.html"><a href="7-6-ejProg2.html#ej.-2.-basico-o-acido-en-multiples-muestras"><i class="fa fa-check"></i><b>7.6.2</b> Ej. 2. Básico o Ácido en múltiples muestras*</a></li>
+<li class="chapter" data-level="7.6.3" data-path="7-6-ejProg2.html"><a href="7-6-ejProg2.html#ej.-3.-condicional-vectorizado"><i class="fa fa-check"></i><b>7.6.3</b> Ej. 3. Condicional vectorizado*</a></li>
+<li class="chapter" data-level="7.6.4" data-path="7-6-ejProg2.html"><a href="7-6-ejProg2.html#ej.-4.-diferencias"><i class="fa fa-check"></i><b>7.6.4</b> Ej. 4. Diferencias*</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="7-7-solejProg2.html"><a href="7-7-solejProg2.html"><i class="fa fa-check"></i><b>7.7</b> Solución a ejercicios seleccionados</a><ul>
+<li class="chapter" data-level="7.7.1" data-path="7-7-solejProg2.html"><a href="7-7-solejProg2.html#ej.-1.-basico-o-acido-1"><i class="fa fa-check"></i><b>7.7.1</b> Ej. 1. Básico o Ácido</a></li>
+<li class="chapter" data-level="7.7.2" data-path="7-7-solejProg2.html"><a href="7-7-solejProg2.html#ej.-2.-basico-o-acido-en-multiples-muestras-1"><i class="fa fa-check"></i><b>7.7.2</b> Ej. 2. Básico o Ácido en múltiples muestras</a></li>
+<li class="chapter" data-level="7.7.3" data-path="7-7-solejProg2.html"><a href="7-7-solejProg2.html#ej.-3.-condicional-vectorizado-1"><i class="fa fa-check"></i><b>7.7.3</b> Ej. 3. Condicional vectorizado</a></li>
+<li class="chapter" data-level="7.7.4" data-path="7-7-solejProg2.html"><a href="7-7-solejProg2.html#ej.-4.-diferencias-1"><i class="fa fa-check"></i><b>7.7.4</b> Ej. 4. Diferencias</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>IV Aplicaciones</b></span></li>
+<li class="chapter" data-level="8" data-path="8-appmat.html"><a href="8-appmat.html"><i class="fa fa-check"></i><b>8</b> Aplicaciones en matemáticas</a><ul>
+<li class="chapter" data-level="8.1" data-path="8-1-xyz.html"><a href="8-1-xyz.html"><i class="fa fa-check"></i><b>8.1</b> Gráficos de funciones en varias variables</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="8-1-xyz.html"><a href="8-1-xyz.html#introduccion"><i class="fa fa-check"></i><b>8.1.1</b> Introducción</a></li>
+<li class="chapter" data-level="8.1.2" data-path="8-1-xyz.html"><a href="8-1-xyz.html#tipos-de-graficos-para-funciones-de-tres-variables"><i class="fa fa-check"></i><b>8.1.2</b> Tipos de gráficos para funciones de tres variables</a></li>
+<li class="chapter" data-level="8.1.3" data-path="8-1-xyz.html"><a href="8-1-xyz.html#opciones-graficas-en-r"><i class="fa fa-check"></i><b>8.1.3</b> Opciones gráficas en <strong>R</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="8-2-ceros.html"><a href="8-2-ceros.html"><i class="fa fa-check"></i><b>8.2</b> Encontrando ceros</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="8-2-ceros.html"><a href="8-2-ceros.html#findZeros"><i class="fa fa-check"></i><b>8.2.1</b> Usando <code>findZeros</code> (paquete: MosaicCalc)</a></li>
+<li class="chapter" data-level="8.2.2" data-path="8-2-ceros.html"><a href="8-2-ceros.html#usando-findzeros-paquete-pracma"><i class="fa fa-check"></i><b>8.2.2</b> Usando <code>findzeros</code> (paquete: pracma)</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="8-3-deriv.html"><a href="8-3-deriv.html"><i class="fa fa-check"></i><b>8.3</b> Derivadas</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="8-3-deriv.html"><a href="8-3-deriv.html#derivando-con-d-mosaiccalc"><i class="fa fa-check"></i><b>8.3.1</b> Derivando con <code>D</code> (mosaicCalc)</a></li>
+<li class="chapter" data-level="8.3.2" data-path="8-3-deriv.html"><a href="8-3-deriv.html#derivando-con-numdiff-pracma"><i class="fa fa-check"></i><b>8.3.2</b> Derivando con <code>numdiff</code> (pracma)</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="8-4-integ.html"><a href="8-4-integ.html"><i class="fa fa-check"></i><b>8.4</b> Integrando</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="8-4-integ.html"><a href="8-4-integ.html#integrando-con-antid-mosaiccalc"><i class="fa fa-check"></i><b>8.4.1</b> Integrando con <code>antiD</code> (mosaicCalc)</a></li>
+<li class="chapter" data-level="8.4.2" data-path="8-4-integ.html"><a href="8-4-integ.html#integrando-con-integral-pracma"><i class="fa fa-check"></i><b>8.4.2</b> Integrando con <code>integral</code> (pracma)</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="8-5-ejercicios-1.html"><a href="8-5-ejercicios-1.html"><i class="fa fa-check"></i><b>8.5</b> Ejercicios</a><ul>
+<li class="chapter" data-level="8.5.1" data-path="8-5-ejercicios-1.html"><a href="8-5-ejercicios-1.html#ej.-1.-encontrando-ceros"><i class="fa fa-check"></i><b>8.5.1</b> Ej. 1. Encontrando ceros</a></li>
+<li class="chapter" data-level="8.5.2" data-path="8-5-ejercicios-1.html"><a href="8-5-ejercicios-1.html#ej.-2.-cuanto-se-hunde-la-esfera"><i class="fa fa-check"></i><b>8.5.2</b> Ej. 2. ¿Cuánto se hunde la esfera?</a></li>
+<li class="chapter" data-level="8.5.3" data-path="8-5-ejercicios-1.html"><a href="8-5-ejercicios-1.html#ej.-3.-derivando"><i class="fa fa-check"></i><b>8.5.3</b> Ej. 3. Derivando</a></li>
+<li class="chapter" data-level="8.5.4" data-path="8-5-ejercicios-1.html"><a href="8-5-ejercicios-1.html#ej.-4.-derivando-funciones-con-dos-variables"><i class="fa fa-check"></i><b>8.5.4</b> Ej. 4. Derivando funciones con dos variables</a></li>
+<li class="chapter" data-level="8.5.5" data-path="8-5-ejercicios-1.html"><a href="8-5-ejercicios-1.html#ej.-5.-graficos-de-varias-variables"><i class="fa fa-check"></i><b>8.5.5</b> Ej. 5. Gráficos de varias variables</a></li>
+<li class="chapter" data-level="8.5.6" data-path="8-5-ejercicios-1.html"><a href="8-5-ejercicios-1.html#ej.-6.-control-de-la-dispersion-de-una-enfermedad"><i class="fa fa-check"></i><b>8.5.6</b> Ej. 6. Control de la dispersión de una enfermedad</a></li>
+<li class="chapter" data-level="8.5.7" data-path="8-5-ejercicios-1.html"><a href="8-5-ejercicios-1.html#ej.-7.-valor-medio-varianza-y-probabilidad"><i class="fa fa-check"></i><b>8.5.7</b> Ej. 7. Valor medio, varianza y probabilidad</a></li>
+<li class="chapter" data-level="8.5.8" data-path="8-5-ejercicios-1.html"><a href="8-5-ejercicios-1.html#ej.-8.-antibiotico-en-sangre"><i class="fa fa-check"></i><b>8.5.8</b> Ej. 8. Antibiótico en sangre</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"><em>Programación</em> para Biólogos</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="solucion-a-ejercicios-seleccionados" class="section level2">
+<h2><span class="header-section-number">6.4</span> Solución a ejercicios seleccionados</h2>
+<div id="ej.-2.-factura-con-iva" class="section level3">
+<h3><span class="header-section-number">6.4.1</span> Ej. 2. Factura con IVA</h3>
+<p>El siguiente código crea la función o comando solicitado:</p>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb199-1" title="1">factura &lt;-<span class="st"> </span><span class="cf">function</span>(prod, <span class="dt">iva =</span> <span class="fl">0.16</span>){</a>
+<a class="sourceLine" id="cb199-2" title="2">  <span class="co"># Argumentos:</span></a>
+<a class="sourceLine" id="cb199-3" title="3">  <span class="co"># prod = precio especifico del producto (sin el iva)</span></a>
+<a class="sourceLine" id="cb199-4" title="4">  <span class="co"># iva  = fraccion (entre 0 y 1) que indica el iva aplicado. </span></a>
+<a class="sourceLine" id="cb199-5" title="5">  <span class="co">#        Por defecto, 0.16</span></a>
+<a class="sourceLine" id="cb199-6" title="6">  </a>
+<a class="sourceLine" id="cb199-7" title="7">  <span class="co"># Codigo:</span></a>
+<a class="sourceLine" id="cb199-8" title="8">  iva2 &lt;-<span class="st"> </span><span class="kw">round</span>(iva<span class="op">*</span><span class="dv">100</span>, <span class="dv">0</span>)   <span class="co"># se da formato al iva para presentacion</span></a>
+<a class="sourceLine" id="cb199-9" title="9">  vp   &lt;-<span class="st"> </span>prod                <span class="co"># valor del producto</span></a>
+<a class="sourceLine" id="cb199-10" title="10">  ivap &lt;-<span class="st"> </span>prod<span class="op">*</span>iva            <span class="co"># valor del iva asociado al producto</span></a>
+<a class="sourceLine" id="cb199-11" title="11">  vpt  &lt;-<span class="st"> </span>vp <span class="op">+</span><span class="st"> </span>ivap           <span class="co"># valor total a pagar</span></a>
+<a class="sourceLine" id="cb199-12" title="12">  </a>
+<a class="sourceLine" id="cb199-13" title="13">  <span class="co"># Se crea el data.frame de salida.</span></a>
+<a class="sourceLine" id="cb199-14" title="14">  <span class="kw">data.frame</span>(</a>
+<a class="sourceLine" id="cb199-15" title="15">    <span class="dt">Item  =</span> <span class="kw">c</span>(<span class="st">&#39;Producto&#39;</span>, <span class="kw">paste0</span>(<span class="st">&#39;IVA&#39;</span>, <span class="st">&#39; (&#39;</span>, iva2, <span class="st">&#39;%&#39;</span>, <span class="st">&#39;)&#39;</span> ), <span class="st">&#39;Total&#39;</span>),</a>
+<a class="sourceLine" id="cb199-16" title="16">    <span class="dt">Valor =</span> <span class="kw">c</span>(vp, ivap, vpt)</a>
+<a class="sourceLine" id="cb199-17" title="17">  )</a>
+<a class="sourceLine" id="cb199-18" title="18">  </a>
+<a class="sourceLine" id="cb199-19" title="19">  <span class="co"># Valor</span></a>
+<a class="sourceLine" id="cb199-20" title="20">  <span class="co"># se entrega un data.frame con dos filas y dos columnas.</span></a>
+<a class="sourceLine" id="cb199-21" title="21">}</a></code></pre></div>
+<p>Ahora se prueba la función. Por ejemplo, supongamos un producto con un valor de $13000 y con IVA del 16%, entonces:</p>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb200-1" title="1"><span class="kw">factura</span>(<span class="dt">prod =</span> <span class="dv">13000</span>)   <span class="co"># iva = 0.16 esta por defecto.</span></a></code></pre></div>
+<pre><code>       Item Valor
+1  Producto 13000
+2 IVA (16%)  2080
+3     Total 15080</code></pre>
+<p>Con el mismo valor del producto, si el IVA fuera 19%, entonces (note que como cambia la impresión del IVA en la tabla de salida):</p>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb202-1" title="1"><span class="kw">factura</span>(<span class="dt">prod =</span> <span class="dv">13000</span>, <span class="dt">iva =</span> <span class="fl">0.19</span>)</a></code></pre></div>
+<pre><code>       Item Valor
+1  Producto 13000
+2 IVA (19%)  2470
+3     Total 15470</code></pre>
+</div>
+<div id="ej.-6.-encontrando-minimos-o-maximos-1" class="section level3">
+<h3><span class="header-section-number">6.4.2</span> Ej. 6. Encontrando mínimos o máximos</h3>
+<p>El siguiente código crea la función o comando solicitado:</p>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb204-1" title="1">min_fun &lt;-<span class="st"> </span><span class="cf">function</span>(x0, x1, f, <span class="dt">e =</span> <span class="fl">0.01</span>){</a>
+<a class="sourceLine" id="cb204-2" title="2">  <span class="co"># argumentos:</span></a>
+<a class="sourceLine" id="cb204-3" title="3">  <span class="co"># x0 = valor inicial del intervalo de x donde se desea buscar el minimo</span></a>
+<a class="sourceLine" id="cb204-4" title="4">  <span class="co"># x1 = valor final del intervalo de x donde se desea buscar el minimo</span></a>
+<a class="sourceLine" id="cb204-5" title="5">  <span class="co"># f = nombre de la funcion matematica a evaluar.</span></a>
+<a class="sourceLine" id="cb204-6" title="6">  <span class="co"># e = tamano de paso para buscar el minimo. Por defecto 0.01. Entre mas pequeno,</span></a>
+<a class="sourceLine" id="cb204-7" title="7">  <span class="co">#     mas exacto es a la hora de reportar el minimo.</span></a>
+<a class="sourceLine" id="cb204-8" title="8">  </a>
+<a class="sourceLine" id="cb204-9" title="9">  <span class="co"># Codigo</span></a>
+<a class="sourceLine" id="cb204-10" title="10">  x &lt;-<span class="st"> </span><span class="kw">seq</span>(x0, x1, e)</a>
+<a class="sourceLine" id="cb204-11" title="11">  pos.min &lt;-<span class="st"> </span><span class="kw">which.min</span>(<span class="kw">f</span>(x))</a>
+<a class="sourceLine" id="cb204-12" title="12">  <span class="kw">data.frame</span>(<span class="dt">x =</span> x[pos.min], <span class="dt">y =</span> <span class="kw">f</span>(x[pos.min]) )</a>
+<a class="sourceLine" id="cb204-13" title="13">  </a>
+<a class="sourceLine" id="cb204-14" title="14">  <span class="co"># Valor:</span></a>
+<a class="sourceLine" id="cb204-15" title="15">  <span class="co"># entrega un data.frame de una fila y dos columnas</span></a>
+<a class="sourceLine" id="cb204-16" title="16">}</a></code></pre></div>
+<p>Ahora se prueba el comando generado con la función matemática <span class="math inline">\(f(x) = x(x -1)(x-2)\)</span> en el intervalo <span class="math inline">\(0 &lt; x &lt; 2\)</span>:</p>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb205-1" title="1"><span class="co"># se crea la funcion matematica</span></a>
+<a class="sourceLine" id="cb205-2" title="2">mifun &lt;-<span class="st"> </span><span class="cf">function</span>(x) x<span class="op">*</span>(x <span class="dv">-1</span>)<span class="op">*</span>(x<span class="dv">-2</span>)     </a>
+<a class="sourceLine" id="cb205-3" title="3"></a>
+<a class="sourceLine" id="cb205-4" title="4"><span class="co"># se determina el minimo en el intervalo (0,2)</span></a>
+<a class="sourceLine" id="cb205-5" title="5">res_min &lt;-<span class="st"> </span><span class="kw">min_fun</span>(<span class="dt">x0 =</span> <span class="dv">0</span>, <span class="dt">x1 =</span> <span class="dv">2</span>, <span class="dt">f =</span> mifun)  </a>
+<a class="sourceLine" id="cb205-6" title="6">res_min</a></code></pre></div>
+<pre><code>     x         y
+1 1.58 -0.384888</code></pre>
+<p>Así, el mínimo de la función <span class="math inline">\(f(x) = x(x -1)(x-2)\)</span> en el intervalo <span class="math inline">\(0 &lt; x &lt; 2\)</span> se halla en <span class="math inline">\(x = 1.58\)</span>. Esto se puede verificar si se gráfica la función:</p>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb207-1" title="1"><span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">c</span>(<span class="fl">3.5</span>, <span class="fl">3.5</span>, <span class="dv">1</span>,<span class="dv">1</span>), <span class="dt">mgp =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">0</span>), <span class="dt">cex =</span> <span class="fl">0.8</span>)  <span class="co"># ventana grafica</span></a>
+<a class="sourceLine" id="cb207-2" title="2"><span class="kw">curve</span>(mifun, <span class="dt">from =</span> <span class="fl">-0.5</span>, <span class="dt">to =</span> <span class="fl">2.5</span>)                     <span class="co"># curva ppal</span></a>
+<a class="sourceLine" id="cb207-3" title="3"><span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">0</span>, <span class="dt">v =</span> <span class="dv">0</span>, <span class="dt">lty =</span> <span class="dv">2</span>)                           <span class="co"># lineas de referencia en (0,0)</span></a>
+<a class="sourceLine" id="cb207-4" title="4"><span class="kw">points</span>(res_min, <span class="dt">pch =</span> <span class="dv">19</span>, <span class="dt">col =</span> <span class="st">&#39;red&#39;</span>, <span class="dt">cex =</span> <span class="fl">1.5</span>)       <span class="co"># se agrega punto minimo</span></a>
+<a class="sourceLine" id="cb207-5" title="5"><span class="kw">abline</span>(<span class="dt">v =</span> res_min<span class="op">$</span>x, <span class="dt">lty =</span> <span class="dv">3</span>, <span class="dt">col =</span> <span class="st">&#39;red&#39;</span>)             <span class="co"># se agrega linea de referencia en min</span></a>
+<a class="sourceLine" id="cb207-6" title="6"><span class="kw">axis</span>(<span class="dt">side =</span> <span class="dv">1</span>, <span class="dt">at =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">2</span>),</a>
+<a class="sourceLine" id="cb207-7" title="7">     <span class="dt">labels =</span> <span class="ot">NA</span>, <span class="dt">col =</span> <span class="st">&#39;blue&#39;</span>, <span class="dt">lwd =</span> <span class="dv">3</span>)                <span class="co"># se marca el eje en el intervalo (0,2)</span></a></code></pre></div>
+<p><img src="out_files/figure-html/unnamed-chunk-101-1.png" width="288" style="display: block; margin: auto;" /></p>
+<p>Si se busca mayor exactitud para el valor de <span class="math inline">\(x\)</span> donde se halla el mínimo, es decir, mejorar la aproximación, entonces disminuya la cantidad <code>e</code>:</p>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb208-1" title="1"><span class="co"># se determina el minimo en el intervalo (0,2)</span></a>
+<a class="sourceLine" id="cb208-2" title="2">res_min &lt;-<span class="st"> </span><span class="kw">min_fun</span>(<span class="dt">x0 =</span> <span class="dv">0</span>, <span class="dt">x1 =</span> <span class="dv">2</span>, <span class="dt">f =</span> mifun, <span class="dt">e =</span> <span class="fl">0.0001</span>)  </a>
+<a class="sourceLine" id="cb208-3" title="3">res_min</a></code></pre></div>
+<pre><code>       x          y
+1 1.5774 -0.3849002</code></pre>
+<p>Ahora, el mínimo se reporta en <span class="math inline">\(x = 1.5774\)</span>.</p>
+<p>Por otro lado, podemos generalizar el comando <code>min_fun</code> para que encuentre puntos mínimos o máximos, es decir, puntos críticos en general. Esto se puede hacer agregando un argumento lógico que le índique a la función si se busca un mínimo o un máximo:</p>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb210-1" title="1">critico_fun &lt;-<span class="st"> </span><span class="cf">function</span>(x0, x1, f, <span class="dt">min =</span> T, <span class="dt">e =</span> <span class="fl">0.01</span>){</a>
+<a class="sourceLine" id="cb210-2" title="2">  <span class="co"># argumentos:</span></a>
+<a class="sourceLine" id="cb210-3" title="3">  <span class="co"># x0 = valor inicial del intervalo de x donde se desea buscar el minimo o maximo</span></a>
+<a class="sourceLine" id="cb210-4" title="4">  <span class="co"># x1 = valor final del intervalo de x donde se desea buscar el minimo o maximo</span></a>
+<a class="sourceLine" id="cb210-5" title="5">  <span class="co"># f = nombre de la funcion matematica a evaluar.</span></a>
+<a class="sourceLine" id="cb210-6" title="6">  <span class="co"># min = valor logico que indica si se quiere buscar un minimo (TRUE, por defecto)</span></a>
+<a class="sourceLine" id="cb210-7" title="7">  <span class="co">#       o un maximo (FALSE)</span></a>
+<a class="sourceLine" id="cb210-8" title="8">  <span class="co"># e = tamano de paso para buscar el minimo o maximo. Por defecto 0.01. Entre mas pequeno,</span></a>
+<a class="sourceLine" id="cb210-9" title="9">  <span class="co">#     mas exacto es a la hora de reportar el resultado.</span></a>
+<a class="sourceLine" id="cb210-10" title="10">  </a>
+<a class="sourceLine" id="cb210-11" title="11">  <span class="co"># Codigo</span></a>
+<a class="sourceLine" id="cb210-12" title="12">  x &lt;-<span class="st"> </span><span class="kw">seq</span>(x0, x1, e)</a>
+<a class="sourceLine" id="cb210-13" title="13">  pos.critico &lt;-<span class="st"> </span><span class="kw">ifelse</span>(min, <span class="kw">which.min</span>(<span class="kw">f</span>(x)), <span class="kw">which.max</span>(<span class="kw">f</span>(x)) )</a>
+<a class="sourceLine" id="cb210-14" title="14">  <span class="kw">data.frame</span>(<span class="dt">x =</span> x[pos.critico], <span class="dt">y =</span> <span class="kw">f</span>(x[pos.critico]) )</a>
+<a class="sourceLine" id="cb210-15" title="15">  </a>
+<a class="sourceLine" id="cb210-16" title="16">  <span class="co"># Valor:</span></a>
+<a class="sourceLine" id="cb210-17" title="17">  <span class="co"># entrega un data.frame de una fila y dos columnas</span></a>
+<a class="sourceLine" id="cb210-18" title="18">}</a></code></pre></div>
+<p>Ver un ejemplo de la aplicación de este nuevo comando en la solución del ejercicio 8.</p>
+</div>
+<div id="ej.-8.-creciente-o-decreciente-1" class="section level3">
+<h3><span class="header-section-number">6.4.3</span> Ej. 8. ¿Creciente o decreciente?</h3>
+<p>De acuerdo a la definición de la sección 1.1 del libro de <span class="citation">Stewart &amp; Day (<a href="#ref-stewart2015" role="doc-biblioref">2015</a>)</span>, una función, <span class="math inline">\(f(x)\)</span>, es creciente en un intervalo <span class="math inline">\([a, b]\)</span>, si <span class="math inline">\(f(b) &gt; f(a)\)</span> siempre que <span class="math inline">\(b &gt; a\)</span>. El siguiente código crea el comando solicitado:</p>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb211-1" title="1">eval_crec_fun &lt;-<span class="st"> </span><span class="cf">function</span>(x, f, <span class="dt">e =</span> <span class="fl">0.01</span>){</a>
+<a class="sourceLine" id="cb211-2" title="2">  <span class="co"># Argumentos:</span></a>
+<a class="sourceLine" id="cb211-3" title="3">  <span class="co"># x = punto medio en eje x alrededor del cual se busca evaluar si </span></a>
+<a class="sourceLine" id="cb211-4" title="4">  <span class="co">#     la funcion f es creciente o decreciente.</span></a>
+<a class="sourceLine" id="cb211-5" title="5">  <span class="co"># f = nombre de la funcion matematica a evaluar. Debe recibir como</span></a>
+<a class="sourceLine" id="cb211-6" title="6">  <span class="co">#     unico argumento la x</span></a>
+<a class="sourceLine" id="cb211-7" title="7">  <span class="co"># e = cantidad pequena para generar el intervalo simetrico </span></a>
+<a class="sourceLine" id="cb211-8" title="8">  <span class="co">#     alrededor del punto en x donde se realizara la evaluacion. </span></a>
+<a class="sourceLine" id="cb211-9" title="9">  </a>
+<a class="sourceLine" id="cb211-10" title="10">  <span class="co"># Codigo:</span></a>
+<a class="sourceLine" id="cb211-11" title="11">  y0 &lt;-<span class="st"> </span><span class="kw">f</span>(x<span class="op">-</span>e)</a>
+<a class="sourceLine" id="cb211-12" title="12">  y1 &lt;-<span class="st"> </span><span class="kw">f</span>(x<span class="op">+</span>e)</a>
+<a class="sourceLine" id="cb211-13" title="13">  <span class="kw">ifelse</span>(y1 <span class="op">&gt;</span><span class="st"> </span>y0, <span class="st">&#39;Creciente&#39;</span>, <span class="st">&#39;Decreciente&#39;</span>)</a>
+<a class="sourceLine" id="cb211-14" title="14">  </a>
+<a class="sourceLine" id="cb211-15" title="15">  <span class="co"># Valor:</span></a>
+<a class="sourceLine" id="cb211-16" title="16">  <span class="co"># Entrega una cadena de texto indicando &#39;Creciente&#39;</span></a>
+<a class="sourceLine" id="cb211-17" title="17">  <span class="co"># o &#39;Decreciente&#39;. Si y1 == y0, entrega &#39;Decreciente&#39;.</span></a>
+<a class="sourceLine" id="cb211-18" title="18">  <span class="co"># Cuando y1 == y0 es porque x es un punto critico, de modo</span></a>
+<a class="sourceLine" id="cb211-19" title="19">  <span class="co"># que ahi, la funcion no crece o decrece. Esto es algo </span></a>
+<a class="sourceLine" id="cb211-20" title="20">  <span class="co"># que esta funcion no podria detectar.</span></a>
+<a class="sourceLine" id="cb211-21" title="21">}</a></code></pre></div>
+<p>Ahora se prueba el comando <code>eval_crec_fun</code> con la función <span class="math inline">\(f(x) = 3x^5 - 25x^3 + 60x\)</span> en <span class="math inline">\(x = 0.5\)</span>, <span class="math inline">\(x = 1.5\)</span>, y <span class="math inline">\(x = 2.25\)</span>:</p>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb212-1" title="1"><span class="co"># Se define la funcion a evaluar:</span></a>
+<a class="sourceLine" id="cb212-2" title="2">f &lt;-<span class="st"> </span><span class="cf">function</span>(x) <span class="dv">3</span><span class="op">*</span>x<span class="op">^</span><span class="dv">5</span> <span class="op">-</span><span class="st"> </span><span class="dv">25</span><span class="op">*</span>x<span class="op">^</span><span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">60</span><span class="op">*</span>x</a>
+<a class="sourceLine" id="cb212-3" title="3"></a>
+<a class="sourceLine" id="cb212-4" title="4"><span class="co"># Se evalua el crecimiento:</span></a>
+<a class="sourceLine" id="cb212-5" title="5"><span class="kw">eval_crec_fun</span>(<span class="dt">x =</span> <span class="fl">0.5</span>, <span class="dt">f =</span> f)</a></code></pre></div>
+<pre><code>[1] &quot;Creciente&quot;</code></pre>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb214-1" title="1"><span class="kw">eval_crec_fun</span>(<span class="dt">x =</span> <span class="fl">1.5</span>, <span class="dt">f =</span> f)</a></code></pre></div>
+<pre><code>[1] &quot;Decreciente&quot;</code></pre>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb216-1" title="1"><span class="kw">eval_crec_fun</span>(<span class="dt">x =</span> <span class="fl">2.25</span>, <span class="dt">f =</span> f)</a></code></pre></div>
+<pre><code>[1] &quot;Creciente&quot;</code></pre>
+<p>Como esta configurada, el comando <code>eval_crec_fun</code> permite recibir un vector de números para hacer una evaluación simultanea de varios <span class="math inline">\(x\)</span>:</p>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb218-1" title="1">xm &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.5</span>, <span class="fl">1.5</span>, <span class="fl">2.25</span>)</a>
+<a class="sourceLine" id="cb218-2" title="2">res &lt;-<span class="st"> </span><span class="kw">eval_crec_fun</span>(<span class="dt">x =</span> xm, <span class="dt">f =</span> f)</a>
+<a class="sourceLine" id="cb218-3" title="3">res</a></code></pre></div>
+<pre><code>[1] &quot;Creciente&quot;   &quot;Decreciente&quot; &quot;Creciente&quot;  </code></pre>
+<p>Ahora graficamos <span class="math inline">\(f(x)\)</span> para validar el resultado obtenido:</p>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb220-1" title="1"><span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">c</span>(<span class="fl">3.5</span>, <span class="fl">3.5</span>, <span class="dv">1</span>,<span class="dv">1</span>), <span class="dt">mgp =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">0</span>), <span class="dt">cex =</span> <span class="fl">0.8</span>)  <span class="co"># ventana grafica</span></a>
+<a class="sourceLine" id="cb220-2" title="2"><span class="kw">curve</span>(f, <span class="dt">from =</span> <span class="fl">-0.5</span>, <span class="dt">to =</span> <span class="fl">2.5</span>)                         <span class="co"># curva ppal</span></a>
+<a class="sourceLine" id="cb220-3" title="3"><span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">0</span>, <span class="dt">v =</span> <span class="dv">0</span>, <span class="dt">lty =</span> <span class="dv">2</span>)                           <span class="co"># lineas de referencia en (0,0)</span></a>
+<a class="sourceLine" id="cb220-4" title="4"><span class="kw">segments</span>(<span class="dt">x0 =</span> xm, <span class="dt">x1 =</span> xm, <span class="dt">y0 =</span> <span class="dv">-50</span>,  </a>
+<a class="sourceLine" id="cb220-5" title="5">         <span class="dt">y1 =</span> <span class="kw">f</span>(xm),  <span class="dt">lty =</span> <span class="dv">3</span>, <span class="dt">col =</span> <span class="st">&#39;red&#39;</span>)             <span class="co"># Segmentos de referencia</span></a>
+<a class="sourceLine" id="cb220-6" title="6"><span class="kw">points</span>(<span class="dt">x =</span> xm, <span class="dt">y =</span> <span class="kw">f</span>(xm), <span class="dt">pch =</span> <span class="dv">19</span>, <span class="dt">col =</span> <span class="st">&#39;red&#39;</span>)        <span class="co"># puntos evaluados</span></a>
+<a class="sourceLine" id="cb220-7" title="7"><span class="kw">text</span>(<span class="dt">x =</span> xm, <span class="dt">y =</span> <span class="kw">f</span>(xm), <span class="dt">labels =</span> res, <span class="dt">pos =</span> <span class="dv">3</span> )         <span class="co"># Se agrega texto resultante</span></a></code></pre></div>
+<p><img src="out_files/figure-html/unnamed-chunk-107-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p>Note que <span class="math inline">\(f(x)\)</span> parece tener un máximo cercano a <span class="math inline">\(x = 1\)</span> y un mínimo cercano a <span class="math inline">\(x = 2\)</span>. Para verificar esto, podemos usar el comando <code>critico_fun</code> desarrollado en la solución del ejercicio (8):</p>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb221-1" title="1"><span class="co"># Se busca un maximo alrededor de x = 1</span></a>
+<a class="sourceLine" id="cb221-2" title="2"><span class="kw">critico_fun</span>(<span class="dt">x0 =</span> <span class="fl">0.5</span>, <span class="dt">x1 =</span> <span class="fl">1.5</span>, <span class="dt">f =</span> f, <span class="dt">min =</span> F)  </a></code></pre></div>
+<pre><code>  x  y
+1 1 38</code></pre>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb223-1" title="1"><span class="co"># Se busca un minimo alrededor de x = 2</span></a>
+<a class="sourceLine" id="cb223-2" title="2"><span class="kw">critico_fun</span>(<span class="dt">x0 =</span> <span class="fl">1.5</span>, <span class="dt">x1 =</span> <span class="fl">2.5</span>, <span class="dt">f =</span> f, <span class="dt">min =</span> T)  </a></code></pre></div>
+<pre><code>  x  y
+1 2 16</code></pre>
+<p>Note que los puntos críticos se encuentran exactamente en <span class="math inline">\(x = 1\)</span> (máximo) y <span class="math inline">\(x = 2\)</span> (mínimo). En estos puntos la función no crece ni decrece. Sin embargo, ¿podría el comando <code>eval_crec_fun</code> detectar esta situación? La respuesta es no, observe:</p>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb225-1" title="1"><span class="co"># La funcion crece o decrece en x = 1 (punto critico) ?</span></a>
+<a class="sourceLine" id="cb225-2" title="2"><span class="kw">eval_crec_fun</span>(<span class="dt">x =</span> <span class="dv">1</span>, <span class="dt">f =</span> f)</a></code></pre></div>
+<pre><code>[1] &quot;Creciente&quot;</code></pre>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb227-1" title="1"><span class="co"># La funcion crece o decrece en x = 2 (punto critico) ?</span></a>
+<a class="sourceLine" id="cb227-2" title="2"><span class="kw">eval_crec_fun</span>(<span class="dt">x =</span> <span class="dv">2</span>, <span class="dt">f =</span> f)</a></code></pre></div>
+<pre><code>[1] &quot;Creciente&quot;</code></pre>
+<p>Note que en ambos casos, indica <em>creciente</em>, cuando debería indicar algo como <em>ni crece ni decrece</em>. Esto ocurre porque el comando <code>eval_crec_fun</code> evalua la función, no exactamente en el punto <span class="math inline">\(x\)</span>, si no, en el intervalo (<code>x - e</code>, <code>x + e</code>) para el cual el punto <span class="math inline">\(x\)</span> está en la mitad. No obstante, si podemos solicitar valores cercanos al punto crítico, por ejemplo <span class="math inline">\(x = 1\)</span>, por debajo y por encima, y usuar un <code>e</code> muy pequeño para ver el cambio de creciente a decreciente (o viceversa). Observe:</p>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb229-1" title="1"><span class="co"># La funcion crece o decrece alrededor de x = 1 (punto critico) ?</span></a>
+<a class="sourceLine" id="cb229-2" title="2">res &lt;-<span class="st"> </span><span class="kw">eval_crec_fun</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="fl">0.9</span>, <span class="fl">0.95</span>, <span class="fl">0.99</span>, <span class="fl">1.01</span>, <span class="fl">1.05</span>, <span class="fl">1.1</span>), <span class="dt">f =</span> f, <span class="dt">e =</span> <span class="fl">0.001</span>) </a>
+<a class="sourceLine" id="cb229-3" title="3">res</a></code></pre></div>
+<pre><code>[1] &quot;Creciente&quot;   &quot;Creciente&quot;   &quot;Creciente&quot;   &quot;Decreciente&quot; &quot;Decreciente&quot;
+[6] &quot;Decreciente&quot;</code></pre>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb231-1" title="1"><span class="co"># Se entregan los resultados en un data.frame:</span></a>
+<a class="sourceLine" id="cb231-2" title="2"><span class="kw">data.frame</span>(</a>
+<a class="sourceLine" id="cb231-3" title="3">  <span class="dt">x =</span> <span class="kw">c</span>(<span class="fl">0.9</span>, <span class="fl">0.95</span>, <span class="fl">0.99</span>, <span class="fl">1.01</span>, <span class="fl">1.05</span>, <span class="fl">1.1</span>),</a>
+<a class="sourceLine" id="cb231-4" title="4">  <span class="dt">comportamiento =</span> res</a>
+<a class="sourceLine" id="cb231-5" title="5">)</a></code></pre></div>
+<pre><code>     x comportamiento
+1 0.90      Creciente
+2 0.95      Creciente
+3 0.99      Creciente
+4 1.01    Decreciente
+5 1.05    Decreciente
+6 1.10    Decreciente</code></pre>
+
+<style>
+.column-left{
+  display: inline-block;
+  width: 48%;
+  text-align: left;
+}
+.column-right{
+  display: inline-block;
+  width: 48%;
+  text-align: left;
+}
+</style>
+</div>
+</div>
+<!-- </div> -->
+<h3>Referencias</h3>
+<div id="refs" class="references">
+<div id="ref-stewart2015">
+<p>Stewart, J., &amp; Day, T. (2015). <em>Biocalculus: Calculus, probability, and statistics for the life sciences</em>. Cengage Learning.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="6-3-ejFun.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="7-Prog2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

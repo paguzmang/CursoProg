@@ -1,0 +1,240 @@
+
+
+# Aplicaciones en matemáticas {#appmat}
+
+La programación computacional es muy útil como alternativa para dar respuestas a problemas matemáticos cuya resolución analítica es compleja. Así, la programación permite desarrollar soluciones **numéricas** para resolver derivadas (y problemas de optimización), integrales, ecuaciones diferenciales o cálculos matriciales grandes, entro otros. En esta sección exploraremos algunos de estos escenarios. Para esto, descargue, instale y active las siguientes librerías:
+
+```{r}
+# Librerias requeridas en esta seccion
+library(pracma)       # rutinas de metodos numericos
+library(mosaic)
+library(mosaicCalc)   # Funciones para derivacion e integracion numerica
+```
+
+Se recomienda al estudiante repasar los conceptos matemáticos mencionados arriba (derivación, integración, etc.) antes de abordar esta sección.
+
+
+## Gráficos de funciones en varias variables {#xyz}
+
+### Introducción
+
+Las funciones (o modelos) en varias variables son comunes en ciencias biológicas y afines. Como ejemplo considere el **índice de viento-enfriamiento (_wind-chill index_)** el cual, de acuerdo @stewart2015,  es usado para medir la severidad del clima frío que ocurre en regiones invernales. Este índice ($W$) se mide en función de la temperatura ($t$) y la velocidad del viento ($v$); es decir, $W = f(t,v)$. La  Tabla \@ref(tab:indiceW) muestra los valores que toma $W$ para algunas combinaciones de $t$ y $v$.
+
+```{r indiceW, echo=F}
+# Se define la funcion de W:
+fw <- function(t,v) 13.2 + 0.62*t - 11.37*(v^0.16) + 0.4*t*(v^0.16)
+
+# Se definen los vectores para t, v:
+v <- seq(from =  10, to = 70, by = 10) 
+t <- seq(from = -30, to = 5,  by = 5) 
+
+# Se calcula W:
+W <- outer(X = t, Y = v, FUN = fw)
+rownames(W) <- paste0('$t = ', t, '$')
+colnames(W) <- paste0('$v = ', v, '$')
+
+# Se imprime la tabla:
+library(kableExtra)
+kable(W, format = 'html', booktabs = T, digits = 1, 
+      caption = 'Índice W de viento-enfriamiento para algunas combinaciones de tempertura ($t$, en $^{\\circ}$F) y velocidad del viento ($v$, en km/h). Tomado de @stewart2015.') %>%
+  kable_styling(bootstrap_options = c('bordered', 'responsive'), full_width = F, 
+                position = 'center')
+```
+
+La organización de los valores de $W$ en la Tabla \@ref(tab:indiceW) es adecuada en tanto que permite identificar como cambia $W$ cuando el viento permanece constante (en algún valor) y la temperatura cambia, o viceversa. Por ejemplo, a una temperatura constante de $t = -15\,^{\circ}$F, el índice $W$ se hace más negativo a medida que la velocidad del viento incrementa. 
+
+De modo más general, en la Tabla \@ref(tab:indiceW) se logra identificar que a temperaturas más bajas (p.e., $t = -25\,^{\circ}$F o $t = -30\,^{\circ}$F) y vientos con mayor velocidad (p.e., $v = 40$ o $v = 50$ km/h), el índice $W$ se vuelve más negativo, representando una mayor severidad del clima frío. 
+
+A partir de datos reales se ha podido estimar el siguiente modelo para el índice $W$ [@stewart2015, ejercicio 9.1-4]:
+
+\begin{equation}
+W = f(t,v) = 13.2 + 0.62t - 11.37v^{0.16} + 0.4tv^{0.16} 
+(\#eq:W) 
+\end{equation}
+
+Usando la función \@ref(eq:W) se calcularon los valores de $W$ de la Tabla \@ref(tab:indiceW). En **R**, para obtener los valores de $W$ de la Tabla \@ref(tab:indiceW) y, aún más, organizados de esa forma, se puede usar el comando `outer` el cual recibe tres argumentos, un vector `X`, un vector `Y` y una función `FUN` en la cual se evaluaran las combinaciones de valores dados en `X` e `Y`.
+
+```{r}
+# Se define la funcion de W:
+fw <- function(t,v) 13.2 + 0.62*t - 11.37*(v^0.16) + 0.4*t*(v^0.16)
+
+# Se definen los vectores para t, v:
+v <- seq(from =  10, to = 70, by = 10)  # 
+t <- seq(from = -30, to = 5,  by = 5)  
+
+# Se evalua la funcion en todas las combinaciones de (t, v) mediante
+# el comando outer:
+W <- outer(X = t, Y = v, FUN = fw)
+
+# Dado que la matriz W queda sin nombres de fila y de columna, se
+# adicionan nombres de fila y columna:
+rownames(W) <- paste0('t = ', t)
+colnames(W) <- paste0('v = ', v)
+
+# Se imprime el resultado
+round(W, 1)
+```
+
+
+### Tipos de gráficos para funciones de tres variables
+
+Para gráficar funciones del tipo $z = f(x,y)$ tres alternativas de uso común son:
+
+- **Gráficos en tres dimiensiones (3D)**  Este tipo de gráfico (Figuras \@ref(fig:graf3D)A  y \@ref(fig:graf3D)B) tiene la ventaja de que muestra directamente el patrón de la superficie que se genera por la combinación de los puntos $(x, y, z)$, pero tiene la desventaja que, dependiendo del angulo del gráfico, esconde algún lado del mismo. Por esto puede ser necesario mostrar el mismo gráfico en al menos dos angulos diferentes. Adicionalmente, la visualización mejora si se agrega un gradiente de colores a la superficie.
+
+- **Gráficos de contorno (2D)**: En este tipo de gráficos (Figura \@ref(fig:graf3D)C), los pares de valores $(x, y)$ se ubican en un plano cartesiano tradicional y los valores $z$ se muestran como curvas de nivel (o de contorno). El patrón de la superficie queda implicito en las curvas de nivel y toma un poco más de tiempo su lectura. No obstante, todo el patrón puede ser apreciado.
+
+- **Mapas de colores (2D)**: Este tipo de gráficos (Figura \@ref(fig:graf3D)D) es similar al de contorno, sólo que ahora el eje $z$ se muestra con una escala de colores que representaría el gradiente de valores que toma $z$. Los mapas de color se pueden complementar con las curvas de nivel del gráfico de contorno para enfatizar el patrón de la superficie.
+
+
+```{r graf3D, echo = F, fig.height=6, fig.width=6,  fig.cap='Tres alternativas para mostrar funciones del tipo $z = f(x,y)$. A y B: Gráfico 3D en dos angulos diferentes; C: Gráfico de contorno; D: Mapa de colores con curvas de nivel o contorno superimpuestas. La función graficada es $f(x,y) = x^2 + y^2.$'}
+source('lista_xyz.R')
+library(shape)
+xl <- c(-5,5)
+yl <- c(-5,5)
+d <- lista.xyz(f = 'x^2 + y^2', xlim = xl, ylim = yl, n = 30)
+micol <- drapecol(d$z)
+par(mfrow = c(2,2),  mar = c(2,2,2,0.5), cex = 0.9)
+persp(x = d, theta = 30, xlab = 'x', ylab = 'y', main = 'A', xlim = xl, ylim = yl, 
+      ticktype = 'detailed', col = micol, cex.axis = 0.7, cex.lab = 0.8)
+persp(x = d, theta = 30, xlab = 'x', ylab = 'y', main = 'B', xlim = xl, ylim = yl,
+      ticktype = 'detailed', phi = -30, col = micol, cex.axis = 0.7, cex.lab = 0.8)
+par(mar = c(3.5, 3.5, 2, 1), mgp = c(1.7,0.6,0))
+contour(x = d,  xlab = 'x', ylab = 'y', main = 'C', xlim = xl, ylim = yl)
+image(x = d,  xlab = 'x', ylab = 'y', main = 'D', xlim = xl, ylim = yl, col = femmecol())
+contour(x = d,  add = T)
+```
+
+
+### Opciones gráficas en **R** 
+
+Para gráficar funciones del tipo $z = f(x,y)$ en **R**, como aquella del índice $W$, existen varias alternativas, algunas de ellas son:
+
+- Comandos `persp`, `contour` e `image` del paquete **graphics** (este es el paquete base de **R** para realizar gráficos). Con estos comandos se realizaron los gráficos de la figura \@ref(fig:graf3D).
+- El comando `plotFun` del paquete **mosaic** produce, por defecto, un gráfico de contorno con colores, basado en el paquete **lattice**. Tiene pocas opciones de personalización a no ser que se conozca a profundidad el sistema **lattice** de graficación.
+- Comandos del paquete **rgl**, especialmente `persp3d`. Produce gráficos interactivos que se pueden girar con el ratón. La asignación de colores requiere algo de progrmación.
+- Comandos del paquete **scatterplot3d**.
+
+#### Comando `persp` (graphics)
+
+El comando `persp` (paquete **graphics**) permite gráficar superficies en el espacio $(x,y,z)$. Solicita tres argumentos, un vector `x`, un vector `y` y una matriz `z` que representa los resultados de evaluar la función en los pares (`x`, `y`). La matriz `z` es aquella generada por el comando `outer` mostrado arriba (Tabla \@ref(tab:indiceW)). La Figura \@ref(fig:gW) muestra este gráfico para la función del índice $W = f(t,v)$ con cuatro alternativas de color de la superficie.
+
+
+```{r gW, echo = F, fig.width=8, fig.height=8, fig.cap = "Gráficos 3D realizado con el comando `persp` para la función del índice $W = f(t,v)$. (A) Un sólo color (lightblue); (B) Paleta TealRose; (C) Paleta heat.colors; (D) Paleta femmecol (paquete **shape**)"}
+# Se carga libreria shape
+library(shape) # para comando drapecol, femmecol
+
+# Definicion de vectores, v, t, y matriz W:
+v <- seq(from =  10, to = 70, by = 2) 
+t <- seq(from = -30, to = 5,  by = 2)  
+W <- outer(X = t, Y = v, FUN = fw)
+
+# Se definen tres gradientes de color:
+colB <- hcl.colors(n = 16, palette = 'TealRose' , rev = F)
+colC <- heat.colors(n = 16)   
+colD <- femmecol()   # del paquete 'shape'
+
+# Se inicia grafico:
+par(mfrow = c(2,2), mar = c(3.5,3.5,2,0.5), mgp = c(2,1,0), cex = 0.9)
+persp(x = t, y = v, z = W, ticktype = 'detailed', theta = 35, 
+      phi = 6, col = 'lightblue', main = 'A. Un sólo color')
+persp(x = t, y = v, z = W, ticktype = 'detailed', theta = 35, 
+      phi = 6, col = drapecol(W, col = colB) , main = 'B. Paleta TealRose')
+persp(x = t, y = v, z = W, ticktype = 'detailed', theta = 35, 
+      phi = 6, col = drapecol(W, col = colC) , main = 'C. Paleta heat.colors')
+persp(x = t, y = v, z = W, ticktype = 'detailed', theta = 35, 
+      phi = 6, col = drapecol(W, col = colD) , main = 'D. Paleta femmecol')
+```
+
+El código que realiza la Figura \@ref(fig:gW) es el siguiente:
+
+```{r, fig.show='hide', ref.label = 'gW'}
+
+```
+
+Algunos aspectos a explicar del código anterior son:
+
+- Los comandos `hcl.colors` y `heat.colors` y `femmecol` crean un vector de colores en gradiente. El comando `hcl.colors` permite aplicar una `palette` cuyos opciones se pueden consultar con el comando `hcl.pals`. Sólo digite `hcl.pals()` para ver las paletas disponibles. Además, escriba `?hcl.colors` para ver la ayuda de estos comandos y encontrar otros simialres. El comando `femmecol` (del paquete **shape**) también crea un vector de colores en gradiente con la combinación darkblue-blue-cyan-yellow-red-darkred.
+
+- El comando `drapecol` (del paquete **shape**) recibe la matriz `z` que usamos en `persp` y un vector de colores (generados por un comando tal como `hcl.colors` o `femmecol`) y realiza la asignación adecuada de los colores a la superficie dibujada. Note que `drapecol` es un comando diseñado especialmente para usar dentro de `persp`.
+
+#### Comandos `contour` e `image` (graphics)
+
+Los comandos `contour` e `image` realizan un gráfico en el plano $(x, y)$ (2D), y los valores de $z$ (la altura) se dibujan como líneas de contorno o curvas de nivel con el comando `contour`, y con una escala de colores en el comando `image`. Sus argumentos principales son los mismos que para el comando `persp`. Las Figura \@ref(fig:gcW)A y \@ref(fig:gcW)B  muestran los gráficos resultantes de ambos comandos. Además, puede ser buena práctica complementar el mapa de color con las líneas de contorno como se dibuja en la gráfica \@ref(fig:gcW)B (ver también Figura \@ref(fig:graf3D)D).
+
+```{r gcW, echo = F, fig.width = 9, fig.cap = " (A) Gráfico 2D para la función del índice $W$. (A) Gráfico de contorno con el comando `contour`; (B) Mapa de calor con el comando `image` y con la paleta de color `femmecol`; (C) Mapa de color con curvas de contorno adicionadas."}
+par(mfrow = c(1,3), mar = c(3.5,3.5,2,0.5), mgp = c(2,1,0), cex = 0.9)
+# Grafico de contorno (A):
+contour(x = t, y = v, z = W, xlab = 't', ylab = 'v', labcex = 1.1, main = 'A', col = 'brown')
+
+# Mapa de calor (B):
+image(x = t, y = v, z = W, xlab = 't', ylab = 'v', main = 'B', col = colD)
+
+# Mapa de calor con lineas de contorno (C):
+image(x = t, y = v, z = W, xlab = 't', ylab = 'v', main = 'C', col = colD)
+contour(x = t, y = v, z = W, xlab = 't', ylab = 'v', labcex = 1.1, add = T, col = 'black')
+```
+
+El código **R** que realiza la Figura \@ref(fig:gcW) es el siguiente:
+
+```{r, fig.show='hide', ref.label='gcW'}
+
+```
+
+Note que el usuario puede seleccionar la escala de colores mediante el argumento `col` en el comando `image` de manera similar a como se construyó esta escala para las superficies en la Figura \@ref(fig:gW). Por otro lado, note que las Figuras \@ref(fig:gW)B y \@ref(fig:gW)C quedarían mejor diseñadas si se les asigna una leyenda que describa la escala del color. Agregar esta leyeda requiere código adicional que no será incluido en esta sección. No obstante, el comando `color.legend` (paquete **plotrix**) permite agregarla.
+
+#### `plotFun` (mosaic)
+
+El comando `plotFun` (paquete **mosaic**) permite gráficar superficies $(x, y, z)$ o gráficos de contorno $(x, y)$ desde funciones tipo $z = f(x,y)$. La Figura \@ref(fig:g2W) muestra la superficie obtenida con `plotFun`.
+
+```{r g2W, echo = F, fig.cap = 'Gráfico 3D con el comando `plotFun` (**mosaic**) de la función del $W = f(t,v)$'}
+plotFun(fw(t,v) ~ v + t, surface = T, t.lim = c(-35,5), v.lim = c(5,70), 
+        interactive = F)
+```
+
+El código para generar la Figura \@ref(fig:g2W) es el siguiente:
+
+```{r, ref.label='g2W', fig.show='hide'}
+
+```
+
+Haciendo el argumento `interactive = T` hace que en **Rstudio** se despliegue una ventana que permite rotar el gráfico, además de que los ejes aparecen de forma detallada. 
+
+Haciendo el argumento `surface = F`, el comando `plotFun` genera un gráfico de contorno (Figura \@ref(fig:g3W)A).
+
+```{r g3W, echo = F, fig.width = 6, fig.cap = 'Gráficos 2D con el comando `plotFun` (**mosaic**) de la función del $W = f(t,v)$. (A) Gráfico de contorno; (B) Mapa de calor con líneas de contorno.'}
+library(cowplot)
+plot_grid(
+  plotFun(fw(t,v) ~ t + v, surface = F, t.lim = c(-35,5), v.lim = c(5,70),
+        filled = F),
+    plotFun(fw(t,v) ~ t + v, surface = F, t.lim = c(-35,5), v.lim = c(5,70),
+        filled = T, col.regions = colD), ncol = 2, labels = c('A', 'B')
+)
+```
+
+Además, con el argumento `filled = T` se adicionan colores al gráfico (Figura \@ref(fig:g3W)B)  y con el argumento `col.regions` se puede controlar la escala de color de la misma forma que se hizo en el comando `persp` o `image`. El código de la Figura \@ref(fig:g3W) es el siguiente:
+
+```{r, echo = T, fig.show='hide', eval = F}
+# Grafico de contorno sin colores.
+plotFun(fw(t,v) ~ t + v, surface = F, t.lim = c(-35,5), v.lim = c(5,70),
+        filled = F)
+# Grafico de contorno con mapa de calor, usando la escala colD creada atras
+# con el comando femmecol
+plotFun(fw(t,v) ~ t + v, surface = F, t.lim = c(-35,5), v.lim = c(5,70),
+        filled = T, col.regions = colD)
+```
+
+
+#### Gráficos interactivos con el paquete `rgl`
+
+El paquete **rgl** tiene comandos exclusivos para realizar gráficas 3D interactivos. Uno de sus comandos, `persp3d`, permite gráficar directamente una función $z = f(x,y)$. El siguiente código gráfica la Figura \@ref(fig:g4W).
+
+```{r g4W, echo = -3, fig.width=5, fig.height=5, fig.cap = "Gráfico 3D interactivo generado con el comando `persp3d` (rgl) del índice $W = f(t,v)$", eval = T, include = T}
+library(rgl)
+persp3d(fw, xlim = c(-35,5), ylim = c(5,70), zlab = 'Índice W', col = 'green')
+rglwidget(elementId = "plot3drgl")
+```
+
+
+
+

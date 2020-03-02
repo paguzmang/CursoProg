@@ -10,9 +10,7 @@ language:
     eq: 'Ecuación '
   ui:
     edit: Edit
-    chapter_name: 'Cápitulo'
-    references_name: 'Referencias'
-
+    chapter_name: 'Capítulo '
 #rmd_files:
 #  [
 #    "index.Rmd",

@@ -1,14 +1,16 @@
 
 ```{r setup, include=FALSE}
 library(knitr)
-opts_chunk$set(fig.align = 'center', warning = F, message = F, comment = NULL, prompt=TRUE)
+opts_chunk$set(fig.align = 'center', warning = F, message = F, comment = NULL, prompt=F)
 ```
+
+# (PART) Iniciando con R y Rstudio {-} 
 
 # Generalidades {#general}
 
 En esta sección se revisan aspectos básicos sobre el software **R** tales como conocer sus ventanas, identificar el prompt y trabajar en la línea de comandos,  crear, manejar y guardar scripts básicos, establecer el director de trabajo, conocer el manejo de un comando, paquetes y su instalación, etc. 
 
-## Ventanas de R: Consola y script
+## Ventanas de R: Consola y script {#ventanasR}
 
 Cuando abriemos **R** aparece una ventana llamada la **consola**. En esta ventana escribimos ordenes para **R** y se imprimen los resultados de tales ordenes. Enseguida se describen algunos aspectos relevantes del trabajo en la consola.
 
@@ -68,7 +70,7 @@ Es recomendable iniciar cualquier script con la fecha, un título corto sobre el
 
 El archivo script se puede guardar con la extensión `.R` (recomendado) o con `.txt`.
 
-## Comandos
+## Comandos {#com}
 
 Un comando es un objeto que realiza una tarea específica. Algunos ejemplos son:
 
@@ -139,7 +141,7 @@ Podemos consultar los argumentos y su orden en la ayuda (sección: `arguments`) 
 ```
 
 
-## Paquetes o librerías
+## Paquetes o librerías {#paquetes}
 
 Un **paquete** (o librería) es un conjunto de comandos. Es decir los comandos se agrupan en paquetes. Cuando instalamos **R**, este ya viene con varios paquetes instalados tales como: `base`, `utils`, `stats`, `Matrix`, `Lattice`, etc. P.e., los comandos `seq`, `rep` y `sqrt` revisados atras son del paquete `base`. Sin embargo, en el CRAN (repositorios de **R**) existen más de 14000 paquetes disponibles.
 
@@ -196,7 +198,7 @@ library(ape)  # se activa el paquete 'ape' luego de haberlo instalado
 
 La instalación de un paquete sólo es necesario hacerla una vez, pero la activación del paquete se debe hacer cada vez que volvamos a abrir el **R** (y se requiera el paquete). El comando `search`, sin argumentos, imprime en la consola sólo los paquetes activados en una sesión.
 
-## Creando o guardando objetos
+## Creando o guardando objetos {#guardarObj}
 
 El **R** es un lenguaje orientado a objetos. Esto quiere decir que todo en **R** es un objeto que se puede manipular (crear, modificar, borrar) y que ocupa un espacio físico en la memoria de nuestro computador. Piense en un objeto como un **contenedor de información**.
 
@@ -243,7 +245,7 @@ seq(4, 12, 2) -> w
 
 - Utilice un nombre clave como `temp` (de temporal) para nombrer objetos que no tienen mucha importancia en su sesión y que muy posiblemente los va a borrar después.
 
-## Ambiente de trabajo
+## Ambiente de trabajo {#ambiente}
 
 El ambiente de trabajo (**environment** ó **workspace**) esta conformado por los objetos que el usuario crea o guarda en una sesión. P.e., en la sección anterior creamos tres objetos `x`, `w` y `z` de modo que estos tres objetos conforman nuestro ambiente de trabajo actual.
 
@@ -391,7 +393,7 @@ Si tenemos un archivo `.RData` con algunos objetos y queremos cargar este archiv
 
 > Atención: Si va a cargar un `.RData` que tiene objetos con el mismo nombre de objetos que ya tiene en su ambiente de trabajo, estos objetos serán reemplazados por los nuevos. Por tanto, tenga cuidado cuando realiza esta acción.
 
-## Ejercicios
+## Ejercicios {#ejercicios}
 
 1. Escriba el código **R** requerido para calcular $y$ en las siguientes funciones matemáticas:
 

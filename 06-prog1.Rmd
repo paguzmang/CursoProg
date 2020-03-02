@@ -1,0 +1,655 @@
+# (PART) Programación {-}
+
+# Conceptos básicos {#basicProg}
+
+Con la programación podemos organizar una secuencia de actividades que culminan en la ejecución de una tarea. Bla Bla Bla. En esta sección Bla Bla Bla
+
+## Tema 1 {#tema1}
+
+Bla Bla Bla
+
+## Funciones {#fun}
+
+El comando `function` en **R** le permite al usuario crear programas o rutinas para realizar tareas específicas. La sintanxis de `function` es:
+
+```{r, eval=FALSE, error=TRUE}
+aqui un ejemplo
+```
+
+
+
+
+En esta sintanxis, `mifun` es el nombre que el usuario desea darle a la función. Los objetos `x`, `y`, `...` son argumentos de entrada para la función. Entre llaves `{ }` se escriben líneas de código **R** donde se deben utilizar o transformar los objetos `x`, `y`, `...` en algún otro objeto o gráfico. La última expresión del código debe imprimir el resultado. La siguiente figura, tomada de @grolemund2014, muestra los aspectos relevantes al crear una función con `function`:
+
+
+```{r, echo = F, fig.width=8, fig.height=5, out.width = '80%', fig.cap='Aspectos relevantes de una función en **R** [@grolemund2014]'}
+library(knitr)
+include_graphics(path = 'images/partes_funcion_Grolemund_2014.png')
+```
+
+
+### Un ejemplo
+
+Suponga que se busca crear una función que _cuente_ el número valores "not a number" (`NaN`) contenidos en un vector. Una función que hace esto es la siguiente:
+
+```{r}
+# Se crea una funcion que cuente NaN's en un vector:
+cuenta_nan <- function(x){
+  donde.nan <- is.nan(x)   # se crea vector logico indicando donde hay NaN
+  sum( donde.nan )         # al sumar el vector logico, se cuenta los NaN
+}
+```
+
+Luego de creada, la función `cuenta_nan` se puede usar como cualquier otro comando de **R**. A continuación se crea un vector con algunos `NaN`'s para luego probar la nueva función:
+
+```{r}
+w <- c(45, 10, NaN, 34, NaN, NaN, -10)  # se crea vector con tres NaN's
+cuenta_nan(x = w)                       # se usa la funcion
+```
+
+### Controlando el objeto de salida
+
+Suponga ahora que usted quiere que la función `cuenta_nan` entregue dos números, el conteo de `NaN` y la proporción de `NaN` la cual se obtiene diviendo el conteo por el número total de elemento en el vector. Como se requiere entregar dos números, usted debe seleccionar en que objeto entregar estos dos números. Una primera opción puede ser entregar los dos números en **un vector** que tenga etiquetas:
+
+```{r}
+# Se crea una funcion que cuente NaN's en un vector
+# y que entregue un vector:
+cuenta_nan <- function(x){
+  donde.nan <- is.nan(x)     # se crea vector logico indicando donde hay NaN
+  n_nan <- sum( donde.nan )  # al sumar el vector logico, se cuenta los NaN
+  p_nan <- n_nan/length(x)   # se calcula la proporcion:
+  c(n = n_nan, p = p_nan)    # se entrgan las dos cantidades en un vector
+}
+
+# Se prueba la funcion:
+cuenta_nan(x = w)
+```
+
+Otra opción, quizas más conveniente por el tema del número de decimales, es entregar los dos números en **un data.frame** :
+
+```{r}
+# Se crea una funcion que cuente NaN's en un vector
+# y que entregue un data.frame:
+cuenta_nan <- function(x){
+  donde.nan <- is.nan(x)     # se crea vector logico indicando donde hay NaN
+  n_nan <- sum( donde.nan )  # al sumar el vector logico, se cuenta los NaN
+  p_nan <- n_nan/length(x)   # se calcula la proporcion:
+  data.frame(n = n_nan, p = p_nan)    # se entrgan las dos cantidades en un data.frame
+}
+
+# Se prueba la funcion:
+cuenta_nan(x = w)
+```
+
+### Argumentos por defecto
+
+Suponga ahora que usted quiere controlar el número de decimales con el cuál se imprime la proporción calculada. Para esto, se puede incluir un segundo argumento que controle este aspecto:
+
+```{r}
+# Se crea una funcion que cuente NaN's en un vector y que entregue un data.frame:
+cuenta_nan <- function(x, dec = 2){
+  donde.nan <- is.nan(x)     # se crea vector logico indicando donde hay NaN
+  n_nan <- sum( donde.nan )  # al sumar el vector logico, se cuenta los NaN
+  p_nan <- round(n_nan/length(x), dec)   # se calcula la proporcion
+  data.frame(n = n_nan, p = p_nan)       # se entrgan las dos cantidades en un data.frame
+}
+
+# Se prueba la funcion y se controla el nro. de decimales a 3:
+cuenta_nan(x = w, dec = 3)
+```
+
+Note que el 2do. argumento que se incluyó, `dec`, se le asignó el valor `2` desde la misma creación de la función. De esta forma **se establece un argumento por defecto**. Si el usuario no usa este argumento, la función asumiará un valor de `2` por defecto.
+
+```{r}
+# Se usa la funcion sin usar dec. Por defecto, se asumira dec = 2
+cuenta_nan(x = w)  
+```
+
+
+### Entregando texto variable
+
+Continuando con el mismo ejemplo, suponga que la salida de la función `cuenta_nan` debe entregar una cadena de texto que diga algo como: `La cantidad de NaN's es 3`. Los comandos `paste` y `paste0` permiten pegar elementos de diferente tipo (texto o números) y entregar una sóla cadena de texto. Aquí un ejemplo:
+
+```{r}
+# Se crea una funcion que cuente NaN's en un vector y que entregue texto:
+cuenta_nan <- function(x){
+  donde.nan <- is.nan(x)     # se crea vector logico indicando donde hay NaN
+  n_nan <- sum( donde.nan )  # al sumar el vector logico, se cuenta los NaN
+  paste0('La cantidad de NaN es: ', n_nan)
+}
+
+# Se prueba la funcion:
+cuenta_nan(x = w)
+```
+
+### Argumentos lógicos
+
+El comando `ifelse` permite entregar uno de dos resultados dependiendo de si una condición se cumple (`TRUE`) o no (`FALSE`). Aquí un ejemplo:
+
+```{r}
+# Ejemplo de uso del comando ifelse:
+x <- 5
+ifelse(x > 3, 'Gana', 'Pierde')
+```
+
+El comando `ifelse` es vectorizado, esto quiere decir que puede hacer su trabajo elemento por elemento dentro de un vector:
+
+```{r}
+# Ejemplo de uso del comando ifelse:
+x <- c(4.5, 1.2, 2.5, 3.1, 3.9)
+ifelse(x > 3, 'Gana', 'Pierde')
+```
+
+Volviendo a la función `cuenta_nan`, suponga que usted desea controlar, si la proporción de `NaN`'s se entrega como una fracción entre 0 y 1 o se entrega como porcentaje, es decir, entre 0 y 100.  Para hacer esto se puede agregar un argumento lógico a la función que determine si se hace un cálculo u otro:
+
+```{r}
+# Se crea una funcion que cuente NaN's en un vector y que entregue un data.frame:
+cuenta_nan <- function(x, dec = 2, pct = F){
+  donde.nan <- is.nan(x)     # se crea vector logico indicando donde hay NaN
+  n_nan <- sum( donde.nan )  # al sumar el vector logico, se cuenta los NaN
+  p_nan <- round(n_nan/length(x), dec)   # se calcula la proporcion
+  p_nan <- ifelse(pct, p_nan*100, p_nan) # Porcentaje o fraccion?
+  data.frame(n = n_nan, p = p_nan)       # se entrgan las dos cantidades en un data.frame
+}
+
+# Se prueba la funcion, se controla el nro. de decimales a 3
+# y que el calculo de la proporcion se entrega como porcentaje:
+cuenta_nan(x = w, dec = 3, pct = T)
+```
+
+### Documentación de la función
+
+Es importante que la función incluya comentarios que le ayuden a entender  a cualquier usuario como se usa. Aspectos que esta documentación debe incluir son:
+
+- **Fecha o versión y autor**: Fecha de creación o algo alusivo a su momento de creación.
+- **Descripción**: Una breve descripción de lo que hace la función o para que sirve.
+- **Argumentos**:  Cuales son sus argumentos y que tipo de valor (p.e., vector, matriz, data.frame, una fecha, un valor lógico, etc.) toma cada uno.
+- **Valor**: Que tipo de objeto entrega la función y cual es o como se organiza su contenido.
+- **Ejemplo de uso**: Un ejemplo para ayudar al usuario a utilizar la función.
+
+Enseguida se incluyen estos cinco aspectos para la función `cuenta_nan`:
+
+
+```{r}
+# Se crea una funcion que cuente NaN's en un vector y que entregue un data.frame:
+cuenta_nan <- function(x, dec = 2, pct = F){
+  # Version: 3.0 | fecha: sep 2019 | Autor: paguzmang
+  # Descripcion:
+  # Esta funcion cuenta el nro. de NaN en un vector. Entrega tanto
+  # el nro. de NaN's como su proporcion.
+  
+  # Argumentos:
+  # x = vector que se desea evaluar.
+  # dec = nro. de decimales para reportar la proporcion de NaN.
+  #       Por defecto 2 decimales.
+  # pct = Logico. Indica si la proporcion de NaN's se reportara como
+  #       fraccion entre 0 y 1 (FALSE, por defecto) o 
+  #       como porcentaje (entre 0 y 100) (TRUE).
+  
+  # Codigo:
+  donde.nan <- is.nan(x)     # se crea vector logico indicando donde hay NaN
+  n_nan <- sum( donde.nan )  # al sumar el vector logico, se cuenta los NaN
+  p_nan <- round(n_nan/length(x), dec)   # se calcula la proporcion
+  p_nan <- ifelse(pct, p_nan*100, p_nan) # Porcentaje o fraccion?
+  data.frame(n = n_nan, p = p_nan)       # se entrgan las dos cantidades en un data.frame
+  
+  # Valor:
+  # la funcion entrega un data.frame con una fila y dos columnas
+  # que incluyen el nro. de NaN's y la proporcion NaN's (o porcentaje)
+  
+  # Ejemplo de uso:
+  # datos <- c(10, 23, NaN, -2, 4, NaN)
+  # cuenta_nan(x = datos, pct = T)
+}
+```
+
+Es cierto que documentar un programa puede resultar tedioso pero es una tarea fundamental de cualquier programador y algoritmo. Si las funciones que usted esta creando serán usadas de manera rutunaria por muchos usuarios o esta creando un paquete o programa grande (conjunto de varias rutinas), entonces la documentación descrita arriba es _obligatoria_. No obstante, muchas veces creamos funciones para un uso inmediato y por una sóla persona (usted mismo); en este caso, podríamos omitir la mayoría de esta documentación. Como recomendación debería siempre incluir: la fecha de creación, la descripción de la función y de los argumentos.
+
+### Compartiendo la función
+
+Algunas opciones para compartir su función o funciones son:
+
+- Como un archivo `.RData`: Dado que una función es un objeto más, usted puede guardar (con el comando `save`) su función como un archivo `.RData` y solicitar al usuario que cargue su función usando el comando `load`.
+
+- Como un script `.R`: También puede poner todo el código de su función en un script (archivo `.R`) y compartir este archivo. En este caso, el usuario puede cargar su función usando el comando `source`. Este comando toma como primer argumento (y el único obligatorio) el nombre o ruta al archivo `.R`. Esta ruta puede ser local (en el computador) o puede ser una dirección `url`. Esta opción es interesante puesto que usted puede alojar su archivo `.R` en algún servidor y proveer la dirección del archivo en internet para que cualquier usuario pueda cargar su función.
+
+- Paquete: Un paquete es un conjunto de funciones (o comandos). Usted puede crear un paquete y utilizar las opciones que tiene **R** para publicar paquetes. Otros lenguajes de programación, tales como **Python**, tienen también la opción de juntar varias funciones en un paquete y realizar su debida publicación. Este curso no incluye la creación de paquetes.
+
+A continuación se muestran ejemplos de las dos primeras opciones:
+
+#### Compartiendo la función en un `.RData`
+
+Primero debemos guardar la función en un archivo `.RData`. Esto se puede hacer con el comando `save`. Suponiendo que la función `cuenta_nan` ya esta creada en el espacio de trabajo:
+
+```{r}
+# Se guarda la funcion en un archivo .RData del mismo nombre:
+save(cuenta_nan, file = 'cuenta_nan.RData')
+```
+
+El archivo `cuenta_nan.RData` quedo guardado en el directorio de trabajo actual. Ahora suponga que usted compartio este archivo con otro usuario, p.e., por correo electrónico. Dicho usuario debe poner este archivo en su directorio de trabajo y utilizar el comando `load` para cargar la función:
+
+```{r, include=F}
+rm(list = ls())
+```
+
+```{r}
+# Se verifica que objetos tiene el directorio de trabajo actual:
+ls()
+
+# Se carga la funcion:
+load('cuenta_nan.RData')
+
+# Se verifica que objetos tiene el directorio de trabajo
+# despuede correr load:
+ls()
+
+# Se usa la funcion:
+w <- c(45, NaN, 56, NaN)
+cuenta_nan(x = w)
+```
+
+
+#### Compartiendo la función en un script `.R`
+
+##### Cargando el archivo localmente
+
+Primero debemos poner todo el código de la función en un archivo `.R`. Esto se puede hacer copiando y pegando el código en un nuevo archivo `.R`. Se recomienda nombrar este nuevo archivo con el mismo nombre de la función o uno parecido. Para este ejemplo supongamos que el archivo se nombró como `cuenta_nan.R` y que usted compartió este archivo con otro usuario, p.e., por correo eletrónico. Este nuevo usuario debe poner el archivo `cuenta_nan.R` en su directorio de trabajo y cargar la función con el comando `source`:
+
+
+```{r, include=F}
+rm(list = ls())  # se borra el directorio de trabajo
+```
+
+```{r}
+# Se verifica que objetos tiene el directorio de trabajo actual:
+ls()
+
+# Se carga la funcion:
+source('cuenta_nan.R')
+
+# Se verifica que objetos tiene el directorio de trabajo
+# despuede correr source:
+ls()
+
+# Se usa la funcion:
+w <- c(45, NaN, 56, NaN)
+cuenta_nan(x = w)
+```
+
+##### Cargando el archivo desde internet:
+
+Usted también puede alojar el archivo `.R` en algún servidor o repositorio de internet. Por ejemplo, el sitio [github](https://github.com/) le permite tener una cuenta y crear repositorios donde usted puede alojar archivos que eventualmente puede compartir. Para este ejemplo, el archivo `cuenta_nan.R` se subió a un repositorio de github y se puede acceder a él desde siguiente enlace: <https://raw.githubusercontent.com/paguzmang/funciones/master/cuenta_nan.R>. Conociendo esto, el usuario puede cargar su función directamente desde este repositorio en internet usando el comando `source`:
+
+```{r, include=F}
+rm(list = ls())  # se borra el directorio de trabajo
+```
+
+```{r}
+# Se verifica que objetos tiene el directorio de trabajo actual:
+ls()
+
+# Se carga la funcion (requiere conexion a internet):
+source('https://raw.githubusercontent.com/paguzmang/funciones/master/cuenta_nan.R')
+
+# Se verifica que objetos tiene el directorio de trabajo
+# despuede correr source:
+ls()
+
+# Se usa la funcion:
+w <- c(45, NaN, 56, NaN)
+cuenta_nan(x = w)
+```
+
+
+
+
+
+## Ejercicios {#ejFun}
+
+### Ej. 1. Número de datos perdidos
+
+Cree una función que entregue el número de datos perdidos existentes en un vector de números.
+
+### Ej. 2. Factura con IVA.
+
+Cree una función que entregue el valor total que un cliente debe pagar por un producto discriminando el IVA (impuesto de valor agregado) y el valor específico del producto, usando tan sólo el valor específico del producto. Asuma un IVA de 16% por defecto, pero permita que se le pueda especificar otro valor del IVA. La función debe entregar un `data.frame` con tres filas: Producto, IVA y Total de la siguiente forma:
+
+```{r, echo = F}
+data.frame(
+  Item  = c('Producto', 'IVA (16%)', 'Total'),
+  Valor = c(45560, 0.16*45560, 45560 + 0.16*45560)
+)
+```
+
+### Ej. 3. Área bajo la curva
+
+El área bajo la curva de una función matemática tiene aplicaciones importantes en diferentes ramas de la ciencia. El archivo [`area_xy.R`](https://raw.githubusercontent.com/paguzmang/funciones/master/area_xy.R) contiene la función `area_xy` para **R**. Esta función cálcula las coordenadas $(x, y)$ del polígono que se forma por el área bajo la curva de alguna función $f(x)$ en cierto intervalo $x_0 < x < x_1$. Estas coordenadas pueden ser usadas directamente por el comando `polygon` (paquete: `graphics`) de **R** para agregar al gráfico de una función el área bajo la curva. A continuación un ejemplo de lo que la función `area_xy` puede hacer. La siguiente figura muestra la curva de una función de decaimiento exponencial con el área bajo la curva sombreada en el intervalo $0.1 < x < 0.6$. La función `area_xy` permite agregar el polígono del área rapidamente. 
+```{r, echo = F, fig.width=3, fig.height=3}
+source('area_xy.R')
+f <- function(x) exp(-5*x)  # se define la funcion
+rp <- area_xy(x0 = 0.1, x1 = 0.6, fun = f)  # se aplica area_xy
+
+par(mar = c(3.5, 3.5, 1,1), mgp = c(2,1,0), cex = 0.9)
+curve(f, from = 0, to = 1.5, lwd = 2, col = 'blue')
+polygon(rp, border = NA, col = 'grey70')
+```
+Descargue el archivo [`area_xy.R`](https://raw.githubusercontent.com/paguzmang/funciones/master/area_xy.R), carguelo a su espacio de trabajo, explore el contenido del archivo y realice las siguientes actividades:
+
+```{r, eval = F}
+# Tambien puede cargar la funcion a su espacio de trabajo usando:
+source('https://raw.githubusercontent.com/paguzmang/funciones/master/area_xy.R')
+```
+  a. ¿Qué tipo de objeto entrega la función `area_xy`?
+  b. ¿Qué papel juega el argumento `a` en la función `area_xy`?
+  c. Use la función `area_xy` para dibujar el área bajo la curva de la función: 
+  $$f(x) = -x(x-21)(x+1)$$
+    en el intervalo $-10<x<5$, y otra en el intervalo $15<x<25$.
+    ```{r, echo = F, fig.width=3, fig.height=3}
+f <- function(x) -x*(x-21)*(x+1)  # se define la funcion
+rp1 <- area_xy(x0 = -10, x1 = 5, fun = f)  # se aplica area_xy
+rp2 <- area_xy(x0 = 15, x1 = 25, fun = f)  # se aplica area_xy
+
+par(mar = c(3.5, 3.5, 1,1), mgp = c(2,1,0), cex = 0.9)
+curve(f, from = -12, to = 25, lwd = 2, col = 'blue')
+polygon(rp1, border = NA, col = 'skyblue')
+polygon(rp2, border = NA, col = 'grey70')
+abline(h = 0, v= 0, lty = 2)
+```
+    d. Use la función `area_xy` para dibujar el área bajo la curva de la función: $$f(x) = x - 2\ln x$$ en el intervalo: $1<x<5$.
+    ```{r, echo = F, fig.show = 'hide', fig.width=3, fig.height=3}
+f <- function(x) x - 2*log(x)  # se define la funcion
+rp1 <- area_xy(x0 = 1, x1 = 5, fun = f)  # se aplica area_xy
+
+par(mar = c(3.5, 3.5, 1,1), mgp = c(2,1,0), cex = 0.9)
+curve(f, from = 0, to = 10, lwd = 2, col = 'blue')
+polygon(rp1, border = NA, col = 'grey70')
+```
+
+### Ej. 4. Revisando la salida de una función
+
+Modifique la función `area_xy` para que entregue un `data.frame` en lugar de  una `list`. Luego pruebe la función con el comando `polygon` para verificar si aún trabaja.
+
+### Ej. 5. El vertice de una parábola
+
+La ecuación de una parábola tiene la forma: $f(x) = ax^2 + bx + c$ (con $a \neq 0$). Una parábola tiene un vertice en la coordenada:$$\left[x = \dfrac{-b}{2a}, \quad y = f\left(\dfrac{-b}{2a}\right) \right]$$ El vertice de una parábola es su punto más alto (si abre hacía abajo) o más bajo (si abre hacía arriba).
+
+  a. Cree una función llamada `vertice_parabola` que produzca una lista con las coordenadas $(x, y)$ del vertice de una parábola cualquiera $f(x)$. 
+  b. Use la función `vertice_parabola` para marcar con un punto el vertice de la parábola $f(x) = x^2 + 2x + 4$. Utilice `curve` para gráficar la parábola y `points` para agregar el punto-vertice.
+    
+    
+### Ej. 6. Encontrando mínimos o máximos
+
+Encontrar el **mínimo** o el **máximo** de una función matemática tiene aplicación en procesos de optimización. Los mínimos y máximos corresponden a valores críticos de una función y tradicionalmente se pueden determinar usando derivación.  No obstante, podemos crear rutinas o programas que encuentren aproximaciones a los mínimos y máximos de forma manual y de manera localizada. En **R**, por ejemplo, la funciones `which.min` y `which.max` entregan la _posición_ del mínimo y del máximo de un vector de números. El siguiente código **R** de cuatro líneas, define una función $f$ (la misma del ejercicio anterior) y luego intenta detectar las coordenadas $(x, y)$ donde ocurre el mínimo de $f$ en el intervalo $-2 < x < 1$:
+```{r, results='hide'}
+f <- function(x) x^2 + 2*x + 4          # 1. se define la funcion
+x <- seq(-2, 1, 0.01)                   # 2.
+pos.min <- which.min(f(x))              # 3.
+c(x = x[pos.min], y = f(x[pos.min]) )   # 4.
+```
+  a. Explore el código, entienda y describa que se hace en las líneas 2, 3 y 4 del código.
+  b. Convierta el código en un comando que reciba la función $f$ (cualquiera) y un intervalo de valores en $x$, y por otro lado, entregue un `data.frame` con las coordenadas $(x, y)$ donde ocurre el mínimo de $f$.
+  c. Pruebe su comando encontrando el mínimo de la función $f(x) = x(x -1)(x-2)$ en el intervalo $0 < x < 2$. Utilice `curve` para gráficar la función en el intervalo $-2 < x < 3$, y `points` para agregar el punto encontrado. También adicione el área bajo la curva en el intervalo $0 < x < 2$ empleando la función `area_xy` del ejercicio (3).
+    
+### Ej. 7. Aplicación de una parábola y maximización
+    
+Polinomios se usan con frecuencia para modelar fenómenos en biología. Por ejemplo, los pinzones zebra ([_Taeniopygia guttata_](https://es.wikipedia.org/wiki/Taeniopygia_guttata)), una especie de ave de la familia 	Estrildidae, mueven sus alas rapidamente como si estuvieran aplaudiendo, para ganar energia dinámica y luego pliegan sus alas hacía el cuerpo por cierto período de tiempo y vuelan como un proyectil. En un estudio se registró el desplazamiento vertical que toma un individuo típico de esta especie en función del tiempo, y se ajustó el modelo $$y = -4.3958x^2 + 1.5355x + 0.0344$$ donde $y$ representa el desplazmiento vertical (en metros) y $x$ indica el tiempo (en segundos) desde el inicio ($x = 0$ seg) del movimiento de sus alas. El modelo trabaja para el intervalo $0 < x < 0.4$ seg.
+
+  a. Utilice **R** para construir una función para el modelo planteado y uselo para encontrar la altura alcanzada a los 0.10, 0.15 y 0.20 segundos de iniciado el movimiento de las alas. Muestre los resultados en un `data.frame` con columnas $x$, $y$.
+  b. Use `curve` para graficar el modelo. Etiquete los ejes de forma adecuada.
+  c. En el gráfico del ejercicio (b), intente ubicar "al ojo" el tiempo donde se alcanza el desplazamiento _máximo_. Utilice `abline` para trazar una línea vertical en dicho tiempo.
+  d. Use el comando `vertice_parabola` del ejercicio (5) para encontrar el tiempo que maximiza el desplazamiento vertical. 
+  e. Modifique y utilice el comando creado en el ejercicio (6b) para encontrar el tiempo que maximiza el desplazamiento vertical.
+    
+```{r, echo = F}
+eval_crec_fun <- function(x, f, e = 0.1){
+  y0 <- f(x-e)
+  y1 <- f(x+e)
+  ifelse(y1 > y0, 'Creciente', 'Decreciente')
+}
+``` 
+
+### Ej. 8. ¿Creciente o decreciente?
+    
+Construya un comando llamado `eval_crec_fun` que evalue si una función matemática cualquiera $f(x)$ es _creciente_ o _decreciente_ en cierto valor $x = x_m$, donde $x_m$ es un número tal que $x_m -\varepsilon < x_m < x_m + \varepsilon$, y $\varepsilon$ es una cantidad pequeña entrada por el usuario al comando. Suponiendo que el comando `eval_crec_fun` ya fue creado, a continuación se muestra un ejemplo de su uso y del resultado: 
+```{r}
+# (1) Se define la funcion matematica a evaluar (la misma del ejercicio 3)
+mifun <- function(x) {-x*(x-21)*(x+1)}
+
+# (2) Se pregunta si es creciente o decreciente en x = 3:
+eval_crec_fun(x = 3, f = mifun, e = 0.01)
+
+# (3) Se pregunta si es creciente o decreciente en x = 20:
+eval_crec_fun(x = 20, f = mifun, e = 0.01)
+```
+Note que el nuevo comando `eval_crec_fun` **recibe** tres argumentos: `x`, el valor de $x$ donde se quiere hacer la evaluación, `f`, el nombre de la función $f(x)$, y `e`, la cantidad pequeña $\varepsilon$. Por otro lado, el comando `eval_crec_fun` **entrega** o produce como **salida** una cadena de texto indicando si la función `f` es `Creciente` o `Decreciente` en `x`. Usted puede verificar el resultado revisando la gráfica de $f(x)$. Para poder construir el comando  `eval_crec_fun` repase sus notas de los cursos de matemáticas sobre como definir si una función es creciente o decreciente. (_Ayuda_: Use el comando `ifelse`). Luego de construido su comando, realice las siguientes actividades:
+
+  a. Use el comando para evaluar si $f(x) = 3x^5 - 25x^3 + 60x$ es creciente o no en $x = 0.5$, $x = 1.5$,  y $x = 2.25$. Gráfique la función y verifique los hallazgos obtenidos con su comando `eval_crec_fun`.
+  b. Reflexione sobre cuál es el papel del argumento `e` = $\varepsilon$.
+    
+    
+## Solución a ejercicios seleccionados
+
+### Ej. 2. Factura con IVA
+
+El siguiente código crea la función o comando solicitado:
+
+```{r, echo = T}
+factura <- function(prod, iva = 0.16){
+  # Argumentos:
+  # prod = precio especifico del producto (sin el iva)
+  # iva  = fraccion (entre 0 y 1) que indica el iva aplicado. 
+  #        Por defecto, 0.16
+  
+  # Codigo:
+  iva2 <- round(iva*100, 0)   # se da formato al iva para presentacion
+  vp   <- prod                # valor del producto
+  ivap <- prod*iva            # valor del iva asociado al producto
+  vpt  <- vp + ivap           # valor total a pagar
+  
+  # Se crea el data.frame de salida.
+  data.frame(
+    Item  = c('Producto', paste0('IVA', ' (', iva2, '%', ')' ), 'Total'),
+    Valor = c(vp, ivap, vpt)
+  )
+  
+  # Valor
+  # se entrega un data.frame con dos filas y dos columnas.
+}
+```
+
+
+Ahora se prueba la función. Por ejemplo, supongamos un producto con un valor de $13000 y con IVA del 16%, entonces:
+
+```{r}
+factura(prod = 13000)   # iva = 0.16 esta por defecto.
+```
+
+Con el mismo valor del producto, si el IVA fuera 19%, entonces (note que como cambia la impresión del IVA en la tabla de salida):
+
+```{r}
+factura(prod = 13000, iva = 0.19)
+```
+
+
+### Ej. 6. Encontrando mínimos o máximos
+
+El siguiente código crea la función o comando solicitado:
+
+```{r}
+min_fun <- function(x0, x1, f, e = 0.01){
+  # argumentos:
+  # x0 = valor inicial del intervalo de x donde se desea buscar el minimo
+  # x1 = valor final del intervalo de x donde se desea buscar el minimo
+  # f = nombre de la funcion matematica a evaluar.
+  # e = tamano de paso para buscar el minimo. Por defecto 0.01. Entre mas pequeno,
+  #     mas exacto es a la hora de reportar el minimo.
+  
+  # Codigo
+  x <- seq(x0, x1, e)
+  pos.min <- which.min(f(x))
+  data.frame(x = x[pos.min], y = f(x[pos.min]) )
+  
+  # Valor:
+  # entrega un data.frame de una fila y dos columnas
+}
+```
+
+Ahora se prueba el comando generado con la función matemática $f(x) = x(x -1)(x-2)$ en el intervalo $0 < x < 2$:
+
+```{r}
+# se crea la funcion matematica
+mifun <- function(x) x*(x -1)*(x-2)     
+
+# se determina el minimo en el intervalo (0,2)
+res_min <- min_fun(x0 = 0, x1 = 2, f = mifun)  
+res_min
+```
+
+Así, el mínimo de la función $f(x) = x(x -1)(x-2)$ en el intervalo $0 < x < 2$ se halla en $x = `r res_min[1, 1]`$. Esto se puede verificar si se gráfica la función:
+
+
+```{r, fig.width=3, fig.height=3}
+par(mar = c(3.5, 3.5, 1,1), mgp = c(2,1,0), cex = 0.8)  # ventana grafica
+curve(mifun, from = -0.5, to = 2.5)                     # curva ppal
+abline(h = 0, v = 0, lty = 2)                           # lineas de referencia en (0,0)
+points(res_min, pch = 19, col = 'red', cex = 1.5)       # se agrega punto minimo
+abline(v = res_min$x, lty = 3, col = 'red')             # se agrega linea de referencia en min
+axis(side = 1, at = c(0,2),
+     labels = NA, col = 'blue', lwd = 3)                # se marca el eje en el intervalo (0,2)
+```
+
+Si se busca mayor exactitud para el valor de $x$ donde se halla el mínimo, es decir, mejorar la aproximación, entonces disminuya la cantidad `e`:
+
+```{r}
+# se determina el minimo en el intervalo (0,2)
+res_min <- min_fun(x0 = 0, x1 = 2, f = mifun, e = 0.0001)  
+res_min
+```
+    
+Ahora, el mínimo se reporta en $x = `r res_min$x`$.
+
+Por otro lado, podemos generalizar el comando `min_fun` para que encuentre puntos mínimos o máximos, es decir, puntos críticos en general. Esto se puede hacer agregando un argumento lógico que le índique a la función si se busca un mínimo o un máximo:
+
+```{r}
+critico_fun <- function(x0, x1, f, min = T, e = 0.01){
+  # argumentos:
+  # x0 = valor inicial del intervalo de x donde se desea buscar el minimo o maximo
+  # x1 = valor final del intervalo de x donde se desea buscar el minimo o maximo
+  # f = nombre de la funcion matematica a evaluar.
+  # min = valor logico que indica si se quiere buscar un minimo (TRUE, por defecto)
+  #       o un maximo (FALSE)
+  # e = tamano de paso para buscar el minimo o maximo. Por defecto 0.01. Entre mas pequeno,
+  #     mas exacto es a la hora de reportar el resultado.
+  
+  # Codigo
+  x <- seq(x0, x1, e)
+  pos.critico <- ifelse(min, which.min(f(x)), which.max(f(x)) )
+  data.frame(x = x[pos.critico], y = f(x[pos.critico]) )
+  
+  # Valor:
+  # entrega un data.frame de una fila y dos columnas
+}
+```
+
+Ver un ejemplo de la aplicación de este nuevo comando en la solución del ejercicio 8.
+    
+### Ej. 8. ¿Creciente o decreciente?
+
+De acuerdo a la definición de la sección 1.1 del libro de @stewart2015,  una función, $f(x)$, es creciente en un intervalo $[a, b]$, si $f(b) > f(a)$ siempre que $b > a$. El siguiente código crea el comando solicitado:
+
+```{r, echo = T}
+eval_crec_fun <- function(x, f, e = 0.01){
+  # Argumentos:
+  # x = punto medio en eje x alrededor del cual se busca evaluar si 
+  #     la funcion f es creciente o decreciente.
+  # f = nombre de la funcion matematica a evaluar. Debe recibir como
+  #     unico argumento la x
+  # e = cantidad pequena para generar el intervalo simetrico 
+  #     alrededor del punto en x donde se realizara la evaluacion. 
+  
+  # Codigo:
+  y0 <- f(x-e)
+  y1 <- f(x+e)
+  ifelse(y1 > y0, 'Creciente', 'Decreciente')
+  
+  # Valor:
+  # Entrega una cadena de texto indicando 'Creciente'
+  # o 'Decreciente'. Si y1 == y0, entrega 'Decreciente'.
+  # Cuando y1 == y0 es porque x es un punto critico, de modo
+  # que ahi, la funcion no crece o decrece. Esto es algo 
+  # que esta funcion no podria detectar.
+}
+``` 
+
+Ahora se prueba el comando `eval_crec_fun` con la función $f(x) = 3x^5 - 25x^3 + 60x$ en $x = 0.5$, $x = 1.5$,  y $x = 2.25$:
+
+```{r}
+# Se define la funcion a evaluar:
+f <- function(x) 3*x^5 - 25*x^3 + 60*x
+
+# Se evalua el crecimiento:
+eval_crec_fun(x = 0.5, f = f)
+eval_crec_fun(x = 1.5, f = f)
+eval_crec_fun(x = 2.25, f = f)
+```
+
+Como esta configurada, el comando `eval_crec_fun` permite recibir un vector de números para hacer una evaluación simultanea de varios $x$:
+
+```{r}
+xm <- c(0.5, 1.5, 2.25)
+res <- eval_crec_fun(x = xm, f = f)
+res
+```
+
+Ahora graficamos $f(x)$ para validar el resultado obtenido:
+
+```{r, fig.width=4, fig.height=3}
+par(mar = c(3.5, 3.5, 1,1), mgp = c(2,1,0), cex = 0.8)  # ventana grafica
+curve(f, from = -0.5, to = 2.5)                         # curva ppal
+abline(h = 0, v = 0, lty = 2)                           # lineas de referencia en (0,0)
+segments(x0 = xm, x1 = xm, y0 = -50,  
+         y1 = f(xm),  lty = 3, col = 'red')             # Segmentos de referencia
+points(x = xm, y = f(xm), pch = 19, col = 'red')        # puntos evaluados
+text(x = xm, y = f(xm), labels = res, pos = 3 )         # Se agrega texto resultante
+```
+
+Note que $f(x)$ parece tener un máximo cercano a $x = 1$ y un mínimo cercano a $x = 2$. Para verificar esto, podemos usar el comando `critico_fun` desarrollado en la solución del ejercicio (8):
+
+```{r}
+# Se busca un maximo alrededor de x = 1
+critico_fun(x0 = 0.5, x1 = 1.5, f = f, min = F)  
+
+# Se busca un minimo alrededor de x = 2
+critico_fun(x0 = 1.5, x1 = 2.5, f = f, min = T)  
+```
+
+Note que los puntos críticos se encuentran exactamente en $x = 1$ (máximo) y $x = 2$ (mínimo). En estos puntos la función no crece ni decrece. Sin embargo, ¿podría el comando `eval_crec_fun` detectar esta situación? La respuesta es no, observe:
+
+```{r}
+# La funcion crece o decrece en x = 1 (punto critico) ?
+eval_crec_fun(x = 1, f = f)
+
+# La funcion crece o decrece en x = 2 (punto critico) ?
+eval_crec_fun(x = 2, f = f)
+```
+
+Note que en ambos casos, indica _creciente_, cuando debería indicar algo como _ni crece ni decrece_. Esto ocurre porque el comando `eval_crec_fun` evalua la función, no exactamente en el punto $x$, si no, en el intervalo (`x - e`, `x + e`) para el cual el punto $x$ está en la mitad. No obstante, si podemos solicitar valores cercanos al punto crítico, por ejemplo $x = 1$, por debajo y por encima, y usuar un `e` muy pequeño para ver el cambio de creciente a decreciente (o viceversa). Observe:
+
+
+```{r}
+# La funcion crece o decrece alrededor de x = 1 (punto critico) ?
+res <- eval_crec_fun(x = c(0.9, 0.95, 0.99, 1.01, 1.05, 1.1), f = f, e = 0.001) 
+res
+
+# Se entregan los resultados en un data.frame:
+data.frame(
+  x = c(0.9, 0.95, 0.99, 1.01, 1.05, 1.1),
+  comportamiento = res
+)
+```
+
+
+
+
+
+

@@ -1,9 +1,10 @@
+# (PART) Objetos, datos y gráficos {-} 
 
-# Vectores y tipos de datos
+# Vectores y tipos de datos {#vecTiposDatos}
 
-En este archivo introducmos el **vector**, el objeto más básico que tiene el **R** y revisaremos los tipos de datos que podemos almacenar o guardar en un vector así como también un conjunto de expresiones lógicas que nos permitirán manipular vectores.
+En este archivo introducimos el **vector**, el _objeto_ más básico que tiene **R** y revisaremos los tipos de datos que podemos almacenar o guardar en un vector así como también un conjunto de expresiones lógicas que nos permitirán manipular vectores.
 
-## Vectores
+## Vectores {#vectores}
 
 El **R** tiene diferentes tipos de objetos que permiten almacenar información. El **vector** es el objeto más sencillo. Otros tipos son las matrices, los data.frame o las listas.
 
@@ -41,7 +42,6 @@ z <- c(x, w, 32)   # se juntan x, w y el 32 en otro vector
 z                  # mire el resultados
 ```
 
-#### Ejercicio
 
 El siguiente código crea dos vectores, `f1` y `f2`. Adicione una línea de código que genere un vector llamado `ft` que contenga los elementos de `f1` y de `f2`, finalice con una cuarta línea que imprima el vector `ft`
  
@@ -52,11 +52,7 @@ f2 <- c(2, 4, 6)
 ```
 
 
-
-
-
-
-## Creando vectores de secuencias
+### Creando vectores de secuencias
 
 Considere las siguientes expresiones, comandos y objetos que nos permiten crear **vectores** con cierta secuencia de números o texto:
 
@@ -87,7 +83,7 @@ x + y                # se suma cada elemento de x a cada elemento de y
 ```
 
 
-## Tipos de datos
+## Tipos de datos {#tiposDatos}
 
 En un vector podemos almacenar principalmente los siguientes tipos de datos:
 
@@ -144,7 +140,7 @@ is.na(d)
 ```
 
 
-## Expresiones lógicas
+## Expresiones lógicas {#logicas}
 
 Una expresión lógica hace una pregunta sobre si uno o más objetos cumplen una condición y devuelve verdadero (TRUE) o false (FALSE). Las principales formas de crear expresiones lógicas son:
 
@@ -162,4 +158,9 @@ is.na(a)             # ¿a esta perdido?
 ! is.na(a)           # ¿a no esta perdido?
 is.nan(h)            # ¿h tienen elementos NaN?
 ```
+
+## Ejercicios {#ejvecTiposDatos}
+
+Bla Bla Bla
+
 

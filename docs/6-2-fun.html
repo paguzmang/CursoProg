@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>6.2 Funciones | Programación para Biólogos</title>
+  <meta name="description" content="Conceptos básicos de programación para biólogos con R" />
+  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="6.2 Funciones | Programación para Biólogos" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Conceptos básicos de programación para biólogos con R" />
+  <meta name="github-repo" content="paguzmang/CursoProg" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="6.2 Funciones | Programación para Biólogos" />
+  
+  <meta name="twitter:description" content="Conceptos básicos de programación para biólogos con R" />
+  
+
+<meta name="author" content="paguzmang | Programa de Biología - U.CES" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="6-1-tema1.html">
+<link rel="next" href="6-3-ejFun.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<link href="libs/rglwidgetClass-2/rgl.css" rel="stylesheet" />
+<script src="libs/rglwidgetClass-2/rglClass.src.js"></script>
+<script src="libs/CanvasMatrix4-2016/CanvasMatrix.src.js"></script>
+<script src="libs/rglWebGL-binding-0.100.26/rglWebGL.js"></script>
+<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Presentación</a></li>
+<li class="part"><span><b>I Iniciando con R y Rstudio</b></span></li>
+<li class="chapter" data-level="1" data-path="1-general.html"><a href="1-general.html"><i class="fa fa-check"></i><b>1</b> Generalidades</a><ul>
+<li class="chapter" data-level="1.1" data-path="1-1-ventanasR.html"><a href="1-1-ventanasR.html"><i class="fa fa-check"></i><b>1.1</b> Ventanas de R: Consola y script</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="1-1-ventanasR.html"><a href="1-1-ventanasR.html#prompt-y-linea-de-comandos"><i class="fa fa-check"></i><b>1.1.1</b> Prompt y línea de comandos</a></li>
+<li class="chapter" data-level="1.1.2" data-path="1-1-ventanasR.html"><a href="1-1-ventanasR.html#escribiendo-en-el-script"><i class="fa fa-check"></i><b>1.1.2</b> Escribiendo en el script</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="1-2-com.html"><a href="1-2-com.html"><i class="fa fa-check"></i><b>1.2</b> Comandos</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="1-2-com.html"><a href="1-2-com.html#sintaxis-de-un-comando"><i class="fa fa-check"></i><b>1.2.1</b> Sintaxis de un comando</a></li>
+<li class="chapter" data-level="1.2.2" data-path="1-2-com.html"><a href="1-2-com.html#ayuda-sobre-comandos"><i class="fa fa-check"></i><b>1.2.2</b> Ayuda sobre comandos</a></li>
+<li class="chapter" data-level="1.2.3" data-path="1-2-com.html"><a href="1-2-com.html#orden-de-los-argumentos"><i class="fa fa-check"></i><b>1.2.3</b> Orden de los argumentos</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="1-3-paquetes.html"><a href="1-3-paquetes.html"><i class="fa fa-check"></i><b>1.3</b> Paquetes o librerías</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="1-3-paquetes.html"><a href="1-3-paquetes.html#instalPaq"><i class="fa fa-check"></i><b>1.3.1</b> Instalando paquetes</a></li>
+<li class="chapter" data-level="1.3.2" data-path="1-3-paquetes.html"><a href="1-3-paquetes.html#activando-paquetes"><i class="fa fa-check"></i><b>1.3.2</b> Activando paquetes</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="1-4-guardarObj.html"><a href="1-4-guardarObj.html"><i class="fa fa-check"></i><b>1.4</b> Creando o guardando objetos</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="1-4-guardarObj.html"><a href="1-4-guardarObj.html#recomendaciones-para-darle-nombre-a-objetos"><i class="fa fa-check"></i><b>1.4.1</b> Recomendaciones para darle nombre a objetos</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="1-5-ambiente.html"><a href="1-5-ambiente.html"><i class="fa fa-check"></i><b>1.5</b> Ambiente de trabajo</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="1-5-ambiente.html"><a href="1-5-ambiente.html#borrarAmb"><i class="fa fa-check"></i><b>1.5.1</b> Listar y borrar objetos del ambiente de trabajo</a></li>
+<li class="chapter" data-level="1.5.2" data-path="1-5-ambiente.html"><a href="1-5-ambiente.html#guardando-el-ambiente-de-trabajo"><i class="fa fa-check"></i><b>1.5.2</b> Guardando el ambiente de trabajo</a></li>
+<li class="chapter" data-level="1.5.3" data-path="1-5-ambiente.html"><a href="1-5-ambiente.html#cambiando-el-directorio-de-trabajo"><i class="fa fa-check"></i><b>1.5.3</b> Cambiando el directorio de trabajo</a></li>
+<li class="chapter" data-level="1.5.4" data-path="1-5-ambiente.html"><a href="1-5-ambiente.html#cargando-objetos-al-ambiente-de-trabajo"><i class="fa fa-check"></i><b>1.5.4</b> Cargando objetos al ambiente de trabajo</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="1-6-ejercicios.html"><a href="1-6-ejercicios.html"><i class="fa fa-check"></i><b>1.6</b> Ejercicios</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="2-ides.html"><a href="2-ides.html"><i class="fa fa-check"></i><b>2</b> Ambientes de desarrollo integrado</a><ul>
+<li class="chapter" data-level="2.1" data-path="2-1-rstudio1.html"><a href="2-1-rstudio1.html"><i class="fa fa-check"></i><b>2.1</b> RStudio 1</a></li>
+<li class="chapter" data-level="2.2" data-path="2-2-rstudio2.html"><a href="2-2-rstudio2.html"><i class="fa fa-check"></i><b>2.2</b> Rstudio 2</a></li>
+</ul></li>
+<li class="part"><span><b>II Objetos, datos y gráficos</b></span></li>
+<li class="chapter" data-level="3" data-path="3-vecTiposDatos.html"><a href="3-vecTiposDatos.html"><i class="fa fa-check"></i><b>3</b> Vectores y tipos de datos</a><ul>
+<li class="chapter" data-level="3.1" data-path="3-1-vectores.html"><a href="3-1-vectores.html"><i class="fa fa-check"></i><b>3.1</b> Vectores</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="3-1-vectores.html"><a href="3-1-vectores.html#creando-vectores"><i class="fa fa-check"></i><b>3.1.1</b> Creando vectores</a></li>
+<li class="chapter" data-level="3.1.2" data-path="3-1-vectores.html"><a href="3-1-vectores.html#creando-vectores-de-secuencias"><i class="fa fa-check"></i><b>3.1.2</b> Creando vectores de secuencias</a></li>
+<li class="chapter" data-level="3.1.3" data-path="3-1-vectores.html"><a href="3-1-vectores.html#operaciones-aritmeticas-con-vectores"><i class="fa fa-check"></i><b>3.1.3</b> Operaciones aritméticas con vectores</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html"><i class="fa fa-check"></i><b>3.2</b> Tipos de datos</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#validando-el-tipo-de-datos"><i class="fa fa-check"></i><b>3.2.1</b> Validando el tipo de datos</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="3-3-logicas.html"><a href="3-3-logicas.html"><i class="fa fa-check"></i><b>3.3</b> Expresiones lógicas</a></li>
+<li class="chapter" data-level="3.4" data-path="3-4-ejvecTiposDatos.html"><a href="3-4-ejvecTiposDatos.html"><i class="fa fa-check"></i><b>3.4</b> Ejercicios</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="4-otros-tipos-de-objeto.html"><a href="4-otros-tipos-de-objeto.html"><i class="fa fa-check"></i><b>4</b> Otros tipos de objeto</a><ul>
+<li class="chapter" data-level="4.1" data-path="4-1-matriz.html"><a href="4-1-matriz.html"><i class="fa fa-check"></i><b>4.1</b> Matrices</a></li>
+<li class="chapter" data-level="4.2" data-path="4-2-df.html"><a href="4-2-df.html"><i class="fa fa-check"></i><b>4.2</b> Marcos de datos (data.frame)</a></li>
+<li class="chapter" data-level="4.3" data-path="4-3-listas.html"><a href="4-3-listas.html"><i class="fa fa-check"></i><b>4.3</b> Listas</a></li>
+<li class="chapter" data-level="4.4" data-path="4-4-ejObj.html"><a href="4-4-ejObj.html"><i class="fa fa-check"></i><b>4.4</b> Ejercicios</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="5-elementos-basicos-sobre-graficos.html"><a href="5-elementos-basicos-sobre-graficos.html"><i class="fa fa-check"></i><b>5</b> Elementos básicos sobre gráficos</a><ul>
+<li class="chapter" data-level="5.1" data-path="5-1-altoBajoNiv.html"><a href="5-1-altoBajoNiv.html"><i class="fa fa-check"></i><b>5.1</b> Comandos de alto y bajo nivel</a></li>
+<li class="chapter" data-level="5.2" data-path="5-2-ejGraf.html"><a href="5-2-ejGraf.html"><i class="fa fa-check"></i><b>5.2</b> Ejercicios</a></li>
+</ul></li>
+<li class="part"><span><b>III Programación</b></span></li>
+<li class="chapter" data-level="6" data-path="6-basicProg.html"><a href="6-basicProg.html"><i class="fa fa-check"></i><b>6</b> Conceptos básicos</a><ul>
+<li class="chapter" data-level="6.1" data-path="6-1-tema1.html"><a href="6-1-tema1.html"><i class="fa fa-check"></i><b>6.1</b> Tema 1</a></li>
+<li class="chapter" data-level="6.2" data-path="6-2-fun.html"><a href="6-2-fun.html"><i class="fa fa-check"></i><b>6.2</b> Funciones</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="6-2-fun.html"><a href="6-2-fun.html#un-ejemplo"><i class="fa fa-check"></i><b>6.2.1</b> Un ejemplo</a></li>
+<li class="chapter" data-level="6.2.2" data-path="6-2-fun.html"><a href="6-2-fun.html#controlando-el-objeto-de-salida"><i class="fa fa-check"></i><b>6.2.2</b> Controlando el objeto de salida</a></li>
+<li class="chapter" data-level="6.2.3" data-path="6-2-fun.html"><a href="6-2-fun.html#argumentos-por-defecto"><i class="fa fa-check"></i><b>6.2.3</b> Argumentos por defecto</a></li>
+<li class="chapter" data-level="6.2.4" data-path="6-2-fun.html"><a href="6-2-fun.html#entregando-texto-variable"><i class="fa fa-check"></i><b>6.2.4</b> Entregando texto variable</a></li>
+<li class="chapter" data-level="6.2.5" data-path="6-2-fun.html"><a href="6-2-fun.html#argumentos-logicos"><i class="fa fa-check"></i><b>6.2.5</b> Argumentos lógicos</a></li>
+<li class="chapter" data-level="6.2.6" data-path="6-2-fun.html"><a href="6-2-fun.html#documentacion-de-la-funcion"><i class="fa fa-check"></i><b>6.2.6</b> Documentación de la función</a></li>
+<li class="chapter" data-level="6.2.7" data-path="6-2-fun.html"><a href="6-2-fun.html#compartiendo-la-funcion"><i class="fa fa-check"></i><b>6.2.7</b> Compartiendo la función</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="6-3-ejFun.html"><a href="6-3-ejFun.html"><i class="fa fa-check"></i><b>6.3</b> Ejercicios</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="6-3-ejFun.html"><a href="6-3-ejFun.html#ej.-1.-numero-de-datos-perdidos"><i class="fa fa-check"></i><b>6.3.1</b> Ej. 1. Número de datos perdidos</a></li>
+<li class="chapter" data-level="6.3.2" data-path="6-3-ejFun.html"><a href="6-3-ejFun.html#ej.-2.-factura-con-iva."><i class="fa fa-check"></i><b>6.3.2</b> Ej. 2. Factura con IVA.</a></li>
+<li class="chapter" data-level="6.3.3" data-path="6-3-ejFun.html"><a href="6-3-ejFun.html#ej.-3.-area-bajo-la-curva"><i class="fa fa-check"></i><b>6.3.3</b> Ej. 3. Área bajo la curva</a></li>
+<li class="chapter" data-level="6.3.4" data-path="6-3-ejFun.html"><a href="6-3-ejFun.html#ej.-4.-revisando-la-salida-de-una-funcion"><i class="fa fa-check"></i><b>6.3.4</b> Ej. 4. Revisando la salida de una función</a></li>
+<li class="chapter" data-level="6.3.5" data-path="6-3-ejFun.html"><a href="6-3-ejFun.html#ej.-5.-el-vertice-de-una-parabola"><i class="fa fa-check"></i><b>6.3.5</b> Ej. 5. El vertice de una parábola</a></li>
+<li class="chapter" data-level="6.3.6" data-path="6-3-ejFun.html"><a href="6-3-ejFun.html#ej.-6.-encontrando-minimos-o-maximos"><i class="fa fa-check"></i><b>6.3.6</b> Ej. 6. Encontrando mínimos o máximos</a></li>
+<li class="chapter" data-level="6.3.7" data-path="6-3-ejFun.html"><a href="6-3-ejFun.html#ej.-7.-aplicacion-de-una-parabola-y-maximizacion"><i class="fa fa-check"></i><b>6.3.7</b> Ej. 7. Aplicación de una parábola y maximización</a></li>
+<li class="chapter" data-level="6.3.8" data-path="6-3-ejFun.html"><a href="6-3-ejFun.html#ej.-8.-creciente-o-decreciente"><i class="fa fa-check"></i><b>6.3.8</b> Ej. 8. ¿Creciente o decreciente?</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="6-4-solucion-a-ejercicios-seleccionados.html"><a href="6-4-solucion-a-ejercicios-seleccionados.html"><i class="fa fa-check"></i><b>6.4</b> Solución a ejercicios seleccionados</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="6-4-solucion-a-ejercicios-seleccionados.html"><a href="6-4-solucion-a-ejercicios-seleccionados.html#ej.-2.-factura-con-iva"><i class="fa fa-check"></i><b>6.4.1</b> Ej. 2. Factura con IVA</a></li>
+<li class="chapter" data-level="6.4.2" data-path="6-4-solucion-a-ejercicios-seleccionados.html"><a href="6-4-solucion-a-ejercicios-seleccionados.html#ej.-6.-encontrando-minimos-o-maximos-1"><i class="fa fa-check"></i><b>6.4.2</b> Ej. 6. Encontrando mínimos o máximos</a></li>
+<li class="chapter" data-level="6.4.3" data-path="6-4-solucion-a-ejercicios-seleccionados.html"><a href="6-4-solucion-a-ejercicios-seleccionados.html#ej.-8.-creciente-o-decreciente-1"><i class="fa fa-check"></i><b>6.4.3</b> Ej. 8. ¿Creciente o decreciente?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="7-Prog2.html"><a href="7-Prog2.html"><i class="fa fa-check"></i><b>7</b> Estructuras de programación</a><ul>
+<li class="chapter" data-level="7.1" data-path="7-1-cond.html"><a href="7-1-cond.html"><i class="fa fa-check"></i><b>7.1</b> Condicionales</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="7-1-cond.html"><a href="7-1-cond.html#solo-si"><i class="fa fa-check"></i><b>7.1.1</b> Sólo si …</a></li>
+<li class="chapter" data-level="7.1.2" data-path="7-1-cond.html"><a href="7-1-cond.html#si-entonces"><i class="fa fa-check"></i><b>7.1.2</b> Si … Entonces</a></li>
+<li class="chapter" data-level="7.1.3" data-path="7-1-cond.html"><a href="7-1-cond.html#condiciones-con-mutiples-alternativas"><i class="fa fa-check"></i><b>7.1.3</b> Condiciones con mútiples alternativas</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="7-2-ciclos.html"><a href="7-2-ciclos.html"><i class="fa fa-check"></i><b>7.2</b> Repitiendo una acción</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="7-2-ciclos.html"><a href="7-2-ciclos.html#ciclo-for"><i class="fa fa-check"></i><b>7.2.1</b> Ciclo <code>for</code></a></li>
+<li class="chapter" data-level="7.2.2" data-path="7-2-ciclos.html"><a href="7-2-ciclos.html#ciclo-while"><i class="fa fa-check"></i><b>7.2.2</b> Ciclo <code>while</code></a></li>
+<li class="chapter" data-level="7.2.3" data-path="7-2-ciclos.html"><a href="7-2-ciclos.html#ciclo-repeat"><i class="fa fa-check"></i><b>7.2.3</b> Ciclo <code>repeat</code></a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="7-3-stop.html"><a href="7-3-stop.html"><i class="fa fa-check"></i><b>7.3</b> Deteniendo la ejecución de una función</a></li>
+<li class="chapter" data-level="7.4" data-path="7-4-vectoriz.html"><a href="7-4-vectoriz.html"><i class="fa fa-check"></i><b>7.4</b> Vectorización</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="7-4-vectoriz.html"><a href="7-4-vectoriz.html#eficiencia-en-la-vectorizacion"><i class="fa fa-check"></i><b>7.4.1</b> Eficiencia en la vectorización</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="7-5-famApply.html"><a href="7-5-famApply.html"><i class="fa fa-check"></i><b>7.5</b> Comandos de la familia apply</a><ul>
+<li class="chapter" data-level="7.5.1" data-path="7-5-famApply.html"><a href="7-5-famApply.html#apply"><i class="fa fa-check"></i><b>7.5.1</b> <code>apply</code></a></li>
+<li class="chapter" data-level="7.5.2" data-path="7-5-famApply.html"><a href="7-5-famApply.html#tapply"><i class="fa fa-check"></i><b>7.5.2</b> <code>tapply</code></a></li>
+<li class="chapter" data-level="7.5.3" data-path="7-5-famApply.html"><a href="7-5-famApply.html#sapply"><i class="fa fa-check"></i><b>7.5.3</b> <code>sapply</code></a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="7-6-ejProg2.html"><a href="7-6-ejProg2.html"><i class="fa fa-check"></i><b>7.6</b> Ejercicios</a><ul>
+<li class="chapter" data-level="7.6.1" data-path="7-6-ejProg2.html"><a href="7-6-ejProg2.html#ej.-1.-basico-o-acido"><i class="fa fa-check"></i><b>7.6.1</b> Ej. 1. Básico o Ácido*</a></li>
+<li class="chapter" data-level="7.6.2" data-path="7-6-ejProg2.html"><a href="7-6-ejProg2.html#ej.-2.-basico-o-acido-en-multiples-muestras"><i class="fa fa-check"></i><b>7.6.2</b> Ej. 2. Básico o Ácido en múltiples muestras*</a></li>
+<li class="chapter" data-level="7.6.3" data-path="7-6-ejProg2.html"><a href="7-6-ejProg2.html#ej.-3.-condicional-vectorizado"><i class="fa fa-check"></i><b>7.6.3</b> Ej. 3. Condicional vectorizado*</a></li>
+<li class="chapter" data-level="7.6.4" data-path="7-6-ejProg2.html"><a href="7-6-ejProg2.html#ej.-4.-diferencias"><i class="fa fa-check"></i><b>7.6.4</b> Ej. 4. Diferencias*</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="7-7-solejProg2.html"><a href="7-7-solejProg2.html"><i class="fa fa-check"></i><b>7.7</b> Solución a ejercicios seleccionados</a><ul>
+<li class="chapter" data-level="7.7.1" data-path="7-7-solejProg2.html"><a href="7-7-solejProg2.html#ej.-1.-basico-o-acido-1"><i class="fa fa-check"></i><b>7.7.1</b> Ej. 1. Básico o Ácido</a></li>
+<li class="chapter" data-level="7.7.2" data-path="7-7-solejProg2.html"><a href="7-7-solejProg2.html#ej.-2.-basico-o-acido-en-multiples-muestras-1"><i class="fa fa-check"></i><b>7.7.2</b> Ej. 2. Básico o Ácido en múltiples muestras</a></li>
+<li class="chapter" data-level="7.7.3" data-path="7-7-solejProg2.html"><a href="7-7-solejProg2.html#ej.-3.-condicional-vectorizado-1"><i class="fa fa-check"></i><b>7.7.3</b> Ej. 3. Condicional vectorizado</a></li>
+<li class="chapter" data-level="7.7.4" data-path="7-7-solejProg2.html"><a href="7-7-solejProg2.html#ej.-4.-diferencias-1"><i class="fa fa-check"></i><b>7.7.4</b> Ej. 4. Diferencias</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>IV Aplicaciones</b></span></li>
+<li class="chapter" data-level="8" data-path="8-appmat.html"><a href="8-appmat.html"><i class="fa fa-check"></i><b>8</b> Aplicaciones en matemáticas</a><ul>
+<li class="chapter" data-level="8.1" data-path="8-1-xyz.html"><a href="8-1-xyz.html"><i class="fa fa-check"></i><b>8.1</b> Gráficos de funciones en varias variables</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="8-1-xyz.html"><a href="8-1-xyz.html#introduccion"><i class="fa fa-check"></i><b>8.1.1</b> Introducción</a></li>
+<li class="chapter" data-level="8.1.2" data-path="8-1-xyz.html"><a href="8-1-xyz.html#tipos-de-graficos-para-funciones-de-tres-variables"><i class="fa fa-check"></i><b>8.1.2</b> Tipos de gráficos para funciones de tres variables</a></li>
+<li class="chapter" data-level="8.1.3" data-path="8-1-xyz.html"><a href="8-1-xyz.html#opciones-graficas-en-r"><i class="fa fa-check"></i><b>8.1.3</b> Opciones gráficas en <strong>R</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="8-2-ceros.html"><a href="8-2-ceros.html"><i class="fa fa-check"></i><b>8.2</b> Encontrando ceros</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="8-2-ceros.html"><a href="8-2-ceros.html#findZeros"><i class="fa fa-check"></i><b>8.2.1</b> Usando <code>findZeros</code> (paquete: MosaicCalc)</a></li>
+<li class="chapter" data-level="8.2.2" data-path="8-2-ceros.html"><a href="8-2-ceros.html#usando-findzeros-paquete-pracma"><i class="fa fa-check"></i><b>8.2.2</b> Usando <code>findzeros</code> (paquete: pracma)</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="8-3-deriv.html"><a href="8-3-deriv.html"><i class="fa fa-check"></i><b>8.3</b> Derivadas</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="8-3-deriv.html"><a href="8-3-deriv.html#derivando-con-d-mosaiccalc"><i class="fa fa-check"></i><b>8.3.1</b> Derivando con <code>D</code> (mosaicCalc)</a></li>
+<li class="chapter" data-level="8.3.2" data-path="8-3-deriv.html"><a href="8-3-deriv.html#derivando-con-numdiff-pracma"><i class="fa fa-check"></i><b>8.3.2</b> Derivando con <code>numdiff</code> (pracma)</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="8-4-integ.html"><a href="8-4-integ.html"><i class="fa fa-check"></i><b>8.4</b> Integrando</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="8-4-integ.html"><a href="8-4-integ.html#integrando-con-antid-mosaiccalc"><i class="fa fa-check"></i><b>8.4.1</b> Integrando con <code>antiD</code> (mosaicCalc)</a></li>
+<li class="chapter" data-level="8.4.2" data-path="8-4-integ.html"><a href="8-4-integ.html#integrando-con-integral-pracma"><i class="fa fa-check"></i><b>8.4.2</b> Integrando con <code>integral</code> (pracma)</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="8-5-ejercicios-1.html"><a href="8-5-ejercicios-1.html"><i class="fa fa-check"></i><b>8.5</b> Ejercicios</a><ul>
+<li class="chapter" data-level="8.5.1" data-path="8-5-ejercicios-1.html"><a href="8-5-ejercicios-1.html#ej.-1.-encontrando-ceros"><i class="fa fa-check"></i><b>8.5.1</b> Ej. 1. Encontrando ceros</a></li>
+<li class="chapter" data-level="8.5.2" data-path="8-5-ejercicios-1.html"><a href="8-5-ejercicios-1.html#ej.-2.-cuanto-se-hunde-la-esfera"><i class="fa fa-check"></i><b>8.5.2</b> Ej. 2. ¿Cuánto se hunde la esfera?</a></li>
+<li class="chapter" data-level="8.5.3" data-path="8-5-ejercicios-1.html"><a href="8-5-ejercicios-1.html#ej.-3.-derivando"><i class="fa fa-check"></i><b>8.5.3</b> Ej. 3. Derivando</a></li>
+<li class="chapter" data-level="8.5.4" data-path="8-5-ejercicios-1.html"><a href="8-5-ejercicios-1.html#ej.-4.-derivando-funciones-con-dos-variables"><i class="fa fa-check"></i><b>8.5.4</b> Ej. 4. Derivando funciones con dos variables</a></li>
+<li class="chapter" data-level="8.5.5" data-path="8-5-ejercicios-1.html"><a href="8-5-ejercicios-1.html#ej.-5.-graficos-de-varias-variables"><i class="fa fa-check"></i><b>8.5.5</b> Ej. 5. Gráficos de varias variables</a></li>
+<li class="chapter" data-level="8.5.6" data-path="8-5-ejercicios-1.html"><a href="8-5-ejercicios-1.html#ej.-6.-control-de-la-dispersion-de-una-enfermedad"><i class="fa fa-check"></i><b>8.5.6</b> Ej. 6. Control de la dispersión de una enfermedad</a></li>
+<li class="chapter" data-level="8.5.7" data-path="8-5-ejercicios-1.html"><a href="8-5-ejercicios-1.html#ej.-7.-valor-medio-varianza-y-probabilidad"><i class="fa fa-check"></i><b>8.5.7</b> Ej. 7. Valor medio, varianza y probabilidad</a></li>
+<li class="chapter" data-level="8.5.8" data-path="8-5-ejercicios-1.html"><a href="8-5-ejercicios-1.html#ej.-8.-antibiotico-en-sangre"><i class="fa fa-check"></i><b>8.5.8</b> Ej. 8. Antibiótico en sangre</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"><em>Programación</em> para Biólogos</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="fun" class="section level2">
+<h2><span class="header-section-number">6.2</span> Funciones</h2>
+<p>El comando <code>function</code> en <strong>R</strong> le permite al usuario crear programas o rutinas para realizar tareas específicas. La sintanxis de <code>function</code> es:</p>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb152-1" title="1">aqui un ejemplo</a></code></pre></div>
+<p>En esta sintanxis, <code>mifun</code> es el nombre que el usuario desea darle a la función. Los objetos <code>x</code>, <code>y</code>, <code>...</code> son argumentos de entrada para la función. Entre llaves <code>{ }</code> se escriben líneas de código <strong>R</strong> donde se deben utilizar o transformar los objetos <code>x</code>, <code>y</code>, <code>...</code> en algún otro objeto o gráfico. La última expresión del código debe imprimir el resultado. La siguiente figura, tomada de <span class="citation">Grolemund (<a href="#ref-grolemund2014" role="doc-biblioref">2014</a>)</span>, muestra los aspectos relevantes al crear una función con <code>function</code>:</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-69"></span>
+<img src="images/partes_funcion_Grolemund_2014.png" alt="Aspectos relevantes de una función en **R** [@grolemund2014]" width="80%" />
+<p class="caption">
+Figura 6.1: Aspectos relevantes de una función en <strong>R</strong> <span class="citation">(Grolemund, <a href="#ref-grolemund2014" role="doc-biblioref">2014</a>)</span>
+</p>
+</div>
+<div id="un-ejemplo" class="section level3">
+<h3><span class="header-section-number">6.2.1</span> Un ejemplo</h3>
+<p>Suponga que se busca crear una función que <em>cuente</em> el número valores “not a number” (<code>NaN</code>) contenidos en un vector. Una función que hace esto es la siguiente:</p>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb153-1" title="1"><span class="co"># Se crea una funcion que cuente NaN&#39;s en un vector:</span></a>
+<a class="sourceLine" id="cb153-2" title="2">cuenta_nan &lt;-<span class="st"> </span><span class="cf">function</span>(x){</a>
+<a class="sourceLine" id="cb153-3" title="3">  donde.nan &lt;-<span class="st"> </span><span class="kw">is.nan</span>(x)   <span class="co"># se crea vector logico indicando donde hay NaN</span></a>
+<a class="sourceLine" id="cb153-4" title="4">  <span class="kw">sum</span>( donde.nan )         <span class="co"># al sumar el vector logico, se cuenta los NaN</span></a>
+<a class="sourceLine" id="cb153-5" title="5">}</a></code></pre></div>
+<p>Luego de creada, la función <code>cuenta_nan</code> se puede usar como cualquier otro comando de <strong>R</strong>. A continuación se crea un vector con algunos <code>NaN</code>’s para luego probar la nueva función:</p>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb154-1" title="1">w &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">45</span>, <span class="dv">10</span>, <span class="ot">NaN</span>, <span class="dv">34</span>, <span class="ot">NaN</span>, <span class="ot">NaN</span>, <span class="dv">-10</span>)  <span class="co"># se crea vector con tres NaN&#39;s</span></a>
+<a class="sourceLine" id="cb154-2" title="2"><span class="kw">cuenta_nan</span>(<span class="dt">x =</span> w)                       <span class="co"># se usa la funcion</span></a></code></pre></div>
+<pre><code>[1] 3</code></pre>
+</div>
+<div id="controlando-el-objeto-de-salida" class="section level3">
+<h3><span class="header-section-number">6.2.2</span> Controlando el objeto de salida</h3>
+<p>Suponga ahora que usted quiere que la función <code>cuenta_nan</code> entregue dos números, el conteo de <code>NaN</code> y la proporción de <code>NaN</code> la cual se obtiene diviendo el conteo por el número total de elemento en el vector. Como se requiere entregar dos números, usted debe seleccionar en que objeto entregar estos dos números. Una primera opción puede ser entregar los dos números en <strong>un vector</strong> que tenga etiquetas:</p>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb156-1" title="1"><span class="co"># Se crea una funcion que cuente NaN&#39;s en un vector</span></a>
+<a class="sourceLine" id="cb156-2" title="2"><span class="co"># y que entregue un vector:</span></a>
+<a class="sourceLine" id="cb156-3" title="3">cuenta_nan &lt;-<span class="st"> </span><span class="cf">function</span>(x){</a>
+<a class="sourceLine" id="cb156-4" title="4">  donde.nan &lt;-<span class="st"> </span><span class="kw">is.nan</span>(x)     <span class="co"># se crea vector logico indicando donde hay NaN</span></a>
+<a class="sourceLine" id="cb156-5" title="5">  n_nan &lt;-<span class="st"> </span><span class="kw">sum</span>( donde.nan )  <span class="co"># al sumar el vector logico, se cuenta los NaN</span></a>
+<a class="sourceLine" id="cb156-6" title="6">  p_nan &lt;-<span class="st"> </span>n_nan<span class="op">/</span><span class="kw">length</span>(x)   <span class="co"># se calcula la proporcion:</span></a>
+<a class="sourceLine" id="cb156-7" title="7">  <span class="kw">c</span>(<span class="dt">n =</span> n_nan, <span class="dt">p =</span> p_nan)    <span class="co"># se entrgan las dos cantidades en un vector</span></a>
+<a class="sourceLine" id="cb156-8" title="8">}</a>
+<a class="sourceLine" id="cb156-9" title="9"></a>
+<a class="sourceLine" id="cb156-10" title="10"><span class="co"># Se prueba la funcion:</span></a>
+<a class="sourceLine" id="cb156-11" title="11"><span class="kw">cuenta_nan</span>(<span class="dt">x =</span> w)</a></code></pre></div>
+<pre><code>        n         p 
+3.0000000 0.4285714 </code></pre>
+<p>Otra opción, quizas más conveniente por el tema del número de decimales, es entregar los dos números en <strong>un data.frame</strong> :</p>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb158-1" title="1"><span class="co"># Se crea una funcion que cuente NaN&#39;s en un vector</span></a>
+<a class="sourceLine" id="cb158-2" title="2"><span class="co"># y que entregue un data.frame:</span></a>
+<a class="sourceLine" id="cb158-3" title="3">cuenta_nan &lt;-<span class="st"> </span><span class="cf">function</span>(x){</a>
+<a class="sourceLine" id="cb158-4" title="4">  donde.nan &lt;-<span class="st"> </span><span class="kw">is.nan</span>(x)     <span class="co"># se crea vector logico indicando donde hay NaN</span></a>
+<a class="sourceLine" id="cb158-5" title="5">  n_nan &lt;-<span class="st"> </span><span class="kw">sum</span>( donde.nan )  <span class="co"># al sumar el vector logico, se cuenta los NaN</span></a>
+<a class="sourceLine" id="cb158-6" title="6">  p_nan &lt;-<span class="st"> </span>n_nan<span class="op">/</span><span class="kw">length</span>(x)   <span class="co"># se calcula la proporcion:</span></a>
+<a class="sourceLine" id="cb158-7" title="7">  <span class="kw">data.frame</span>(<span class="dt">n =</span> n_nan, <span class="dt">p =</span> p_nan)    <span class="co"># se entrgan las dos cantidades en un data.frame</span></a>
+<a class="sourceLine" id="cb158-8" title="8">}</a>
+<a class="sourceLine" id="cb158-9" title="9"></a>
+<a class="sourceLine" id="cb158-10" title="10"><span class="co"># Se prueba la funcion:</span></a>
+<a class="sourceLine" id="cb158-11" title="11"><span class="kw">cuenta_nan</span>(<span class="dt">x =</span> w)</a></code></pre></div>
+<pre><code>  n         p
+1 3 0.4285714</code></pre>
+</div>
+<div id="argumentos-por-defecto" class="section level3">
+<h3><span class="header-section-number">6.2.3</span> Argumentos por defecto</h3>
+<p>Suponga ahora que usted quiere controlar el número de decimales con el cuál se imprime la proporción calculada. Para esto, se puede incluir un segundo argumento que controle este aspecto:</p>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb160-1" title="1"><span class="co"># Se crea una funcion que cuente NaN&#39;s en un vector y que entregue un data.frame:</span></a>
+<a class="sourceLine" id="cb160-2" title="2">cuenta_nan &lt;-<span class="st"> </span><span class="cf">function</span>(x, <span class="dt">dec =</span> <span class="dv">2</span>){</a>
+<a class="sourceLine" id="cb160-3" title="3">  donde.nan &lt;-<span class="st"> </span><span class="kw">is.nan</span>(x)     <span class="co"># se crea vector logico indicando donde hay NaN</span></a>
+<a class="sourceLine" id="cb160-4" title="4">  n_nan &lt;-<span class="st"> </span><span class="kw">sum</span>( donde.nan )  <span class="co"># al sumar el vector logico, se cuenta los NaN</span></a>
+<a class="sourceLine" id="cb160-5" title="5">  p_nan &lt;-<span class="st"> </span><span class="kw">round</span>(n_nan<span class="op">/</span><span class="kw">length</span>(x), dec)   <span class="co"># se calcula la proporcion</span></a>
+<a class="sourceLine" id="cb160-6" title="6">  <span class="kw">data.frame</span>(<span class="dt">n =</span> n_nan, <span class="dt">p =</span> p_nan)       <span class="co"># se entrgan las dos cantidades en un data.frame</span></a>
+<a class="sourceLine" id="cb160-7" title="7">}</a>
+<a class="sourceLine" id="cb160-8" title="8"></a>
+<a class="sourceLine" id="cb160-9" title="9"><span class="co"># Se prueba la funcion y se controla el nro. de decimales a 3:</span></a>
+<a class="sourceLine" id="cb160-10" title="10"><span class="kw">cuenta_nan</span>(<span class="dt">x =</span> w, <span class="dt">dec =</span> <span class="dv">3</span>)</a></code></pre></div>
+<pre><code>  n     p
+1 3 0.429</code></pre>
+<p>Note que el 2do. argumento que se incluyó, <code>dec</code>, se le asignó el valor <code>2</code> desde la misma creación de la función. De esta forma <strong>se establece un argumento por defecto</strong>. Si el usuario no usa este argumento, la función asumiará un valor de <code>2</code> por defecto.</p>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb162-1" title="1"><span class="co"># Se usa la funcion sin usar dec. Por defecto, se asumira dec = 2</span></a>
+<a class="sourceLine" id="cb162-2" title="2"><span class="kw">cuenta_nan</span>(<span class="dt">x =</span> w)  </a></code></pre></div>
+<pre><code>  n    p
+1 3 0.43</code></pre>
+</div>
+<div id="entregando-texto-variable" class="section level3">
+<h3><span class="header-section-number">6.2.4</span> Entregando texto variable</h3>
+<p>Continuando con el mismo ejemplo, suponga que la salida de la función <code>cuenta_nan</code> debe entregar una cadena de texto que diga algo como: <code>La cantidad de NaN's es 3</code>. Los comandos <code>paste</code> y <code>paste0</code> permiten pegar elementos de diferente tipo (texto o números) y entregar una sóla cadena de texto. Aquí un ejemplo:</p>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb164-1" title="1"><span class="co"># Se crea una funcion que cuente NaN&#39;s en un vector y que entregue texto:</span></a>
+<a class="sourceLine" id="cb164-2" title="2">cuenta_nan &lt;-<span class="st"> </span><span class="cf">function</span>(x){</a>
+<a class="sourceLine" id="cb164-3" title="3">  donde.nan &lt;-<span class="st"> </span><span class="kw">is.nan</span>(x)     <span class="co"># se crea vector logico indicando donde hay NaN</span></a>
+<a class="sourceLine" id="cb164-4" title="4">  n_nan &lt;-<span class="st"> </span><span class="kw">sum</span>( donde.nan )  <span class="co"># al sumar el vector logico, se cuenta los NaN</span></a>
+<a class="sourceLine" id="cb164-5" title="5">  <span class="kw">paste0</span>(<span class="st">&#39;La cantidad de NaN es: &#39;</span>, n_nan)</a>
+<a class="sourceLine" id="cb164-6" title="6">}</a>
+<a class="sourceLine" id="cb164-7" title="7"></a>
+<a class="sourceLine" id="cb164-8" title="8"><span class="co"># Se prueba la funcion:</span></a>
+<a class="sourceLine" id="cb164-9" title="9"><span class="kw">cuenta_nan</span>(<span class="dt">x =</span> w)</a></code></pre></div>
+<pre><code>[1] &quot;La cantidad de NaN es: 3&quot;</code></pre>
+</div>
+<div id="argumentos-logicos" class="section level3">
+<h3><span class="header-section-number">6.2.5</span> Argumentos lógicos</h3>
+<p>El comando <code>ifelse</code> permite entregar uno de dos resultados dependiendo de si una condición se cumple (<code>TRUE</code>) o no (<code>FALSE</code>). Aquí un ejemplo:</p>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb166-1" title="1"><span class="co"># Ejemplo de uso del comando ifelse:</span></a>
+<a class="sourceLine" id="cb166-2" title="2">x &lt;-<span class="st"> </span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb166-3" title="3"><span class="kw">ifelse</span>(x <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span>, <span class="st">&#39;Gana&#39;</span>, <span class="st">&#39;Pierde&#39;</span>)</a></code></pre></div>
+<pre><code>[1] &quot;Gana&quot;</code></pre>
+<p>El comando <code>ifelse</code> es vectorizado, esto quiere decir que puede hacer su trabajo elemento por elemento dentro de un vector:</p>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb168-1" title="1"><span class="co"># Ejemplo de uso del comando ifelse:</span></a>
+<a class="sourceLine" id="cb168-2" title="2">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">4.5</span>, <span class="fl">1.2</span>, <span class="fl">2.5</span>, <span class="fl">3.1</span>, <span class="fl">3.9</span>)</a>
+<a class="sourceLine" id="cb168-3" title="3"><span class="kw">ifelse</span>(x <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span>, <span class="st">&#39;Gana&#39;</span>, <span class="st">&#39;Pierde&#39;</span>)</a></code></pre></div>
+<pre><code>[1] &quot;Gana&quot;   &quot;Pierde&quot; &quot;Pierde&quot; &quot;Gana&quot;   &quot;Gana&quot;  </code></pre>
+<p>Volviendo a la función <code>cuenta_nan</code>, suponga que usted desea controlar, si la proporción de <code>NaN</code>’s se entrega como una fracción entre 0 y 1 o se entrega como porcentaje, es decir, entre 0 y 100. Para hacer esto se puede agregar un argumento lógico a la función que determine si se hace un cálculo u otro:</p>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb170-1" title="1"><span class="co"># Se crea una funcion que cuente NaN&#39;s en un vector y que entregue un data.frame:</span></a>
+<a class="sourceLine" id="cb170-2" title="2">cuenta_nan &lt;-<span class="st"> </span><span class="cf">function</span>(x, <span class="dt">dec =</span> <span class="dv">2</span>, <span class="dt">pct =</span> F){</a>
+<a class="sourceLine" id="cb170-3" title="3">  donde.nan &lt;-<span class="st"> </span><span class="kw">is.nan</span>(x)     <span class="co"># se crea vector logico indicando donde hay NaN</span></a>
+<a class="sourceLine" id="cb170-4" title="4">  n_nan &lt;-<span class="st"> </span><span class="kw">sum</span>( donde.nan )  <span class="co"># al sumar el vector logico, se cuenta los NaN</span></a>
+<a class="sourceLine" id="cb170-5" title="5">  p_nan &lt;-<span class="st"> </span><span class="kw">round</span>(n_nan<span class="op">/</span><span class="kw">length</span>(x), dec)   <span class="co"># se calcula la proporcion</span></a>
+<a class="sourceLine" id="cb170-6" title="6">  p_nan &lt;-<span class="st"> </span><span class="kw">ifelse</span>(pct, p_nan<span class="op">*</span><span class="dv">100</span>, p_nan) <span class="co"># Porcentaje o fraccion?</span></a>
+<a class="sourceLine" id="cb170-7" title="7">  <span class="kw">data.frame</span>(<span class="dt">n =</span> n_nan, <span class="dt">p =</span> p_nan)       <span class="co"># se entrgan las dos cantidades en un data.frame</span></a>
+<a class="sourceLine" id="cb170-8" title="8">}</a>
+<a class="sourceLine" id="cb170-9" title="9"></a>
+<a class="sourceLine" id="cb170-10" title="10"><span class="co"># Se prueba la funcion, se controla el nro. de decimales a 3</span></a>
+<a class="sourceLine" id="cb170-11" title="11"><span class="co"># y que el calculo de la proporcion se entrega como porcentaje:</span></a>
+<a class="sourceLine" id="cb170-12" title="12"><span class="kw">cuenta_nan</span>(<span class="dt">x =</span> w, <span class="dt">dec =</span> <span class="dv">3</span>, <span class="dt">pct =</span> T)</a></code></pre></div>
+<pre><code>  n    p
+1 3 42.9</code></pre>
+</div>
+<div id="documentacion-de-la-funcion" class="section level3">
+<h3><span class="header-section-number">6.2.6</span> Documentación de la función</h3>
+<p>Es importante que la función incluya comentarios que le ayuden a entender a cualquier usuario como se usa. Aspectos que esta documentación debe incluir son:</p>
+<ul>
+<li><strong>Fecha o versión y autor</strong>: Fecha de creación o algo alusivo a su momento de creación.</li>
+<li><strong>Descripción</strong>: Una breve descripción de lo que hace la función o para que sirve.</li>
+<li><strong>Argumentos</strong>: Cuales son sus argumentos y que tipo de valor (p.e., vector, matriz, data.frame, una fecha, un valor lógico, etc.) toma cada uno.</li>
+<li><strong>Valor</strong>: Que tipo de objeto entrega la función y cual es o como se organiza su contenido.</li>
+<li><strong>Ejemplo de uso</strong>: Un ejemplo para ayudar al usuario a utilizar la función.</li>
+</ul>
+<p>Enseguida se incluyen estos cinco aspectos para la función <code>cuenta_nan</code>:</p>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb172-1" title="1"><span class="co"># Se crea una funcion que cuente NaN&#39;s en un vector y que entregue un data.frame:</span></a>
+<a class="sourceLine" id="cb172-2" title="2">cuenta_nan &lt;-<span class="st"> </span><span class="cf">function</span>(x, <span class="dt">dec =</span> <span class="dv">2</span>, <span class="dt">pct =</span> F){</a>
+<a class="sourceLine" id="cb172-3" title="3">  <span class="co"># Version: 3.0 | fecha: sep 2019 | Autor: paguzmang</span></a>
+<a class="sourceLine" id="cb172-4" title="4">  <span class="co"># Descripcion:</span></a>
+<a class="sourceLine" id="cb172-5" title="5">  <span class="co"># Esta funcion cuenta el nro. de NaN en un vector. Entrega tanto</span></a>
+<a class="sourceLine" id="cb172-6" title="6">  <span class="co"># el nro. de NaN&#39;s como su proporcion.</span></a>
+<a class="sourceLine" id="cb172-7" title="7">  </a>
+<a class="sourceLine" id="cb172-8" title="8">  <span class="co"># Argumentos:</span></a>
+<a class="sourceLine" id="cb172-9" title="9">  <span class="co"># x = vector que se desea evaluar.</span></a>
+<a class="sourceLine" id="cb172-10" title="10">  <span class="co"># dec = nro. de decimales para reportar la proporcion de NaN.</span></a>
+<a class="sourceLine" id="cb172-11" title="11">  <span class="co">#       Por defecto 2 decimales.</span></a>
+<a class="sourceLine" id="cb172-12" title="12">  <span class="co"># pct = Logico. Indica si la proporcion de NaN&#39;s se reportara como</span></a>
+<a class="sourceLine" id="cb172-13" title="13">  <span class="co">#       fraccion entre 0 y 1 (FALSE, por defecto) o </span></a>
+<a class="sourceLine" id="cb172-14" title="14">  <span class="co">#       como porcentaje (entre 0 y 100) (TRUE).</span></a>
+<a class="sourceLine" id="cb172-15" title="15">  </a>
+<a class="sourceLine" id="cb172-16" title="16">  <span class="co"># Codigo:</span></a>
+<a class="sourceLine" id="cb172-17" title="17">  donde.nan &lt;-<span class="st"> </span><span class="kw">is.nan</span>(x)     <span class="co"># se crea vector logico indicando donde hay NaN</span></a>
+<a class="sourceLine" id="cb172-18" title="18">  n_nan &lt;-<span class="st"> </span><span class="kw">sum</span>( donde.nan )  <span class="co"># al sumar el vector logico, se cuenta los NaN</span></a>
+<a class="sourceLine" id="cb172-19" title="19">  p_nan &lt;-<span class="st"> </span><span class="kw">round</span>(n_nan<span class="op">/</span><span class="kw">length</span>(x), dec)   <span class="co"># se calcula la proporcion</span></a>
+<a class="sourceLine" id="cb172-20" title="20">  p_nan &lt;-<span class="st"> </span><span class="kw">ifelse</span>(pct, p_nan<span class="op">*</span><span class="dv">100</span>, p_nan) <span class="co"># Porcentaje o fraccion?</span></a>
+<a class="sourceLine" id="cb172-21" title="21">  <span class="kw">data.frame</span>(<span class="dt">n =</span> n_nan, <span class="dt">p =</span> p_nan)       <span class="co"># se entrgan las dos cantidades en un data.frame</span></a>
+<a class="sourceLine" id="cb172-22" title="22">  </a>
+<a class="sourceLine" id="cb172-23" title="23">  <span class="co"># Valor:</span></a>
+<a class="sourceLine" id="cb172-24" title="24">  <span class="co"># la funcion entrega un data.frame con una fila y dos columnas</span></a>
+<a class="sourceLine" id="cb172-25" title="25">  <span class="co"># que incluyen el nro. de NaN&#39;s y la proporcion NaN&#39;s (o porcentaje)</span></a>
+<a class="sourceLine" id="cb172-26" title="26">  </a>
+<a class="sourceLine" id="cb172-27" title="27">  <span class="co"># Ejemplo de uso:</span></a>
+<a class="sourceLine" id="cb172-28" title="28">  <span class="co"># datos &lt;- c(10, 23, NaN, -2, 4, NaN)</span></a>
+<a class="sourceLine" id="cb172-29" title="29">  <span class="co"># cuenta_nan(x = datos, pct = T)</span></a>
+<a class="sourceLine" id="cb172-30" title="30">}</a></code></pre></div>
+<p>Es cierto que documentar un programa puede resultar tedioso pero es una tarea fundamental de cualquier programador y algoritmo. Si las funciones que usted esta creando serán usadas de manera rutunaria por muchos usuarios o esta creando un paquete o programa grande (conjunto de varias rutinas), entonces la documentación descrita arriba es <em>obligatoria</em>. No obstante, muchas veces creamos funciones para un uso inmediato y por una sóla persona (usted mismo); en este caso, podríamos omitir la mayoría de esta documentación. Como recomendación debería siempre incluir: la fecha de creación, la descripción de la función y de los argumentos.</p>
+</div>
+<div id="compartiendo-la-funcion" class="section level3">
+<h3><span class="header-section-number">6.2.7</span> Compartiendo la función</h3>
+<p>Algunas opciones para compartir su función o funciones son:</p>
+<ul>
+<li><p>Como un archivo <code>.RData</code>: Dado que una función es un objeto más, usted puede guardar (con el comando <code>save</code>) su función como un archivo <code>.RData</code> y solicitar al usuario que cargue su función usando el comando <code>load</code>.</p></li>
+<li><p>Como un script <code>.R</code>: También puede poner todo el código de su función en un script (archivo <code>.R</code>) y compartir este archivo. En este caso, el usuario puede cargar su función usando el comando <code>source</code>. Este comando toma como primer argumento (y el único obligatorio) el nombre o ruta al archivo <code>.R</code>. Esta ruta puede ser local (en el computador) o puede ser una dirección <code>url</code>. Esta opción es interesante puesto que usted puede alojar su archivo <code>.R</code> en algún servidor y proveer la dirección del archivo en internet para que cualquier usuario pueda cargar su función.</p></li>
+<li><p>Paquete: Un paquete es un conjunto de funciones (o comandos). Usted puede crear un paquete y utilizar las opciones que tiene <strong>R</strong> para publicar paquetes. Otros lenguajes de programación, tales como <strong>Python</strong>, tienen también la opción de juntar varias funciones en un paquete y realizar su debida publicación. Este curso no incluye la creación de paquetes.</p></li>
+</ul>
+<p>A continuación se muestran ejemplos de las dos primeras opciones:</p>
+<div id="compartiendo-la-funcion-en-un-.rdata" class="section level4">
+<h4><span class="header-section-number">6.2.7.1</span> Compartiendo la función en un <code>.RData</code></h4>
+<p>Primero debemos guardar la función en un archivo <code>.RData</code>. Esto se puede hacer con el comando <code>save</code>. Suponiendo que la función <code>cuenta_nan</code> ya esta creada en el espacio de trabajo:</p>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb173-1" title="1"><span class="co"># Se guarda la funcion en un archivo .RData del mismo nombre:</span></a>
+<a class="sourceLine" id="cb173-2" title="2"><span class="kw">save</span>(cuenta_nan, <span class="dt">file =</span> <span class="st">&#39;cuenta_nan.RData&#39;</span>)</a></code></pre></div>
+<p>El archivo <code>cuenta_nan.RData</code> quedo guardado en el directorio de trabajo actual. Ahora suponga que usted compartio este archivo con otro usuario, p.e., por correo electrónico. Dicho usuario debe poner este archivo en su directorio de trabajo y utilizar el comando <code>load</code> para cargar la función:</p>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb174-1" title="1"><span class="co"># Se verifica que objetos tiene el directorio de trabajo actual:</span></a>
+<a class="sourceLine" id="cb174-2" title="2"><span class="kw">ls</span>()</a></code></pre></div>
+<pre><code>character(0)</code></pre>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb176-1" title="1"><span class="co"># Se carga la funcion:</span></a>
+<a class="sourceLine" id="cb176-2" title="2"><span class="kw">load</span>(<span class="st">&#39;cuenta_nan.RData&#39;</span>)</a>
+<a class="sourceLine" id="cb176-3" title="3"></a>
+<a class="sourceLine" id="cb176-4" title="4"><span class="co"># Se verifica que objetos tiene el directorio de trabajo</span></a>
+<a class="sourceLine" id="cb176-5" title="5"><span class="co"># despuede correr load:</span></a>
+<a class="sourceLine" id="cb176-6" title="6"><span class="kw">ls</span>()</a></code></pre></div>
+<pre><code>[1] &quot;cuenta_nan&quot;</code></pre>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb178-1" title="1"><span class="co"># Se usa la funcion:</span></a>
+<a class="sourceLine" id="cb178-2" title="2">w &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">45</span>, <span class="ot">NaN</span>, <span class="dv">56</span>, <span class="ot">NaN</span>)</a>
+<a class="sourceLine" id="cb178-3" title="3"><span class="kw">cuenta_nan</span>(<span class="dt">x =</span> w)</a></code></pre></div>
+<pre><code>  n   p
+1 2 0.5</code></pre>
+</div>
+<div id="compartiendo-la-funcion-en-un-script-.r" class="section level4">
+<h4><span class="header-section-number">6.2.7.2</span> Compartiendo la función en un script <code>.R</code></h4>
+<div id="cargando-el-archivo-localmente" class="section level5">
+<h5><span class="header-section-number">6.2.7.2.1</span> Cargando el archivo localmente</h5>
+<p>Primero debemos poner todo el código de la función en un archivo <code>.R</code>. Esto se puede hacer copiando y pegando el código en un nuevo archivo <code>.R</code>. Se recomienda nombrar este nuevo archivo con el mismo nombre de la función o uno parecido. Para este ejemplo supongamos que el archivo se nombró como <code>cuenta_nan.R</code> y que usted compartió este archivo con otro usuario, p.e., por correo eletrónico. Este nuevo usuario debe poner el archivo <code>cuenta_nan.R</code> en su directorio de trabajo y cargar la función con el comando <code>source</code>:</p>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb180-1" title="1"><span class="co"># Se verifica que objetos tiene el directorio de trabajo actual:</span></a>
+<a class="sourceLine" id="cb180-2" title="2"><span class="kw">ls</span>()</a></code></pre></div>
+<pre><code>character(0)</code></pre>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb182-1" title="1"><span class="co"># Se carga la funcion:</span></a>
+<a class="sourceLine" id="cb182-2" title="2"><span class="kw">source</span>(<span class="st">&#39;cuenta_nan.R&#39;</span>)</a>
+<a class="sourceLine" id="cb182-3" title="3"></a>
+<a class="sourceLine" id="cb182-4" title="4"><span class="co"># Se verifica que objetos tiene el directorio de trabajo</span></a>
+<a class="sourceLine" id="cb182-5" title="5"><span class="co"># despuede correr source:</span></a>
+<a class="sourceLine" id="cb182-6" title="6"><span class="kw">ls</span>()</a></code></pre></div>
+<pre><code>[1] &quot;cuenta_nan&quot;</code></pre>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb184-1" title="1"><span class="co"># Se usa la funcion:</span></a>
+<a class="sourceLine" id="cb184-2" title="2">w &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">45</span>, <span class="ot">NaN</span>, <span class="dv">56</span>, <span class="ot">NaN</span>)</a>
+<a class="sourceLine" id="cb184-3" title="3"><span class="kw">cuenta_nan</span>(<span class="dt">x =</span> w)</a></code></pre></div>
+<pre><code>  n   p
+1 2 0.5</code></pre>
+</div>
+<div id="cargando-el-archivo-desde-internet" class="section level5">
+<h5><span class="header-section-number">6.2.7.2.2</span> Cargando el archivo desde internet:</h5>
+<p>Usted también puede alojar el archivo <code>.R</code> en algún servidor o repositorio de internet. Por ejemplo, el sitio <a href="https://github.com/">github</a> le permite tener una cuenta y crear repositorios donde usted puede alojar archivos que eventualmente puede compartir. Para este ejemplo, el archivo <code>cuenta_nan.R</code> se subió a un repositorio de github y se puede acceder a él desde siguiente enlace: <a href="https://raw.githubusercontent.com/paguzmang/funciones/master/cuenta_nan.R" class="uri">https://raw.githubusercontent.com/paguzmang/funciones/master/cuenta_nan.R</a>. Conociendo esto, el usuario puede cargar su función directamente desde este repositorio en internet usando el comando <code>source</code>:</p>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb186-1" title="1"><span class="co"># Se verifica que objetos tiene el directorio de trabajo actual:</span></a>
+<a class="sourceLine" id="cb186-2" title="2"><span class="kw">ls</span>()</a></code></pre></div>
+<pre><code>character(0)</code></pre>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb188-1" title="1"><span class="co"># Se carga la funcion (requiere conexion a internet):</span></a>
+<a class="sourceLine" id="cb188-2" title="2"><span class="kw">source</span>(<span class="st">&#39;https://raw.githubusercontent.com/paguzmang/funciones/master/cuenta_nan.R&#39;</span>)</a>
+<a class="sourceLine" id="cb188-3" title="3"></a>
+<a class="sourceLine" id="cb188-4" title="4"><span class="co"># Se verifica que objetos tiene el directorio de trabajo</span></a>
+<a class="sourceLine" id="cb188-5" title="5"><span class="co"># despuede correr source:</span></a>
+<a class="sourceLine" id="cb188-6" title="6"><span class="kw">ls</span>()</a></code></pre></div>
+<pre><code>[1] &quot;cuenta_nan&quot;</code></pre>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb190-1" title="1"><span class="co"># Se usa la funcion:</span></a>
+<a class="sourceLine" id="cb190-2" title="2">w &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">45</span>, <span class="ot">NaN</span>, <span class="dv">56</span>, <span class="ot">NaN</span>)</a>
+<a class="sourceLine" id="cb190-3" title="3"><span class="kw">cuenta_nan</span>(<span class="dt">x =</span> w)</a></code></pre></div>
+<pre><code>  n   p
+1 2 0.5</code></pre>
+</div>
+</div>
+</div>
+</div>
+<h3>Referencias</h3>
+<div id="refs" class="references">
+<div id="ref-grolemund2014">
+<p>Grolemund, G. (2014). <em>Hands-on Programming with R: Write your own functions and simulations</em>. O’Reilly Media, Inc.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="6-1-tema1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="6-3-ejFun.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
