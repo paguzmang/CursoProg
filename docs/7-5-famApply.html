@@ -170,9 +170,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1.3" data-path="3-1-vectores.html"><a href="3-1-vectores.html#operaciones-aritmeticas-con-vectores"><i class="fa fa-check"></i><b>3.1.3</b> Operaciones aritméticas con vectores</a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html"><i class="fa fa-check"></i><b>3.2</b> Tipos de datos</a><ul>
-<li class="chapter" data-level="3.2.1" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#validando-el-tipo-de-datos"><i class="fa fa-check"></i><b>3.2.1</b> Validando el tipo de datos</a></li>
+<li class="chapter" data-level="3.2.1" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#numeros"><i class="fa fa-check"></i><b>3.2.1</b> Números</a></li>
+<li class="chapter" data-level="3.2.2" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#texto"><i class="fa fa-check"></i><b>3.2.2</b> Texto</a></li>
+<li class="chapter" data-level="3.2.3" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#logicos"><i class="fa fa-check"></i><b>3.2.3</b> Lógicos</a></li>
+<li class="chapter" data-level="3.2.4" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#fechas"><i class="fa fa-check"></i><b>3.2.4</b> Fechas</a></li>
+<li class="chapter" data-level="3.2.5" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#otros-tipos-datos"><i class="fa fa-check"></i><b>3.2.5</b> Otros tipos datos</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="3-3-logicas.html"><a href="3-3-logicas.html"><i class="fa fa-check"></i><b>3.3</b> Expresiones lógicas</a></li>
+<li class="chapter" data-level="3.3" data-path="3-3-logicas.html"><a href="3-3-logicas.html"><i class="fa fa-check"></i><b>3.3</b> Expresiones lógicas</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="3-3-logicas.html"><a href="3-3-logicas.html#tipos-de-expresions-logicas"><i class="fa fa-check"></i><b>3.3.1</b> Tipos de expresions lógicas</a></li>
+<li class="chapter" data-level="3.3.2" data-path="3-3-logicas.html"><a href="3-3-logicas.html#usando-expresiones-logicas-para-contar"><i class="fa fa-check"></i><b>3.3.2</b> Usando expresiones lógicas para contar</a></li>
+</ul></li>
 <li class="chapter" data-level="3.4" data-path="3-4-ejvecTiposDatos.html"><a href="3-4-ejvecTiposDatos.html"><i class="fa fa-check"></i><b>3.4</b> Ejercicios</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="4-otros-tipos-de-objeto.html"><a href="4-otros-tipos-de-objeto.html"><i class="fa fa-check"></i><b>4</b> Otros tipos de objeto</a><ul>
@@ -300,19 +307,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="apply" class="section level3">
 <h3><span class="header-section-number">7.5.1</span> <code>apply</code></h3>
 <p>El comando <code>apply</code> aplica una función a las filas o a las columnas de una <strong>matriz</strong>. Su forma de uso y argumentos son:</p>
-<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb290-1" title="1"><span class="kw">apply</span>(X, MARGIN, FUN, ...)</a></code></pre></div>
+<div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb373-1" title="1"><span class="kw">apply</span>(X, MARGIN, FUN, ...)</a></code></pre></div>
 <p>donde <code>X</code> es la matriz que se quiere evaluar; <code>MARGIN</code> es el margen de <code>X</code> (<code>1</code> para filas, <code>2</code> para columnas) sobre el cual se quiere aplicar la función; y <code>FUN</code> es la función que se quiere aplicar. Los <code>...</code> indican que ahí se pueden poner argumentos adicionales que son propios de <code>FUN</code>.</p>
 </div>
 <div id="tapply" class="section level3">
 <h3><span class="header-section-number">7.5.2</span> <code>tapply</code></h3>
 <p>El comando <code>tapply</code> aplica una función sobre subconjuntos de elementos de un vector, donde los subconjuntos están indicados por otros vectores (de la misma longitud del vector a evaluar). Su forma de uso y argumentos son:</p>
-<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb291-1" title="1"><span class="kw">tapply</span>(X, INDEX, FUN, ...)</a></code></pre></div>
+<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb374-1" title="1"><span class="kw">tapply</span>(X, INDEX, FUN, ...)</a></code></pre></div>
 <p>donde <code>X</code> es el vector que se quiere evaluar; <code>INDEX</code> es el vector que indica los subconjuntos; este vector debe ser de la misma longitud de <code>X</code> y debería ser de texto o de valores discretos. <code>INDEX</code> también puede ser una lista de vectores en el caso de que los subconjuntos se formen por dos o más vectores. Finalmente el argumento <code>FUN</code> es la función que se desea aplicar. Los <code>...</code> indican que ahí se pueden poner argumentos adicionales que son propios de <code>FUN</code>.</p>
 </div>
 <div id="sapply" class="section level3">
 <h3><span class="header-section-number">7.5.3</span> <code>sapply</code></h3>
 <p>El comando <code>sapply</code> aplica una función sobre cada elemento de un vector o de una lista. Su forma de uso y argumentos son:</p>
-<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb292-1" title="1"><span class="kw">sapply</span>(X, FUN, ...)</a></code></pre></div>
+<div class="sourceCode" id="cb375"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb375-1" title="1"><span class="kw">sapply</span>(X, FUN, ...)</a></code></pre></div>
 <p>donde <code>X</code> es el vector o la lista que se quiere evaluar, y <code>FUN</code> es la función que se desea aplicar. Los <code>...</code> indican que ahí se pueden poner argumentos adicionales que son propios de <code>FUN</code>.</p>
 </div>
 </div>

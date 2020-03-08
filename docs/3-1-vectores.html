@@ -170,9 +170,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1.3" data-path="3-1-vectores.html"><a href="3-1-vectores.html#operaciones-aritmeticas-con-vectores"><i class="fa fa-check"></i><b>3.1.3</b> Operaciones aritméticas con vectores</a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html"><i class="fa fa-check"></i><b>3.2</b> Tipos de datos</a><ul>
-<li class="chapter" data-level="3.2.1" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#validando-el-tipo-de-datos"><i class="fa fa-check"></i><b>3.2.1</b> Validando el tipo de datos</a></li>
+<li class="chapter" data-level="3.2.1" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#numeros"><i class="fa fa-check"></i><b>3.2.1</b> Números</a></li>
+<li class="chapter" data-level="3.2.2" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#texto"><i class="fa fa-check"></i><b>3.2.2</b> Texto</a></li>
+<li class="chapter" data-level="3.2.3" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#logicos"><i class="fa fa-check"></i><b>3.2.3</b> Lógicos</a></li>
+<li class="chapter" data-level="3.2.4" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#fechas"><i class="fa fa-check"></i><b>3.2.4</b> Fechas</a></li>
+<li class="chapter" data-level="3.2.5" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#otros-tipos-datos"><i class="fa fa-check"></i><b>3.2.5</b> Otros tipos datos</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="3-3-logicas.html"><a href="3-3-logicas.html"><i class="fa fa-check"></i><b>3.3</b> Expresiones lógicas</a></li>
+<li class="chapter" data-level="3.3" data-path="3-3-logicas.html"><a href="3-3-logicas.html"><i class="fa fa-check"></i><b>3.3</b> Expresiones lógicas</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="3-3-logicas.html"><a href="3-3-logicas.html#tipos-de-expresions-logicas"><i class="fa fa-check"></i><b>3.3.1</b> Tipos de expresions lógicas</a></li>
+<li class="chapter" data-level="3.3.2" data-path="3-3-logicas.html"><a href="3-3-logicas.html#usando-expresiones-logicas-para-contar"><i class="fa fa-check"></i><b>3.3.2</b> Usando expresiones lógicas para contar</a></li>
+</ul></li>
 <li class="chapter" data-level="3.4" data-path="3-4-ejvecTiposDatos.html"><a href="3-4-ejvecTiposDatos.html"><i class="fa fa-check"></i><b>3.4</b> Ejercicios</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="4-otros-tipos-de-objeto.html"><a href="4-otros-tipos-de-objeto.html"><i class="fa fa-check"></i><b>4</b> Otros tipos de objeto</a><ul>
@@ -296,10 +303,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="vectores" class="section level2">
 <h2><span class="header-section-number">3.1</span> Vectores</h2>
-<p>El <strong>R</strong> tiene diferentes tipos de objetos que permiten almacenar información. El <strong>vector</strong> es el objeto más sencillo. Otros tipos son las matrices, los data.frame o las listas.</p>
+<p>El <strong>vector</strong> es el objeto más sencillo. Almacena datos de un sólo tipo, p.e., un vector no puede contener números y texto al mismo tiempo, o sólo tiene números o sólo texto.</p>
 <div id="creando-vectores" class="section level3">
 <h3><span class="header-section-number">3.1.1</span> Creando vectores</h3>
-<p>Un <strong>vector</strong> se crea con el comando <code>c</code>, primera letra del verbo <code>c</code>oncatenar. El comando <code>c</code> <em>concatena</em> (o junta) datos en un vector. Aquí un par de ejemplos:</p>
+<p>Un <strong>vector</strong> se crea con el comando <code>c</code>, primera letra del verbo <code>c</code>oncatenar. El comando <code>c</code> <em>oncatena</em> (o junta) datos en un vector. Aquí un par de ejemplos:</p>
 <div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" title="1"><span class="co"># Creacion de dos vectores </span></a>
 <a class="sourceLine" id="cb64-2" title="2">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">8</span>)                     <span class="co"># vector con tres numeros</span></a>
 <a class="sourceLine" id="cb64-3" title="3">x                                   <span class="co"># se imprime el contenido</span></a></code></pre></div>
@@ -316,50 +323,66 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>[1] TRUE</code></pre>
 <div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" title="1"><span class="kw">is.vector</span>(w)   <span class="co"># ¿w es un vector?</span></a></code></pre></div>
 <pre><code>[1] TRUE</code></pre>
-<p>Puede usar <code>c</code> para juntar datos individuales con otro vector</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" title="1">z &lt;-<span class="st"> </span><span class="kw">c</span>(x, w, <span class="dv">32</span>)   <span class="co"># se juntan x, w y el 32 en otro vector</span></a>
+<p>Puede usar <code>c</code> para juntar datos “individuales” con otro vector, o juntar dos o más vectores:</p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" title="1">z &lt;-<span class="st"> </span><span class="kw">c</span>(x, w, <span class="dv">32</span>)   <span class="co"># se juntan los vectores x, w con el 32 en otro vector</span></a>
 <a class="sourceLine" id="cb74-2" title="2">z                  <span class="co"># mire el resultados</span></a></code></pre></div>
 <pre><code>[1]  2  4  8 16 32</code></pre>
-<p>El siguiente código crea dos vectores, <code>f1</code> y <code>f2</code>. Adicione una línea de código que genere un vector llamado <code>ft</code> que contenga los elementos de <code>f1</code> y de <code>f2</code>, finalice con una cuarta línea que imprima el vector <code>ft</code></p>
+<p>El siguiente código crea dos vectores, <code>f1</code> y <code>f2</code>. Adicione una línea de código que genere un vector llamado <code>ft</code> que contenga los elementos de <code>f1</code> y <code>f2</code>, finalice con una cuarta línea que imprima el vector <code>ft</code></p>
 <div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" title="1">f1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">34</span>, <span class="dv">44</span>, <span class="dv">54</span>)</a>
 <a class="sourceLine" id="cb76-2" title="2">f2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>)</a></code></pre></div>
+<p>A las entradas de un vector se le pueden asignar etiquetas (o nombres). Estas etiquetas actuan a manera de títulos cuando el vector se imprime en la consola, y permiten identificar mejor los elementos del vector. Usted puede asignar las etiquetas cuando esta creando el vector:</p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" title="1"><span class="co"># Creando un vector con etiquetas o nombres:</span></a>
+<a class="sourceLine" id="cb77-2" title="2">res &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dt">altura =</span> <span class="dv">50</span>, <span class="dt">base =</span> <span class="dv">20</span>)</a>
+<a class="sourceLine" id="cb77-3" title="3">res</a></code></pre></div>
+<pre><code>altura   base 
+    50     20 </code></pre>
+<p>El comando <code>names</code> permite imprimir estas etiquetas:</p>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb79-1" title="1"><span class="co"># Sacando las etiquetas o nombres de un vector:</span></a>
+<a class="sourceLine" id="cb79-2" title="2"><span class="kw">names</span>(res)</a></code></pre></div>
+<pre><code>[1] &quot;altura&quot; &quot;base&quot;  </code></pre>
+<p>El comando <code>names</code> permite también asignar unas nuevas etiqutas a los elementos del vector:</p>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb81-1" title="1"><span class="co"># Asignando otras etiqutas al vector &#39;res&#39;:</span></a>
+<a class="sourceLine" id="cb81-2" title="2"><span class="kw">names</span>(res) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;h&#39;</span>, <span class="st">&#39;b&#39;</span>)</a>
+<a class="sourceLine" id="cb81-3" title="3">res</a></code></pre></div>
+<pre><code> h  b 
+50 20 </code></pre>
 </div>
 <div id="creando-vectores-de-secuencias" class="section level3">
 <h3><span class="header-section-number">3.1.2</span> Creando vectores de secuencias</h3>
 <p>Considere las siguientes expresiones, comandos y objetos que nos permiten crear <strong>vectores</strong> con cierta secuencia de números o texto:</p>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" title="1"><span class="dv">1</span><span class="op">:</span><span class="dv">10</span>         <span class="co"># la expresion : crea una secuencia de uno en uno.</span></a></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb83-1" title="1"><span class="dv">1</span><span class="op">:</span><span class="dv">10</span>         <span class="co"># la expresion : crea una secuencia de uno en uno.</span></a></code></pre></div>
 <pre><code> [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb79-1" title="1"><span class="dv">-5</span><span class="op">:</span><span class="dv">5</span>         </a></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" title="1"><span class="dv">-5</span><span class="op">:</span><span class="dv">5</span>         </a></code></pre></div>
 <pre><code> [1] -5 -4 -3 -2 -1  0  1  2  3  4  5</code></pre>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb81-1" title="1"><span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">2</span>, <span class="dt">to =</span> <span class="dv">10</span>, <span class="dt">by =</span> <span class="dv">2</span>)  <span class="co"># crea una secuencia con cierto tamano de paso</span></a></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb87-1" title="1"><span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">2</span>, <span class="dt">to =</span> <span class="dv">10</span>, <span class="dt">by =</span> <span class="dv">2</span>)  <span class="co"># crea una secuencia con cierto tamano de paso</span></a></code></pre></div>
 <pre><code>[1]  2  4  6  8 10</code></pre>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb83-1" title="1">letters      <span class="co"># vector que contiene todas las letras del abecedario en minuscula</span></a></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb89-1" title="1">letters      <span class="co"># vector que contiene todas las letras del abecedario en minuscula</span></a></code></pre></div>
 <pre><code> [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; &quot;e&quot; &quot;f&quot; &quot;g&quot; &quot;h&quot; &quot;i&quot; &quot;j&quot; &quot;k&quot; &quot;l&quot; &quot;m&quot; &quot;n&quot; &quot;o&quot; &quot;p&quot; &quot;q&quot;
 [18] &quot;r&quot; &quot;s&quot; &quot;t&quot; &quot;u&quot; &quot;v&quot; &quot;w&quot; &quot;x&quot; &quot;y&quot; &quot;z&quot;</code></pre>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" title="1">LETTERS      <span class="co"># vector que contiene todas las letras del abecedario en mayuscula</span></a></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb91-1" title="1">LETTERS      <span class="co"># vector que contiene todas las letras del abecedario en mayuscula</span></a></code></pre></div>
 <pre><code> [1] &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; &quot;E&quot; &quot;F&quot; &quot;G&quot; &quot;H&quot; &quot;I&quot; &quot;J&quot; &quot;K&quot; &quot;L&quot; &quot;M&quot; &quot;N&quot; &quot;O&quot; &quot;P&quot; &quot;Q&quot;
 [18] &quot;R&quot; &quot;S&quot; &quot;T&quot; &quot;U&quot; &quot;V&quot; &quot;W&quot; &quot;X&quot; &quot;Y&quot; &quot;Z&quot;</code></pre>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb87-1" title="1"><span class="kw">rep</span>(<span class="dt">x =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dt">each  =</span> <span class="dv">4</span>)   <span class="co"># el comando rep crea vectores con patrones de repeticion especificos</span></a></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" title="1"><span class="kw">rep</span>(<span class="dt">x =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dt">each  =</span> <span class="dv">4</span>)   <span class="co"># el comando rep crea vectores con patrones de repeticion especificos</span></a></code></pre></div>
 <pre><code> [1] 1 1 1 1 2 2 2 2 3 3 3 3</code></pre>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb89-1" title="1"><span class="kw">rep</span>(<span class="dt">x =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dt">times =</span> <span class="dv">4</span>)   <span class="co"># el comando rep crea vectores con patrones de repeticion especificos</span></a></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb95-1" title="1"><span class="kw">rep</span>(<span class="dt">x =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dt">times =</span> <span class="dv">4</span>)   <span class="co"># el comando rep crea vectores con patrones de repeticion especificos</span></a></code></pre></div>
 <pre><code> [1] 1 2 3 1 2 3 1 2 3 1 2 3</code></pre>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb91-1" title="1"><span class="kw">rep</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>), <span class="dt">each =</span> <span class="dv">3</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb97-1" title="1"><span class="kw">rep</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>), <span class="dt">each =</span> <span class="dv">3</span>)</a></code></pre></div>
 <pre><code>[1] &quot;a&quot; &quot;a&quot; &quot;a&quot; &quot;b&quot; &quot;b&quot; &quot;b&quot; &quot;c&quot; &quot;c&quot; &quot;c&quot;</code></pre>
 </div>
 <div id="operaciones-aritmeticas-con-vectores" class="section level3">
 <h3><span class="header-section-number">3.1.3</span> Operaciones aritméticas con vectores</h3>
 <p>Cuando uno o más vectores se involucran en operaciones aritméticas (<span class="math inline">\(+\)</span>, <span class="math inline">\(\times\)</span>, <span class="math inline">\(\div\)</span>), estas se hacen <strong>elemento por elemento</strong>. Considere los siguientes ejemplos y su resultado:</p>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" title="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">8</span>,<span class="dv">16</span>,<span class="dv">32</span>)  <span class="co"># se crea un vector</span></a>
-<a class="sourceLine" id="cb93-2" title="2">y &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">5</span>             <span class="co"># se crea otro vector</span></a>
-<a class="sourceLine" id="cb93-3" title="3">x <span class="op">+</span><span class="st"> </span><span class="dv">1</span>                <span class="co"># se suma 1 a cada elemento de x</span></a></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb99-1" title="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">8</span>,<span class="dv">16</span>,<span class="dv">32</span>)  <span class="co"># se crea un vector</span></a>
+<a class="sourceLine" id="cb99-2" title="2">y &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">5</span>             <span class="co"># se crea otro vector</span></a>
+<a class="sourceLine" id="cb99-3" title="3">x <span class="op">+</span><span class="st"> </span><span class="dv">1</span>                <span class="co"># se suma 1 a cada elemento de x</span></a></code></pre></div>
 <pre><code>[1]  3  5  9 17 33</code></pre>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb95-1" title="1"><span class="kw">log2</span>(x)              <span class="co"># se saca log en base 2 a cada numero de x</span></a></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb101-1" title="1"><span class="kw">log2</span>(x)              <span class="co"># se saca log en base 2 a cada numero de x</span></a></code></pre></div>
 <pre><code>[1] 1 2 3 4 5</code></pre>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb97-1" title="1">x<span class="op">^</span><span class="dv">2</span>                  <span class="co"># se eleva al cuadrado cada numero de x</span></a></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb103-1" title="1">x<span class="op">^</span><span class="dv">2</span>                  <span class="co"># se eleva al cuadrado cada numero de x</span></a></code></pre></div>
 <pre><code>[1]    4   16   64  256 1024</code></pre>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb99-1" title="1">x <span class="op">+</span><span class="st"> </span>y                <span class="co"># se suma cada elemento de x a cada elemento de y</span></a></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb105-1" title="1">x <span class="op">+</span><span class="st"> </span>y                <span class="co"># se suma cada elemento de x a cada elemento de y</span></a></code></pre></div>
 <pre><code>[1]  3  6 11 20 37</code></pre>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb101-1" title="1">(x <span class="op">+</span><span class="st"> </span>y)<span class="op">/</span><span class="dv">2</span>            <span class="co"># se suman los elementos de &#39;x&#39; con &#39;y&#39;, luego el resultado se divide por 2</span></a></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb107-1" title="1">(x <span class="op">+</span><span class="st"> </span>y)<span class="op">/</span><span class="dv">2</span>            <span class="co"># se suman los elementos de &#39;x&#39; con &#39;y&#39;, luego el resultado se divide por 2</span></a></code></pre></div>
 <pre><code>[1]  1.5  3.0  5.5 10.0 18.5</code></pre>
 </div>
 </div>

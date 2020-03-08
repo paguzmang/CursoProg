@@ -170,9 +170,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1.3" data-path="3-1-vectores.html"><a href="3-1-vectores.html#operaciones-aritmeticas-con-vectores"><i class="fa fa-check"></i><b>3.1.3</b> Operaciones aritméticas con vectores</a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html"><i class="fa fa-check"></i><b>3.2</b> Tipos de datos</a><ul>
-<li class="chapter" data-level="3.2.1" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#validando-el-tipo-de-datos"><i class="fa fa-check"></i><b>3.2.1</b> Validando el tipo de datos</a></li>
+<li class="chapter" data-level="3.2.1" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#numeros"><i class="fa fa-check"></i><b>3.2.1</b> Números</a></li>
+<li class="chapter" data-level="3.2.2" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#texto"><i class="fa fa-check"></i><b>3.2.2</b> Texto</a></li>
+<li class="chapter" data-level="3.2.3" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#logicos"><i class="fa fa-check"></i><b>3.2.3</b> Lógicos</a></li>
+<li class="chapter" data-level="3.2.4" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#fechas"><i class="fa fa-check"></i><b>3.2.4</b> Fechas</a></li>
+<li class="chapter" data-level="3.2.5" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#otros-tipos-datos"><i class="fa fa-check"></i><b>3.2.5</b> Otros tipos datos</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="3-3-logicas.html"><a href="3-3-logicas.html"><i class="fa fa-check"></i><b>3.3</b> Expresiones lógicas</a></li>
+<li class="chapter" data-level="3.3" data-path="3-3-logicas.html"><a href="3-3-logicas.html"><i class="fa fa-check"></i><b>3.3</b> Expresiones lógicas</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="3-3-logicas.html"><a href="3-3-logicas.html#tipos-de-expresions-logicas"><i class="fa fa-check"></i><b>3.3.1</b> Tipos de expresions lógicas</a></li>
+<li class="chapter" data-level="3.3.2" data-path="3-3-logicas.html"><a href="3-3-logicas.html#usando-expresiones-logicas-para-contar"><i class="fa fa-check"></i><b>3.3.2</b> Usando expresiones lógicas para contar</a></li>
+</ul></li>
 <li class="chapter" data-level="3.4" data-path="3-4-ejvecTiposDatos.html"><a href="3-4-ejvecTiposDatos.html"><i class="fa fa-check"></i><b>3.4</b> Ejercicios</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="4-otros-tipos-de-objeto.html"><a href="4-otros-tipos-de-objeto.html"><i class="fa fa-check"></i><b>4</b> Otros tipos de objeto</a><ul>
@@ -296,31 +303,77 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="logicas" class="section level2">
 <h2><span class="header-section-number">3.3</span> Expresiones lógicas</h2>
-<p>Una expresión lógica hace una pregunta sobre si uno o más objetos cumplen una condición y devuelve verdadero (TRUE) o false (FALSE). Las principales formas de crear expresiones lógicas son:</p>
-<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb128-1" title="1">a <span class="op">&gt;</span><span class="st"> </span><span class="dv">10</span>               <span class="co"># mayor que ...</span></a></code></pre></div>
-<pre><code>[1] FALSE FALSE  TRUE</code></pre>
-<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb130-1" title="1">a <span class="op">&gt;=</span><span class="st"> </span><span class="dv">10</span>              <span class="co"># mayor o igual que ...</span></a></code></pre></div>
-<pre><code>[1] FALSE  TRUE  TRUE</code></pre>
-<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb132-1" title="1">a <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span>               <span class="co"># menor que ...</span></a></code></pre></div>
-<pre><code>[1]  TRUE FALSE FALSE</code></pre>
-<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb134-1" title="1">a <span class="op">&lt;=</span><span class="st"> </span><span class="dv">10</span>              <span class="co"># menor o igual que ...</span></a></code></pre></div>
-<pre><code>[1]  TRUE  TRUE FALSE</code></pre>
-<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb136-1" title="1">x <span class="op">==</span><span class="st"> &#39;semillero&#39;</span>     <span class="co"># igual a ...</span></a></code></pre></div>
-<pre><code>[1] TRUE</code></pre>
-<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb138-1" title="1">x <span class="op">!=</span><span class="st"> &#39;semillero&#39;</span>     <span class="co"># diferente de ...</span></a></code></pre></div>
-<pre><code>[1] FALSE</code></pre>
-<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb140-1" title="1">a <span class="op">&gt;</span><span class="st"> </span><span class="dv">2</span> <span class="op">&amp;</span><span class="st"> </span>a <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span>       <span class="co"># ... y ... (2 &lt; a &lt; 10)</span></a></code></pre></div>
-<pre><code>[1]  TRUE FALSE FALSE</code></pre>
-<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb142-1" title="1">a <span class="op">&lt;</span><span class="st"> </span><span class="dv">2</span> <span class="op">|</span><span class="st"> </span>a <span class="op">&gt;</span><span class="st"> </span><span class="dv">10</span>       <span class="co"># ... o ... (a &lt; 2 o a &gt; 10)</span></a></code></pre></div>
-<pre><code>[1] FALSE FALSE  TRUE</code></pre>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb144-1" title="1"><span class="op">!</span><span class="st"> </span>(a <span class="op">&lt;</span><span class="st"> </span><span class="dv">2</span>)            <span class="co"># negacion (! = convierte el T en F y viceversa)</span></a></code></pre></div>
-<pre><code>[1] TRUE TRUE TRUE</code></pre>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb146-1" title="1"><span class="kw">is.na</span>(a)             <span class="co"># ¿a esta perdido?</span></a></code></pre></div>
-<pre><code>[1] FALSE FALSE FALSE</code></pre>
-<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb148-1" title="1"><span class="op">!</span><span class="st"> </span><span class="kw">is.na</span>(a)           <span class="co"># ¿a no esta perdido?</span></a></code></pre></div>
-<pre><code>[1] TRUE TRUE TRUE</code></pre>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb150-1" title="1"><span class="kw">is.nan</span>(h)            <span class="co"># ¿h tienen elementos NaN?</span></a></code></pre></div>
-<pre><code>[1] TRUE</code></pre>
+<p>Una expresión lógica hace una pregunta sobre si uno o más objetos cumplen una condición y devuelve verdadero (<code>TRUE</code>) o false (<code>FALSE</code>). Por ejemplo:</p>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb225-1" title="1"><span class="co"># Un ejemplo de una expresion logica:</span></a>
+<a class="sourceLine" id="cb225-2" title="2"><span class="co"># se crea un vector &#39;x&#39;</span></a>
+<a class="sourceLine" id="cb225-3" title="3">x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span>   </a>
+<a class="sourceLine" id="cb225-4" title="4"><span class="co"># se pregunta cuales entradas de &#39;x&#39; son mayores o iguales a 5</span></a>
+<a class="sourceLine" id="cb225-5" title="5">x <span class="op">&gt;=</span><span class="st"> </span><span class="dv">5</span>      </a></code></pre></div>
+<pre><code> [1] FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE</code></pre>
+<p>Las expresiones lógicas tienen mucha utilidad en ciencias de la computación. Con ellas podemos filtrar objetos, crear variables binarias, o generar bifurcaciones de acciones cuando escribimos un programa. Como se observa en el ejemplo anterior, cuando ejectuamos una expresión lógica sobre un vector, la expresión se ejecuta <strong>elemento por elemento</strong>, como ya se había estudiado en la sección xxx. Esto también ocurre cuando se ejecuta una expresión lógica sobre una matriz (ver sección xxx).</p>
+<p>Existen diferentes comandos y formas de construir expresiones lógicas. A continuación describimos algunas formas y comandos para crear expresiones lógicas en <strong>R</strong>.</p>
+<div id="tipos-de-expresions-logicas" class="section level3">
+<h3><span class="header-section-number">3.3.1</span> Tipos de expresions lógicas</h3>
+<div id="para-numeros-con-desigualdades" class="section level4">
+<h4><span class="header-section-number">3.3.1.1</span> Para números (con desigualdades)</h4>
+<p>Sobre un vector (o matriz) de <em>números</em> se pueden evaluar desigualdades (las que estudiamos en un curso básico de matemática), tales como <em>mayor que</em>, <em>menor que</em>, <em>entre uno y otro número</em>, etc. En el siguiente chunk se recogen las principales:</p>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb227-1" title="1"><span class="co"># Expresiones logicas con desigualdades para datos numericos: </span></a>
+<a class="sourceLine" id="cb227-2" title="2">a <span class="op">&gt;</span><span class="st"> </span><span class="dv">10</span>          <span class="co"># mayor que ...</span></a>
+<a class="sourceLine" id="cb227-3" title="3">a <span class="op">&gt;=</span><span class="st"> </span><span class="dv">10</span>         <span class="co"># mayor o igual que ...</span></a>
+<a class="sourceLine" id="cb227-4" title="4">a <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span>          <span class="co"># menor que ...</span></a>
+<a class="sourceLine" id="cb227-5" title="5">a <span class="op">&lt;=</span><span class="st"> </span><span class="dv">10</span>         <span class="co"># menor o igual que ...</span></a>
+<a class="sourceLine" id="cb227-6" title="6">x <span class="op">==</span><span class="st"> </span><span class="dv">10</span>         <span class="co"># igual a ...</span></a>
+<a class="sourceLine" id="cb227-7" title="7">x <span class="op">!=</span><span class="st"> </span><span class="dv">10</span>         <span class="co"># diferente de ...</span></a>
+<a class="sourceLine" id="cb227-8" title="8">a <span class="op">&gt;</span><span class="st"> </span><span class="dv">2</span> <span class="op">&amp;</span><span class="st"> </span>a <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span>  <span class="co"># ... y ... (2 &lt; a &lt; 10)</span></a>
+<a class="sourceLine" id="cb227-9" title="9">a <span class="op">&lt;</span><span class="st"> </span><span class="dv">2</span> <span class="op">|</span><span class="st"> </span>a <span class="op">&gt;</span><span class="st"> </span><span class="dv">10</span>  <span class="co"># ... o ... (a &lt; 2 o a &gt; 10)</span></a>
+<a class="sourceLine" id="cb227-10" title="10"><span class="op">!</span><span class="st"> </span>(a <span class="op">&lt;</span><span class="st"> </span><span class="dv">2</span>)       <span class="co"># negacion (! = convierte TRUE en FALSE y viceversa)</span></a>
+<a class="sourceLine" id="cb227-11" title="11">a <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>)    <span class="co"># a igual a algun numero entre 5, 6 o 7</span></a></code></pre></div>
+</div>
+<div id="para-datos-tipo-texto" class="section level4">
+<h4><span class="header-section-number">3.3.1.2</span> Para datos tipo texto</h4>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb228-1" title="1"><span class="co"># Expresiones logicas para texto:</span></a>
+<a class="sourceLine" id="cb228-2" title="2">x <span class="op">==</span><span class="st"> &#39;semillero&#39;</span>           <span class="co"># x igual a ...</span></a>
+<a class="sourceLine" id="cb228-3" title="3">x <span class="op">!=</span><span class="st"> &#39;semillero&#39;</span>           <span class="co"># x diferente de ...</span></a>
+<a class="sourceLine" id="cb228-4" title="4">x <span class="op">==</span><span class="st"> &#39;h&#39;</span> <span class="op">|</span><span class="st"> </span>x <span class="op">==</span><span class="st"> &#39;e&#39;</span>        <span class="co"># x igual a &#39;h&#39; o x igual a &#39;e&#39;</span></a>
+<a class="sourceLine" id="cb228-5" title="5">x <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;h&#39;</span>, <span class="st">&#39;e&#39;</span>, <span class="st">&#39;m&#39;</span>)    <span class="co"># x igual a alguno entre &#39;h&#39;, &#39;e&#39; o &#39;m&#39;</span></a>
+<a class="sourceLine" id="cb228-6" title="6">x <span class="op">==</span><span class="st"> &#39;h&#39;</span> <span class="op">&amp;</span><span class="st"> </span>w <span class="op">==</span><span class="st"> &#39;e&#39;</span>        <span class="co"># x igual a &#39;h&#39; y w igual a &#39;e&#39;</span></a></code></pre></div>
+</div>
+<div id="para-evaluar-el-tipo-de-dato" class="section level4">
+<h4><span class="header-section-number">3.3.1.3</span> Para evaluar el tipo de dato</h4>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb229-1" title="1"><span class="co"># Expresiones logicas para evaluar el tipo de dato</span></a>
+<a class="sourceLine" id="cb229-2" title="2"><span class="kw">is.numeric</span>(a)   <span class="co"># ¿a es numeric?</span></a>
+<a class="sourceLine" id="cb229-3" title="3"><span class="kw">is.double</span>(a)    <span class="co"># ¿a es double?</span></a>
+<a class="sourceLine" id="cb229-4" title="4"><span class="kw">is.integer</span>(a)   <span class="co"># ¿a es integer?</span></a>
+<a class="sourceLine" id="cb229-5" title="5"><span class="kw">is.character</span>(a) <span class="co"># ¿a es character?</span></a>
+<a class="sourceLine" id="cb229-6" title="6"><span class="kw">is.logical</span>(a)   <span class="co"># ¿a es logical?</span></a>
+<a class="sourceLine" id="cb229-7" title="7"><span class="kw">is.na</span>(a)        <span class="co"># ¿a es NA?</span></a>
+<a class="sourceLine" id="cb229-8" title="8"><span class="op">!</span><span class="kw">is.na</span>(a)       <span class="co"># ¿a no es NA?</span></a>
+<a class="sourceLine" id="cb229-9" title="9"><span class="kw">is.infinite</span>(a)  <span class="co"># ¿a tiene elementos Inf?</span></a>
+<a class="sourceLine" id="cb229-10" title="10"><span class="kw">is.nan</span>(a)       <span class="co"># ¿a tiene elementos NaN?</span></a>
+<a class="sourceLine" id="cb229-11" title="11"><span class="kw">is.null</span>(a)      <span class="co"># ¿a es NULL?</span></a></code></pre></div>
+</div>
+<div id="para-evaluar-el-tipo-de-objeto" class="section level4">
+<h4><span class="header-section-number">3.3.1.4</span> Para evaluar el tipo de objeto</h4>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb230-1" title="1"><span class="co"># Expresiones logicas para evaluar el tipo o clase de objeto</span></a>
+<a class="sourceLine" id="cb230-2" title="2"><span class="kw">is.vector</span>(a)      <span class="co"># ¿a es un vector?</span></a>
+<a class="sourceLine" id="cb230-3" title="3"><span class="kw">is.matrix</span>(a)      <span class="co"># ¿a es una matriz?</span></a>
+<a class="sourceLine" id="cb230-4" title="4"><span class="kw">is.data.frame</span>(a)  <span class="co"># ¿a es un data.frame?</span></a>
+<a class="sourceLine" id="cb230-5" title="5"><span class="kw">is.list</span>(a)        <span class="co"># ¿a es una lista?</span></a></code></pre></div>
+</div>
+</div>
+<div id="usando-expresiones-logicas-para-contar" class="section level3">
+<h3><span class="header-section-number">3.3.2</span> Usando expresiones lógicas para contar</h3>
+<p>Un uso típico de una expresión lógica es convertir un vector numérico o de texto en uno de tipo lógico y con esto, poder identificar cuales o incluso contar las entradas del vector que cumplen cierta condición.</p>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb231-1" title="1">x &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dt">n =</span> <span class="dv">50</span>, <span class="dt">min =</span> <span class="dv">0</span>, <span class="dt">max =</span> <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb231-2" title="2">x <span class="op">&gt;</span><span class="st"> </span><span class="fl">0.5</span></a></code></pre></div>
+<pre><code> [1]  TRUE FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE
+[12]  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE FALSE  TRUE  TRUE  TRUE
+[23] FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE  TRUE FALSE
+[34] FALSE  TRUE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE  TRUE FALSE
+[45]  TRUE  TRUE  TRUE FALSE FALSE  TRUE</code></pre>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb233-1" title="1"><span class="kw">sum</span>(x <span class="op">&gt;</span><span class="st"> </span><span class="fl">0.5</span>)</a></code></pre></div>
+<pre><code>[1] 24</code></pre>
+</div>
 </div>
             </section>
 

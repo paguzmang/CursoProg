@@ -170,9 +170,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1.3" data-path="3-1-vectores.html"><a href="3-1-vectores.html#operaciones-aritmeticas-con-vectores"><i class="fa fa-check"></i><b>3.1.3</b> Operaciones aritméticas con vectores</a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html"><i class="fa fa-check"></i><b>3.2</b> Tipos de datos</a><ul>
-<li class="chapter" data-level="3.2.1" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#validando-el-tipo-de-datos"><i class="fa fa-check"></i><b>3.2.1</b> Validando el tipo de datos</a></li>
+<li class="chapter" data-level="3.2.1" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#numeros"><i class="fa fa-check"></i><b>3.2.1</b> Números</a></li>
+<li class="chapter" data-level="3.2.2" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#texto"><i class="fa fa-check"></i><b>3.2.2</b> Texto</a></li>
+<li class="chapter" data-level="3.2.3" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#logicos"><i class="fa fa-check"></i><b>3.2.3</b> Lógicos</a></li>
+<li class="chapter" data-level="3.2.4" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#fechas"><i class="fa fa-check"></i><b>3.2.4</b> Fechas</a></li>
+<li class="chapter" data-level="3.2.5" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#otros-tipos-datos"><i class="fa fa-check"></i><b>3.2.5</b> Otros tipos datos</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="3-3-logicas.html"><a href="3-3-logicas.html"><i class="fa fa-check"></i><b>3.3</b> Expresiones lógicas</a></li>
+<li class="chapter" data-level="3.3" data-path="3-3-logicas.html"><a href="3-3-logicas.html"><i class="fa fa-check"></i><b>3.3</b> Expresiones lógicas</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="3-3-logicas.html"><a href="3-3-logicas.html#tipos-de-expresions-logicas"><i class="fa fa-check"></i><b>3.3.1</b> Tipos de expresions lógicas</a></li>
+<li class="chapter" data-level="3.3.2" data-path="3-3-logicas.html"><a href="3-3-logicas.html#usando-expresiones-logicas-para-contar"><i class="fa fa-check"></i><b>3.3.2</b> Usando expresiones lógicas para contar</a></li>
+</ul></li>
 <li class="chapter" data-level="3.4" data-path="3-4-ejvecTiposDatos.html"><a href="3-4-ejvecTiposDatos.html"><i class="fa fa-check"></i><b>3.4</b> Ejercicios</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="4-otros-tipos-de-objeto.html"><a href="4-otros-tipos-de-objeto.html"><i class="fa fa-check"></i><b>4</b> Otros tipos de objeto</a><ul>
@@ -297,9 +304,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="fun" class="section level2">
 <h2><span class="header-section-number">6.2</span> Funciones</h2>
 <p>El comando <code>function</code> en <strong>R</strong> le permite al usuario crear programas o rutinas para realizar tareas específicas. La sintanxis de <code>function</code> es:</p>
-<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb152-1" title="1">aqui un ejemplo</a></code></pre></div>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb235-1" title="1">aqui un ejemplo</a></code></pre></div>
 <p>En esta sintanxis, <code>mifun</code> es el nombre que el usuario desea darle a la función. Los objetos <code>x</code>, <code>y</code>, <code>...</code> son argumentos de entrada para la función. Entre llaves <code>{ }</code> se escriben líneas de código <strong>R</strong> donde se deben utilizar o transformar los objetos <code>x</code>, <code>y</code>, <code>...</code> en algún otro objeto o gráfico. La última expresión del código debe imprimir el resultado. La siguiente figura, tomada de <span class="citation">Grolemund (<a href="#ref-grolemund2014" role="doc-biblioref">2014</a>)</span>, muestra los aspectos relevantes al crear una función con <code>function</code>:</p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-69"></span>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-93"></span>
 <img src="images/partes_funcion_Grolemund_2014.png" alt="Aspectos relevantes de una función en **R** [@grolemund2014]" width="80%" />
 <p class="caption">
 Figura 6.1: Aspectos relevantes de una función en <strong>R</strong> <span class="citation">(Grolemund, <a href="#ref-grolemund2014" role="doc-biblioref">2014</a>)</span>
@@ -308,107 +315,107 @@ Figura 6.1: Aspectos relevantes de una función en <strong>R</strong> <span clas
 <div id="un-ejemplo" class="section level3">
 <h3><span class="header-section-number">6.2.1</span> Un ejemplo</h3>
 <p>Suponga que se busca crear una función que <em>cuente</em> el número valores “not a number” (<code>NaN</code>) contenidos en un vector. Una función que hace esto es la siguiente:</p>
-<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb153-1" title="1"><span class="co"># Se crea una funcion que cuente NaN&#39;s en un vector:</span></a>
-<a class="sourceLine" id="cb153-2" title="2">cuenta_nan &lt;-<span class="st"> </span><span class="cf">function</span>(x){</a>
-<a class="sourceLine" id="cb153-3" title="3">  donde.nan &lt;-<span class="st"> </span><span class="kw">is.nan</span>(x)   <span class="co"># se crea vector logico indicando donde hay NaN</span></a>
-<a class="sourceLine" id="cb153-4" title="4">  <span class="kw">sum</span>( donde.nan )         <span class="co"># al sumar el vector logico, se cuenta los NaN</span></a>
-<a class="sourceLine" id="cb153-5" title="5">}</a></code></pre></div>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb236-1" title="1"><span class="co"># Se crea una funcion que cuente NaN&#39;s en un vector:</span></a>
+<a class="sourceLine" id="cb236-2" title="2">cuenta_nan &lt;-<span class="st"> </span><span class="cf">function</span>(x){</a>
+<a class="sourceLine" id="cb236-3" title="3">  donde.nan &lt;-<span class="st"> </span><span class="kw">is.nan</span>(x)   <span class="co"># se crea vector logico indicando donde hay NaN</span></a>
+<a class="sourceLine" id="cb236-4" title="4">  <span class="kw">sum</span>( donde.nan )         <span class="co"># al sumar el vector logico, se cuenta los NaN</span></a>
+<a class="sourceLine" id="cb236-5" title="5">}</a></code></pre></div>
 <p>Luego de creada, la función <code>cuenta_nan</code> se puede usar como cualquier otro comando de <strong>R</strong>. A continuación se crea un vector con algunos <code>NaN</code>’s para luego probar la nueva función:</p>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb154-1" title="1">w &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">45</span>, <span class="dv">10</span>, <span class="ot">NaN</span>, <span class="dv">34</span>, <span class="ot">NaN</span>, <span class="ot">NaN</span>, <span class="dv">-10</span>)  <span class="co"># se crea vector con tres NaN&#39;s</span></a>
-<a class="sourceLine" id="cb154-2" title="2"><span class="kw">cuenta_nan</span>(<span class="dt">x =</span> w)                       <span class="co"># se usa la funcion</span></a></code></pre></div>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb237-1" title="1">w &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">45</span>, <span class="dv">10</span>, <span class="ot">NaN</span>, <span class="dv">34</span>, <span class="ot">NaN</span>, <span class="ot">NaN</span>, <span class="dv">-10</span>)  <span class="co"># se crea vector con tres NaN&#39;s</span></a>
+<a class="sourceLine" id="cb237-2" title="2"><span class="kw">cuenta_nan</span>(<span class="dt">x =</span> w)                       <span class="co"># se usa la funcion</span></a></code></pre></div>
 <pre><code>[1] 3</code></pre>
 </div>
 <div id="controlando-el-objeto-de-salida" class="section level3">
 <h3><span class="header-section-number">6.2.2</span> Controlando el objeto de salida</h3>
 <p>Suponga ahora que usted quiere que la función <code>cuenta_nan</code> entregue dos números, el conteo de <code>NaN</code> y la proporción de <code>NaN</code> la cual se obtiene diviendo el conteo por el número total de elemento en el vector. Como se requiere entregar dos números, usted debe seleccionar en que objeto entregar estos dos números. Una primera opción puede ser entregar los dos números en <strong>un vector</strong> que tenga etiquetas:</p>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb156-1" title="1"><span class="co"># Se crea una funcion que cuente NaN&#39;s en un vector</span></a>
-<a class="sourceLine" id="cb156-2" title="2"><span class="co"># y que entregue un vector:</span></a>
-<a class="sourceLine" id="cb156-3" title="3">cuenta_nan &lt;-<span class="st"> </span><span class="cf">function</span>(x){</a>
-<a class="sourceLine" id="cb156-4" title="4">  donde.nan &lt;-<span class="st"> </span><span class="kw">is.nan</span>(x)     <span class="co"># se crea vector logico indicando donde hay NaN</span></a>
-<a class="sourceLine" id="cb156-5" title="5">  n_nan &lt;-<span class="st"> </span><span class="kw">sum</span>( donde.nan )  <span class="co"># al sumar el vector logico, se cuenta los NaN</span></a>
-<a class="sourceLine" id="cb156-6" title="6">  p_nan &lt;-<span class="st"> </span>n_nan<span class="op">/</span><span class="kw">length</span>(x)   <span class="co"># se calcula la proporcion:</span></a>
-<a class="sourceLine" id="cb156-7" title="7">  <span class="kw">c</span>(<span class="dt">n =</span> n_nan, <span class="dt">p =</span> p_nan)    <span class="co"># se entrgan las dos cantidades en un vector</span></a>
-<a class="sourceLine" id="cb156-8" title="8">}</a>
-<a class="sourceLine" id="cb156-9" title="9"></a>
-<a class="sourceLine" id="cb156-10" title="10"><span class="co"># Se prueba la funcion:</span></a>
-<a class="sourceLine" id="cb156-11" title="11"><span class="kw">cuenta_nan</span>(<span class="dt">x =</span> w)</a></code></pre></div>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb239-1" title="1"><span class="co"># Se crea una funcion que cuente NaN&#39;s en un vector</span></a>
+<a class="sourceLine" id="cb239-2" title="2"><span class="co"># y que entregue un vector:</span></a>
+<a class="sourceLine" id="cb239-3" title="3">cuenta_nan &lt;-<span class="st"> </span><span class="cf">function</span>(x){</a>
+<a class="sourceLine" id="cb239-4" title="4">  donde.nan &lt;-<span class="st"> </span><span class="kw">is.nan</span>(x)     <span class="co"># se crea vector logico indicando donde hay NaN</span></a>
+<a class="sourceLine" id="cb239-5" title="5">  n_nan &lt;-<span class="st"> </span><span class="kw">sum</span>( donde.nan )  <span class="co"># al sumar el vector logico, se cuenta los NaN</span></a>
+<a class="sourceLine" id="cb239-6" title="6">  p_nan &lt;-<span class="st"> </span>n_nan<span class="op">/</span><span class="kw">length</span>(x)   <span class="co"># se calcula la proporcion:</span></a>
+<a class="sourceLine" id="cb239-7" title="7">  <span class="kw">c</span>(<span class="dt">n =</span> n_nan, <span class="dt">p =</span> p_nan)    <span class="co"># se entrgan las dos cantidades en un vector</span></a>
+<a class="sourceLine" id="cb239-8" title="8">}</a>
+<a class="sourceLine" id="cb239-9" title="9"></a>
+<a class="sourceLine" id="cb239-10" title="10"><span class="co"># Se prueba la funcion:</span></a>
+<a class="sourceLine" id="cb239-11" title="11"><span class="kw">cuenta_nan</span>(<span class="dt">x =</span> w)</a></code></pre></div>
 <pre><code>        n         p 
 3.0000000 0.4285714 </code></pre>
 <p>Otra opción, quizas más conveniente por el tema del número de decimales, es entregar los dos números en <strong>un data.frame</strong> :</p>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb158-1" title="1"><span class="co"># Se crea una funcion que cuente NaN&#39;s en un vector</span></a>
-<a class="sourceLine" id="cb158-2" title="2"><span class="co"># y que entregue un data.frame:</span></a>
-<a class="sourceLine" id="cb158-3" title="3">cuenta_nan &lt;-<span class="st"> </span><span class="cf">function</span>(x){</a>
-<a class="sourceLine" id="cb158-4" title="4">  donde.nan &lt;-<span class="st"> </span><span class="kw">is.nan</span>(x)     <span class="co"># se crea vector logico indicando donde hay NaN</span></a>
-<a class="sourceLine" id="cb158-5" title="5">  n_nan &lt;-<span class="st"> </span><span class="kw">sum</span>( donde.nan )  <span class="co"># al sumar el vector logico, se cuenta los NaN</span></a>
-<a class="sourceLine" id="cb158-6" title="6">  p_nan &lt;-<span class="st"> </span>n_nan<span class="op">/</span><span class="kw">length</span>(x)   <span class="co"># se calcula la proporcion:</span></a>
-<a class="sourceLine" id="cb158-7" title="7">  <span class="kw">data.frame</span>(<span class="dt">n =</span> n_nan, <span class="dt">p =</span> p_nan)    <span class="co"># se entrgan las dos cantidades en un data.frame</span></a>
-<a class="sourceLine" id="cb158-8" title="8">}</a>
-<a class="sourceLine" id="cb158-9" title="9"></a>
-<a class="sourceLine" id="cb158-10" title="10"><span class="co"># Se prueba la funcion:</span></a>
-<a class="sourceLine" id="cb158-11" title="11"><span class="kw">cuenta_nan</span>(<span class="dt">x =</span> w)</a></code></pre></div>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb241-1" title="1"><span class="co"># Se crea una funcion que cuente NaN&#39;s en un vector</span></a>
+<a class="sourceLine" id="cb241-2" title="2"><span class="co"># y que entregue un data.frame:</span></a>
+<a class="sourceLine" id="cb241-3" title="3">cuenta_nan &lt;-<span class="st"> </span><span class="cf">function</span>(x){</a>
+<a class="sourceLine" id="cb241-4" title="4">  donde.nan &lt;-<span class="st"> </span><span class="kw">is.nan</span>(x)     <span class="co"># se crea vector logico indicando donde hay NaN</span></a>
+<a class="sourceLine" id="cb241-5" title="5">  n_nan &lt;-<span class="st"> </span><span class="kw">sum</span>( donde.nan )  <span class="co"># al sumar el vector logico, se cuenta los NaN</span></a>
+<a class="sourceLine" id="cb241-6" title="6">  p_nan &lt;-<span class="st"> </span>n_nan<span class="op">/</span><span class="kw">length</span>(x)   <span class="co"># se calcula la proporcion:</span></a>
+<a class="sourceLine" id="cb241-7" title="7">  <span class="kw">data.frame</span>(<span class="dt">n =</span> n_nan, <span class="dt">p =</span> p_nan)    <span class="co"># se entrgan las dos cantidades en un data.frame</span></a>
+<a class="sourceLine" id="cb241-8" title="8">}</a>
+<a class="sourceLine" id="cb241-9" title="9"></a>
+<a class="sourceLine" id="cb241-10" title="10"><span class="co"># Se prueba la funcion:</span></a>
+<a class="sourceLine" id="cb241-11" title="11"><span class="kw">cuenta_nan</span>(<span class="dt">x =</span> w)</a></code></pre></div>
 <pre><code>  n         p
 1 3 0.4285714</code></pre>
 </div>
 <div id="argumentos-por-defecto" class="section level3">
 <h3><span class="header-section-number">6.2.3</span> Argumentos por defecto</h3>
 <p>Suponga ahora que usted quiere controlar el número de decimales con el cuál se imprime la proporción calculada. Para esto, se puede incluir un segundo argumento que controle este aspecto:</p>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb160-1" title="1"><span class="co"># Se crea una funcion que cuente NaN&#39;s en un vector y que entregue un data.frame:</span></a>
-<a class="sourceLine" id="cb160-2" title="2">cuenta_nan &lt;-<span class="st"> </span><span class="cf">function</span>(x, <span class="dt">dec =</span> <span class="dv">2</span>){</a>
-<a class="sourceLine" id="cb160-3" title="3">  donde.nan &lt;-<span class="st"> </span><span class="kw">is.nan</span>(x)     <span class="co"># se crea vector logico indicando donde hay NaN</span></a>
-<a class="sourceLine" id="cb160-4" title="4">  n_nan &lt;-<span class="st"> </span><span class="kw">sum</span>( donde.nan )  <span class="co"># al sumar el vector logico, se cuenta los NaN</span></a>
-<a class="sourceLine" id="cb160-5" title="5">  p_nan &lt;-<span class="st"> </span><span class="kw">round</span>(n_nan<span class="op">/</span><span class="kw">length</span>(x), dec)   <span class="co"># se calcula la proporcion</span></a>
-<a class="sourceLine" id="cb160-6" title="6">  <span class="kw">data.frame</span>(<span class="dt">n =</span> n_nan, <span class="dt">p =</span> p_nan)       <span class="co"># se entrgan las dos cantidades en un data.frame</span></a>
-<a class="sourceLine" id="cb160-7" title="7">}</a>
-<a class="sourceLine" id="cb160-8" title="8"></a>
-<a class="sourceLine" id="cb160-9" title="9"><span class="co"># Se prueba la funcion y se controla el nro. de decimales a 3:</span></a>
-<a class="sourceLine" id="cb160-10" title="10"><span class="kw">cuenta_nan</span>(<span class="dt">x =</span> w, <span class="dt">dec =</span> <span class="dv">3</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb243-1" title="1"><span class="co"># Se crea una funcion que cuente NaN&#39;s en un vector y que entregue un data.frame:</span></a>
+<a class="sourceLine" id="cb243-2" title="2">cuenta_nan &lt;-<span class="st"> </span><span class="cf">function</span>(x, <span class="dt">dec =</span> <span class="dv">2</span>){</a>
+<a class="sourceLine" id="cb243-3" title="3">  donde.nan &lt;-<span class="st"> </span><span class="kw">is.nan</span>(x)     <span class="co"># se crea vector logico indicando donde hay NaN</span></a>
+<a class="sourceLine" id="cb243-4" title="4">  n_nan &lt;-<span class="st"> </span><span class="kw">sum</span>( donde.nan )  <span class="co"># al sumar el vector logico, se cuenta los NaN</span></a>
+<a class="sourceLine" id="cb243-5" title="5">  p_nan &lt;-<span class="st"> </span><span class="kw">round</span>(n_nan<span class="op">/</span><span class="kw">length</span>(x), dec)   <span class="co"># se calcula la proporcion</span></a>
+<a class="sourceLine" id="cb243-6" title="6">  <span class="kw">data.frame</span>(<span class="dt">n =</span> n_nan, <span class="dt">p =</span> p_nan)       <span class="co"># se entrgan las dos cantidades en un data.frame</span></a>
+<a class="sourceLine" id="cb243-7" title="7">}</a>
+<a class="sourceLine" id="cb243-8" title="8"></a>
+<a class="sourceLine" id="cb243-9" title="9"><span class="co"># Se prueba la funcion y se controla el nro. de decimales a 3:</span></a>
+<a class="sourceLine" id="cb243-10" title="10"><span class="kw">cuenta_nan</span>(<span class="dt">x =</span> w, <span class="dt">dec =</span> <span class="dv">3</span>)</a></code></pre></div>
 <pre><code>  n     p
 1 3 0.429</code></pre>
 <p>Note que el 2do. argumento que se incluyó, <code>dec</code>, se le asignó el valor <code>2</code> desde la misma creación de la función. De esta forma <strong>se establece un argumento por defecto</strong>. Si el usuario no usa este argumento, la función asumiará un valor de <code>2</code> por defecto.</p>
-<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb162-1" title="1"><span class="co"># Se usa la funcion sin usar dec. Por defecto, se asumira dec = 2</span></a>
-<a class="sourceLine" id="cb162-2" title="2"><span class="kw">cuenta_nan</span>(<span class="dt">x =</span> w)  </a></code></pre></div>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb245-1" title="1"><span class="co"># Se usa la funcion sin usar dec. Por defecto, se asumira dec = 2</span></a>
+<a class="sourceLine" id="cb245-2" title="2"><span class="kw">cuenta_nan</span>(<span class="dt">x =</span> w)  </a></code></pre></div>
 <pre><code>  n    p
 1 3 0.43</code></pre>
 </div>
 <div id="entregando-texto-variable" class="section level3">
 <h3><span class="header-section-number">6.2.4</span> Entregando texto variable</h3>
 <p>Continuando con el mismo ejemplo, suponga que la salida de la función <code>cuenta_nan</code> debe entregar una cadena de texto que diga algo como: <code>La cantidad de NaN's es 3</code>. Los comandos <code>paste</code> y <code>paste0</code> permiten pegar elementos de diferente tipo (texto o números) y entregar una sóla cadena de texto. Aquí un ejemplo:</p>
-<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb164-1" title="1"><span class="co"># Se crea una funcion que cuente NaN&#39;s en un vector y que entregue texto:</span></a>
-<a class="sourceLine" id="cb164-2" title="2">cuenta_nan &lt;-<span class="st"> </span><span class="cf">function</span>(x){</a>
-<a class="sourceLine" id="cb164-3" title="3">  donde.nan &lt;-<span class="st"> </span><span class="kw">is.nan</span>(x)     <span class="co"># se crea vector logico indicando donde hay NaN</span></a>
-<a class="sourceLine" id="cb164-4" title="4">  n_nan &lt;-<span class="st"> </span><span class="kw">sum</span>( donde.nan )  <span class="co"># al sumar el vector logico, se cuenta los NaN</span></a>
-<a class="sourceLine" id="cb164-5" title="5">  <span class="kw">paste0</span>(<span class="st">&#39;La cantidad de NaN es: &#39;</span>, n_nan)</a>
-<a class="sourceLine" id="cb164-6" title="6">}</a>
-<a class="sourceLine" id="cb164-7" title="7"></a>
-<a class="sourceLine" id="cb164-8" title="8"><span class="co"># Se prueba la funcion:</span></a>
-<a class="sourceLine" id="cb164-9" title="9"><span class="kw">cuenta_nan</span>(<span class="dt">x =</span> w)</a></code></pre></div>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb247-1" title="1"><span class="co"># Se crea una funcion que cuente NaN&#39;s en un vector y que entregue texto:</span></a>
+<a class="sourceLine" id="cb247-2" title="2">cuenta_nan &lt;-<span class="st"> </span><span class="cf">function</span>(x){</a>
+<a class="sourceLine" id="cb247-3" title="3">  donde.nan &lt;-<span class="st"> </span><span class="kw">is.nan</span>(x)     <span class="co"># se crea vector logico indicando donde hay NaN</span></a>
+<a class="sourceLine" id="cb247-4" title="4">  n_nan &lt;-<span class="st"> </span><span class="kw">sum</span>( donde.nan )  <span class="co"># al sumar el vector logico, se cuenta los NaN</span></a>
+<a class="sourceLine" id="cb247-5" title="5">  <span class="kw">paste0</span>(<span class="st">&#39;La cantidad de NaN es: &#39;</span>, n_nan)</a>
+<a class="sourceLine" id="cb247-6" title="6">}</a>
+<a class="sourceLine" id="cb247-7" title="7"></a>
+<a class="sourceLine" id="cb247-8" title="8"><span class="co"># Se prueba la funcion:</span></a>
+<a class="sourceLine" id="cb247-9" title="9"><span class="kw">cuenta_nan</span>(<span class="dt">x =</span> w)</a></code></pre></div>
 <pre><code>[1] &quot;La cantidad de NaN es: 3&quot;</code></pre>
 </div>
 <div id="argumentos-logicos" class="section level3">
 <h3><span class="header-section-number">6.2.5</span> Argumentos lógicos</h3>
 <p>El comando <code>ifelse</code> permite entregar uno de dos resultados dependiendo de si una condición se cumple (<code>TRUE</code>) o no (<code>FALSE</code>). Aquí un ejemplo:</p>
-<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb166-1" title="1"><span class="co"># Ejemplo de uso del comando ifelse:</span></a>
-<a class="sourceLine" id="cb166-2" title="2">x &lt;-<span class="st"> </span><span class="dv">5</span></a>
-<a class="sourceLine" id="cb166-3" title="3"><span class="kw">ifelse</span>(x <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span>, <span class="st">&#39;Gana&#39;</span>, <span class="st">&#39;Pierde&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb249-1" title="1"><span class="co"># Ejemplo de uso del comando ifelse:</span></a>
+<a class="sourceLine" id="cb249-2" title="2">x &lt;-<span class="st"> </span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb249-3" title="3"><span class="kw">ifelse</span>(x <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span>, <span class="st">&#39;Gana&#39;</span>, <span class="st">&#39;Pierde&#39;</span>)</a></code></pre></div>
 <pre><code>[1] &quot;Gana&quot;</code></pre>
 <p>El comando <code>ifelse</code> es vectorizado, esto quiere decir que puede hacer su trabajo elemento por elemento dentro de un vector:</p>
-<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb168-1" title="1"><span class="co"># Ejemplo de uso del comando ifelse:</span></a>
-<a class="sourceLine" id="cb168-2" title="2">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">4.5</span>, <span class="fl">1.2</span>, <span class="fl">2.5</span>, <span class="fl">3.1</span>, <span class="fl">3.9</span>)</a>
-<a class="sourceLine" id="cb168-3" title="3"><span class="kw">ifelse</span>(x <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span>, <span class="st">&#39;Gana&#39;</span>, <span class="st">&#39;Pierde&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb251-1" title="1"><span class="co"># Ejemplo de uso del comando ifelse:</span></a>
+<a class="sourceLine" id="cb251-2" title="2">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">4.5</span>, <span class="fl">1.2</span>, <span class="fl">2.5</span>, <span class="fl">3.1</span>, <span class="fl">3.9</span>)</a>
+<a class="sourceLine" id="cb251-3" title="3"><span class="kw">ifelse</span>(x <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span>, <span class="st">&#39;Gana&#39;</span>, <span class="st">&#39;Pierde&#39;</span>)</a></code></pre></div>
 <pre><code>[1] &quot;Gana&quot;   &quot;Pierde&quot; &quot;Pierde&quot; &quot;Gana&quot;   &quot;Gana&quot;  </code></pre>
 <p>Volviendo a la función <code>cuenta_nan</code>, suponga que usted desea controlar, si la proporción de <code>NaN</code>’s se entrega como una fracción entre 0 y 1 o se entrega como porcentaje, es decir, entre 0 y 100. Para hacer esto se puede agregar un argumento lógico a la función que determine si se hace un cálculo u otro:</p>
-<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb170-1" title="1"><span class="co"># Se crea una funcion que cuente NaN&#39;s en un vector y que entregue un data.frame:</span></a>
-<a class="sourceLine" id="cb170-2" title="2">cuenta_nan &lt;-<span class="st"> </span><span class="cf">function</span>(x, <span class="dt">dec =</span> <span class="dv">2</span>, <span class="dt">pct =</span> F){</a>
-<a class="sourceLine" id="cb170-3" title="3">  donde.nan &lt;-<span class="st"> </span><span class="kw">is.nan</span>(x)     <span class="co"># se crea vector logico indicando donde hay NaN</span></a>
-<a class="sourceLine" id="cb170-4" title="4">  n_nan &lt;-<span class="st"> </span><span class="kw">sum</span>( donde.nan )  <span class="co"># al sumar el vector logico, se cuenta los NaN</span></a>
-<a class="sourceLine" id="cb170-5" title="5">  p_nan &lt;-<span class="st"> </span><span class="kw">round</span>(n_nan<span class="op">/</span><span class="kw">length</span>(x), dec)   <span class="co"># se calcula la proporcion</span></a>
-<a class="sourceLine" id="cb170-6" title="6">  p_nan &lt;-<span class="st"> </span><span class="kw">ifelse</span>(pct, p_nan<span class="op">*</span><span class="dv">100</span>, p_nan) <span class="co"># Porcentaje o fraccion?</span></a>
-<a class="sourceLine" id="cb170-7" title="7">  <span class="kw">data.frame</span>(<span class="dt">n =</span> n_nan, <span class="dt">p =</span> p_nan)       <span class="co"># se entrgan las dos cantidades en un data.frame</span></a>
-<a class="sourceLine" id="cb170-8" title="8">}</a>
-<a class="sourceLine" id="cb170-9" title="9"></a>
-<a class="sourceLine" id="cb170-10" title="10"><span class="co"># Se prueba la funcion, se controla el nro. de decimales a 3</span></a>
-<a class="sourceLine" id="cb170-11" title="11"><span class="co"># y que el calculo de la proporcion se entrega como porcentaje:</span></a>
-<a class="sourceLine" id="cb170-12" title="12"><span class="kw">cuenta_nan</span>(<span class="dt">x =</span> w, <span class="dt">dec =</span> <span class="dv">3</span>, <span class="dt">pct =</span> T)</a></code></pre></div>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb253-1" title="1"><span class="co"># Se crea una funcion que cuente NaN&#39;s en un vector y que entregue un data.frame:</span></a>
+<a class="sourceLine" id="cb253-2" title="2">cuenta_nan &lt;-<span class="st"> </span><span class="cf">function</span>(x, <span class="dt">dec =</span> <span class="dv">2</span>, <span class="dt">pct =</span> F){</a>
+<a class="sourceLine" id="cb253-3" title="3">  donde.nan &lt;-<span class="st"> </span><span class="kw">is.nan</span>(x)     <span class="co"># se crea vector logico indicando donde hay NaN</span></a>
+<a class="sourceLine" id="cb253-4" title="4">  n_nan &lt;-<span class="st"> </span><span class="kw">sum</span>( donde.nan )  <span class="co"># al sumar el vector logico, se cuenta los NaN</span></a>
+<a class="sourceLine" id="cb253-5" title="5">  p_nan &lt;-<span class="st"> </span><span class="kw">round</span>(n_nan<span class="op">/</span><span class="kw">length</span>(x), dec)   <span class="co"># se calcula la proporcion</span></a>
+<a class="sourceLine" id="cb253-6" title="6">  p_nan &lt;-<span class="st"> </span><span class="kw">ifelse</span>(pct, p_nan<span class="op">*</span><span class="dv">100</span>, p_nan) <span class="co"># Porcentaje o fraccion?</span></a>
+<a class="sourceLine" id="cb253-7" title="7">  <span class="kw">data.frame</span>(<span class="dt">n =</span> n_nan, <span class="dt">p =</span> p_nan)       <span class="co"># se entrgan las dos cantidades en un data.frame</span></a>
+<a class="sourceLine" id="cb253-8" title="8">}</a>
+<a class="sourceLine" id="cb253-9" title="9"></a>
+<a class="sourceLine" id="cb253-10" title="10"><span class="co"># Se prueba la funcion, se controla el nro. de decimales a 3</span></a>
+<a class="sourceLine" id="cb253-11" title="11"><span class="co"># y que el calculo de la proporcion se entrega como porcentaje:</span></a>
+<a class="sourceLine" id="cb253-12" title="12"><span class="kw">cuenta_nan</span>(<span class="dt">x =</span> w, <span class="dt">dec =</span> <span class="dv">3</span>, <span class="dt">pct =</span> T)</a></code></pre></div>
 <pre><code>  n    p
 1 3 42.9</code></pre>
 </div>
@@ -423,36 +430,36 @@ Figura 6.1: Aspectos relevantes de una función en <strong>R</strong> <span clas
 <li><strong>Ejemplo de uso</strong>: Un ejemplo para ayudar al usuario a utilizar la función.</li>
 </ul>
 <p>Enseguida se incluyen estos cinco aspectos para la función <code>cuenta_nan</code>:</p>
-<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb172-1" title="1"><span class="co"># Se crea una funcion que cuente NaN&#39;s en un vector y que entregue un data.frame:</span></a>
-<a class="sourceLine" id="cb172-2" title="2">cuenta_nan &lt;-<span class="st"> </span><span class="cf">function</span>(x, <span class="dt">dec =</span> <span class="dv">2</span>, <span class="dt">pct =</span> F){</a>
-<a class="sourceLine" id="cb172-3" title="3">  <span class="co"># Version: 3.0 | fecha: sep 2019 | Autor: paguzmang</span></a>
-<a class="sourceLine" id="cb172-4" title="4">  <span class="co"># Descripcion:</span></a>
-<a class="sourceLine" id="cb172-5" title="5">  <span class="co"># Esta funcion cuenta el nro. de NaN en un vector. Entrega tanto</span></a>
-<a class="sourceLine" id="cb172-6" title="6">  <span class="co"># el nro. de NaN&#39;s como su proporcion.</span></a>
-<a class="sourceLine" id="cb172-7" title="7">  </a>
-<a class="sourceLine" id="cb172-8" title="8">  <span class="co"># Argumentos:</span></a>
-<a class="sourceLine" id="cb172-9" title="9">  <span class="co"># x = vector que se desea evaluar.</span></a>
-<a class="sourceLine" id="cb172-10" title="10">  <span class="co"># dec = nro. de decimales para reportar la proporcion de NaN.</span></a>
-<a class="sourceLine" id="cb172-11" title="11">  <span class="co">#       Por defecto 2 decimales.</span></a>
-<a class="sourceLine" id="cb172-12" title="12">  <span class="co"># pct = Logico. Indica si la proporcion de NaN&#39;s se reportara como</span></a>
-<a class="sourceLine" id="cb172-13" title="13">  <span class="co">#       fraccion entre 0 y 1 (FALSE, por defecto) o </span></a>
-<a class="sourceLine" id="cb172-14" title="14">  <span class="co">#       como porcentaje (entre 0 y 100) (TRUE).</span></a>
-<a class="sourceLine" id="cb172-15" title="15">  </a>
-<a class="sourceLine" id="cb172-16" title="16">  <span class="co"># Codigo:</span></a>
-<a class="sourceLine" id="cb172-17" title="17">  donde.nan &lt;-<span class="st"> </span><span class="kw">is.nan</span>(x)     <span class="co"># se crea vector logico indicando donde hay NaN</span></a>
-<a class="sourceLine" id="cb172-18" title="18">  n_nan &lt;-<span class="st"> </span><span class="kw">sum</span>( donde.nan )  <span class="co"># al sumar el vector logico, se cuenta los NaN</span></a>
-<a class="sourceLine" id="cb172-19" title="19">  p_nan &lt;-<span class="st"> </span><span class="kw">round</span>(n_nan<span class="op">/</span><span class="kw">length</span>(x), dec)   <span class="co"># se calcula la proporcion</span></a>
-<a class="sourceLine" id="cb172-20" title="20">  p_nan &lt;-<span class="st"> </span><span class="kw">ifelse</span>(pct, p_nan<span class="op">*</span><span class="dv">100</span>, p_nan) <span class="co"># Porcentaje o fraccion?</span></a>
-<a class="sourceLine" id="cb172-21" title="21">  <span class="kw">data.frame</span>(<span class="dt">n =</span> n_nan, <span class="dt">p =</span> p_nan)       <span class="co"># se entrgan las dos cantidades en un data.frame</span></a>
-<a class="sourceLine" id="cb172-22" title="22">  </a>
-<a class="sourceLine" id="cb172-23" title="23">  <span class="co"># Valor:</span></a>
-<a class="sourceLine" id="cb172-24" title="24">  <span class="co"># la funcion entrega un data.frame con una fila y dos columnas</span></a>
-<a class="sourceLine" id="cb172-25" title="25">  <span class="co"># que incluyen el nro. de NaN&#39;s y la proporcion NaN&#39;s (o porcentaje)</span></a>
-<a class="sourceLine" id="cb172-26" title="26">  </a>
-<a class="sourceLine" id="cb172-27" title="27">  <span class="co"># Ejemplo de uso:</span></a>
-<a class="sourceLine" id="cb172-28" title="28">  <span class="co"># datos &lt;- c(10, 23, NaN, -2, 4, NaN)</span></a>
-<a class="sourceLine" id="cb172-29" title="29">  <span class="co"># cuenta_nan(x = datos, pct = T)</span></a>
-<a class="sourceLine" id="cb172-30" title="30">}</a></code></pre></div>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb255-1" title="1"><span class="co"># Se crea una funcion que cuente NaN&#39;s en un vector y que entregue un data.frame:</span></a>
+<a class="sourceLine" id="cb255-2" title="2">cuenta_nan &lt;-<span class="st"> </span><span class="cf">function</span>(x, <span class="dt">dec =</span> <span class="dv">2</span>, <span class="dt">pct =</span> F){</a>
+<a class="sourceLine" id="cb255-3" title="3">  <span class="co"># Version: 3.0 | fecha: sep 2019 | Autor: paguzmang</span></a>
+<a class="sourceLine" id="cb255-4" title="4">  <span class="co"># Descripcion:</span></a>
+<a class="sourceLine" id="cb255-5" title="5">  <span class="co"># Esta funcion cuenta el nro. de NaN en un vector. Entrega tanto</span></a>
+<a class="sourceLine" id="cb255-6" title="6">  <span class="co"># el nro. de NaN&#39;s como su proporcion.</span></a>
+<a class="sourceLine" id="cb255-7" title="7">  </a>
+<a class="sourceLine" id="cb255-8" title="8">  <span class="co"># Argumentos:</span></a>
+<a class="sourceLine" id="cb255-9" title="9">  <span class="co"># x = vector que se desea evaluar.</span></a>
+<a class="sourceLine" id="cb255-10" title="10">  <span class="co"># dec = nro. de decimales para reportar la proporcion de NaN.</span></a>
+<a class="sourceLine" id="cb255-11" title="11">  <span class="co">#       Por defecto 2 decimales.</span></a>
+<a class="sourceLine" id="cb255-12" title="12">  <span class="co"># pct = Logico. Indica si la proporcion de NaN&#39;s se reportara como</span></a>
+<a class="sourceLine" id="cb255-13" title="13">  <span class="co">#       fraccion entre 0 y 1 (FALSE, por defecto) o </span></a>
+<a class="sourceLine" id="cb255-14" title="14">  <span class="co">#       como porcentaje (entre 0 y 100) (TRUE).</span></a>
+<a class="sourceLine" id="cb255-15" title="15">  </a>
+<a class="sourceLine" id="cb255-16" title="16">  <span class="co"># Codigo:</span></a>
+<a class="sourceLine" id="cb255-17" title="17">  donde.nan &lt;-<span class="st"> </span><span class="kw">is.nan</span>(x)     <span class="co"># se crea vector logico indicando donde hay NaN</span></a>
+<a class="sourceLine" id="cb255-18" title="18">  n_nan &lt;-<span class="st"> </span><span class="kw">sum</span>( donde.nan )  <span class="co"># al sumar el vector logico, se cuenta los NaN</span></a>
+<a class="sourceLine" id="cb255-19" title="19">  p_nan &lt;-<span class="st"> </span><span class="kw">round</span>(n_nan<span class="op">/</span><span class="kw">length</span>(x), dec)   <span class="co"># se calcula la proporcion</span></a>
+<a class="sourceLine" id="cb255-20" title="20">  p_nan &lt;-<span class="st"> </span><span class="kw">ifelse</span>(pct, p_nan<span class="op">*</span><span class="dv">100</span>, p_nan) <span class="co"># Porcentaje o fraccion?</span></a>
+<a class="sourceLine" id="cb255-21" title="21">  <span class="kw">data.frame</span>(<span class="dt">n =</span> n_nan, <span class="dt">p =</span> p_nan)       <span class="co"># se entrgan las dos cantidades en un data.frame</span></a>
+<a class="sourceLine" id="cb255-22" title="22">  </a>
+<a class="sourceLine" id="cb255-23" title="23">  <span class="co"># Valor:</span></a>
+<a class="sourceLine" id="cb255-24" title="24">  <span class="co"># la funcion entrega un data.frame con una fila y dos columnas</span></a>
+<a class="sourceLine" id="cb255-25" title="25">  <span class="co"># que incluyen el nro. de NaN&#39;s y la proporcion NaN&#39;s (o porcentaje)</span></a>
+<a class="sourceLine" id="cb255-26" title="26">  </a>
+<a class="sourceLine" id="cb255-27" title="27">  <span class="co"># Ejemplo de uso:</span></a>
+<a class="sourceLine" id="cb255-28" title="28">  <span class="co"># datos &lt;- c(10, 23, NaN, -2, 4, NaN)</span></a>
+<a class="sourceLine" id="cb255-29" title="29">  <span class="co"># cuenta_nan(x = datos, pct = T)</span></a>
+<a class="sourceLine" id="cb255-30" title="30">}</a></code></pre></div>
 <p>Es cierto que documentar un programa puede resultar tedioso pero es una tarea fundamental de cualquier programador y algoritmo. Si las funciones que usted esta creando serán usadas de manera rutunaria por muchos usuarios o esta creando un paquete o programa grande (conjunto de varias rutinas), entonces la documentación descrita arriba es <em>obligatoria</em>. No obstante, muchas veces creamos funciones para un uso inmediato y por una sóla persona (usted mismo); en este caso, podríamos omitir la mayoría de esta documentación. Como recomendación debería siempre incluir: la fecha de creación, la descripción de la función y de los argumentos.</p>
 </div>
 <div id="compartiendo-la-funcion" class="section level3">
@@ -467,22 +474,22 @@ Figura 6.1: Aspectos relevantes de una función en <strong>R</strong> <span clas
 <div id="compartiendo-la-funcion-en-un-.rdata" class="section level4">
 <h4><span class="header-section-number">6.2.7.1</span> Compartiendo la función en un <code>.RData</code></h4>
 <p>Primero debemos guardar la función en un archivo <code>.RData</code>. Esto se puede hacer con el comando <code>save</code>. Suponiendo que la función <code>cuenta_nan</code> ya esta creada en el espacio de trabajo:</p>
-<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb173-1" title="1"><span class="co"># Se guarda la funcion en un archivo .RData del mismo nombre:</span></a>
-<a class="sourceLine" id="cb173-2" title="2"><span class="kw">save</span>(cuenta_nan, <span class="dt">file =</span> <span class="st">&#39;cuenta_nan.RData&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb256-1" title="1"><span class="co"># Se guarda la funcion en un archivo .RData del mismo nombre:</span></a>
+<a class="sourceLine" id="cb256-2" title="2"><span class="kw">save</span>(cuenta_nan, <span class="dt">file =</span> <span class="st">&#39;cuenta_nan.RData&#39;</span>)</a></code></pre></div>
 <p>El archivo <code>cuenta_nan.RData</code> quedo guardado en el directorio de trabajo actual. Ahora suponga que usted compartio este archivo con otro usuario, p.e., por correo electrónico. Dicho usuario debe poner este archivo en su directorio de trabajo y utilizar el comando <code>load</code> para cargar la función:</p>
-<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb174-1" title="1"><span class="co"># Se verifica que objetos tiene el directorio de trabajo actual:</span></a>
-<a class="sourceLine" id="cb174-2" title="2"><span class="kw">ls</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb257-1" title="1"><span class="co"># Se verifica que objetos tiene el directorio de trabajo actual:</span></a>
+<a class="sourceLine" id="cb257-2" title="2"><span class="kw">ls</span>()</a></code></pre></div>
 <pre><code>character(0)</code></pre>
-<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb176-1" title="1"><span class="co"># Se carga la funcion:</span></a>
-<a class="sourceLine" id="cb176-2" title="2"><span class="kw">load</span>(<span class="st">&#39;cuenta_nan.RData&#39;</span>)</a>
-<a class="sourceLine" id="cb176-3" title="3"></a>
-<a class="sourceLine" id="cb176-4" title="4"><span class="co"># Se verifica que objetos tiene el directorio de trabajo</span></a>
-<a class="sourceLine" id="cb176-5" title="5"><span class="co"># despuede correr load:</span></a>
-<a class="sourceLine" id="cb176-6" title="6"><span class="kw">ls</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb259-1" title="1"><span class="co"># Se carga la funcion:</span></a>
+<a class="sourceLine" id="cb259-2" title="2"><span class="kw">load</span>(<span class="st">&#39;cuenta_nan.RData&#39;</span>)</a>
+<a class="sourceLine" id="cb259-3" title="3"></a>
+<a class="sourceLine" id="cb259-4" title="4"><span class="co"># Se verifica que objetos tiene el directorio de trabajo</span></a>
+<a class="sourceLine" id="cb259-5" title="5"><span class="co"># despuede correr load:</span></a>
+<a class="sourceLine" id="cb259-6" title="6"><span class="kw">ls</span>()</a></code></pre></div>
 <pre><code>[1] &quot;cuenta_nan&quot;</code></pre>
-<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb178-1" title="1"><span class="co"># Se usa la funcion:</span></a>
-<a class="sourceLine" id="cb178-2" title="2">w &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">45</span>, <span class="ot">NaN</span>, <span class="dv">56</span>, <span class="ot">NaN</span>)</a>
-<a class="sourceLine" id="cb178-3" title="3"><span class="kw">cuenta_nan</span>(<span class="dt">x =</span> w)</a></code></pre></div>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb261-1" title="1"><span class="co"># Se usa la funcion:</span></a>
+<a class="sourceLine" id="cb261-2" title="2">w &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">45</span>, <span class="ot">NaN</span>, <span class="dv">56</span>, <span class="ot">NaN</span>)</a>
+<a class="sourceLine" id="cb261-3" title="3"><span class="kw">cuenta_nan</span>(<span class="dt">x =</span> w)</a></code></pre></div>
 <pre><code>  n   p
 1 2 0.5</code></pre>
 </div>
@@ -491,38 +498,38 @@ Figura 6.1: Aspectos relevantes de una función en <strong>R</strong> <span clas
 <div id="cargando-el-archivo-localmente" class="section level5">
 <h5><span class="header-section-number">6.2.7.2.1</span> Cargando el archivo localmente</h5>
 <p>Primero debemos poner todo el código de la función en un archivo <code>.R</code>. Esto se puede hacer copiando y pegando el código en un nuevo archivo <code>.R</code>. Se recomienda nombrar este nuevo archivo con el mismo nombre de la función o uno parecido. Para este ejemplo supongamos que el archivo se nombró como <code>cuenta_nan.R</code> y que usted compartió este archivo con otro usuario, p.e., por correo eletrónico. Este nuevo usuario debe poner el archivo <code>cuenta_nan.R</code> en su directorio de trabajo y cargar la función con el comando <code>source</code>:</p>
-<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb180-1" title="1"><span class="co"># Se verifica que objetos tiene el directorio de trabajo actual:</span></a>
-<a class="sourceLine" id="cb180-2" title="2"><span class="kw">ls</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb263-1" title="1"><span class="co"># Se verifica que objetos tiene el directorio de trabajo actual:</span></a>
+<a class="sourceLine" id="cb263-2" title="2"><span class="kw">ls</span>()</a></code></pre></div>
 <pre><code>character(0)</code></pre>
-<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb182-1" title="1"><span class="co"># Se carga la funcion:</span></a>
-<a class="sourceLine" id="cb182-2" title="2"><span class="kw">source</span>(<span class="st">&#39;cuenta_nan.R&#39;</span>)</a>
-<a class="sourceLine" id="cb182-3" title="3"></a>
-<a class="sourceLine" id="cb182-4" title="4"><span class="co"># Se verifica que objetos tiene el directorio de trabajo</span></a>
-<a class="sourceLine" id="cb182-5" title="5"><span class="co"># despuede correr source:</span></a>
-<a class="sourceLine" id="cb182-6" title="6"><span class="kw">ls</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb265-1" title="1"><span class="co"># Se carga la funcion:</span></a>
+<a class="sourceLine" id="cb265-2" title="2"><span class="kw">source</span>(<span class="st">&#39;cuenta_nan.R&#39;</span>)</a>
+<a class="sourceLine" id="cb265-3" title="3"></a>
+<a class="sourceLine" id="cb265-4" title="4"><span class="co"># Se verifica que objetos tiene el directorio de trabajo</span></a>
+<a class="sourceLine" id="cb265-5" title="5"><span class="co"># despuede correr source:</span></a>
+<a class="sourceLine" id="cb265-6" title="6"><span class="kw">ls</span>()</a></code></pre></div>
 <pre><code>[1] &quot;cuenta_nan&quot;</code></pre>
-<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb184-1" title="1"><span class="co"># Se usa la funcion:</span></a>
-<a class="sourceLine" id="cb184-2" title="2">w &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">45</span>, <span class="ot">NaN</span>, <span class="dv">56</span>, <span class="ot">NaN</span>)</a>
-<a class="sourceLine" id="cb184-3" title="3"><span class="kw">cuenta_nan</span>(<span class="dt">x =</span> w)</a></code></pre></div>
+<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb267-1" title="1"><span class="co"># Se usa la funcion:</span></a>
+<a class="sourceLine" id="cb267-2" title="2">w &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">45</span>, <span class="ot">NaN</span>, <span class="dv">56</span>, <span class="ot">NaN</span>)</a>
+<a class="sourceLine" id="cb267-3" title="3"><span class="kw">cuenta_nan</span>(<span class="dt">x =</span> w)</a></code></pre></div>
 <pre><code>  n   p
 1 2 0.5</code></pre>
 </div>
 <div id="cargando-el-archivo-desde-internet" class="section level5">
 <h5><span class="header-section-number">6.2.7.2.2</span> Cargando el archivo desde internet:</h5>
 <p>Usted también puede alojar el archivo <code>.R</code> en algún servidor o repositorio de internet. Por ejemplo, el sitio <a href="https://github.com/">github</a> le permite tener una cuenta y crear repositorios donde usted puede alojar archivos que eventualmente puede compartir. Para este ejemplo, el archivo <code>cuenta_nan.R</code> se subió a un repositorio de github y se puede acceder a él desde siguiente enlace: <a href="https://raw.githubusercontent.com/paguzmang/funciones/master/cuenta_nan.R" class="uri">https://raw.githubusercontent.com/paguzmang/funciones/master/cuenta_nan.R</a>. Conociendo esto, el usuario puede cargar su función directamente desde este repositorio en internet usando el comando <code>source</code>:</p>
-<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb186-1" title="1"><span class="co"># Se verifica que objetos tiene el directorio de trabajo actual:</span></a>
-<a class="sourceLine" id="cb186-2" title="2"><span class="kw">ls</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb269-1" title="1"><span class="co"># Se verifica que objetos tiene el directorio de trabajo actual:</span></a>
+<a class="sourceLine" id="cb269-2" title="2"><span class="kw">ls</span>()</a></code></pre></div>
 <pre><code>character(0)</code></pre>
-<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb188-1" title="1"><span class="co"># Se carga la funcion (requiere conexion a internet):</span></a>
-<a class="sourceLine" id="cb188-2" title="2"><span class="kw">source</span>(<span class="st">&#39;https://raw.githubusercontent.com/paguzmang/funciones/master/cuenta_nan.R&#39;</span>)</a>
-<a class="sourceLine" id="cb188-3" title="3"></a>
-<a class="sourceLine" id="cb188-4" title="4"><span class="co"># Se verifica que objetos tiene el directorio de trabajo</span></a>
-<a class="sourceLine" id="cb188-5" title="5"><span class="co"># despuede correr source:</span></a>
-<a class="sourceLine" id="cb188-6" title="6"><span class="kw">ls</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb271-1" title="1"><span class="co"># Se carga la funcion (requiere conexion a internet):</span></a>
+<a class="sourceLine" id="cb271-2" title="2"><span class="kw">source</span>(<span class="st">&#39;https://raw.githubusercontent.com/paguzmang/funciones/master/cuenta_nan.R&#39;</span>)</a>
+<a class="sourceLine" id="cb271-3" title="3"></a>
+<a class="sourceLine" id="cb271-4" title="4"><span class="co"># Se verifica que objetos tiene el directorio de trabajo</span></a>
+<a class="sourceLine" id="cb271-5" title="5"><span class="co"># despuede correr source:</span></a>
+<a class="sourceLine" id="cb271-6" title="6"><span class="kw">ls</span>()</a></code></pre></div>
 <pre><code>[1] &quot;cuenta_nan&quot;</code></pre>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb190-1" title="1"><span class="co"># Se usa la funcion:</span></a>
-<a class="sourceLine" id="cb190-2" title="2">w &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">45</span>, <span class="ot">NaN</span>, <span class="dv">56</span>, <span class="ot">NaN</span>)</a>
-<a class="sourceLine" id="cb190-3" title="3"><span class="kw">cuenta_nan</span>(<span class="dt">x =</span> w)</a></code></pre></div>
+<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb273-1" title="1"><span class="co"># Se usa la funcion:</span></a>
+<a class="sourceLine" id="cb273-2" title="2">w &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">45</span>, <span class="ot">NaN</span>, <span class="dv">56</span>, <span class="ot">NaN</span>)</a>
+<a class="sourceLine" id="cb273-3" title="3"><span class="kw">cuenta_nan</span>(<span class="dt">x =</span> w)</a></code></pre></div>
 <pre><code>  n   p
 1 2 0.5</code></pre>
 </div>

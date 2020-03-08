@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2.2 Tipos de datos | Programación para Biólogos</title>
+  <meta name="description" content="Conceptos básicos de programación para biólogos con R" />
+  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2.2 Tipos de datos | Programación para Biólogos" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Conceptos básicos de programación para biólogos con R" />
+  <meta name="github-repo" content="paguzmang/CursoProg" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2.2 Tipos de datos | Programación para Biólogos" />
+  
+  <meta name="twitter:description" content="Conceptos básicos de programación para biólogos con R" />
+  
+
+<meta name="author" content="paguzmang | Programa de Biología - U.CES" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="2-1-vectores.html">
+<link rel="next" href="2-3-logicas.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Presentación</a></li>
+<li class="part"><span><b>I Iniciando con R y Rstudio</b></span><ul>
+<li class="chapter" data-level="0.1" data-path="0-1-ventanasR.html"><a href="0-1-ventanasR.html"><i class="fa fa-check"></i><b>0.1</b> Ventanas de R: Consola y script</a><ul>
+<li class="chapter" data-level="0.1.1" data-path="0-1-ventanasR.html"><a href="0-1-ventanasR.html#prompt-y-linea-de-comandos"><i class="fa fa-check"></i><b>0.1.1</b> Prompt y línea de comandos</a></li>
+<li class="chapter" data-level="0.1.2" data-path="0-1-ventanasR.html"><a href="0-1-ventanasR.html#escribiendo-en-el-script"><i class="fa fa-check"></i><b>0.1.2</b> Escribiendo en el script</a></li>
+</ul></li>
+<li class="chapter" data-level="0.2" data-path="0-2-com.html"><a href="0-2-com.html"><i class="fa fa-check"></i><b>0.2</b> Comandos</a><ul>
+<li class="chapter" data-level="0.2.1" data-path="0-2-com.html"><a href="0-2-com.html#sintaxis-de-un-comando"><i class="fa fa-check"></i><b>0.2.1</b> Sintaxis de un comando</a></li>
+<li class="chapter" data-level="0.2.2" data-path="0-2-com.html"><a href="0-2-com.html#ayuda-sobre-comandos"><i class="fa fa-check"></i><b>0.2.2</b> Ayuda sobre comandos</a></li>
+<li class="chapter" data-level="0.2.3" data-path="0-2-com.html"><a href="0-2-com.html#orden-de-los-argumentos"><i class="fa fa-check"></i><b>0.2.3</b> Orden de los argumentos</a></li>
+</ul></li>
+<li class="chapter" data-level="0.3" data-path="0-3-paquetes.html"><a href="0-3-paquetes.html"><i class="fa fa-check"></i><b>0.3</b> Paquetes o librerías</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="1-ides.html"><a href="1-ides.html"><i class="fa fa-check"></i><b>1</b> Ambientes de desarrollo integrado</a><ul>
+<li class="chapter" data-level="1.1" data-path="1-1-rstudio1.html"><a href="1-1-rstudio1.html"><i class="fa fa-check"></i><b>1.1</b> RStudio 1</a></li>
+<li class="chapter" data-level="1.2" data-path="1-2-rstudio2.html"><a href="1-2-rstudio2.html"><i class="fa fa-check"></i><b>1.2</b> Rstudio 2</a></li>
+</ul></li>
+<li class="part"><span><b>II Objetos, datos y gráficos</b></span></li>
+<li class="chapter" data-level="2" data-path="2-vecTiposDatos.html"><a href="2-vecTiposDatos.html"><i class="fa fa-check"></i><b>2</b> Vectores y tipos de datos</a><ul>
+<li class="chapter" data-level="2.1" data-path="2-1-vectores.html"><a href="2-1-vectores.html"><i class="fa fa-check"></i><b>2.1</b> Vectores</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="2-1-vectores.html"><a href="2-1-vectores.html#creando-vectores"><i class="fa fa-check"></i><b>2.1.1</b> Creando vectores</a></li>
+<li class="chapter" data-level="2.1.2" data-path="2-1-vectores.html"><a href="2-1-vectores.html#creando-vectores-de-secuencias"><i class="fa fa-check"></i><b>2.1.2</b> Creando vectores de secuencias</a></li>
+<li class="chapter" data-level="2.1.3" data-path="2-1-vectores.html"><a href="2-1-vectores.html#operaciones-aritmeticas-con-vectores"><i class="fa fa-check"></i><b>2.1.3</b> Operaciones aritméticas con vectores</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="2-2-tiposDatos.html"><a href="2-2-tiposDatos.html"><i class="fa fa-check"></i><b>2.2</b> Tipos de datos</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="2-2-tiposDatos.html"><a href="2-2-tiposDatos.html#numeros"><i class="fa fa-check"></i><b>2.2.1</b> Números</a></li>
+<li class="chapter" data-level="2.2.2" data-path="2-2-tiposDatos.html"><a href="2-2-tiposDatos.html#texto"><i class="fa fa-check"></i><b>2.2.2</b> Texto</a></li>
+<li class="chapter" data-level="2.2.3" data-path="2-2-tiposDatos.html"><a href="2-2-tiposDatos.html#logicos"><i class="fa fa-check"></i><b>2.2.3</b> Lógicos</a></li>
+<li class="chapter" data-level="2.2.4" data-path="2-2-tiposDatos.html"><a href="2-2-tiposDatos.html#fechas"><i class="fa fa-check"></i><b>2.2.4</b> Fechas</a></li>
+<li class="chapter" data-level="2.2.5" data-path="2-2-tiposDatos.html"><a href="2-2-tiposDatos.html#otros-tipos-datos"><i class="fa fa-check"></i><b>2.2.5</b> Otros tipos datos</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="2-3-logicas.html"><a href="2-3-logicas.html"><i class="fa fa-check"></i><b>2.3</b> Expresiones lógicas</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="2-3-logicas.html"><a href="2-3-logicas.html#tipos-de-expresions-logicas"><i class="fa fa-check"></i><b>2.3.1</b> Tipos de expresions lógicas</a></li>
+<li class="chapter" data-level="2.3.2" data-path="2-3-logicas.html"><a href="2-3-logicas.html#usando-expresiones-logicas-para-contar"><i class="fa fa-check"></i><b>2.3.2</b> Usando expresiones lógicas para contar</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="2-4-ejvecTiposDatos.html"><a href="2-4-ejvecTiposDatos.html"><i class="fa fa-check"></i><b>2.4</b> Ejercicios</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="3-otros-tipos-de-objeto.html"><a href="3-otros-tipos-de-objeto.html"><i class="fa fa-check"></i><b>3</b> Otros tipos de objeto</a><ul>
+<li class="chapter" data-level="3.1" data-path="3-1-matriz.html"><a href="3-1-matriz.html"><i class="fa fa-check"></i><b>3.1</b> Matrices</a></li>
+<li class="chapter" data-level="3.2" data-path="3-2-df.html"><a href="3-2-df.html"><i class="fa fa-check"></i><b>3.2</b> Marcos de datos (data.frame)</a></li>
+<li class="chapter" data-level="3.3" data-path="3-3-listas.html"><a href="3-3-listas.html"><i class="fa fa-check"></i><b>3.3</b> Listas</a></li>
+<li class="chapter" data-level="3.4" data-path="3-4-ejObj.html"><a href="3-4-ejObj.html"><i class="fa fa-check"></i><b>3.4</b> Ejercicios</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="4-elementos-basicos-sobre-graficos.html"><a href="4-elementos-basicos-sobre-graficos.html"><i class="fa fa-check"></i><b>4</b> Elementos básicos sobre gráficos</a><ul>
+<li class="chapter" data-level="4.1" data-path="4-1-altoBajoNiv.html"><a href="4-1-altoBajoNiv.html"><i class="fa fa-check"></i><b>4.1</b> Comandos de alto y bajo nivel</a></li>
+<li class="chapter" data-level="4.2" data-path="4-2-ejGraf.html"><a href="4-2-ejGraf.html"><i class="fa fa-check"></i><b>4.2</b> Ejercicios</a></li>
+</ul></li>
+<li class="part"><span><b>III Programación</b></span></li>
+<li class="chapter" data-level="5" data-path="5-basicProg.html"><a href="5-basicProg.html"><i class="fa fa-check"></i><b>5</b> Conceptos básicos</a><ul>
+<li class="chapter" data-level="5.1" data-path="5-1-tema1.html"><a href="5-1-tema1.html"><i class="fa fa-check"></i><b>5.1</b> Tema 1</a></li>
+<li class="chapter" data-level="5.2" data-path="5-2-fun.html"><a href="5-2-fun.html"><i class="fa fa-check"></i><b>5.2</b> Funciones</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="5-2-fun.html"><a href="5-2-fun.html#un-ejemplo"><i class="fa fa-check"></i><b>5.2.1</b> Un ejemplo</a></li>
+<li class="chapter" data-level="5.2.2" data-path="5-2-fun.html"><a href="5-2-fun.html#controlando-el-objeto-de-salida"><i class="fa fa-check"></i><b>5.2.2</b> Controlando el objeto de salida</a></li>
+<li class="chapter" data-level="5.2.3" data-path="5-2-fun.html"><a href="5-2-fun.html#argumentos-por-defecto"><i class="fa fa-check"></i><b>5.2.3</b> Argumentos por defecto</a></li>
+<li class="chapter" data-level="5.2.4" data-path="5-2-fun.html"><a href="5-2-fun.html#entregando-texto-variable"><i class="fa fa-check"></i><b>5.2.4</b> Entregando texto variable</a></li>
+<li class="chapter" data-level="5.2.5" data-path="5-2-fun.html"><a href="5-2-fun.html#argumentos-logicos"><i class="fa fa-check"></i><b>5.2.5</b> Argumentos lógicos</a></li>
+<li class="chapter" data-level="5.2.6" data-path="5-2-fun.html"><a href="5-2-fun.html#documentacion-de-la-funcion"><i class="fa fa-check"></i><b>5.2.6</b> Documentación de la función</a></li>
+<li class="chapter" data-level="5.2.7" data-path="5-2-fun.html"><a href="5-2-fun.html#compartiendo-la-funcion"><i class="fa fa-check"></i><b>5.2.7</b> Compartiendo la función</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="5-3-ejFun.html"><a href="5-3-ejFun.html"><i class="fa fa-check"></i><b>5.3</b> Ejercicios</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="5-3-ejFun.html"><a href="5-3-ejFun.html#ej.-1.-numero-de-datos-perdidos"><i class="fa fa-check"></i><b>5.3.1</b> Ej. 1. Número de datos perdidos</a></li>
+<li class="chapter" data-level="5.3.2" data-path="5-3-ejFun.html"><a href="5-3-ejFun.html#ej.-2.-factura-con-iva."><i class="fa fa-check"></i><b>5.3.2</b> Ej. 2. Factura con IVA.</a></li>
+<li class="chapter" data-level="5.3.3" data-path="5-3-ejFun.html"><a href="5-3-ejFun.html#ej.-3.-area-bajo-la-curva"><i class="fa fa-check"></i><b>5.3.3</b> Ej. 3. Área bajo la curva</a></li>
+<li class="chapter" data-level="5.3.4" data-path="5-3-ejFun.html"><a href="5-3-ejFun.html#ej.-4.-revisando-la-salida-de-una-funcion"><i class="fa fa-check"></i><b>5.3.4</b> Ej. 4. Revisando la salida de una función</a></li>
+<li class="chapter" data-level="5.3.5" data-path="5-3-ejFun.html"><a href="5-3-ejFun.html#ej.-5.-el-vertice-de-una-parabola"><i class="fa fa-check"></i><b>5.3.5</b> Ej. 5. El vertice de una parábola</a></li>
+<li class="chapter" data-level="5.3.6" data-path="5-3-ejFun.html"><a href="5-3-ejFun.html#ej.-6.-encontrando-minimos-o-maximos"><i class="fa fa-check"></i><b>5.3.6</b> Ej. 6. Encontrando mínimos o máximos</a></li>
+<li class="chapter" data-level="5.3.7" data-path="5-3-ejFun.html"><a href="5-3-ejFun.html#ej.-7.-aplicacion-de-una-parabola-y-maximizacion"><i class="fa fa-check"></i><b>5.3.7</b> Ej. 7. Aplicación de una parábola y maximización</a></li>
+<li class="chapter" data-level="5.3.8" data-path="5-3-ejFun.html"><a href="5-3-ejFun.html#ej.-8.-creciente-o-decreciente"><i class="fa fa-check"></i><b>5.3.8</b> Ej. 8. ¿Creciente o decreciente?</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="5-4-solucion-a-ejercicios-seleccionados.html"><a href="5-4-solucion-a-ejercicios-seleccionados.html"><i class="fa fa-check"></i><b>5.4</b> Solución a ejercicios seleccionados</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="5-4-solucion-a-ejercicios-seleccionados.html"><a href="5-4-solucion-a-ejercicios-seleccionados.html#ej.-2.-factura-con-iva"><i class="fa fa-check"></i><b>5.4.1</b> Ej. 2. Factura con IVA</a></li>
+<li class="chapter" data-level="5.4.2" data-path="5-4-solucion-a-ejercicios-seleccionados.html"><a href="5-4-solucion-a-ejercicios-seleccionados.html#ej.-6.-encontrando-minimos-o-maximos-1"><i class="fa fa-check"></i><b>5.4.2</b> Ej. 6. Encontrando mínimos o máximos</a></li>
+<li class="chapter" data-level="5.4.3" data-path="5-4-solucion-a-ejercicios-seleccionados.html"><a href="5-4-solucion-a-ejercicios-seleccionados.html#ej.-8.-creciente-o-decreciente-1"><i class="fa fa-check"></i><b>5.4.3</b> Ej. 8. ¿Creciente o decreciente?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="6-Prog2.html"><a href="6-Prog2.html"><i class="fa fa-check"></i><b>6</b> Estructuras de programación</a><ul>
+<li class="chapter" data-level="6.1" data-path="6-1-cond.html"><a href="6-1-cond.html"><i class="fa fa-check"></i><b>6.1</b> Condicionales</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="6-1-cond.html"><a href="6-1-cond.html#solo-si"><i class="fa fa-check"></i><b>6.1.1</b> Sólo si …</a></li>
+<li class="chapter" data-level="6.1.2" data-path="6-1-cond.html"><a href="6-1-cond.html#si-entonces"><i class="fa fa-check"></i><b>6.1.2</b> Si … Entonces</a></li>
+<li class="chapter" data-level="6.1.3" data-path="6-1-cond.html"><a href="6-1-cond.html#condiciones-con-mutiples-alternativas"><i class="fa fa-check"></i><b>6.1.3</b> Condiciones con mútiples alternativas</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="6-2-ciclos.html"><a href="6-2-ciclos.html"><i class="fa fa-check"></i><b>6.2</b> Repitiendo una acción</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="6-2-ciclos.html"><a href="6-2-ciclos.html#ciclo-for"><i class="fa fa-check"></i><b>6.2.1</b> Ciclo <code>for</code></a></li>
+<li class="chapter" data-level="6.2.2" data-path="6-2-ciclos.html"><a href="6-2-ciclos.html#ciclo-while"><i class="fa fa-check"></i><b>6.2.2</b> Ciclo <code>while</code></a></li>
+<li class="chapter" data-level="6.2.3" data-path="6-2-ciclos.html"><a href="6-2-ciclos.html#ciclo-repeat"><i class="fa fa-check"></i><b>6.2.3</b> Ciclo <code>repeat</code></a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="6-3-stop.html"><a href="6-3-stop.html"><i class="fa fa-check"></i><b>6.3</b> Deteniendo la ejecución de una función</a></li>
+<li class="chapter" data-level="6.4" data-path="6-4-vectoriz.html"><a href="6-4-vectoriz.html"><i class="fa fa-check"></i><b>6.4</b> Vectorización</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="6-4-vectoriz.html"><a href="6-4-vectoriz.html#eficiencia-en-la-vectorizacion"><i class="fa fa-check"></i><b>6.4.1</b> Eficiencia en la vectorización</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="6-5-famApply.html"><a href="6-5-famApply.html"><i class="fa fa-check"></i><b>6.5</b> Comandos de la familia apply</a><ul>
+<li class="chapter" data-level="6.5.1" data-path="6-5-famApply.html"><a href="6-5-famApply.html#apply"><i class="fa fa-check"></i><b>6.5.1</b> <code>apply</code></a></li>
+<li class="chapter" data-level="6.5.2" data-path="6-5-famApply.html"><a href="6-5-famApply.html#tapply"><i class="fa fa-check"></i><b>6.5.2</b> <code>tapply</code></a></li>
+<li class="chapter" data-level="6.5.3" data-path="6-5-famApply.html"><a href="6-5-famApply.html#sapply"><i class="fa fa-check"></i><b>6.5.3</b> <code>sapply</code></a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="6-6-ejProg2.html"><a href="6-6-ejProg2.html"><i class="fa fa-check"></i><b>6.6</b> Ejercicios</a><ul>
+<li><a href="6-6-ejProg2.html#ej.-1.-basico-o-acido-ej.-2.-basico-o-acido-en-multiples-muestras"><span class="toc-section-number">6.6.1</span> Ej. 1. Básico o Ácido<em>
+### Ej. 2. Básico o Ácido en múltiples muestras</em></a></li>
+<li><a href="6-6-ejProg2.html#ej.-3.-condicional-vectorizado-ej.-4.-diferencias"><span class="toc-section-number">6.6.2</span> Ej. 3. Condicional vectorizado<em>
+### Ej. 4. Diferencias</em></a></li>
+</ul></li>
+<li class="chapter" data-level="6.7" data-path="6-7-solejProg2.html"><a href="6-7-solejProg2.html"><i class="fa fa-check"></i><b>6.7</b> Solución a ejercicios seleccionados</a><ul>
+<li class="chapter" data-level="6.7.1" data-path="6-7-solejProg2.html"><a href="6-7-solejProg2.html#ej.-1.-basico-o-acido"><i class="fa fa-check"></i><b>6.7.1</b> Ej. 1. Básico o Ácido</a></li>
+<li class="chapter" data-level="6.7.2" data-path="6-7-solejProg2.html"><a href="6-7-solejProg2.html#ej.-2.-basico-o-acido-en-multiples-muestras"><i class="fa fa-check"></i><b>6.7.2</b> Ej. 2. Básico o Ácido en múltiples muestras</a></li>
+<li class="chapter" data-level="6.7.3" data-path="6-7-solejProg2.html"><a href="6-7-solejProg2.html#ej.-3.-condicional-vectorizado"><i class="fa fa-check"></i><b>6.7.3</b> Ej. 3. Condicional vectorizado</a></li>
+<li class="chapter" data-level="6.7.4" data-path="6-7-solejProg2.html"><a href="6-7-solejProg2.html#ej.-4.-diferencias"><i class="fa fa-check"></i><b>6.7.4</b> Ej. 4. Diferencias</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>IV Aplicaciones</b></span></li>
+<li class="chapter" data-level="7" data-path="7-appmat.html"><a href="7-appmat.html"><i class="fa fa-check"></i><b>7</b> Aplicaciones en matemáticas</a><ul>
+<li class="chapter" data-level="7.1" data-path="7-1-xyz.html"><a href="7-1-xyz.html"><i class="fa fa-check"></i><b>7.1</b> Gráficos de funciones en varias variables</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="7-1-xyz.html"><a href="7-1-xyz.html#introduccion"><i class="fa fa-check"></i><b>7.1.1</b> Introducción</a></li>
+<li class="chapter" data-level="7.1.2" data-path="7-1-xyz.html"><a href="7-1-xyz.html#tipos-de-graficos-para-funciones-de-tres-variables"><i class="fa fa-check"></i><b>7.1.2</b> Tipos de gráficos para funciones de tres variables</a></li>
+<li class="chapter" data-level="7.1.3" data-path="7-1-xyz.html"><a href="7-1-xyz.html#opciones-graficas-en-r"><i class="fa fa-check"></i><b>7.1.3</b> Opciones gráficas en <strong>R</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="7-2-ceros.html"><a href="7-2-ceros.html"><i class="fa fa-check"></i><b>7.2</b> Encontrando ceros</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="7-2-ceros.html"><a href="7-2-ceros.html#findZeros"><i class="fa fa-check"></i><b>7.2.1</b> Usando <code>findZeros</code> (paquete: MosaicCalc)</a></li>
+<li class="chapter" data-level="7.2.2" data-path="7-2-ceros.html"><a href="7-2-ceros.html#usando-findzeros-paquete-pracma"><i class="fa fa-check"></i><b>7.2.2</b> Usando <code>findzeros</code> (paquete: pracma)</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="7-3-deriv.html"><a href="7-3-deriv.html"><i class="fa fa-check"></i><b>7.3</b> Derivadas</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="7-3-deriv.html"><a href="7-3-deriv.html#derivando-con-d-mosaiccalc"><i class="fa fa-check"></i><b>7.3.1</b> Derivando con <code>D</code> (mosaicCalc)</a></li>
+<li class="chapter" data-level="7.3.2" data-path="7-3-deriv.html"><a href="7-3-deriv.html#derivando-con-numdiff-pracma"><i class="fa fa-check"></i><b>7.3.2</b> Derivando con <code>numdiff</code> (pracma)</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="7-4-integ.html"><a href="7-4-integ.html"><i class="fa fa-check"></i><b>7.4</b> Integrando</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="7-4-integ.html"><a href="7-4-integ.html#integrando-con-antid-mosaiccalc"><i class="fa fa-check"></i><b>7.4.1</b> Integrando con <code>antiD</code> (mosaicCalc)</a></li>
+<li class="chapter" data-level="7.4.2" data-path="7-4-integ.html"><a href="7-4-integ.html#integrando-con-integral-pracma"><i class="fa fa-check"></i><b>7.4.2</b> Integrando con <code>integral</code> (pracma)</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="7-5-ejercicios.html"><a href="7-5-ejercicios.html"><i class="fa fa-check"></i><b>7.5</b> Ejercicios</a><ul>
+<li class="chapter" data-level="7.5.1" data-path="7-5-ejercicios.html"><a href="7-5-ejercicios.html#ej.-1.-encontrando-ceros"><i class="fa fa-check"></i><b>7.5.1</b> Ej. 1. Encontrando ceros</a></li>
+<li class="chapter" data-level="7.5.2" data-path="7-5-ejercicios.html"><a href="7-5-ejercicios.html#ej.-2.-cuanto-se-hunde-la-esfera"><i class="fa fa-check"></i><b>7.5.2</b> Ej. 2. ¿Cuánto se hunde la esfera?</a></li>
+<li class="chapter" data-level="7.5.3" data-path="7-5-ejercicios.html"><a href="7-5-ejercicios.html#ej.-3.-derivando"><i class="fa fa-check"></i><b>7.5.3</b> Ej. 3. Derivando</a></li>
+<li class="chapter" data-level="7.5.4" data-path="7-5-ejercicios.html"><a href="7-5-ejercicios.html#ej.-4.-derivando-funciones-con-dos-variables"><i class="fa fa-check"></i><b>7.5.4</b> Ej. 4. Derivando funciones con dos variables</a></li>
+<li class="chapter" data-level="7.5.5" data-path="7-5-ejercicios.html"><a href="7-5-ejercicios.html#ej.-5.-graficos-de-varias-variables"><i class="fa fa-check"></i><b>7.5.5</b> Ej. 5. Gráficos de varias variables</a></li>
+<li class="chapter" data-level="7.5.6" data-path="7-5-ejercicios.html"><a href="7-5-ejercicios.html#ej.-6.-control-de-la-dispersion-de-una-enfermedad"><i class="fa fa-check"></i><b>7.5.6</b> Ej. 6. Control de la dispersión de una enfermedad</a></li>
+<li class="chapter" data-level="7.5.7" data-path="7-5-ejercicios.html"><a href="7-5-ejercicios.html#ej.-7.-valor-medio-varianza-y-probabilidad"><i class="fa fa-check"></i><b>7.5.7</b> Ej. 7. Valor medio, varianza y probabilidad</a></li>
+<li class="chapter" data-level="7.5.8" data-path="7-5-ejercicios.html"><a href="7-5-ejercicios.html#ej.-8.-antibiotico-en-sangre"><i class="fa fa-check"></i><b>7.5.8</b> Ej. 8. Antibiótico en sangre</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"><em>Programación</em> para Biólogos</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="tiposDatos" class="section level2">
+<h2><span class="header-section-number">2.2</span> Tipos de datos</h2>
+<p>Los objetos de <strong>R</strong>, tales como vectores o matrices, almacena datos de tipos específicos, p.e., números, texto, lógicos, fechas, etc. En seguida se presenta una breve descripción sobre los más importantes.</p>
+<div id="numeros" class="section level3">
+<h3><span class="header-section-number">2.2.1</span> Números</h3>
+<p>Los hay de dos tipos: <code>double</code> (o de punto flotante) e <code>integer</code> (enteros). La diferencia rádica en que los del primero ocupan más epacio en la memoría física del computador. Si no especificamos otra cosa, <strong>R</strong> almacena un número (con o sin decimales) como tipo <code>double</code>.</p>
+<div id="numeros-de-punto-flotante-o-de-tipo-double" class="section level4">
+<h4><span class="header-section-number">2.2.1.1</span> Números de punto flotante o de tipo <em>double</em></h4>
+<p>Considere algunos ejemplos:</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" title="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">8</span>)   <span class="co"># un vector numerico</span></a>
+<a class="sourceLine" id="cb46-2" title="2">x                 <span class="co"># se imprime</span></a></code></pre></div>
+<pre><code>## [1] 3 5 8</code></pre>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" title="1"><span class="kw">typeof</span>(x)         <span class="co"># el tipo de x ?</span></a></code></pre></div>
+<pre><code>## [1] &quot;double&quot;</code></pre>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" title="1"><span class="kw">is.numeric</span>(x)     <span class="co"># es un numero?</span></a></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" title="1"><span class="kw">is.double</span>(x)      <span class="co"># es un double?</span></a></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" title="1"><span class="kw">is.integer</span>(x)     <span class="co"># es un entero?</span></a></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" title="1">y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">3.56</span>, <span class="fl">7.98</span>, <span class="fl">3.45</span>)   <span class="co"># un vector numerico</span></a>
+<a class="sourceLine" id="cb56-2" title="2">y                          <span class="co"># se imprime</span></a></code></pre></div>
+<pre><code>## [1] 3.56 7.98 3.45</code></pre>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" title="1"><span class="kw">typeof</span>(y)                  <span class="co"># el tipo de y?</span></a></code></pre></div>
+<pre><code>## [1] &quot;double&quot;</code></pre>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" title="1"><span class="kw">is.numeric</span>(y)     <span class="co"># es un numero?</span></a></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" title="1"><span class="kw">is.double</span>(y)      <span class="co"># es un double?</span></a></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" title="1"><span class="kw">is.integer</span>(y)     <span class="co"># es un entero?</span></a></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+</div>
+<div id="numeros-enteros" class="section level4">
+<h4><span class="header-section-number">2.2.1.2</span> Números enteros</h4>
+<p>Para declarar un número como entero (<code>integer</code>) se debe poner la <code>L</code> seguido del número. Considere los siguientes ejemplos:</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" title="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(3L, 5L, 8L, 34L)    <span class="co"># un vector de enteros</span></a>
+<a class="sourceLine" id="cb66-2" title="2">x</a></code></pre></div>
+<pre><code>## [1]  3  5  8 34</code></pre>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" title="1"><span class="kw">typeof</span>(x)      <span class="co"># se pregunta por el tipo de x</span></a></code></pre></div>
+<pre><code>## [1] &quot;integer&quot;</code></pre>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" title="1"><span class="kw">is.numeric</span>(x)  <span class="co"># es numeric?</span></a></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" title="1"><span class="kw">is.double</span>(x)   <span class="co"># es double?</span></a></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" title="1"><span class="kw">is.integer</span>(x)  <span class="co"># es un entero?</span></a></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>Con un vector de enteros se puede realizar cualquier operación aritmética:</p>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" title="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(3L, 5L, 8L, 34L)    <span class="co"># un vector de enteros</span></a>
+<a class="sourceLine" id="cb76-2" title="2">x<span class="op">^</span><span class="dv">2</span> <span class="op">/</span><span class="st"> </span>x                    <span class="co"># operacion aritmetica</span></a></code></pre></div>
+<pre><code>## [1]  3  5  8 34</code></pre>
+<style>
+/* Create two equal columns that floats next to each other */
+* {
+  box-sizing: border-box;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  /* height: 300px;  Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+</style>
+</div>
+<div id="notacion-cientifica" class="section level4">
+<h4><span class="header-section-number">2.2.1.3</span> Notación científica</h4>
+<p>En <strong>R</strong>, números muy grandes (desde <span class="math inline">\(1 \times 10^5\)</span>) o muy pequeños (desde <span class="math inline">\(1 \times 10^{-4}\)</span>) se imprimen <em>por defecto</em> en notación científica. Esta notación se observa en la consola con el formato: <code>1e+05</code> (<span class="math inline">\(1 \times 10^5\)</span>) ó <code>1e-05</code> (<span class="math inline">\(1 \times 10^{-5}\)</span>). Por ejemplo:</p>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" title="1">x &lt;-<span class="st"> </span><span class="fl">1.5e8</span>      <span class="co"># 1.5 x 10^9</span></a>
+<a class="sourceLine" id="cb78-2" title="2">x             </a></code></pre></div>
+<pre><code>## [1] 1.5e+08</code></pre>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" title="1">y &lt;-<span class="st"> </span><span class="fl">0.000025</span>   <span class="co"># 2.5 x 10^-5</span></a>
+<a class="sourceLine" id="cb80-2" title="2">y</a></code></pre></div>
+<pre><code>## [1] 2.5e-05</code></pre>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb82-1" title="1">x <span class="op">/</span><span class="st"> </span>y           <span class="co"># 6 x 10^12</span></a></code></pre></div>
+<pre><code>## [1] 6e+12</code></pre>
+<p>Considere la impresión comparativa de los siguientes números (grandes a la izquierda y pequeños a la derecha):</p>
+<div class="row">
+<div class="column">
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" title="1"><span class="dv">1000</span>    <span class="co"># 3 ceros : 1 mil </span></a></code></pre></div>
+<pre><code>## [1] 1000</code></pre>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" title="1"><span class="dv">10000</span>   <span class="co"># 4 ceros : 10 mil</span></a></code></pre></div>
+<pre><code>## [1] 10000</code></pre>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb88-1" title="1"><span class="dv">100000</span>  <span class="co"># 5 ceros : 100 mil  </span></a></code></pre></div>
+<pre><code>## [1] 1e+05</code></pre>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb90-1" title="1"><span class="dv">1000000</span> <span class="co"># 6 ceros : 1 millon </span></a></code></pre></div>
+<pre><code>## [1] 1e+06</code></pre>
+</div>
+<div class="column">
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb92-1" title="1"><span class="dv">1</span><span class="op">/</span><span class="dv">1000</span>    <span class="co"># 3 ceros: 1 milesima</span></a></code></pre></div>
+<pre><code>## [1] 0.001</code></pre>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb94-1" title="1"><span class="dv">1</span><span class="op">/</span><span class="dv">10000</span>   <span class="co"># 4 ceros: 10 milesimas     </span></a></code></pre></div>
+<pre><code>## [1] 1e-04</code></pre>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb96-1" title="1"><span class="dv">1</span><span class="op">/</span><span class="dv">100000</span>  <span class="co"># 5 ceros: 100 milesimas</span></a></code></pre></div>
+<pre><code>## [1] 1e-05</code></pre>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb98-1" title="1"><span class="dv">1</span><span class="op">/</span><span class="dv">1000000</span> <span class="co"># 6 ceros: 1 millonesima</span></a></code></pre></div>
+<pre><code>## [1] 1e-06</code></pre>
+</div>
+</div>
+<p>Si usted quiere modificar la impresión en notación científica en una sesión de <strong>R</strong>, utilice el comando <code>options</code> con el argumento <code>scipen</code></p>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb100-1" title="1"><span class="co"># Aumentando el nro. limite para imprimir en notacion cientifica:</span></a>
+<a class="sourceLine" id="cb100-2" title="2"><span class="kw">options</span>(<span class="dt">scipen =</span> <span class="dv">3</span>)   <span class="co"># por defecto scipen = 0</span></a>
+<a class="sourceLine" id="cb100-3" title="3"><span class="dv">1</span><span class="op">/</span><span class="dv">100000</span>   <span class="co"># 1 x 10^-5</span></a></code></pre></div>
+<pre><code>## [1] 0.00001</code></pre>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb102-1" title="1"><span class="dv">100000</span>    <span class="co"># 1 x 10^5</span></a></code></pre></div>
+<pre><code>## [1] 100000</code></pre>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" title="1"><span class="co"># Se deja como estaba:</span></a>
+<a class="sourceLine" id="cb104-2" title="2"><span class="kw">options</span>(<span class="dt">scipen =</span> <span class="dv">0</span>)   <span class="co"># por defecto scipen = 0</span></a>
+<a class="sourceLine" id="cb104-3" title="3"><span class="dv">1</span><span class="op">/</span><span class="dv">100000</span>   <span class="co"># 1 x 10^-5</span></a></code></pre></div>
+<pre><code>## [1] 1e-05</code></pre>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb106-1" title="1"><span class="dv">100000</span>     <span class="co"># 1 x 10^5</span></a></code></pre></div>
+<pre><code>## [1] 1e+05</code></pre>
+</div>
+</div>
+<div id="texto" class="section level3">
+<h3><span class="header-section-number">2.2.2</span> Texto</h3>
+<p>Los datos tipo texto (<code>character</code>) se crean cuando se escribe algo entre comillas (dobles o sencillas). Aquí algunos ejemplos.</p>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb108-1" title="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>, <span class="st">&#39;d&#39;</span>)    <span class="co"># un vector de texto</span></a>
+<a class="sourceLine" id="cb108-2" title="2"><span class="kw">typeof</span>(x)                     <span class="co"># se pregunta por el tipo de x?</span></a></code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb110-1" title="1"><span class="kw">is.character</span>(x)               <span class="co"># es de tipo character?</span></a></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb112-1" title="1"><span class="kw">is.numeric</span>(x)                 <span class="co"># es numeric?</span></a></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+</div>
+<div id="logicos" class="section level3">
+<h3><span class="header-section-number">2.2.3</span> Lógicos</h3>
+<p>Los datos de tipo lógico sólo pueden ser falso (<code>FALSE</code> o <code>F</code>) o verdadero (<code>TRUE</code> o <code>T</code>). P.e., suponga que para cinco árboles, usted identifica si esta (<code>TRUE</code>) o no (<code>FALSE</code>) en floración:</p>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb114-1" title="1">flor &lt;-<span class="st"> </span><span class="kw">c</span>(T, F, T, T, T )   <span class="co"># vector logico</span></a>
+<a class="sourceLine" id="cb114-2" title="2">flor</a></code></pre></div>
+<pre><code>## [1]  TRUE FALSE  TRUE  TRUE  TRUE</code></pre>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb116-1" title="1"><span class="kw">typeof</span>(flor)   </a></code></pre></div>
+<pre><code>## [1] &quot;logical&quot;</code></pre>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb118-1" title="1"><span class="kw">is.numeric</span>(flor)</a></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb120-1" title="1"><span class="kw">is.logical</span>(flor)</a></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb122-1" title="1"><span class="kw">is.character</span>(flor)</a></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<p>A pesar de que los datos lógicos no son números, se puede hacer operaciones aritméticas con ellos. En este caso, el valor lógico <code>TRUE</code> se convierte en <code>1</code> y <code>FALSE</code> en <code>0</code>. Por ejemplo, si usted quiere <em>contar</em> el número de individuos en floración en el vector lógico <code>flor</code>, sólo <em>sume</em> el vector dado que la suma de <span class="math inline">\(0\)</span>’s y <span class="math inline">\(1\)</span>’s corresponde al <em>conteo</em> de <span class="math inline">\(1\)</span>’s, es decir:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+\text{conteo de individuos en floración} &amp; = &amp; \mathtt{TRUE} + \mathtt{FALSE} + \mathtt{TRUE} + \mathtt{TRUE} + \mathtt{TRUE} \\
+  &amp; = &amp; 1 + 0 + 1 + 1 + 1 \\
+  &amp; = &amp; 4
+\end{eqnarray*}\]</span></p>
+<p>Considere la suma del vector lógico <code>flor</code> creado en arriba:</p>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb124-1" title="1"><span class="co"># Sumando un vector logico:</span></a>
+<a class="sourceLine" id="cb124-2" title="2"><span class="kw">sum</span>(flor)</a></code></pre></div>
+<pre><code>## [1] 4</code></pre>
+<p>Los valores lógicos también se usan en argumentos de comandos. Por ejemplo, el comando <code>sample</code> permite tomar una muestra aleatoria de un vector. La forma en la cual se toma la muestra puede ser <em>con reemplazo</em> o <em>sin reemplazo</em>. De acuerdo a la ayuda del comando (escribir en la consola: <code>?sample</code>), el argumento <code>replace</code> es uno de tipo lógico. Si <code>replace = F</code> (por defecto), la muestra se toma <em>sin reemplazo</em>, pero si <code>replace = T</code>, la muestra se toma con reemplazo.</p>
+<p>El usuario puede crear manualmente un vector lógico, así como creamos arriba el vector <code>flor</code>. Sin embargo, tradicionalmente los vectores lógicos se crean cuando ejecutamos <strong>expresiones lógicas</strong> tales <code>x &gt;5</code> o <code>x &lt;=5</code>. La creación de expresiones lógicas se estudiarán en la sección xxx.</p>
+</div>
+<div id="fechas" class="section level3">
+<h3><span class="header-section-number">2.2.4</span> Fechas</h3>
+<p>Las fechas en <strong>R</strong> son una clase (<code>class</code>) de datos tipo <code>double</code> (ver sección xxx). El formato por defecto que reconoce fechas es año-mes-día (<code>aaaa-mm-dd</code>). Para crear un fecha se debe escribir entre comillas (como si fuera un dato tipo <code>character</code>) y usar el comando <code>as.Date</code> para convertir en fecha. Considere el siguiente ejemplo donde se crea una fecha:</p>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb126-1" title="1">mi.fecha &lt;-<span class="st"> &#39;2012-02-15&#39;</span>       <span class="co"># vector de texto</span></a>
+<a class="sourceLine" id="cb126-2" title="2">mi.fecha &lt;-<span class="st"> </span><span class="kw">as.Date</span>(mi.fecha)  <span class="co"># se convierte en fecha</span></a>
+<a class="sourceLine" id="cb126-3" title="3">mi.fecha                       <span class="co"># observe la impresion</span></a></code></pre></div>
+<pre><code>## [1] &quot;2012-02-15&quot;</code></pre>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb128-1" title="1"><span class="kw">typeof</span>(mi.fecha)               <span class="co"># el tipo de &#39;mi.fecha&#39;</span></a></code></pre></div>
+<pre><code>## [1] &quot;double&quot;</code></pre>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb130-1" title="1"><span class="kw">class</span>(mi.fecha)                <span class="co"># la clase de &#39;mi.fecha&#39;</span></a></code></pre></div>
+<pre><code>## [1] &quot;Date&quot;</code></pre>
+<p>Como se mencionó arriba, note que las fechas son una clase (<code>class</code>) de datos tipo <code>double</code> (ver sección xxx). Al hacer operaciones con vectores de clase <code>Date</code>, <strong>R</strong> imprime un resultado explicito en días:</p>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb132-1" title="1">f1 &lt;-<span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&#39;2012-02-15&#39;</span>)</a>
+<a class="sourceLine" id="cb132-2" title="2">f2 &lt;-<span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&#39;2012-03-15&#39;</span>)</a>
+<a class="sourceLine" id="cb132-3" title="3">f2 <span class="op">-</span><span class="st"> </span>f1   <span class="co"># operacion aritemetica entre fechas</span></a></code></pre></div>
+<pre><code>## Time difference of 29 days</code></pre>
+</div>
+<div id="otros-tipos-datos" class="section level3">
+<h3><span class="header-section-number">2.2.5</span> Otros tipos datos</h3>
+<p>Otros tipos de datos en <strong>R</strong> son: <code>NA</code> (dato perdido); <code>Inf</code> y <code>-Inf</code> (Infinito); <code>NaN</code> (no un número), y <code>NULL</code> (nulo, que no existe). A continuación realizamos alguna descripción de cada uno.</p>
+<div id="datos-perdidos" class="section level4">
+<h4><span class="header-section-number">2.2.5.1</span> Datos perdidos</h4>
+<p>Se usa para identificar una entreda en un vector para la cuál el dato no se pudo registrar. Suponga que usted registrará el número de colonias bacterianas en cinco cajas de petri, pero en la 2da y 5ta cajas el cultivo se daño, entonces usted puede crear el vector como:</p>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb134-1" title="1">n.colonias &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">34</span>, <span class="ot">NA</span>, <span class="dv">40</span>, <span class="dv">45</span>, <span class="ot">NA</span>)  <span class="co"># vector con datos perdidos</span></a>
+<a class="sourceLine" id="cb134-2" title="2">n.colonias</a></code></pre></div>
+<pre><code>## [1] 34 NA 40 45 NA</code></pre>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb136-1" title="1"><span class="kw">typeof</span>(n.colonias)</a></code></pre></div>
+<pre><code>## [1] &quot;double&quot;</code></pre>
+<p>Usted puede validar si cada entrada de un vector esta perdida con el comando <code>is.na</code>:</p>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb138-1" title="1"><span class="co"># ¿Cuales entradas del vector estan perdidas? (expresion logica)</span></a>
+<a class="sourceLine" id="cb138-2" title="2"><span class="kw">is.na</span>(n.colonias)</a></code></pre></div>
+<pre><code>## [1] FALSE  TRUE FALSE FALSE  TRUE</code></pre>
+<p>Los comandos que realizan operaciones aritméticas con vectores tales como <code>sum</code>, <code>min</code>, <code>max</code>, <code>range</code>, etc. no hacen la operación si el vector tiene datos perdidos, sin embargo cuentan con el argumento lógico <code>na.rm</code> que puede usarse para remover las entradas con datos perdidos antes de hacer el cálculo. Aquí algunos ejemplos:</p>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb140-1" title="1">n.colonias &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">34</span>, <span class="ot">NA</span>, <span class="dv">40</span>, <span class="dv">45</span>, <span class="ot">NA</span>)  <span class="co"># vector con datos perdidos</span></a>
+<a class="sourceLine" id="cb140-2" title="2"><span class="kw">sum</span>(n.colonias)                      <span class="co"># suma sin remover datos perdidos</span></a></code></pre></div>
+<pre><code>## [1] NA</code></pre>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb142-1" title="1"><span class="kw">sum</span>(n.colonias, <span class="dt">na.rm =</span> T)           <span class="co"># suma, removiendo datos perdidos antes</span></a></code></pre></div>
+<pre><code>## [1] 119</code></pre>
+</div>
+<div id="infinito" class="section level4">
+<h4><span class="header-section-number">2.2.5.2</span> Infinito</h4>
+<p>Este tipo de datos (<code>Inf</code> ó <code>-Inf</code>) se utiliza para suplir el uso matemático del concepto en cálculos numéricos. Algunas operaciones que pueden dar infinito son:</p>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb144-1" title="1"><span class="dv">10</span> <span class="op">/</span><span class="st"> </span><span class="dv">0</span>   <span class="co"># resulta en Infinito</span></a></code></pre></div>
+<pre><code>## [1] Inf</code></pre>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb146-1" title="1"><span class="dv">-10</span> <span class="op">/</span><span class="dv">0</span>   <span class="co"># resulta en -Infinito</span></a></code></pre></div>
+<pre><code>## [1] -Inf</code></pre>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb148-1" title="1"><span class="dv">10</span><span class="op">^</span><span class="ot">Inf</span>   <span class="co"># resulta en Infinito</span></a></code></pre></div>
+<pre><code>## [1] Inf</code></pre>
+<p>También, <strong>R</strong> puede realizar cálculos de integración donde los límites de integración pueden ser <code>Inf</code> o <code>-Inf</code>.</p>
+</div>
+<div id="no-es-un-numero" class="section level4">
+<h4><span class="header-section-number">2.2.5.3</span> No es un número</h4>
+<p>Cuando realizamos una operación aritmética que no se puede ejecutar resulta el tipo de dato <code>NaN</code> (no un número). En matemática, esto corresponde a un resultado <em>indeterminado</em>. Aquí cuatro ejemplos:</p>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb150-1" title="1"><span class="dv">0</span><span class="op">/</span><span class="dv">0</span>       <span class="co"># No se puede calcular (NaN = Not a Number)</span></a></code></pre></div>
+<pre><code>## [1] NaN</code></pre>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb152-1" title="1"><span class="kw">sqrt</span>(<span class="op">-</span><span class="dv">2</span>)  <span class="co"># No se puede calcular (NaN = Not a Number)</span></a></code></pre></div>
+<pre><code>## Warning in sqrt(-2): NaNs produced</code></pre>
+<pre><code>## [1] NaN</code></pre>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb155-1" title="1"><span class="kw">log</span>(<span class="op">-</span><span class="dv">2</span>)   <span class="co"># No se puede calcular (NaN = Not a Number)</span></a></code></pre></div>
+<pre><code>## Warning in log(-2): NaNs produced</code></pre>
+<pre><code>## [1] NaN</code></pre>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb158-1" title="1"><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="ot">Inf</span>   <span class="co"># No se puede calcular (NaN = Not a Number)</span></a></code></pre></div>
+<pre><code>## [1] NaN</code></pre>
+</div>
+<div id="nulo" class="section level4">
+<h4><span class="header-section-number">2.2.5.4</span> Nulo</h4>
+<p>El tipo de dato nulo (<code>NULL</code>) indica que algo no éxiste. Se usa en algunos comandos para asignarle a un argumento un valor por defecto que no exista, pero al mismo tiempo para que el argumento no sea obligatorio. Por ejemplo, al revisar la ayuda del comando <code>plot.default</code> (escriba en la consola: <code>?plot.default</code>) vemos que algunos argumentos (tales como: <code>y</code>, <code>xlim</code>, <code>ylim</code>, etc.) tienen como valor por defecto <code>NULL</code>; estos argumentos tienen un valor que no existe pero tampoco son obligatorios.</p>
+<p>También, algunos cálculos resultan como <code>NULL</code>. Por ejemplo, el comando <code>names</code> extrae los nombres o etiquetas de un vector (ver sección xxx) cuando el vector tiene nombres. Si el vector no tiene nombres, el comando <code>names</code> devuelve <code>NULL</code>:</p>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb160-1" title="1">x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">4</span>   <span class="co"># se crea vector con cuatro entradas</span></a>
+<a class="sourceLine" id="cb160-2" title="2"><span class="kw">names</span>(x)   <span class="co"># se pregunta por los nombres de x</span></a></code></pre></div>
+<pre><code>## NULL</code></pre>
+<p>En otro ejemplo, un objeto tiene <em>dimensión</em> cuando posee filas y columnas, tal como una matriz (ver sección xxx) o un data.frame (ver sección xxx). La <em>dimensión</em> corresponde al <em>número</em> de filas y de columnas del objeto. Dado que un vector <em>no</em> tiene <em>dimensión</em>, al preguntarle por la dimensión a una vector resulta <code>NULL</code>:</p>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb162-1" title="1">x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">5</span>   <span class="co"># se crea un vector de numeros</span></a>
+<a class="sourceLine" id="cb162-2" title="2"><span class="kw">dim</span>(x)     <span class="co"># ¿cual es la dimesion de &#39;x&#39;? </span></a></code></pre></div>
+<pre><code>## NULL</code></pre>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="2-1-vectores.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="2-3-logicas.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

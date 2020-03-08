@@ -170,9 +170,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1.3" data-path="3-1-vectores.html"><a href="3-1-vectores.html#operaciones-aritmeticas-con-vectores"><i class="fa fa-check"></i><b>3.1.3</b> Operaciones aritméticas con vectores</a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html"><i class="fa fa-check"></i><b>3.2</b> Tipos de datos</a><ul>
-<li class="chapter" data-level="3.2.1" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#validando-el-tipo-de-datos"><i class="fa fa-check"></i><b>3.2.1</b> Validando el tipo de datos</a></li>
+<li class="chapter" data-level="3.2.1" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#numeros"><i class="fa fa-check"></i><b>3.2.1</b> Números</a></li>
+<li class="chapter" data-level="3.2.2" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#texto"><i class="fa fa-check"></i><b>3.2.2</b> Texto</a></li>
+<li class="chapter" data-level="3.2.3" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#logicos"><i class="fa fa-check"></i><b>3.2.3</b> Lógicos</a></li>
+<li class="chapter" data-level="3.2.4" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#fechas"><i class="fa fa-check"></i><b>3.2.4</b> Fechas</a></li>
+<li class="chapter" data-level="3.2.5" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#otros-tipos-datos"><i class="fa fa-check"></i><b>3.2.5</b> Otros tipos datos</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="3-3-logicas.html"><a href="3-3-logicas.html"><i class="fa fa-check"></i><b>3.3</b> Expresiones lógicas</a></li>
+<li class="chapter" data-level="3.3" data-path="3-3-logicas.html"><a href="3-3-logicas.html"><i class="fa fa-check"></i><b>3.3</b> Expresiones lógicas</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="3-3-logicas.html"><a href="3-3-logicas.html#tipos-de-expresions-logicas"><i class="fa fa-check"></i><b>3.3.1</b> Tipos de expresions lógicas</a></li>
+<li class="chapter" data-level="3.3.2" data-path="3-3-logicas.html"><a href="3-3-logicas.html#usando-expresiones-logicas-para-contar"><i class="fa fa-check"></i><b>3.3.2</b> Usando expresiones lógicas para contar</a></li>
+</ul></li>
 <li class="chapter" data-level="3.4" data-path="3-4-ejvecTiposDatos.html"><a href="3-4-ejvecTiposDatos.html"><i class="fa fa-check"></i><b>3.4</b> Ejercicios</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="4-otros-tipos-de-objeto.html"><a href="4-otros-tipos-de-objeto.html"><i class="fa fa-check"></i><b>4</b> Otros tipos de objeto</a><ul>
@@ -299,36 +306,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="ej.-1.-basico-o-acido-1" class="section level3">
 <h3><span class="header-section-number">7.7.1</span> Ej. 1. Básico o Ácido</h3>
 <p>Si usamos <code>if</code> sólo:</p>
-<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb293-1" title="1">pH &lt;-<span class="st"> </span><span class="fl">4.5</span>                    <span class="co"># paso 1</span></a>
-<a class="sourceLine" id="cb293-2" title="2">res &lt;-<span class="st">  &#39;acido&#39;</span>              <span class="co"># paso 2</span></a>
-<a class="sourceLine" id="cb293-3" title="3"><span class="cf">if</span>(pH <span class="op">&gt;</span><span class="st"> </span><span class="dv">7</span>) res &lt;-<span class="st"> &#39;basico&#39;</span>   <span class="co"># paso 3</span></a>
-<a class="sourceLine" id="cb293-4" title="4">res                          <span class="co"># paso 4</span></a></code></pre></div>
+<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb376-1" title="1">pH &lt;-<span class="st"> </span><span class="fl">4.5</span>                    <span class="co"># paso 1</span></a>
+<a class="sourceLine" id="cb376-2" title="2">res &lt;-<span class="st">  &#39;acido&#39;</span>              <span class="co"># paso 2</span></a>
+<a class="sourceLine" id="cb376-3" title="3"><span class="cf">if</span>(pH <span class="op">&gt;</span><span class="st"> </span><span class="dv">7</span>) res &lt;-<span class="st"> &#39;basico&#39;</span>   <span class="co"># paso 3</span></a>
+<a class="sourceLine" id="cb376-4" title="4">res                          <span class="co"># paso 4</span></a></code></pre></div>
 <pre><code>[1] &quot;acido&quot;</code></pre>
 <p>Si usamos <code>if ... else</code>:</p>
-<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb295-1" title="1">pH &lt;-<span class="st"> </span><span class="fl">4.5</span>                                       <span class="co"># Paso 1</span></a>
-<a class="sourceLine" id="cb295-2" title="2"><span class="cf">if</span>(pH <span class="op">&gt;</span><span class="st"> </span><span class="dv">7</span>) res &lt;-<span class="st"> &#39;basico&#39;</span> <span class="cf">else</span> res &lt;-<span class="st"> &#39;acido&#39;</span>  <span class="co"># Paso 2</span></a>
-<a class="sourceLine" id="cb295-3" title="3">res                                             <span class="co"># Paso 3</span></a></code></pre></div>
+<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb378-1" title="1">pH &lt;-<span class="st"> </span><span class="fl">4.5</span>                                       <span class="co"># Paso 1</span></a>
+<a class="sourceLine" id="cb378-2" title="2"><span class="cf">if</span>(pH <span class="op">&gt;</span><span class="st"> </span><span class="dv">7</span>) res &lt;-<span class="st"> &#39;basico&#39;</span> <span class="cf">else</span> res &lt;-<span class="st"> &#39;acido&#39;</span>  <span class="co"># Paso 2</span></a>
+<a class="sourceLine" id="cb378-3" title="3">res                                             <span class="co"># Paso 3</span></a></code></pre></div>
 <pre><code>[1] &quot;acido&quot;</code></pre>
 <p>En el código anterior, dado que sólo se evalua un valor de pH, podríamos omitir la creación de <code>res</code> y con esto también omitir el paso 3:</p>
-<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb297-1" title="1">pH &lt;-<span class="st"> </span><span class="fl">4.5</span>                            <span class="co"># Paso 1</span></a>
-<a class="sourceLine" id="cb297-2" title="2"><span class="cf">if</span>(pH <span class="op">&gt;</span><span class="st"> </span><span class="dv">7</span>) <span class="st">&#39;basico&#39;</span> <span class="cf">else</span>  <span class="st">&#39;acido&#39;</span>    <span class="co"># Paso 2</span></a></code></pre></div>
+<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb380-1" title="1">pH &lt;-<span class="st"> </span><span class="fl">4.5</span>                            <span class="co"># Paso 1</span></a>
+<a class="sourceLine" id="cb380-2" title="2"><span class="cf">if</span>(pH <span class="op">&gt;</span><span class="st"> </span><span class="dv">7</span>) <span class="st">&#39;basico&#39;</span> <span class="cf">else</span>  <span class="st">&#39;acido&#39;</span>    <span class="co"># Paso 2</span></a></code></pre></div>
 <pre><code>[1] &quot;acido&quot;</code></pre>
 </div>
 <div id="ej.-2.-basico-o-acido-en-multiples-muestras-1" class="section level3">
 <h3><span class="header-section-number">7.7.2</span> Ej. 2. Básico o Ácido en múltiples muestras</h3>
 <p><strong>Parte (a)</strong>: Se crea una función</p>
-<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb299-1" title="1">eval_pH &lt;-<span class="st"> </span><span class="cf">function</span>(pH){</a>
-<a class="sourceLine" id="cb299-2" title="2">  <span class="cf">if</span>(pH <span class="op">&gt;</span><span class="st"> </span><span class="dv">7</span>) <span class="st">&#39;basico&#39;</span> <span class="cf">else</span>  <span class="st">&#39;acido&#39;</span>    </a>
-<a class="sourceLine" id="cb299-3" title="3">}</a></code></pre></div>
+<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb382-1" title="1">eval_pH &lt;-<span class="st"> </span><span class="cf">function</span>(pH){</a>
+<a class="sourceLine" id="cb382-2" title="2">  <span class="cf">if</span>(pH <span class="op">&gt;</span><span class="st"> </span><span class="dv">7</span>) <span class="st">&#39;basico&#39;</span> <span class="cf">else</span>  <span class="st">&#39;acido&#39;</span>    </a>
+<a class="sourceLine" id="cb382-3" title="3">}</a></code></pre></div>
 <p><strong>Parte (b)</strong>: Se evalua la función en tres valores de forma individual:</p>
-<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb300-1" title="1"><span class="kw">eval_pH</span>(<span class="dt">pH =</span> <span class="fl">4.9</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb383"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb383-1" title="1"><span class="kw">eval_pH</span>(<span class="dt">pH =</span> <span class="fl">4.9</span>)</a></code></pre></div>
 <pre><code>[1] &quot;acido&quot;</code></pre>
-<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb302-1" title="1"><span class="kw">eval_pH</span>(<span class="dt">pH =</span> <span class="fl">11.9</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb385-1" title="1"><span class="kw">eval_pH</span>(<span class="dt">pH =</span> <span class="fl">11.9</span>)</a></code></pre></div>
 <pre><code>[1] &quot;basico&quot;</code></pre>
-<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb304-1" title="1"><span class="kw">eval_pH</span>(<span class="dt">pH =</span> <span class="fl">10.8</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb387-1" title="1"><span class="kw">eval_pH</span>(<span class="dt">pH =</span> <span class="fl">10.8</span>)</a></code></pre></div>
 <pre><code>[1] &quot;basico&quot;</code></pre>
 <p><strong>Parte (c)</strong>: Se evalua la función sobre un vector de valores:</p>
-<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb306-1" title="1"><span class="kw">eval_pH</span>(<span class="dt">pH =</span> <span class="kw">c</span>(<span class="fl">4.9</span>, <span class="fl">11.9</span>, <span class="fl">10.8</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb389-1" title="1"><span class="kw">eval_pH</span>(<span class="dt">pH =</span> <span class="kw">c</span>(<span class="fl">4.9</span>, <span class="fl">11.9</span>, <span class="fl">10.8</span>))</a></code></pre></div>
 <pre><code>Warning in if (pH &gt; 7) &quot;basico&quot; else &quot;acido&quot;: the condition has length &gt; 1
 and only the first element will be used</code></pre>
 <pre><code>[1] &quot;acido&quot;</code></pre>
@@ -337,51 +344,51 @@ and only the first element will be used</code></pre>
 <div id="ej.-3.-condicional-vectorizado-1" class="section level3">
 <h3><span class="header-section-number">7.7.3</span> Ej. 3. Condicional vectorizado</h3>
 <p><strong>Parte (a)</strong>: Usando un ciclo <code>for</code></p>
-<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb309-1" title="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">4.9</span>, <span class="fl">11.9</span>, <span class="fl">10.8</span>)    <span class="co"># Vector con los pH</span></a>
-<a class="sourceLine" id="cb309-2" title="2">k &lt;-<span class="st"> </span><span class="kw">length</span>(x)             <span class="co"># longitud del vector</span></a>
-<a class="sourceLine" id="cb309-3" title="3">res &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, k)          <span class="co"># se crea un vector vacio para guardar los resultados</span></a>
-<a class="sourceLine" id="cb309-4" title="4"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>k) res[i] &lt;-<span class="st"> </span><span class="kw">eval_pH</span>(<span class="dt">pH =</span> x[i] )</a>
-<a class="sourceLine" id="cb309-5" title="5">res                        <span class="co"># se imprime el resultado</span></a></code></pre></div>
+<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb392-1" title="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">4.9</span>, <span class="fl">11.9</span>, <span class="fl">10.8</span>)    <span class="co"># Vector con los pH</span></a>
+<a class="sourceLine" id="cb392-2" title="2">k &lt;-<span class="st"> </span><span class="kw">length</span>(x)             <span class="co"># longitud del vector</span></a>
+<a class="sourceLine" id="cb392-3" title="3">res &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, k)          <span class="co"># se crea un vector vacio para guardar los resultados</span></a>
+<a class="sourceLine" id="cb392-4" title="4"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>k) res[i] &lt;-<span class="st"> </span><span class="kw">eval_pH</span>(<span class="dt">pH =</span> x[i] )</a>
+<a class="sourceLine" id="cb392-5" title="5">res                        <span class="co"># se imprime el resultado</span></a></code></pre></div>
 <pre><code>[1] &quot;acido&quot;  &quot;basico&quot; &quot;basico&quot;</code></pre>
 <p><strong>Parte (b)</strong>: Usando <code>sapply</code></p>
-<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb311-1" title="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">4.9</span>, <span class="fl">11.9</span>, <span class="fl">10.8</span>)    <span class="co"># Vector con los pH</span></a>
-<a class="sourceLine" id="cb311-2" title="2"><span class="kw">sapply</span>(<span class="dt">X =</span> x, <span class="dt">FUN =</span> eval_pH)</a></code></pre></div>
+<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb394-1" title="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">4.9</span>, <span class="fl">11.9</span>, <span class="fl">10.8</span>)    <span class="co"># Vector con los pH</span></a>
+<a class="sourceLine" id="cb394-2" title="2"><span class="kw">sapply</span>(<span class="dt">X =</span> x, <span class="dt">FUN =</span> eval_pH)</a></code></pre></div>
 <pre><code>[1] &quot;acido&quot;  &quot;basico&quot; &quot;basico&quot;</code></pre>
 <p><strong>Parte (c)</strong>: Usando <code>ifelse</code> sin emplear <code>eval_pH</code></p>
-<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb313-1" title="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">4.9</span>, <span class="fl">11.9</span>, <span class="fl">10.8</span>)    <span class="co"># Vector con los pH</span></a>
-<a class="sourceLine" id="cb313-2" title="2"><span class="kw">ifelse</span>(x <span class="op">&gt;</span><span class="st"> </span><span class="dv">7</span>, <span class="st">&#39;basico&#39;</span>, <span class="st">&#39;acido&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb396"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb396-1" title="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">4.9</span>, <span class="fl">11.9</span>, <span class="fl">10.8</span>)    <span class="co"># Vector con los pH</span></a>
+<a class="sourceLine" id="cb396-2" title="2"><span class="kw">ifelse</span>(x <span class="op">&gt;</span><span class="st"> </span><span class="dv">7</span>, <span class="st">&#39;basico&#39;</span>, <span class="st">&#39;acido&#39;</span>)</a></code></pre></div>
 <pre><code>[1] &quot;acido&quot;  &quot;basico&quot; &quot;basico&quot;</code></pre>
 </div>
 <div id="ej.-4.-diferencias-1" class="section level3">
 <h3><span class="header-section-number">7.7.4</span> Ej. 4. Diferencias</h3>
 <p>Creamos la función:</p>
-<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb315-1" title="1">mi.dif &lt;-<span class="st"> </span><span class="cf">function</span>(x,y, <span class="dt">metodo =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)){</a>
-<a class="sourceLine" id="cb315-2" title="2">  <span class="co"># Argumentos:</span></a>
-<a class="sourceLine" id="cb315-3" title="3">  <span class="co"># x = Vector numerico con uno o mas valores</span></a>
-<a class="sourceLine" id="cb315-4" title="4">  <span class="co"># y = Vector numerico con uno o mas valores. Debe ser</span></a>
-<a class="sourceLine" id="cb315-5" title="5">  <span class="co">#     de la misma longitud de x.</span></a>
-<a class="sourceLine" id="cb315-6" title="6">  <span class="co"># metodo = Indica si se calcula la diferencia absoluta (1) o porcentual (2)</span></a>
-<a class="sourceLine" id="cb315-7" title="7">  </a>
-<a class="sourceLine" id="cb315-8" title="8">  <span class="co"># Codigo:</span></a>
-<a class="sourceLine" id="cb315-9" title="9">  <span class="cf">if</span>(<span class="op">!</span>metodo[<span class="dv">1</span>] <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)) <span class="kw">stop</span>(<span class="st">&#39;metodo debe ser 1 (para dif absoluta) ó 2 (para dif porcentual)&#39;</span>)</a>
-<a class="sourceLine" id="cb315-10" title="10">  <span class="cf">if</span>(<span class="kw">length</span>(x) <span class="op">!=</span><span class="st"> </span><span class="kw">length</span>(y)) <span class="kw">stop</span>(<span class="st">&#39;Los vectores x, y deben tener la misma longitud&#39;</span>)</a>
-<a class="sourceLine" id="cb315-11" title="11">  <span class="cf">if</span>(metodo[<span class="dv">1</span>] <span class="op">==</span><span class="st"> </span><span class="dv">1</span>) x <span class="op">-</span><span class="st"> </span>y <span class="cf">else</span> (x <span class="op">-</span><span class="st"> </span>y)<span class="op">/</span>x<span class="op">*</span><span class="dv">100</span></a>
-<a class="sourceLine" id="cb315-12" title="12">}</a></code></pre></div>
+<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb398-1" title="1">mi.dif &lt;-<span class="st"> </span><span class="cf">function</span>(x,y, <span class="dt">metodo =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)){</a>
+<a class="sourceLine" id="cb398-2" title="2">  <span class="co"># Argumentos:</span></a>
+<a class="sourceLine" id="cb398-3" title="3">  <span class="co"># x = Vector numerico con uno o mas valores</span></a>
+<a class="sourceLine" id="cb398-4" title="4">  <span class="co"># y = Vector numerico con uno o mas valores. Debe ser</span></a>
+<a class="sourceLine" id="cb398-5" title="5">  <span class="co">#     de la misma longitud de x.</span></a>
+<a class="sourceLine" id="cb398-6" title="6">  <span class="co"># metodo = Indica si se calcula la diferencia absoluta (1) o porcentual (2)</span></a>
+<a class="sourceLine" id="cb398-7" title="7">  </a>
+<a class="sourceLine" id="cb398-8" title="8">  <span class="co"># Codigo:</span></a>
+<a class="sourceLine" id="cb398-9" title="9">  <span class="cf">if</span>(<span class="op">!</span>metodo[<span class="dv">1</span>] <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)) <span class="kw">stop</span>(<span class="st">&#39;metodo debe ser 1 (para dif absoluta) ó 2 (para dif porcentual)&#39;</span>)</a>
+<a class="sourceLine" id="cb398-10" title="10">  <span class="cf">if</span>(<span class="kw">length</span>(x) <span class="op">!=</span><span class="st"> </span><span class="kw">length</span>(y)) <span class="kw">stop</span>(<span class="st">&#39;Los vectores x, y deben tener la misma longitud&#39;</span>)</a>
+<a class="sourceLine" id="cb398-11" title="11">  <span class="cf">if</span>(metodo[<span class="dv">1</span>] <span class="op">==</span><span class="st"> </span><span class="dv">1</span>) x <span class="op">-</span><span class="st"> </span>y <span class="cf">else</span> (x <span class="op">-</span><span class="st"> </span>y)<span class="op">/</span>x<span class="op">*</span><span class="dv">100</span></a>
+<a class="sourceLine" id="cb398-12" title="12">}</a></code></pre></div>
 <p>Probamos la función con un sólo par de números:</p>
-<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb316-1" title="1"><span class="kw">mi.dif</span>(<span class="dt">x =</span> <span class="dv">10</span>, <span class="dt">y =</span> <span class="dv">5</span>, <span class="dt">metodo =</span> <span class="dv">1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb399-1" title="1"><span class="kw">mi.dif</span>(<span class="dt">x =</span> <span class="dv">10</span>, <span class="dt">y =</span> <span class="dv">5</span>, <span class="dt">metodo =</span> <span class="dv">1</span>)</a></code></pre></div>
 <pre><code>[1] 5</code></pre>
-<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb318-1" title="1"><span class="kw">mi.dif</span>(<span class="dt">x =</span> <span class="dv">10</span>, <span class="dt">y =</span> <span class="dv">5</span>, <span class="dt">metodo =</span> <span class="dv">2</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb401-1" title="1"><span class="kw">mi.dif</span>(<span class="dt">x =</span> <span class="dv">10</span>, <span class="dt">y =</span> <span class="dv">5</span>, <span class="dt">metodo =</span> <span class="dv">2</span>)</a></code></pre></div>
 <pre><code>[1] 50</code></pre>
 <p>Probamos la función con varios pares de números:</p>
-<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb320-1" title="1"><span class="kw">mi.dif</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">8</span>, <span class="dv">6</span>), <span class="dt">y =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">1</span>), <span class="dt">metodo =</span> <span class="dv">1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb403-1" title="1"><span class="kw">mi.dif</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">8</span>, <span class="dv">6</span>), <span class="dt">y =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">1</span>), <span class="dt">metodo =</span> <span class="dv">1</span>)</a></code></pre></div>
 <pre><code>[1] 5 5 5</code></pre>
-<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb322-1" title="1"><span class="kw">mi.dif</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">8</span>, <span class="dv">6</span>), <span class="dt">y =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">1</span>), <span class="dt">metodo =</span> <span class="dv">2</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb405-1" title="1"><span class="kw">mi.dif</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">8</span>, <span class="dv">6</span>), <span class="dt">y =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">1</span>), <span class="dt">metodo =</span> <span class="dv">2</span>)</a></code></pre></div>
 <pre><code>[1] 50.00000 62.50000 83.33333</code></pre>
 <p>Probamos el mensaje de error si no se selecciona el metodo correcto:</p>
-<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb324-1" title="1"><span class="kw">mi.dif</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">8</span>, <span class="dv">6</span>), <span class="dt">y =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">1</span>), <span class="dt">metodo =</span> <span class="dv">3</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb407-1" title="1"><span class="kw">mi.dif</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">8</span>, <span class="dv">6</span>), <span class="dt">y =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">1</span>), <span class="dt">metodo =</span> <span class="dv">3</span>)</a></code></pre></div>
 <pre><code>Error in mi.dif(x = c(10, 8, 6), y = c(5, 3, 1), metodo = 3): metodo debe ser 1 (para dif absoluta) ó 2 (para dif porcentual)</code></pre>
 <p>Probamos el mensaje de error si x, y son de diferente longitud:</p>
-<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb326-1" title="1"><span class="kw">mi.dif</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">8</span>, <span class="dv">6</span>), <span class="dt">y =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">3</span>), <span class="dt">metodo =</span> <span class="dv">2</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb409-1" title="1"><span class="kw">mi.dif</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">8</span>, <span class="dv">6</span>), <span class="dt">y =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">3</span>), <span class="dt">metodo =</span> <span class="dv">2</span>)</a></code></pre></div>
 <pre><code>Error in mi.dif(x = c(10, 8, 6), y = c(5, 3), metodo = 2): Los vectores x, y deben tener la misma longitud</code></pre>
 
 </div>

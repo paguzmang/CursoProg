@@ -170,9 +170,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1.3" data-path="3-1-vectores.html"><a href="3-1-vectores.html#operaciones-aritmeticas-con-vectores"><i class="fa fa-check"></i><b>3.1.3</b> Operaciones aritméticas con vectores</a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html"><i class="fa fa-check"></i><b>3.2</b> Tipos de datos</a><ul>
-<li class="chapter" data-level="3.2.1" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#validando-el-tipo-de-datos"><i class="fa fa-check"></i><b>3.2.1</b> Validando el tipo de datos</a></li>
+<li class="chapter" data-level="3.2.1" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#numeros"><i class="fa fa-check"></i><b>3.2.1</b> Números</a></li>
+<li class="chapter" data-level="3.2.2" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#texto"><i class="fa fa-check"></i><b>3.2.2</b> Texto</a></li>
+<li class="chapter" data-level="3.2.3" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#logicos"><i class="fa fa-check"></i><b>3.2.3</b> Lógicos</a></li>
+<li class="chapter" data-level="3.2.4" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#fechas"><i class="fa fa-check"></i><b>3.2.4</b> Fechas</a></li>
+<li class="chapter" data-level="3.2.5" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#otros-tipos-datos"><i class="fa fa-check"></i><b>3.2.5</b> Otros tipos datos</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="3-3-logicas.html"><a href="3-3-logicas.html"><i class="fa fa-check"></i><b>3.3</b> Expresiones lógicas</a></li>
+<li class="chapter" data-level="3.3" data-path="3-3-logicas.html"><a href="3-3-logicas.html"><i class="fa fa-check"></i><b>3.3</b> Expresiones lógicas</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="3-3-logicas.html"><a href="3-3-logicas.html#tipos-de-expresions-logicas"><i class="fa fa-check"></i><b>3.3.1</b> Tipos de expresions lógicas</a></li>
+<li class="chapter" data-level="3.3.2" data-path="3-3-logicas.html"><a href="3-3-logicas.html#usando-expresiones-logicas-para-contar"><i class="fa fa-check"></i><b>3.3.2</b> Usando expresiones lógicas para contar</a></li>
+</ul></li>
 <li class="chapter" data-level="3.4" data-path="3-4-ejvecTiposDatos.html"><a href="3-4-ejvecTiposDatos.html"><i class="fa fa-check"></i><b>3.4</b> Ejercicios</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="4-otros-tipos-de-objeto.html"><a href="4-otros-tipos-de-objeto.html"><i class="fa fa-check"></i><b>4</b> Otros tipos de objeto</a><ul>
@@ -299,35 +306,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="ej.-2.-factura-con-iva" class="section level3">
 <h3><span class="header-section-number">6.4.1</span> Ej. 2. Factura con IVA</h3>
 <p>El siguiente código crea la función o comando solicitado:</p>
-<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb199-1" title="1">factura &lt;-<span class="st"> </span><span class="cf">function</span>(prod, <span class="dt">iva =</span> <span class="fl">0.16</span>){</a>
-<a class="sourceLine" id="cb199-2" title="2">  <span class="co"># Argumentos:</span></a>
-<a class="sourceLine" id="cb199-3" title="3">  <span class="co"># prod = precio especifico del producto (sin el iva)</span></a>
-<a class="sourceLine" id="cb199-4" title="4">  <span class="co"># iva  = fraccion (entre 0 y 1) que indica el iva aplicado. </span></a>
-<a class="sourceLine" id="cb199-5" title="5">  <span class="co">#        Por defecto, 0.16</span></a>
-<a class="sourceLine" id="cb199-6" title="6">  </a>
-<a class="sourceLine" id="cb199-7" title="7">  <span class="co"># Codigo:</span></a>
-<a class="sourceLine" id="cb199-8" title="8">  iva2 &lt;-<span class="st"> </span><span class="kw">round</span>(iva<span class="op">*</span><span class="dv">100</span>, <span class="dv">0</span>)   <span class="co"># se da formato al iva para presentacion</span></a>
-<a class="sourceLine" id="cb199-9" title="9">  vp   &lt;-<span class="st"> </span>prod                <span class="co"># valor del producto</span></a>
-<a class="sourceLine" id="cb199-10" title="10">  ivap &lt;-<span class="st"> </span>prod<span class="op">*</span>iva            <span class="co"># valor del iva asociado al producto</span></a>
-<a class="sourceLine" id="cb199-11" title="11">  vpt  &lt;-<span class="st"> </span>vp <span class="op">+</span><span class="st"> </span>ivap           <span class="co"># valor total a pagar</span></a>
-<a class="sourceLine" id="cb199-12" title="12">  </a>
-<a class="sourceLine" id="cb199-13" title="13">  <span class="co"># Se crea el data.frame de salida.</span></a>
-<a class="sourceLine" id="cb199-14" title="14">  <span class="kw">data.frame</span>(</a>
-<a class="sourceLine" id="cb199-15" title="15">    <span class="dt">Item  =</span> <span class="kw">c</span>(<span class="st">&#39;Producto&#39;</span>, <span class="kw">paste0</span>(<span class="st">&#39;IVA&#39;</span>, <span class="st">&#39; (&#39;</span>, iva2, <span class="st">&#39;%&#39;</span>, <span class="st">&#39;)&#39;</span> ), <span class="st">&#39;Total&#39;</span>),</a>
-<a class="sourceLine" id="cb199-16" title="16">    <span class="dt">Valor =</span> <span class="kw">c</span>(vp, ivap, vpt)</a>
-<a class="sourceLine" id="cb199-17" title="17">  )</a>
-<a class="sourceLine" id="cb199-18" title="18">  </a>
-<a class="sourceLine" id="cb199-19" title="19">  <span class="co"># Valor</span></a>
-<a class="sourceLine" id="cb199-20" title="20">  <span class="co"># se entrega un data.frame con dos filas y dos columnas.</span></a>
-<a class="sourceLine" id="cb199-21" title="21">}</a></code></pre></div>
+<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb282-1" title="1">factura &lt;-<span class="st"> </span><span class="cf">function</span>(prod, <span class="dt">iva =</span> <span class="fl">0.16</span>){</a>
+<a class="sourceLine" id="cb282-2" title="2">  <span class="co"># Argumentos:</span></a>
+<a class="sourceLine" id="cb282-3" title="3">  <span class="co"># prod = precio especifico del producto (sin el iva)</span></a>
+<a class="sourceLine" id="cb282-4" title="4">  <span class="co"># iva  = fraccion (entre 0 y 1) que indica el iva aplicado. </span></a>
+<a class="sourceLine" id="cb282-5" title="5">  <span class="co">#        Por defecto, 0.16</span></a>
+<a class="sourceLine" id="cb282-6" title="6">  </a>
+<a class="sourceLine" id="cb282-7" title="7">  <span class="co"># Codigo:</span></a>
+<a class="sourceLine" id="cb282-8" title="8">  iva2 &lt;-<span class="st"> </span><span class="kw">round</span>(iva<span class="op">*</span><span class="dv">100</span>, <span class="dv">0</span>)   <span class="co"># se da formato al iva para presentacion</span></a>
+<a class="sourceLine" id="cb282-9" title="9">  vp   &lt;-<span class="st"> </span>prod                <span class="co"># valor del producto</span></a>
+<a class="sourceLine" id="cb282-10" title="10">  ivap &lt;-<span class="st"> </span>prod<span class="op">*</span>iva            <span class="co"># valor del iva asociado al producto</span></a>
+<a class="sourceLine" id="cb282-11" title="11">  vpt  &lt;-<span class="st"> </span>vp <span class="op">+</span><span class="st"> </span>ivap           <span class="co"># valor total a pagar</span></a>
+<a class="sourceLine" id="cb282-12" title="12">  </a>
+<a class="sourceLine" id="cb282-13" title="13">  <span class="co"># Se crea el data.frame de salida.</span></a>
+<a class="sourceLine" id="cb282-14" title="14">  <span class="kw">data.frame</span>(</a>
+<a class="sourceLine" id="cb282-15" title="15">    <span class="dt">Item  =</span> <span class="kw">c</span>(<span class="st">&#39;Producto&#39;</span>, <span class="kw">paste0</span>(<span class="st">&#39;IVA&#39;</span>, <span class="st">&#39; (&#39;</span>, iva2, <span class="st">&#39;%&#39;</span>, <span class="st">&#39;)&#39;</span> ), <span class="st">&#39;Total&#39;</span>),</a>
+<a class="sourceLine" id="cb282-16" title="16">    <span class="dt">Valor =</span> <span class="kw">c</span>(vp, ivap, vpt)</a>
+<a class="sourceLine" id="cb282-17" title="17">  )</a>
+<a class="sourceLine" id="cb282-18" title="18">  </a>
+<a class="sourceLine" id="cb282-19" title="19">  <span class="co"># Valor</span></a>
+<a class="sourceLine" id="cb282-20" title="20">  <span class="co"># se entrega un data.frame con dos filas y dos columnas.</span></a>
+<a class="sourceLine" id="cb282-21" title="21">}</a></code></pre></div>
 <p>Ahora se prueba la función. Por ejemplo, supongamos un producto con un valor de $13000 y con IVA del 16%, entonces:</p>
-<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb200-1" title="1"><span class="kw">factura</span>(<span class="dt">prod =</span> <span class="dv">13000</span>)   <span class="co"># iva = 0.16 esta por defecto.</span></a></code></pre></div>
+<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb283-1" title="1"><span class="kw">factura</span>(<span class="dt">prod =</span> <span class="dv">13000</span>)   <span class="co"># iva = 0.16 esta por defecto.</span></a></code></pre></div>
 <pre><code>       Item Valor
 1  Producto 13000
 2 IVA (16%)  2080
 3     Total 15080</code></pre>
 <p>Con el mismo valor del producto, si el IVA fuera 19%, entonces (note que como cambia la impresión del IVA en la tabla de salida):</p>
-<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb202-1" title="1"><span class="kw">factura</span>(<span class="dt">prod =</span> <span class="dv">13000</span>, <span class="dt">iva =</span> <span class="fl">0.19</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb285-1" title="1"><span class="kw">factura</span>(<span class="dt">prod =</span> <span class="dv">13000</span>, <span class="dt">iva =</span> <span class="fl">0.19</span>)</a></code></pre></div>
 <pre><code>       Item Valor
 1  Producto 13000
 2 IVA (19%)  2470
@@ -336,144 +343,144 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="ej.-6.-encontrando-minimos-o-maximos-1" class="section level3">
 <h3><span class="header-section-number">6.4.2</span> Ej. 6. Encontrando mínimos o máximos</h3>
 <p>El siguiente código crea la función o comando solicitado:</p>
-<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb204-1" title="1">min_fun &lt;-<span class="st"> </span><span class="cf">function</span>(x0, x1, f, <span class="dt">e =</span> <span class="fl">0.01</span>){</a>
-<a class="sourceLine" id="cb204-2" title="2">  <span class="co"># argumentos:</span></a>
-<a class="sourceLine" id="cb204-3" title="3">  <span class="co"># x0 = valor inicial del intervalo de x donde se desea buscar el minimo</span></a>
-<a class="sourceLine" id="cb204-4" title="4">  <span class="co"># x1 = valor final del intervalo de x donde se desea buscar el minimo</span></a>
-<a class="sourceLine" id="cb204-5" title="5">  <span class="co"># f = nombre de la funcion matematica a evaluar.</span></a>
-<a class="sourceLine" id="cb204-6" title="6">  <span class="co"># e = tamano de paso para buscar el minimo. Por defecto 0.01. Entre mas pequeno,</span></a>
-<a class="sourceLine" id="cb204-7" title="7">  <span class="co">#     mas exacto es a la hora de reportar el minimo.</span></a>
-<a class="sourceLine" id="cb204-8" title="8">  </a>
-<a class="sourceLine" id="cb204-9" title="9">  <span class="co"># Codigo</span></a>
-<a class="sourceLine" id="cb204-10" title="10">  x &lt;-<span class="st"> </span><span class="kw">seq</span>(x0, x1, e)</a>
-<a class="sourceLine" id="cb204-11" title="11">  pos.min &lt;-<span class="st"> </span><span class="kw">which.min</span>(<span class="kw">f</span>(x))</a>
-<a class="sourceLine" id="cb204-12" title="12">  <span class="kw">data.frame</span>(<span class="dt">x =</span> x[pos.min], <span class="dt">y =</span> <span class="kw">f</span>(x[pos.min]) )</a>
-<a class="sourceLine" id="cb204-13" title="13">  </a>
-<a class="sourceLine" id="cb204-14" title="14">  <span class="co"># Valor:</span></a>
-<a class="sourceLine" id="cb204-15" title="15">  <span class="co"># entrega un data.frame de una fila y dos columnas</span></a>
-<a class="sourceLine" id="cb204-16" title="16">}</a></code></pre></div>
+<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb287-1" title="1">min_fun &lt;-<span class="st"> </span><span class="cf">function</span>(x0, x1, f, <span class="dt">e =</span> <span class="fl">0.01</span>){</a>
+<a class="sourceLine" id="cb287-2" title="2">  <span class="co"># argumentos:</span></a>
+<a class="sourceLine" id="cb287-3" title="3">  <span class="co"># x0 = valor inicial del intervalo de x donde se desea buscar el minimo</span></a>
+<a class="sourceLine" id="cb287-4" title="4">  <span class="co"># x1 = valor final del intervalo de x donde se desea buscar el minimo</span></a>
+<a class="sourceLine" id="cb287-5" title="5">  <span class="co"># f = nombre de la funcion matematica a evaluar.</span></a>
+<a class="sourceLine" id="cb287-6" title="6">  <span class="co"># e = tamano de paso para buscar el minimo. Por defecto 0.01. Entre mas pequeno,</span></a>
+<a class="sourceLine" id="cb287-7" title="7">  <span class="co">#     mas exacto es a la hora de reportar el minimo.</span></a>
+<a class="sourceLine" id="cb287-8" title="8">  </a>
+<a class="sourceLine" id="cb287-9" title="9">  <span class="co"># Codigo</span></a>
+<a class="sourceLine" id="cb287-10" title="10">  x &lt;-<span class="st"> </span><span class="kw">seq</span>(x0, x1, e)</a>
+<a class="sourceLine" id="cb287-11" title="11">  pos.min &lt;-<span class="st"> </span><span class="kw">which.min</span>(<span class="kw">f</span>(x))</a>
+<a class="sourceLine" id="cb287-12" title="12">  <span class="kw">data.frame</span>(<span class="dt">x =</span> x[pos.min], <span class="dt">y =</span> <span class="kw">f</span>(x[pos.min]) )</a>
+<a class="sourceLine" id="cb287-13" title="13">  </a>
+<a class="sourceLine" id="cb287-14" title="14">  <span class="co"># Valor:</span></a>
+<a class="sourceLine" id="cb287-15" title="15">  <span class="co"># entrega un data.frame de una fila y dos columnas</span></a>
+<a class="sourceLine" id="cb287-16" title="16">}</a></code></pre></div>
 <p>Ahora se prueba el comando generado con la función matemática <span class="math inline">\(f(x) = x(x -1)(x-2)\)</span> en el intervalo <span class="math inline">\(0 &lt; x &lt; 2\)</span>:</p>
-<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb205-1" title="1"><span class="co"># se crea la funcion matematica</span></a>
-<a class="sourceLine" id="cb205-2" title="2">mifun &lt;-<span class="st"> </span><span class="cf">function</span>(x) x<span class="op">*</span>(x <span class="dv">-1</span>)<span class="op">*</span>(x<span class="dv">-2</span>)     </a>
-<a class="sourceLine" id="cb205-3" title="3"></a>
-<a class="sourceLine" id="cb205-4" title="4"><span class="co"># se determina el minimo en el intervalo (0,2)</span></a>
-<a class="sourceLine" id="cb205-5" title="5">res_min &lt;-<span class="st"> </span><span class="kw">min_fun</span>(<span class="dt">x0 =</span> <span class="dv">0</span>, <span class="dt">x1 =</span> <span class="dv">2</span>, <span class="dt">f =</span> mifun)  </a>
-<a class="sourceLine" id="cb205-6" title="6">res_min</a></code></pre></div>
+<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb288-1" title="1"><span class="co"># se crea la funcion matematica</span></a>
+<a class="sourceLine" id="cb288-2" title="2">mifun &lt;-<span class="st"> </span><span class="cf">function</span>(x) x<span class="op">*</span>(x <span class="dv">-1</span>)<span class="op">*</span>(x<span class="dv">-2</span>)     </a>
+<a class="sourceLine" id="cb288-3" title="3"></a>
+<a class="sourceLine" id="cb288-4" title="4"><span class="co"># se determina el minimo en el intervalo (0,2)</span></a>
+<a class="sourceLine" id="cb288-5" title="5">res_min &lt;-<span class="st"> </span><span class="kw">min_fun</span>(<span class="dt">x0 =</span> <span class="dv">0</span>, <span class="dt">x1 =</span> <span class="dv">2</span>, <span class="dt">f =</span> mifun)  </a>
+<a class="sourceLine" id="cb288-6" title="6">res_min</a></code></pre></div>
 <pre><code>     x         y
 1 1.58 -0.384888</code></pre>
 <p>Así, el mínimo de la función <span class="math inline">\(f(x) = x(x -1)(x-2)\)</span> en el intervalo <span class="math inline">\(0 &lt; x &lt; 2\)</span> se halla en <span class="math inline">\(x = 1.58\)</span>. Esto se puede verificar si se gráfica la función:</p>
-<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb207-1" title="1"><span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">c</span>(<span class="fl">3.5</span>, <span class="fl">3.5</span>, <span class="dv">1</span>,<span class="dv">1</span>), <span class="dt">mgp =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">0</span>), <span class="dt">cex =</span> <span class="fl">0.8</span>)  <span class="co"># ventana grafica</span></a>
-<a class="sourceLine" id="cb207-2" title="2"><span class="kw">curve</span>(mifun, <span class="dt">from =</span> <span class="fl">-0.5</span>, <span class="dt">to =</span> <span class="fl">2.5</span>)                     <span class="co"># curva ppal</span></a>
-<a class="sourceLine" id="cb207-3" title="3"><span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">0</span>, <span class="dt">v =</span> <span class="dv">0</span>, <span class="dt">lty =</span> <span class="dv">2</span>)                           <span class="co"># lineas de referencia en (0,0)</span></a>
-<a class="sourceLine" id="cb207-4" title="4"><span class="kw">points</span>(res_min, <span class="dt">pch =</span> <span class="dv">19</span>, <span class="dt">col =</span> <span class="st">&#39;red&#39;</span>, <span class="dt">cex =</span> <span class="fl">1.5</span>)       <span class="co"># se agrega punto minimo</span></a>
-<a class="sourceLine" id="cb207-5" title="5"><span class="kw">abline</span>(<span class="dt">v =</span> res_min<span class="op">$</span>x, <span class="dt">lty =</span> <span class="dv">3</span>, <span class="dt">col =</span> <span class="st">&#39;red&#39;</span>)             <span class="co"># se agrega linea de referencia en min</span></a>
-<a class="sourceLine" id="cb207-6" title="6"><span class="kw">axis</span>(<span class="dt">side =</span> <span class="dv">1</span>, <span class="dt">at =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">2</span>),</a>
-<a class="sourceLine" id="cb207-7" title="7">     <span class="dt">labels =</span> <span class="ot">NA</span>, <span class="dt">col =</span> <span class="st">&#39;blue&#39;</span>, <span class="dt">lwd =</span> <span class="dv">3</span>)                <span class="co"># se marca el eje en el intervalo (0,2)</span></a></code></pre></div>
-<p><img src="out_files/figure-html/unnamed-chunk-101-1.png" width="288" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb290-1" title="1"><span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">c</span>(<span class="fl">3.5</span>, <span class="fl">3.5</span>, <span class="dv">1</span>,<span class="dv">1</span>), <span class="dt">mgp =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">0</span>), <span class="dt">cex =</span> <span class="fl">0.8</span>)  <span class="co"># ventana grafica</span></a>
+<a class="sourceLine" id="cb290-2" title="2"><span class="kw">curve</span>(mifun, <span class="dt">from =</span> <span class="fl">-0.5</span>, <span class="dt">to =</span> <span class="fl">2.5</span>)                     <span class="co"># curva ppal</span></a>
+<a class="sourceLine" id="cb290-3" title="3"><span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">0</span>, <span class="dt">v =</span> <span class="dv">0</span>, <span class="dt">lty =</span> <span class="dv">2</span>)                           <span class="co"># lineas de referencia en (0,0)</span></a>
+<a class="sourceLine" id="cb290-4" title="4"><span class="kw">points</span>(res_min, <span class="dt">pch =</span> <span class="dv">19</span>, <span class="dt">col =</span> <span class="st">&#39;red&#39;</span>, <span class="dt">cex =</span> <span class="fl">1.5</span>)       <span class="co"># se agrega punto minimo</span></a>
+<a class="sourceLine" id="cb290-5" title="5"><span class="kw">abline</span>(<span class="dt">v =</span> res_min<span class="op">$</span>x, <span class="dt">lty =</span> <span class="dv">3</span>, <span class="dt">col =</span> <span class="st">&#39;red&#39;</span>)             <span class="co"># se agrega linea de referencia en min</span></a>
+<a class="sourceLine" id="cb290-6" title="6"><span class="kw">axis</span>(<span class="dt">side =</span> <span class="dv">1</span>, <span class="dt">at =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">2</span>),</a>
+<a class="sourceLine" id="cb290-7" title="7">     <span class="dt">labels =</span> <span class="ot">NA</span>, <span class="dt">col =</span> <span class="st">&#39;blue&#39;</span>, <span class="dt">lwd =</span> <span class="dv">3</span>)                <span class="co"># se marca el eje en el intervalo (0,2)</span></a></code></pre></div>
+<p><img src="out_files/figure-html/unnamed-chunk-125-1.png" width="288" style="display: block; margin: auto;" /></p>
 <p>Si se busca mayor exactitud para el valor de <span class="math inline">\(x\)</span> donde se halla el mínimo, es decir, mejorar la aproximación, entonces disminuya la cantidad <code>e</code>:</p>
-<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb208-1" title="1"><span class="co"># se determina el minimo en el intervalo (0,2)</span></a>
-<a class="sourceLine" id="cb208-2" title="2">res_min &lt;-<span class="st"> </span><span class="kw">min_fun</span>(<span class="dt">x0 =</span> <span class="dv">0</span>, <span class="dt">x1 =</span> <span class="dv">2</span>, <span class="dt">f =</span> mifun, <span class="dt">e =</span> <span class="fl">0.0001</span>)  </a>
-<a class="sourceLine" id="cb208-3" title="3">res_min</a></code></pre></div>
+<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb291-1" title="1"><span class="co"># se determina el minimo en el intervalo (0,2)</span></a>
+<a class="sourceLine" id="cb291-2" title="2">res_min &lt;-<span class="st"> </span><span class="kw">min_fun</span>(<span class="dt">x0 =</span> <span class="dv">0</span>, <span class="dt">x1 =</span> <span class="dv">2</span>, <span class="dt">f =</span> mifun, <span class="dt">e =</span> <span class="fl">0.0001</span>)  </a>
+<a class="sourceLine" id="cb291-3" title="3">res_min</a></code></pre></div>
 <pre><code>       x          y
 1 1.5774 -0.3849002</code></pre>
 <p>Ahora, el mínimo se reporta en <span class="math inline">\(x = 1.5774\)</span>.</p>
 <p>Por otro lado, podemos generalizar el comando <code>min_fun</code> para que encuentre puntos mínimos o máximos, es decir, puntos críticos en general. Esto se puede hacer agregando un argumento lógico que le índique a la función si se busca un mínimo o un máximo:</p>
-<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb210-1" title="1">critico_fun &lt;-<span class="st"> </span><span class="cf">function</span>(x0, x1, f, <span class="dt">min =</span> T, <span class="dt">e =</span> <span class="fl">0.01</span>){</a>
-<a class="sourceLine" id="cb210-2" title="2">  <span class="co"># argumentos:</span></a>
-<a class="sourceLine" id="cb210-3" title="3">  <span class="co"># x0 = valor inicial del intervalo de x donde se desea buscar el minimo o maximo</span></a>
-<a class="sourceLine" id="cb210-4" title="4">  <span class="co"># x1 = valor final del intervalo de x donde se desea buscar el minimo o maximo</span></a>
-<a class="sourceLine" id="cb210-5" title="5">  <span class="co"># f = nombre de la funcion matematica a evaluar.</span></a>
-<a class="sourceLine" id="cb210-6" title="6">  <span class="co"># min = valor logico que indica si se quiere buscar un minimo (TRUE, por defecto)</span></a>
-<a class="sourceLine" id="cb210-7" title="7">  <span class="co">#       o un maximo (FALSE)</span></a>
-<a class="sourceLine" id="cb210-8" title="8">  <span class="co"># e = tamano de paso para buscar el minimo o maximo. Por defecto 0.01. Entre mas pequeno,</span></a>
-<a class="sourceLine" id="cb210-9" title="9">  <span class="co">#     mas exacto es a la hora de reportar el resultado.</span></a>
-<a class="sourceLine" id="cb210-10" title="10">  </a>
-<a class="sourceLine" id="cb210-11" title="11">  <span class="co"># Codigo</span></a>
-<a class="sourceLine" id="cb210-12" title="12">  x &lt;-<span class="st"> </span><span class="kw">seq</span>(x0, x1, e)</a>
-<a class="sourceLine" id="cb210-13" title="13">  pos.critico &lt;-<span class="st"> </span><span class="kw">ifelse</span>(min, <span class="kw">which.min</span>(<span class="kw">f</span>(x)), <span class="kw">which.max</span>(<span class="kw">f</span>(x)) )</a>
-<a class="sourceLine" id="cb210-14" title="14">  <span class="kw">data.frame</span>(<span class="dt">x =</span> x[pos.critico], <span class="dt">y =</span> <span class="kw">f</span>(x[pos.critico]) )</a>
-<a class="sourceLine" id="cb210-15" title="15">  </a>
-<a class="sourceLine" id="cb210-16" title="16">  <span class="co"># Valor:</span></a>
-<a class="sourceLine" id="cb210-17" title="17">  <span class="co"># entrega un data.frame de una fila y dos columnas</span></a>
-<a class="sourceLine" id="cb210-18" title="18">}</a></code></pre></div>
+<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb293-1" title="1">critico_fun &lt;-<span class="st"> </span><span class="cf">function</span>(x0, x1, f, <span class="dt">min =</span> T, <span class="dt">e =</span> <span class="fl">0.01</span>){</a>
+<a class="sourceLine" id="cb293-2" title="2">  <span class="co"># argumentos:</span></a>
+<a class="sourceLine" id="cb293-3" title="3">  <span class="co"># x0 = valor inicial del intervalo de x donde se desea buscar el minimo o maximo</span></a>
+<a class="sourceLine" id="cb293-4" title="4">  <span class="co"># x1 = valor final del intervalo de x donde se desea buscar el minimo o maximo</span></a>
+<a class="sourceLine" id="cb293-5" title="5">  <span class="co"># f = nombre de la funcion matematica a evaluar.</span></a>
+<a class="sourceLine" id="cb293-6" title="6">  <span class="co"># min = valor logico que indica si se quiere buscar un minimo (TRUE, por defecto)</span></a>
+<a class="sourceLine" id="cb293-7" title="7">  <span class="co">#       o un maximo (FALSE)</span></a>
+<a class="sourceLine" id="cb293-8" title="8">  <span class="co"># e = tamano de paso para buscar el minimo o maximo. Por defecto 0.01. Entre mas pequeno,</span></a>
+<a class="sourceLine" id="cb293-9" title="9">  <span class="co">#     mas exacto es a la hora de reportar el resultado.</span></a>
+<a class="sourceLine" id="cb293-10" title="10">  </a>
+<a class="sourceLine" id="cb293-11" title="11">  <span class="co"># Codigo</span></a>
+<a class="sourceLine" id="cb293-12" title="12">  x &lt;-<span class="st"> </span><span class="kw">seq</span>(x0, x1, e)</a>
+<a class="sourceLine" id="cb293-13" title="13">  pos.critico &lt;-<span class="st"> </span><span class="kw">ifelse</span>(min, <span class="kw">which.min</span>(<span class="kw">f</span>(x)), <span class="kw">which.max</span>(<span class="kw">f</span>(x)) )</a>
+<a class="sourceLine" id="cb293-14" title="14">  <span class="kw">data.frame</span>(<span class="dt">x =</span> x[pos.critico], <span class="dt">y =</span> <span class="kw">f</span>(x[pos.critico]) )</a>
+<a class="sourceLine" id="cb293-15" title="15">  </a>
+<a class="sourceLine" id="cb293-16" title="16">  <span class="co"># Valor:</span></a>
+<a class="sourceLine" id="cb293-17" title="17">  <span class="co"># entrega un data.frame de una fila y dos columnas</span></a>
+<a class="sourceLine" id="cb293-18" title="18">}</a></code></pre></div>
 <p>Ver un ejemplo de la aplicación de este nuevo comando en la solución del ejercicio 8.</p>
 </div>
 <div id="ej.-8.-creciente-o-decreciente-1" class="section level3">
 <h3><span class="header-section-number">6.4.3</span> Ej. 8. ¿Creciente o decreciente?</h3>
 <p>De acuerdo a la definición de la sección 1.1 del libro de <span class="citation">Stewart &amp; Day (<a href="#ref-stewart2015" role="doc-biblioref">2015</a>)</span>, una función, <span class="math inline">\(f(x)\)</span>, es creciente en un intervalo <span class="math inline">\([a, b]\)</span>, si <span class="math inline">\(f(b) &gt; f(a)\)</span> siempre que <span class="math inline">\(b &gt; a\)</span>. El siguiente código crea el comando solicitado:</p>
-<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb211-1" title="1">eval_crec_fun &lt;-<span class="st"> </span><span class="cf">function</span>(x, f, <span class="dt">e =</span> <span class="fl">0.01</span>){</a>
-<a class="sourceLine" id="cb211-2" title="2">  <span class="co"># Argumentos:</span></a>
-<a class="sourceLine" id="cb211-3" title="3">  <span class="co"># x = punto medio en eje x alrededor del cual se busca evaluar si </span></a>
-<a class="sourceLine" id="cb211-4" title="4">  <span class="co">#     la funcion f es creciente o decreciente.</span></a>
-<a class="sourceLine" id="cb211-5" title="5">  <span class="co"># f = nombre de la funcion matematica a evaluar. Debe recibir como</span></a>
-<a class="sourceLine" id="cb211-6" title="6">  <span class="co">#     unico argumento la x</span></a>
-<a class="sourceLine" id="cb211-7" title="7">  <span class="co"># e = cantidad pequena para generar el intervalo simetrico </span></a>
-<a class="sourceLine" id="cb211-8" title="8">  <span class="co">#     alrededor del punto en x donde se realizara la evaluacion. </span></a>
-<a class="sourceLine" id="cb211-9" title="9">  </a>
-<a class="sourceLine" id="cb211-10" title="10">  <span class="co"># Codigo:</span></a>
-<a class="sourceLine" id="cb211-11" title="11">  y0 &lt;-<span class="st"> </span><span class="kw">f</span>(x<span class="op">-</span>e)</a>
-<a class="sourceLine" id="cb211-12" title="12">  y1 &lt;-<span class="st"> </span><span class="kw">f</span>(x<span class="op">+</span>e)</a>
-<a class="sourceLine" id="cb211-13" title="13">  <span class="kw">ifelse</span>(y1 <span class="op">&gt;</span><span class="st"> </span>y0, <span class="st">&#39;Creciente&#39;</span>, <span class="st">&#39;Decreciente&#39;</span>)</a>
-<a class="sourceLine" id="cb211-14" title="14">  </a>
-<a class="sourceLine" id="cb211-15" title="15">  <span class="co"># Valor:</span></a>
-<a class="sourceLine" id="cb211-16" title="16">  <span class="co"># Entrega una cadena de texto indicando &#39;Creciente&#39;</span></a>
-<a class="sourceLine" id="cb211-17" title="17">  <span class="co"># o &#39;Decreciente&#39;. Si y1 == y0, entrega &#39;Decreciente&#39;.</span></a>
-<a class="sourceLine" id="cb211-18" title="18">  <span class="co"># Cuando y1 == y0 es porque x es un punto critico, de modo</span></a>
-<a class="sourceLine" id="cb211-19" title="19">  <span class="co"># que ahi, la funcion no crece o decrece. Esto es algo </span></a>
-<a class="sourceLine" id="cb211-20" title="20">  <span class="co"># que esta funcion no podria detectar.</span></a>
-<a class="sourceLine" id="cb211-21" title="21">}</a></code></pre></div>
+<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb294-1" title="1">eval_crec_fun &lt;-<span class="st"> </span><span class="cf">function</span>(x, f, <span class="dt">e =</span> <span class="fl">0.01</span>){</a>
+<a class="sourceLine" id="cb294-2" title="2">  <span class="co"># Argumentos:</span></a>
+<a class="sourceLine" id="cb294-3" title="3">  <span class="co"># x = punto medio en eje x alrededor del cual se busca evaluar si </span></a>
+<a class="sourceLine" id="cb294-4" title="4">  <span class="co">#     la funcion f es creciente o decreciente.</span></a>
+<a class="sourceLine" id="cb294-5" title="5">  <span class="co"># f = nombre de la funcion matematica a evaluar. Debe recibir como</span></a>
+<a class="sourceLine" id="cb294-6" title="6">  <span class="co">#     unico argumento la x</span></a>
+<a class="sourceLine" id="cb294-7" title="7">  <span class="co"># e = cantidad pequena para generar el intervalo simetrico </span></a>
+<a class="sourceLine" id="cb294-8" title="8">  <span class="co">#     alrededor del punto en x donde se realizara la evaluacion. </span></a>
+<a class="sourceLine" id="cb294-9" title="9">  </a>
+<a class="sourceLine" id="cb294-10" title="10">  <span class="co"># Codigo:</span></a>
+<a class="sourceLine" id="cb294-11" title="11">  y0 &lt;-<span class="st"> </span><span class="kw">f</span>(x<span class="op">-</span>e)</a>
+<a class="sourceLine" id="cb294-12" title="12">  y1 &lt;-<span class="st"> </span><span class="kw">f</span>(x<span class="op">+</span>e)</a>
+<a class="sourceLine" id="cb294-13" title="13">  <span class="kw">ifelse</span>(y1 <span class="op">&gt;</span><span class="st"> </span>y0, <span class="st">&#39;Creciente&#39;</span>, <span class="st">&#39;Decreciente&#39;</span>)</a>
+<a class="sourceLine" id="cb294-14" title="14">  </a>
+<a class="sourceLine" id="cb294-15" title="15">  <span class="co"># Valor:</span></a>
+<a class="sourceLine" id="cb294-16" title="16">  <span class="co"># Entrega una cadena de texto indicando &#39;Creciente&#39;</span></a>
+<a class="sourceLine" id="cb294-17" title="17">  <span class="co"># o &#39;Decreciente&#39;. Si y1 == y0, entrega &#39;Decreciente&#39;.</span></a>
+<a class="sourceLine" id="cb294-18" title="18">  <span class="co"># Cuando y1 == y0 es porque x es un punto critico, de modo</span></a>
+<a class="sourceLine" id="cb294-19" title="19">  <span class="co"># que ahi, la funcion no crece o decrece. Esto es algo </span></a>
+<a class="sourceLine" id="cb294-20" title="20">  <span class="co"># que esta funcion no podria detectar.</span></a>
+<a class="sourceLine" id="cb294-21" title="21">}</a></code></pre></div>
 <p>Ahora se prueba el comando <code>eval_crec_fun</code> con la función <span class="math inline">\(f(x) = 3x^5 - 25x^3 + 60x\)</span> en <span class="math inline">\(x = 0.5\)</span>, <span class="math inline">\(x = 1.5\)</span>, y <span class="math inline">\(x = 2.25\)</span>:</p>
-<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb212-1" title="1"><span class="co"># Se define la funcion a evaluar:</span></a>
-<a class="sourceLine" id="cb212-2" title="2">f &lt;-<span class="st"> </span><span class="cf">function</span>(x) <span class="dv">3</span><span class="op">*</span>x<span class="op">^</span><span class="dv">5</span> <span class="op">-</span><span class="st"> </span><span class="dv">25</span><span class="op">*</span>x<span class="op">^</span><span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">60</span><span class="op">*</span>x</a>
-<a class="sourceLine" id="cb212-3" title="3"></a>
-<a class="sourceLine" id="cb212-4" title="4"><span class="co"># Se evalua el crecimiento:</span></a>
-<a class="sourceLine" id="cb212-5" title="5"><span class="kw">eval_crec_fun</span>(<span class="dt">x =</span> <span class="fl">0.5</span>, <span class="dt">f =</span> f)</a></code></pre></div>
+<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb295-1" title="1"><span class="co"># Se define la funcion a evaluar:</span></a>
+<a class="sourceLine" id="cb295-2" title="2">f &lt;-<span class="st"> </span><span class="cf">function</span>(x) <span class="dv">3</span><span class="op">*</span>x<span class="op">^</span><span class="dv">5</span> <span class="op">-</span><span class="st"> </span><span class="dv">25</span><span class="op">*</span>x<span class="op">^</span><span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">60</span><span class="op">*</span>x</a>
+<a class="sourceLine" id="cb295-3" title="3"></a>
+<a class="sourceLine" id="cb295-4" title="4"><span class="co"># Se evalua el crecimiento:</span></a>
+<a class="sourceLine" id="cb295-5" title="5"><span class="kw">eval_crec_fun</span>(<span class="dt">x =</span> <span class="fl">0.5</span>, <span class="dt">f =</span> f)</a></code></pre></div>
 <pre><code>[1] &quot;Creciente&quot;</code></pre>
-<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb214-1" title="1"><span class="kw">eval_crec_fun</span>(<span class="dt">x =</span> <span class="fl">1.5</span>, <span class="dt">f =</span> f)</a></code></pre></div>
+<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb297-1" title="1"><span class="kw">eval_crec_fun</span>(<span class="dt">x =</span> <span class="fl">1.5</span>, <span class="dt">f =</span> f)</a></code></pre></div>
 <pre><code>[1] &quot;Decreciente&quot;</code></pre>
-<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb216-1" title="1"><span class="kw">eval_crec_fun</span>(<span class="dt">x =</span> <span class="fl">2.25</span>, <span class="dt">f =</span> f)</a></code></pre></div>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb299-1" title="1"><span class="kw">eval_crec_fun</span>(<span class="dt">x =</span> <span class="fl">2.25</span>, <span class="dt">f =</span> f)</a></code></pre></div>
 <pre><code>[1] &quot;Creciente&quot;</code></pre>
 <p>Como esta configurada, el comando <code>eval_crec_fun</code> permite recibir un vector de números para hacer una evaluación simultanea de varios <span class="math inline">\(x\)</span>:</p>
-<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb218-1" title="1">xm &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.5</span>, <span class="fl">1.5</span>, <span class="fl">2.25</span>)</a>
-<a class="sourceLine" id="cb218-2" title="2">res &lt;-<span class="st"> </span><span class="kw">eval_crec_fun</span>(<span class="dt">x =</span> xm, <span class="dt">f =</span> f)</a>
-<a class="sourceLine" id="cb218-3" title="3">res</a></code></pre></div>
+<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb301-1" title="1">xm &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">0.5</span>, <span class="fl">1.5</span>, <span class="fl">2.25</span>)</a>
+<a class="sourceLine" id="cb301-2" title="2">res &lt;-<span class="st"> </span><span class="kw">eval_crec_fun</span>(<span class="dt">x =</span> xm, <span class="dt">f =</span> f)</a>
+<a class="sourceLine" id="cb301-3" title="3">res</a></code></pre></div>
 <pre><code>[1] &quot;Creciente&quot;   &quot;Decreciente&quot; &quot;Creciente&quot;  </code></pre>
 <p>Ahora graficamos <span class="math inline">\(f(x)\)</span> para validar el resultado obtenido:</p>
-<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb220-1" title="1"><span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">c</span>(<span class="fl">3.5</span>, <span class="fl">3.5</span>, <span class="dv">1</span>,<span class="dv">1</span>), <span class="dt">mgp =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">0</span>), <span class="dt">cex =</span> <span class="fl">0.8</span>)  <span class="co"># ventana grafica</span></a>
-<a class="sourceLine" id="cb220-2" title="2"><span class="kw">curve</span>(f, <span class="dt">from =</span> <span class="fl">-0.5</span>, <span class="dt">to =</span> <span class="fl">2.5</span>)                         <span class="co"># curva ppal</span></a>
-<a class="sourceLine" id="cb220-3" title="3"><span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">0</span>, <span class="dt">v =</span> <span class="dv">0</span>, <span class="dt">lty =</span> <span class="dv">2</span>)                           <span class="co"># lineas de referencia en (0,0)</span></a>
-<a class="sourceLine" id="cb220-4" title="4"><span class="kw">segments</span>(<span class="dt">x0 =</span> xm, <span class="dt">x1 =</span> xm, <span class="dt">y0 =</span> <span class="dv">-50</span>,  </a>
-<a class="sourceLine" id="cb220-5" title="5">         <span class="dt">y1 =</span> <span class="kw">f</span>(xm),  <span class="dt">lty =</span> <span class="dv">3</span>, <span class="dt">col =</span> <span class="st">&#39;red&#39;</span>)             <span class="co"># Segmentos de referencia</span></a>
-<a class="sourceLine" id="cb220-6" title="6"><span class="kw">points</span>(<span class="dt">x =</span> xm, <span class="dt">y =</span> <span class="kw">f</span>(xm), <span class="dt">pch =</span> <span class="dv">19</span>, <span class="dt">col =</span> <span class="st">&#39;red&#39;</span>)        <span class="co"># puntos evaluados</span></a>
-<a class="sourceLine" id="cb220-7" title="7"><span class="kw">text</span>(<span class="dt">x =</span> xm, <span class="dt">y =</span> <span class="kw">f</span>(xm), <span class="dt">labels =</span> res, <span class="dt">pos =</span> <span class="dv">3</span> )         <span class="co"># Se agrega texto resultante</span></a></code></pre></div>
-<p><img src="out_files/figure-html/unnamed-chunk-107-1.png" width="384" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb303-1" title="1"><span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">c</span>(<span class="fl">3.5</span>, <span class="fl">3.5</span>, <span class="dv">1</span>,<span class="dv">1</span>), <span class="dt">mgp =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">0</span>), <span class="dt">cex =</span> <span class="fl">0.8</span>)  <span class="co"># ventana grafica</span></a>
+<a class="sourceLine" id="cb303-2" title="2"><span class="kw">curve</span>(f, <span class="dt">from =</span> <span class="fl">-0.5</span>, <span class="dt">to =</span> <span class="fl">2.5</span>)                         <span class="co"># curva ppal</span></a>
+<a class="sourceLine" id="cb303-3" title="3"><span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">0</span>, <span class="dt">v =</span> <span class="dv">0</span>, <span class="dt">lty =</span> <span class="dv">2</span>)                           <span class="co"># lineas de referencia en (0,0)</span></a>
+<a class="sourceLine" id="cb303-4" title="4"><span class="kw">segments</span>(<span class="dt">x0 =</span> xm, <span class="dt">x1 =</span> xm, <span class="dt">y0 =</span> <span class="dv">-50</span>,  </a>
+<a class="sourceLine" id="cb303-5" title="5">         <span class="dt">y1 =</span> <span class="kw">f</span>(xm),  <span class="dt">lty =</span> <span class="dv">3</span>, <span class="dt">col =</span> <span class="st">&#39;red&#39;</span>)             <span class="co"># Segmentos de referencia</span></a>
+<a class="sourceLine" id="cb303-6" title="6"><span class="kw">points</span>(<span class="dt">x =</span> xm, <span class="dt">y =</span> <span class="kw">f</span>(xm), <span class="dt">pch =</span> <span class="dv">19</span>, <span class="dt">col =</span> <span class="st">&#39;red&#39;</span>)        <span class="co"># puntos evaluados</span></a>
+<a class="sourceLine" id="cb303-7" title="7"><span class="kw">text</span>(<span class="dt">x =</span> xm, <span class="dt">y =</span> <span class="kw">f</span>(xm), <span class="dt">labels =</span> res, <span class="dt">pos =</span> <span class="dv">3</span> )         <span class="co"># Se agrega texto resultante</span></a></code></pre></div>
+<p><img src="out_files/figure-html/unnamed-chunk-131-1.png" width="384" style="display: block; margin: auto;" /></p>
 <p>Note que <span class="math inline">\(f(x)\)</span> parece tener un máximo cercano a <span class="math inline">\(x = 1\)</span> y un mínimo cercano a <span class="math inline">\(x = 2\)</span>. Para verificar esto, podemos usar el comando <code>critico_fun</code> desarrollado en la solución del ejercicio (8):</p>
-<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb221-1" title="1"><span class="co"># Se busca un maximo alrededor de x = 1</span></a>
-<a class="sourceLine" id="cb221-2" title="2"><span class="kw">critico_fun</span>(<span class="dt">x0 =</span> <span class="fl">0.5</span>, <span class="dt">x1 =</span> <span class="fl">1.5</span>, <span class="dt">f =</span> f, <span class="dt">min =</span> F)  </a></code></pre></div>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb304-1" title="1"><span class="co"># Se busca un maximo alrededor de x = 1</span></a>
+<a class="sourceLine" id="cb304-2" title="2"><span class="kw">critico_fun</span>(<span class="dt">x0 =</span> <span class="fl">0.5</span>, <span class="dt">x1 =</span> <span class="fl">1.5</span>, <span class="dt">f =</span> f, <span class="dt">min =</span> F)  </a></code></pre></div>
 <pre><code>  x  y
 1 1 38</code></pre>
-<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb223-1" title="1"><span class="co"># Se busca un minimo alrededor de x = 2</span></a>
-<a class="sourceLine" id="cb223-2" title="2"><span class="kw">critico_fun</span>(<span class="dt">x0 =</span> <span class="fl">1.5</span>, <span class="dt">x1 =</span> <span class="fl">2.5</span>, <span class="dt">f =</span> f, <span class="dt">min =</span> T)  </a></code></pre></div>
+<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb306-1" title="1"><span class="co"># Se busca un minimo alrededor de x = 2</span></a>
+<a class="sourceLine" id="cb306-2" title="2"><span class="kw">critico_fun</span>(<span class="dt">x0 =</span> <span class="fl">1.5</span>, <span class="dt">x1 =</span> <span class="fl">2.5</span>, <span class="dt">f =</span> f, <span class="dt">min =</span> T)  </a></code></pre></div>
 <pre><code>  x  y
 1 2 16</code></pre>
 <p>Note que los puntos críticos se encuentran exactamente en <span class="math inline">\(x = 1\)</span> (máximo) y <span class="math inline">\(x = 2\)</span> (mínimo). En estos puntos la función no crece ni decrece. Sin embargo, ¿podría el comando <code>eval_crec_fun</code> detectar esta situación? La respuesta es no, observe:</p>
-<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb225-1" title="1"><span class="co"># La funcion crece o decrece en x = 1 (punto critico) ?</span></a>
-<a class="sourceLine" id="cb225-2" title="2"><span class="kw">eval_crec_fun</span>(<span class="dt">x =</span> <span class="dv">1</span>, <span class="dt">f =</span> f)</a></code></pre></div>
+<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb308-1" title="1"><span class="co"># La funcion crece o decrece en x = 1 (punto critico) ?</span></a>
+<a class="sourceLine" id="cb308-2" title="2"><span class="kw">eval_crec_fun</span>(<span class="dt">x =</span> <span class="dv">1</span>, <span class="dt">f =</span> f)</a></code></pre></div>
 <pre><code>[1] &quot;Creciente&quot;</code></pre>
-<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb227-1" title="1"><span class="co"># La funcion crece o decrece en x = 2 (punto critico) ?</span></a>
-<a class="sourceLine" id="cb227-2" title="2"><span class="kw">eval_crec_fun</span>(<span class="dt">x =</span> <span class="dv">2</span>, <span class="dt">f =</span> f)</a></code></pre></div>
+<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb310-1" title="1"><span class="co"># La funcion crece o decrece en x = 2 (punto critico) ?</span></a>
+<a class="sourceLine" id="cb310-2" title="2"><span class="kw">eval_crec_fun</span>(<span class="dt">x =</span> <span class="dv">2</span>, <span class="dt">f =</span> f)</a></code></pre></div>
 <pre><code>[1] &quot;Creciente&quot;</code></pre>
 <p>Note que en ambos casos, indica <em>creciente</em>, cuando debería indicar algo como <em>ni crece ni decrece</em>. Esto ocurre porque el comando <code>eval_crec_fun</code> evalua la función, no exactamente en el punto <span class="math inline">\(x\)</span>, si no, en el intervalo (<code>x - e</code>, <code>x + e</code>) para el cual el punto <span class="math inline">\(x\)</span> está en la mitad. No obstante, si podemos solicitar valores cercanos al punto crítico, por ejemplo <span class="math inline">\(x = 1\)</span>, por debajo y por encima, y usuar un <code>e</code> muy pequeño para ver el cambio de creciente a decreciente (o viceversa). Observe:</p>
-<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb229-1" title="1"><span class="co"># La funcion crece o decrece alrededor de x = 1 (punto critico) ?</span></a>
-<a class="sourceLine" id="cb229-2" title="2">res &lt;-<span class="st"> </span><span class="kw">eval_crec_fun</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="fl">0.9</span>, <span class="fl">0.95</span>, <span class="fl">0.99</span>, <span class="fl">1.01</span>, <span class="fl">1.05</span>, <span class="fl">1.1</span>), <span class="dt">f =</span> f, <span class="dt">e =</span> <span class="fl">0.001</span>) </a>
-<a class="sourceLine" id="cb229-3" title="3">res</a></code></pre></div>
+<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb312-1" title="1"><span class="co"># La funcion crece o decrece alrededor de x = 1 (punto critico) ?</span></a>
+<a class="sourceLine" id="cb312-2" title="2">res &lt;-<span class="st"> </span><span class="kw">eval_crec_fun</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="fl">0.9</span>, <span class="fl">0.95</span>, <span class="fl">0.99</span>, <span class="fl">1.01</span>, <span class="fl">1.05</span>, <span class="fl">1.1</span>), <span class="dt">f =</span> f, <span class="dt">e =</span> <span class="fl">0.001</span>) </a>
+<a class="sourceLine" id="cb312-3" title="3">res</a></code></pre></div>
 <pre><code>[1] &quot;Creciente&quot;   &quot;Creciente&quot;   &quot;Creciente&quot;   &quot;Decreciente&quot; &quot;Decreciente&quot;
 [6] &quot;Decreciente&quot;</code></pre>
-<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb231-1" title="1"><span class="co"># Se entregan los resultados en un data.frame:</span></a>
-<a class="sourceLine" id="cb231-2" title="2"><span class="kw">data.frame</span>(</a>
-<a class="sourceLine" id="cb231-3" title="3">  <span class="dt">x =</span> <span class="kw">c</span>(<span class="fl">0.9</span>, <span class="fl">0.95</span>, <span class="fl">0.99</span>, <span class="fl">1.01</span>, <span class="fl">1.05</span>, <span class="fl">1.1</span>),</a>
-<a class="sourceLine" id="cb231-4" title="4">  <span class="dt">comportamiento =</span> res</a>
-<a class="sourceLine" id="cb231-5" title="5">)</a></code></pre></div>
+<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb314-1" title="1"><span class="co"># Se entregan los resultados en un data.frame:</span></a>
+<a class="sourceLine" id="cb314-2" title="2"><span class="kw">data.frame</span>(</a>
+<a class="sourceLine" id="cb314-3" title="3">  <span class="dt">x =</span> <span class="kw">c</span>(<span class="fl">0.9</span>, <span class="fl">0.95</span>, <span class="fl">0.99</span>, <span class="fl">1.01</span>, <span class="fl">1.05</span>, <span class="fl">1.1</span>),</a>
+<a class="sourceLine" id="cb314-4" title="4">  <span class="dt">comportamiento =</span> res</a>
+<a class="sourceLine" id="cb314-5" title="5">)</a></code></pre></div>
 <pre><code>     x comportamiento
 1 0.90      Creciente
 2 0.95      Creciente

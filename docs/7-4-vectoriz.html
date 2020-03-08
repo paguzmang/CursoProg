@@ -170,9 +170,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1.3" data-path="3-1-vectores.html"><a href="3-1-vectores.html#operaciones-aritmeticas-con-vectores"><i class="fa fa-check"></i><b>3.1.3</b> Operaciones aritméticas con vectores</a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html"><i class="fa fa-check"></i><b>3.2</b> Tipos de datos</a><ul>
-<li class="chapter" data-level="3.2.1" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#validando-el-tipo-de-datos"><i class="fa fa-check"></i><b>3.2.1</b> Validando el tipo de datos</a></li>
+<li class="chapter" data-level="3.2.1" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#numeros"><i class="fa fa-check"></i><b>3.2.1</b> Números</a></li>
+<li class="chapter" data-level="3.2.2" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#texto"><i class="fa fa-check"></i><b>3.2.2</b> Texto</a></li>
+<li class="chapter" data-level="3.2.3" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#logicos"><i class="fa fa-check"></i><b>3.2.3</b> Lógicos</a></li>
+<li class="chapter" data-level="3.2.4" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#fechas"><i class="fa fa-check"></i><b>3.2.4</b> Fechas</a></li>
+<li class="chapter" data-level="3.2.5" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#otros-tipos-datos"><i class="fa fa-check"></i><b>3.2.5</b> Otros tipos datos</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="3-3-logicas.html"><a href="3-3-logicas.html"><i class="fa fa-check"></i><b>3.3</b> Expresiones lógicas</a></li>
+<li class="chapter" data-level="3.3" data-path="3-3-logicas.html"><a href="3-3-logicas.html"><i class="fa fa-check"></i><b>3.3</b> Expresiones lógicas</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="3-3-logicas.html"><a href="3-3-logicas.html#tipos-de-expresions-logicas"><i class="fa fa-check"></i><b>3.3.1</b> Tipos de expresions lógicas</a></li>
+<li class="chapter" data-level="3.3.2" data-path="3-3-logicas.html"><a href="3-3-logicas.html#usando-expresiones-logicas-para-contar"><i class="fa fa-check"></i><b>3.3.2</b> Usando expresiones lógicas para contar</a></li>
+</ul></li>
 <li class="chapter" data-level="3.4" data-path="3-4-ejvecTiposDatos.html"><a href="3-4-ejvecTiposDatos.html"><i class="fa fa-check"></i><b>3.4</b> Ejercicios</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="4-otros-tipos-de-objeto.html"><a href="4-otros-tipos-de-objeto.html"><i class="fa fa-check"></i><b>4</b> Otros tipos de objeto</a><ul>
@@ -298,59 +305,59 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">7.4</span> Vectorización</h2>
 <p>Un calculo (o acción o un comando) es <em>vectorizado</em> cuando opera sobre todos los elementos (uno por uno) de un vector (u otro objeto) sin necesidad de aplicar ciclos sobre el objeto.</p>
 <p>El comando <code>if</code> por ejemplo no actua de manera <em>vectorizada</em>, porque la condición que recibe este comando no puede producir más de un <code>TRUE</code> (o <code>FALSE</code>); observe el <code>warning</code> que produce el siguiente código:</p>
-<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb279-1" title="1">notas &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">3.5</span>, <span class="fl">4.2</span>, <span class="fl">2.1</span>, <span class="fl">3.1</span>, <span class="fl">2.9</span>)</a>
-<a class="sourceLine" id="cb279-2" title="2"><span class="cf">if</span>(notas <span class="op">&lt;</span><span class="st"> </span><span class="fl">3.0</span>) <span class="st">&#39;Pierde&#39;</span> <span class="cf">else</span> <span class="st">&#39;Gana&#39;</span></a></code></pre></div>
+<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb362-1" title="1">notas &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">3.5</span>, <span class="fl">4.2</span>, <span class="fl">2.1</span>, <span class="fl">3.1</span>, <span class="fl">2.9</span>)</a>
+<a class="sourceLine" id="cb362-2" title="2"><span class="cf">if</span>(notas <span class="op">&lt;</span><span class="st"> </span><span class="fl">3.0</span>) <span class="st">&#39;Pierde&#39;</span> <span class="cf">else</span> <span class="st">&#39;Gana&#39;</span></a></code></pre></div>
 <pre><code>Warning in if (notas &lt; 3) &quot;Pierde&quot; else &quot;Gana&quot;: the condition has length &gt;
 1 and only the first element will be used</code></pre>
 <pre><code>[1] &quot;Gana&quot;</code></pre>
 <p>Para lograr que la estructura <code>if ... else</code> se aplique a cada elemento del vector <code>notas</code> se debe crear un ciclo, que recorra el vector <code>notas</code>:</p>
-<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb282-1" title="1"><span class="co"># Definiciones:</span></a>
-<a class="sourceLine" id="cb282-2" title="2">notas &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">3.5</span>, <span class="fl">4.2</span>, <span class="fl">2.1</span>, <span class="fl">3.1</span>, <span class="fl">2.9</span>)</a>
-<a class="sourceLine" id="cb282-3" title="3">n &lt;-<span class="st"> </span><span class="kw">length</span>(notas)</a>
-<a class="sourceLine" id="cb282-4" title="4">res &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, n)</a>
-<a class="sourceLine" id="cb282-5" title="5"></a>
-<a class="sourceLine" id="cb282-6" title="6"><span class="co"># Ciclo for sobre el vector &#39;notas&#39;:</span></a>
-<a class="sourceLine" id="cb282-7" title="7"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>n){</a>
-<a class="sourceLine" id="cb282-8" title="8">  res[i] &lt;-<span class="st"> </span><span class="cf">if</span>(notas[i] <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span>) <span class="st">&#39;Pierde&#39;</span> <span class="cf">else</span> <span class="st">&#39;Gana&#39;</span></a>
-<a class="sourceLine" id="cb282-9" title="9">}</a>
-<a class="sourceLine" id="cb282-10" title="10"></a>
-<a class="sourceLine" id="cb282-11" title="11"><span class="co"># Se imprime res:</span></a>
-<a class="sourceLine" id="cb282-12" title="12">res</a></code></pre></div>
+<div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb365-1" title="1"><span class="co"># Definiciones:</span></a>
+<a class="sourceLine" id="cb365-2" title="2">notas &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">3.5</span>, <span class="fl">4.2</span>, <span class="fl">2.1</span>, <span class="fl">3.1</span>, <span class="fl">2.9</span>)</a>
+<a class="sourceLine" id="cb365-3" title="3">n &lt;-<span class="st"> </span><span class="kw">length</span>(notas)</a>
+<a class="sourceLine" id="cb365-4" title="4">res &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, n)</a>
+<a class="sourceLine" id="cb365-5" title="5"></a>
+<a class="sourceLine" id="cb365-6" title="6"><span class="co"># Ciclo for sobre el vector &#39;notas&#39;:</span></a>
+<a class="sourceLine" id="cb365-7" title="7"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>n){</a>
+<a class="sourceLine" id="cb365-8" title="8">  res[i] &lt;-<span class="st"> </span><span class="cf">if</span>(notas[i] <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span>) <span class="st">&#39;Pierde&#39;</span> <span class="cf">else</span> <span class="st">&#39;Gana&#39;</span></a>
+<a class="sourceLine" id="cb365-9" title="9">}</a>
+<a class="sourceLine" id="cb365-10" title="10"></a>
+<a class="sourceLine" id="cb365-11" title="11"><span class="co"># Se imprime res:</span></a>
+<a class="sourceLine" id="cb365-12" title="12">res</a></code></pre></div>
 <pre><code>[1] &quot;Gana&quot;   &quot;Gana&quot;   &quot;Pierde&quot; &quot;Gana&quot;   &quot;Pierde&quot;</code></pre>
 <p>En este código, antes del ciclo <code>for</code>, el vector <code>res</code> se crea con <code>NA</code>’s, y luego se llena dentro del ciclo <code>for</code>. El siguiente código realiza lo mismo, ahora si, en un contexto vectorizado:</p>
-<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb284-1" title="1"><span class="co"># Definiciones:</span></a>
-<a class="sourceLine" id="cb284-2" title="2">notas &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">3.5</span>, <span class="fl">4.2</span>, <span class="fl">2.1</span>, <span class="fl">3.1</span>, <span class="fl">2.9</span>)</a>
-<a class="sourceLine" id="cb284-3" title="3"></a>
-<a class="sourceLine" id="cb284-4" title="4"><span class="co"># Evalucion:</span></a>
-<a class="sourceLine" id="cb284-5" title="5"><span class="kw">ifelse</span>(notas <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span>, <span class="st">&#39;Pierde&#39;</span>, <span class="st">&#39;Gana&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb367-1" title="1"><span class="co"># Definiciones:</span></a>
+<a class="sourceLine" id="cb367-2" title="2">notas &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">3.5</span>, <span class="fl">4.2</span>, <span class="fl">2.1</span>, <span class="fl">3.1</span>, <span class="fl">2.9</span>)</a>
+<a class="sourceLine" id="cb367-3" title="3"></a>
+<a class="sourceLine" id="cb367-4" title="4"><span class="co"># Evalucion:</span></a>
+<a class="sourceLine" id="cb367-5" title="5"><span class="kw">ifelse</span>(notas <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span>, <span class="st">&#39;Pierde&#39;</span>, <span class="st">&#39;Gana&#39;</span>)</a></code></pre></div>
 <pre><code>[1] &quot;Gana&quot;   &quot;Gana&quot;   &quot;Pierde&quot; &quot;Gana&quot;   &quot;Pierde&quot;</code></pre>
 <p>Observe que el comando <code>ifelse</code> recibe un argumento de la misma longitud del vector <code>notas</code> y entrega un resultado consecuente. De esta forma, se dice que el comando <code>ifelse</code> es la versión <em>vectorizada</em> de la pareja de expresiones <code>if ... else</code>.</p>
 <div id="eficiencia-en-la-vectorizacion" class="section level3">
 <h3><span class="header-section-number">7.4.1</span> Eficiencia en la vectorización</h3>
 <p>Un código vectorizado usualmente toma menos tiempo de ejecución que el mismo código usando un ciclo (no vectorizado). El comando <code>system.time</code> mide el tiempo de ejecución de cualquier “pedazo” de código, y lo usaremos a continuación para comparar la ejecución de <code>ifelse</code> con la de <code>if ... else</code> dentro de un ciclo <code>for</code>.</p>
-<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb286-1" title="1"><span class="co"># Se definie una funcion con if ... else y for:</span></a>
-<a class="sourceLine" id="cb286-2" title="2">mi_ifelse &lt;-<span class="st"> </span><span class="cf">function</span>(x){</a>
-<a class="sourceLine" id="cb286-3" title="3">  n &lt;-<span class="st"> </span><span class="kw">length</span>(x)</a>
-<a class="sourceLine" id="cb286-4" title="4">  res &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, n)</a>
-<a class="sourceLine" id="cb286-5" title="5">  <span class="co"># Ciclo for sobre el vector &#39;x&#39;:</span></a>
-<a class="sourceLine" id="cb286-6" title="6">  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>n){</a>
-<a class="sourceLine" id="cb286-7" title="7">    res[i] &lt;-<span class="st"> </span><span class="cf">if</span>(x[i] <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span>) <span class="st">&#39;Pierde&#39;</span> <span class="cf">else</span> <span class="st">&#39;Gana&#39;</span></a>
-<a class="sourceLine" id="cb286-8" title="8">  }</a>
-<a class="sourceLine" id="cb286-9" title="9">  <span class="co"># Se imprime res:</span></a>
-<a class="sourceLine" id="cb286-10" title="10">  res</a>
-<a class="sourceLine" id="cb286-11" title="11">}</a>
-<a class="sourceLine" id="cb286-12" title="12"></a>
-<a class="sourceLine" id="cb286-13" title="13"><span class="co"># Se crea un vector de notas con un millon de datos:</span></a>
-<a class="sourceLine" id="cb286-14" title="14">notas &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="kw">runif</span>(<span class="dt">n =</span> <span class="fl">1e6</span>, <span class="dt">min =</span> <span class="dv">0</span>, <span class="dt">max =</span> <span class="dv">5</span>), <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb286-15" title="15"></a>
-<a class="sourceLine" id="cb286-16" title="16"><span class="co"># Se mide el tiempo de ejcucion de &#39;mi_ifelse&#39; (no vectorizado)</span></a>
-<a class="sourceLine" id="cb286-17" title="17"><span class="kw">system.time</span>(<span class="dt">expr =</span> <span class="kw">mi_ifelse</span>(<span class="dt">x =</span> notas) )</a></code></pre></div>
+<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb369-1" title="1"><span class="co"># Se definie una funcion con if ... else y for:</span></a>
+<a class="sourceLine" id="cb369-2" title="2">mi_ifelse &lt;-<span class="st"> </span><span class="cf">function</span>(x){</a>
+<a class="sourceLine" id="cb369-3" title="3">  n &lt;-<span class="st"> </span><span class="kw">length</span>(x)</a>
+<a class="sourceLine" id="cb369-4" title="4">  res &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, n)</a>
+<a class="sourceLine" id="cb369-5" title="5">  <span class="co"># Ciclo for sobre el vector &#39;x&#39;:</span></a>
+<a class="sourceLine" id="cb369-6" title="6">  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>n){</a>
+<a class="sourceLine" id="cb369-7" title="7">    res[i] &lt;-<span class="st"> </span><span class="cf">if</span>(x[i] <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span>) <span class="st">&#39;Pierde&#39;</span> <span class="cf">else</span> <span class="st">&#39;Gana&#39;</span></a>
+<a class="sourceLine" id="cb369-8" title="8">  }</a>
+<a class="sourceLine" id="cb369-9" title="9">  <span class="co"># Se imprime res:</span></a>
+<a class="sourceLine" id="cb369-10" title="10">  res</a>
+<a class="sourceLine" id="cb369-11" title="11">}</a>
+<a class="sourceLine" id="cb369-12" title="12"></a>
+<a class="sourceLine" id="cb369-13" title="13"><span class="co"># Se crea un vector de notas con un millon de datos:</span></a>
+<a class="sourceLine" id="cb369-14" title="14">notas &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="kw">runif</span>(<span class="dt">n =</span> <span class="fl">1e6</span>, <span class="dt">min =</span> <span class="dv">0</span>, <span class="dt">max =</span> <span class="dv">5</span>), <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb369-15" title="15"></a>
+<a class="sourceLine" id="cb369-16" title="16"><span class="co"># Se mide el tiempo de ejcucion de &#39;mi_ifelse&#39; (no vectorizado)</span></a>
+<a class="sourceLine" id="cb369-17" title="17"><span class="kw">system.time</span>(<span class="dt">expr =</span> <span class="kw">mi_ifelse</span>(<span class="dt">x =</span> notas) )</a></code></pre></div>
 <pre><code>   user  system elapsed 
-  0.325   0.009   0.345 </code></pre>
-<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb288-1" title="1"><span class="co"># # Se mide el tiempo de ejcucion de &#39;ifelse&#39;: (vectorizado)</span></a>
-<a class="sourceLine" id="cb288-2" title="2"><span class="kw">system.time</span>(<span class="dt">expr =</span> <span class="kw">ifelse</span>(notas <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span>, <span class="st">&#39;Pierde&#39;</span>, <span class="st">&#39;Gana&#39;</span>) )</a></code></pre></div>
+  0.333   0.008   0.357 </code></pre>
+<div class="sourceCode" id="cb371"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb371-1" title="1"><span class="co"># # Se mide el tiempo de ejcucion de &#39;ifelse&#39;: (vectorizado)</span></a>
+<a class="sourceLine" id="cb371-2" title="2"><span class="kw">system.time</span>(<span class="dt">expr =</span> <span class="kw">ifelse</span>(notas <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span>, <span class="st">&#39;Pierde&#39;</span>, <span class="st">&#39;Gana&#39;</span>) )</a></code></pre></div>
 <pre><code>   user  system elapsed 
-  0.255   0.015   0.293 </code></pre>
+  0.241   0.015   0.262 </code></pre>
 <p>El comando <code>system.time</code> entrega tres tiempos:</p>
 <ul>
 <li><code>user</code>: Es el “User CPU time”, esto es el tiempo (en segundos) que la CPU gastó haciendo los cálculos</li>

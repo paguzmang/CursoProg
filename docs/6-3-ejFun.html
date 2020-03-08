@@ -170,9 +170,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1.3" data-path="3-1-vectores.html"><a href="3-1-vectores.html#operaciones-aritmeticas-con-vectores"><i class="fa fa-check"></i><b>3.1.3</b> Operaciones aritméticas con vectores</a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html"><i class="fa fa-check"></i><b>3.2</b> Tipos de datos</a><ul>
-<li class="chapter" data-level="3.2.1" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#validando-el-tipo-de-datos"><i class="fa fa-check"></i><b>3.2.1</b> Validando el tipo de datos</a></li>
+<li class="chapter" data-level="3.2.1" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#numeros"><i class="fa fa-check"></i><b>3.2.1</b> Números</a></li>
+<li class="chapter" data-level="3.2.2" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#texto"><i class="fa fa-check"></i><b>3.2.2</b> Texto</a></li>
+<li class="chapter" data-level="3.2.3" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#logicos"><i class="fa fa-check"></i><b>3.2.3</b> Lógicos</a></li>
+<li class="chapter" data-level="3.2.4" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#fechas"><i class="fa fa-check"></i><b>3.2.4</b> Fechas</a></li>
+<li class="chapter" data-level="3.2.5" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#otros-tipos-datos"><i class="fa fa-check"></i><b>3.2.5</b> Otros tipos datos</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="3-3-logicas.html"><a href="3-3-logicas.html"><i class="fa fa-check"></i><b>3.3</b> Expresiones lógicas</a></li>
+<li class="chapter" data-level="3.3" data-path="3-3-logicas.html"><a href="3-3-logicas.html"><i class="fa fa-check"></i><b>3.3</b> Expresiones lógicas</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="3-3-logicas.html"><a href="3-3-logicas.html#tipos-de-expresions-logicas"><i class="fa fa-check"></i><b>3.3.1</b> Tipos de expresions lógicas</a></li>
+<li class="chapter" data-level="3.3.2" data-path="3-3-logicas.html"><a href="3-3-logicas.html#usando-expresiones-logicas-para-contar"><i class="fa fa-check"></i><b>3.3.2</b> Usando expresiones lógicas para contar</a></li>
+</ul></li>
 <li class="chapter" data-level="3.4" data-path="3-4-ejvecTiposDatos.html"><a href="3-4-ejvecTiposDatos.html"><i class="fa fa-check"></i><b>3.4</b> Ejercicios</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="4-otros-tipos-de-objeto.html"><a href="4-otros-tipos-de-objeto.html"><i class="fa fa-check"></i><b>4</b> Otros tipos de objeto</a><ul>
@@ -311,17 +318,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="ej.-3.-area-bajo-la-curva" class="section level3">
 <h3><span class="header-section-number">6.3.3</span> Ej. 3. Área bajo la curva</h3>
 <p>El área bajo la curva de una función matemática tiene aplicaciones importantes en diferentes ramas de la ciencia. El archivo <a href="https://raw.githubusercontent.com/paguzmang/funciones/master/area_xy.R"><code>area_xy.R</code></a> contiene la función <code>area_xy</code> para <strong>R</strong>. Esta función cálcula las coordenadas <span class="math inline">\((x, y)\)</span> del polígono que se forma por el área bajo la curva de alguna función <span class="math inline">\(f(x)\)</span> en cierto intervalo <span class="math inline">\(x_0 &lt; x &lt; x_1\)</span>. Estas coordenadas pueden ser usadas directamente por el comando <code>polygon</code> (paquete: <code>graphics</code>) de <strong>R</strong> para agregar al gráfico de una función el área bajo la curva. A continuación un ejemplo de lo que la función <code>area_xy</code> puede hacer. La siguiente figura muestra la curva de una función de decaimiento exponencial con el área bajo la curva sombreada en el intervalo <span class="math inline">\(0.1 &lt; x &lt; 0.6\)</span>. La función <code>area_xy</code> permite agregar el polígono del área rapidamente.
-<img src="out_files/figure-html/unnamed-chunk-89-1.png" width="288" style="display: block; margin: auto;" />
+<img src="out_files/figure-html/unnamed-chunk-113-1.png" width="288" style="display: block; margin: auto;" />
 Descargue el archivo <a href="https://raw.githubusercontent.com/paguzmang/funciones/master/area_xy.R"><code>area_xy.R</code></a>, carguelo a su espacio de trabajo, explore el contenido del archivo y realice las siguientes actividades:</p>
-<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb193-1" title="1"><span class="co"># Tambien puede cargar la funcion a su espacio de trabajo usando:</span></a>
-<a class="sourceLine" id="cb193-2" title="2"><span class="kw">source</span>(<span class="st">&#39;https://raw.githubusercontent.com/paguzmang/funciones/master/area_xy.R&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb276-1" title="1"><span class="co"># Tambien puede cargar la funcion a su espacio de trabajo usando:</span></a>
+<a class="sourceLine" id="cb276-2" title="2"><span class="kw">source</span>(<span class="st">&#39;https://raw.githubusercontent.com/paguzmang/funciones/master/area_xy.R&#39;</span>)</a></code></pre></div>
 <ol style="list-style-type: lower-alpha">
 <li>¿Qué tipo de objeto entrega la función <code>area_xy</code>?</li>
 <li>¿Qué papel juega el argumento <code>a</code> en la función <code>area_xy</code>?</li>
 <li>Use la función <code>area_xy</code> para dibujar el área bajo la curva de la función:
 <span class="math display">\[f(x) = -x(x-21)(x+1)\]</span>
 en el intervalo <span class="math inline">\(-10&lt;x&lt;5\)</span>, y otra en el intervalo <span class="math inline">\(15&lt;x&lt;25\)</span>.
-<img src="out_files/figure-html/unnamed-chunk-91-1.png" width="288" style="display: block; margin: auto;" />
+<img src="out_files/figure-html/unnamed-chunk-115-1.png" width="288" style="display: block; margin: auto;" />
 d. Use la función <code>area_xy</code> para dibujar el área bajo la curva de la función: <span class="math display">\[f(x) = x - 2\ln x\]</span> en el intervalo: <span class="math inline">\(1&lt;x&lt;5\)</span>.</li>
 </ol>
 </div>
@@ -340,10 +347,10 @@ d. Use la función <code>area_xy</code> para dibujar el área bajo la curva de 
 <div id="ej.-6.-encontrando-minimos-o-maximos" class="section level3">
 <h3><span class="header-section-number">6.3.6</span> Ej. 6. Encontrando mínimos o máximos</h3>
 <p>Encontrar el <strong>mínimo</strong> o el <strong>máximo</strong> de una función matemática tiene aplicación en procesos de optimización. Los mínimos y máximos corresponden a valores críticos de una función y tradicionalmente se pueden determinar usando derivación. No obstante, podemos crear rutinas o programas que encuentren aproximaciones a los mínimos y máximos de forma manual y de manera localizada. En <strong>R</strong>, por ejemplo, la funciones <code>which.min</code> y <code>which.max</code> entregan la <em>posición</em> del mínimo y del máximo de un vector de números. El siguiente código <strong>R</strong> de cuatro líneas, define una función <span class="math inline">\(f\)</span> (la misma del ejercicio anterior) y luego intenta detectar las coordenadas <span class="math inline">\((x, y)\)</span> donde ocurre el mínimo de <span class="math inline">\(f\)</span> en el intervalo <span class="math inline">\(-2 &lt; x &lt; 1\)</span>:</p>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb194-1" title="1">f &lt;-<span class="st"> </span><span class="cf">function</span>(x) x<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span><span class="op">*</span>x <span class="op">+</span><span class="st"> </span><span class="dv">4</span>          <span class="co"># 1. se define la funcion</span></a>
-<a class="sourceLine" id="cb194-2" title="2">x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">2</span>, <span class="dv">1</span>, <span class="fl">0.01</span>)                   <span class="co"># 2.</span></a>
-<a class="sourceLine" id="cb194-3" title="3">pos.min &lt;-<span class="st"> </span><span class="kw">which.min</span>(<span class="kw">f</span>(x))              <span class="co"># 3.</span></a>
-<a class="sourceLine" id="cb194-4" title="4"><span class="kw">c</span>(<span class="dt">x =</span> x[pos.min], <span class="dt">y =</span> <span class="kw">f</span>(x[pos.min]) )   <span class="co"># 4.</span></a></code></pre></div>
+<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb277-1" title="1">f &lt;-<span class="st"> </span><span class="cf">function</span>(x) x<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span><span class="op">*</span>x <span class="op">+</span><span class="st"> </span><span class="dv">4</span>          <span class="co"># 1. se define la funcion</span></a>
+<a class="sourceLine" id="cb277-2" title="2">x &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">2</span>, <span class="dv">1</span>, <span class="fl">0.01</span>)                   <span class="co"># 2.</span></a>
+<a class="sourceLine" id="cb277-3" title="3">pos.min &lt;-<span class="st"> </span><span class="kw">which.min</span>(<span class="kw">f</span>(x))              <span class="co"># 3.</span></a>
+<a class="sourceLine" id="cb277-4" title="4"><span class="kw">c</span>(<span class="dt">x =</span> x[pos.min], <span class="dt">y =</span> <span class="kw">f</span>(x[pos.min]) )   <span class="co"># 4.</span></a></code></pre></div>
 <ol style="list-style-type: lower-alpha">
 <li>Explore el código, entienda y describa que se hace en las líneas 2, 3 y 4 del código.</li>
 <li>Convierta el código en un comando que reciba la función <span class="math inline">\(f\)</span> (cualquiera) y un intervalo de valores en <span class="math inline">\(x\)</span>, y por otro lado, entregue un <code>data.frame</code> con las coordenadas <span class="math inline">\((x, y)\)</span> donde ocurre el mínimo de <span class="math inline">\(f\)</span>.</li>
@@ -364,14 +371,14 @@ d. Use la función <code>area_xy</code> para dibujar el área bajo la curva de 
 <div id="ej.-8.-creciente-o-decreciente" class="section level3">
 <h3><span class="header-section-number">6.3.8</span> Ej. 8. ¿Creciente o decreciente?</h3>
 <p>Construya un comando llamado <code>eval_crec_fun</code> que evalue si una función matemática cualquiera <span class="math inline">\(f(x)\)</span> es <em>creciente</em> o <em>decreciente</em> en cierto valor <span class="math inline">\(x = x_m\)</span>, donde <span class="math inline">\(x_m\)</span> es un número tal que <span class="math inline">\(x_m -\varepsilon &lt; x_m &lt; x_m + \varepsilon\)</span>, y <span class="math inline">\(\varepsilon\)</span> es una cantidad pequeña entrada por el usuario al comando. Suponiendo que el comando <code>eval_crec_fun</code> ya fue creado, a continuación se muestra un ejemplo de su uso y del resultado:</p>
-<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb195-1" title="1"><span class="co"># (1) Se define la funcion matematica a evaluar (la misma del ejercicio 3)</span></a>
-<a class="sourceLine" id="cb195-2" title="2">mifun &lt;-<span class="st"> </span><span class="cf">function</span>(x) {<span class="op">-</span>x<span class="op">*</span>(x<span class="dv">-21</span>)<span class="op">*</span>(x<span class="op">+</span><span class="dv">1</span>)}</a>
-<a class="sourceLine" id="cb195-3" title="3"></a>
-<a class="sourceLine" id="cb195-4" title="4"><span class="co"># (2) Se pregunta si es creciente o decreciente en x = 3:</span></a>
-<a class="sourceLine" id="cb195-5" title="5"><span class="kw">eval_crec_fun</span>(<span class="dt">x =</span> <span class="dv">3</span>, <span class="dt">f =</span> mifun, <span class="dt">e =</span> <span class="fl">0.01</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb278-1" title="1"><span class="co"># (1) Se define la funcion matematica a evaluar (la misma del ejercicio 3)</span></a>
+<a class="sourceLine" id="cb278-2" title="2">mifun &lt;-<span class="st"> </span><span class="cf">function</span>(x) {<span class="op">-</span>x<span class="op">*</span>(x<span class="dv">-21</span>)<span class="op">*</span>(x<span class="op">+</span><span class="dv">1</span>)}</a>
+<a class="sourceLine" id="cb278-3" title="3"></a>
+<a class="sourceLine" id="cb278-4" title="4"><span class="co"># (2) Se pregunta si es creciente o decreciente en x = 3:</span></a>
+<a class="sourceLine" id="cb278-5" title="5"><span class="kw">eval_crec_fun</span>(<span class="dt">x =</span> <span class="dv">3</span>, <span class="dt">f =</span> mifun, <span class="dt">e =</span> <span class="fl">0.01</span>)</a></code></pre></div>
 <pre><code>[1] &quot;Creciente&quot;</code></pre>
-<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb197-1" title="1"><span class="co"># (3) Se pregunta si es creciente o decreciente en x = 20:</span></a>
-<a class="sourceLine" id="cb197-2" title="2"><span class="kw">eval_crec_fun</span>(<span class="dt">x =</span> <span class="dv">20</span>, <span class="dt">f =</span> mifun, <span class="dt">e =</span> <span class="fl">0.01</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb280-1" title="1"><span class="co"># (3) Se pregunta si es creciente o decreciente en x = 20:</span></a>
+<a class="sourceLine" id="cb280-2" title="2"><span class="kw">eval_crec_fun</span>(<span class="dt">x =</span> <span class="dv">20</span>, <span class="dt">f =</span> mifun, <span class="dt">e =</span> <span class="fl">0.01</span>)</a></code></pre></div>
 <pre><code>[1] &quot;Decreciente&quot;</code></pre>
 <p>Note que el nuevo comando <code>eval_crec_fun</code> <strong>recibe</strong> tres argumentos: <code>x</code>, el valor de <span class="math inline">\(x\)</span> donde se quiere hacer la evaluación, <code>f</code>, el nombre de la función <span class="math inline">\(f(x)\)</span>, y <code>e</code>, la cantidad pequeña <span class="math inline">\(\varepsilon\)</span>. Por otro lado, el comando <code>eval_crec_fun</code> <strong>entrega</strong> o produce como <strong>salida</strong> una cadena de texto indicando si la función <code>f</code> es <code>Creciente</code> o <code>Decreciente</code> en <code>x</code>. Usted puede verificar el resultado revisando la gráfica de <span class="math inline">\(f(x)\)</span>. Para poder construir el comando <code>eval_crec_fun</code> repase sus notas de los cursos de matemáticas sobre como definir si una función es creciente o decreciente. (<em>Ayuda</em>: Use el comando <code>ifelse</code>). Luego de construido su comando, realice las siguientes actividades:</p>
 <ol style="list-style-type: lower-alpha">

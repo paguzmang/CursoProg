@@ -170,9 +170,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1.3" data-path="3-1-vectores.html"><a href="3-1-vectores.html#operaciones-aritmeticas-con-vectores"><i class="fa fa-check"></i><b>3.1.3</b> Operaciones aritméticas con vectores</a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html"><i class="fa fa-check"></i><b>3.2</b> Tipos de datos</a><ul>
-<li class="chapter" data-level="3.2.1" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#validando-el-tipo-de-datos"><i class="fa fa-check"></i><b>3.2.1</b> Validando el tipo de datos</a></li>
+<li class="chapter" data-level="3.2.1" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#numeros"><i class="fa fa-check"></i><b>3.2.1</b> Números</a></li>
+<li class="chapter" data-level="3.2.2" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#texto"><i class="fa fa-check"></i><b>3.2.2</b> Texto</a></li>
+<li class="chapter" data-level="3.2.3" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#logicos"><i class="fa fa-check"></i><b>3.2.3</b> Lógicos</a></li>
+<li class="chapter" data-level="3.2.4" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#fechas"><i class="fa fa-check"></i><b>3.2.4</b> Fechas</a></li>
+<li class="chapter" data-level="3.2.5" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#otros-tipos-datos"><i class="fa fa-check"></i><b>3.2.5</b> Otros tipos datos</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="3-3-logicas.html"><a href="3-3-logicas.html"><i class="fa fa-check"></i><b>3.3</b> Expresiones lógicas</a></li>
+<li class="chapter" data-level="3.3" data-path="3-3-logicas.html"><a href="3-3-logicas.html"><i class="fa fa-check"></i><b>3.3</b> Expresiones lógicas</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="3-3-logicas.html"><a href="3-3-logicas.html#tipos-de-expresions-logicas"><i class="fa fa-check"></i><b>3.3.1</b> Tipos de expresions lógicas</a></li>
+<li class="chapter" data-level="3.3.2" data-path="3-3-logicas.html"><a href="3-3-logicas.html#usando-expresiones-logicas-para-contar"><i class="fa fa-check"></i><b>3.3.2</b> Usando expresiones lógicas para contar</a></li>
+</ul></li>
 <li class="chapter" data-level="3.4" data-path="3-4-ejvecTiposDatos.html"><a href="3-4-ejvecTiposDatos.html"><i class="fa fa-check"></i><b>3.4</b> Ejercicios</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="4-otros-tipos-de-objeto.html"><a href="4-otros-tipos-de-objeto.html"><i class="fa fa-check"></i><b>4</b> Otros tipos de objeto</a><ul>
@@ -299,84 +306,84 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="solo-si" class="section level3">
 <h3><span class="header-section-number">7.1.1</span> Sólo si …</h3>
 <p>El comando <code>if</code> recibe una expresión lógica (condición) y dependiendo si resulta en verdadero o falso, ejecuta o no una acción. La sintaxis es la siguiente:</p>
-<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb234-1" title="1"><span class="cf">if</span>(condición) {</a>
-<a class="sourceLine" id="cb234-2" title="2">  acción</a>
-<a class="sourceLine" id="cb234-3" title="3">}</a></code></pre></div>
+<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb317-1" title="1"><span class="cf">if</span>(condición) {</a>
+<a class="sourceLine" id="cb317-2" title="2">  acción</a>
+<a class="sourceLine" id="cb317-3" title="3">}</a></code></pre></div>
 <p>La acción que se ejecutaría si la expresión lógica resulta verdadera puede estar descrita en <em>una</em> sola línea de código o <em>en varias</em> líneas de código. En este último caso, se requiere obligatoriamente encerrar en <code>{ }</code> las mútiples líneas de código. Un ejemplo es el siguiente:</p>
-<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb235-1" title="1"><span class="co"># Ejemplo 1 (la condicion resulta TRUE)</span></a>
-<a class="sourceLine" id="cb235-2" title="2">x &lt;-<span class="st"> </span><span class="fl">2.9</span>          <span class="co"># Se define x</span></a>
-<a class="sourceLine" id="cb235-3" title="3">y &lt;-<span class="st"> &#39;Gana&#39;</span>       <span class="co"># Se define y</span></a>
-<a class="sourceLine" id="cb235-4" title="4"><span class="cf">if</span>(x <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span>) {</a>
-<a class="sourceLine" id="cb235-5" title="5">  y &lt;-<span class="st"> &#39;Pierde&#39;</span>   <span class="co"># Se cambia y dependiendo de x</span></a>
-<a class="sourceLine" id="cb235-6" title="6">}</a>
-<a class="sourceLine" id="cb235-7" title="7">y                 <span class="co"># Se imprime y luego de evaluada la condicion</span></a></code></pre></div>
+<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb318-1" title="1"><span class="co"># Ejemplo 1 (la condicion resulta TRUE)</span></a>
+<a class="sourceLine" id="cb318-2" title="2">x &lt;-<span class="st"> </span><span class="fl">2.9</span>          <span class="co"># Se define x</span></a>
+<a class="sourceLine" id="cb318-3" title="3">y &lt;-<span class="st"> &#39;Gana&#39;</span>       <span class="co"># Se define y</span></a>
+<a class="sourceLine" id="cb318-4" title="4"><span class="cf">if</span>(x <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span>) {</a>
+<a class="sourceLine" id="cb318-5" title="5">  y &lt;-<span class="st"> &#39;Pierde&#39;</span>   <span class="co"># Se cambia y dependiendo de x</span></a>
+<a class="sourceLine" id="cb318-6" title="6">}</a>
+<a class="sourceLine" id="cb318-7" title="7">y                 <span class="co"># Se imprime y luego de evaluada la condicion</span></a></code></pre></div>
 <pre><code>[1] &quot;Pierde&quot;</code></pre>
-<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb237-1" title="1"><span class="co"># Ejemplo 2 (la condicion resulta FALSE)</span></a>
-<a class="sourceLine" id="cb237-2" title="2">x &lt;-<span class="st"> </span><span class="fl">3.5</span>          <span class="co"># Se define x</span></a>
-<a class="sourceLine" id="cb237-3" title="3">y &lt;-<span class="st"> &#39;Gana&#39;</span>       <span class="co"># Se define y</span></a>
-<a class="sourceLine" id="cb237-4" title="4"><span class="cf">if</span>(x <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span>) {</a>
-<a class="sourceLine" id="cb237-5" title="5">  y &lt;-<span class="st"> &#39;Pierde&#39;</span>   <span class="co"># Se cambia y dependiendo de x</span></a>
-<a class="sourceLine" id="cb237-6" title="6">}</a>
-<a class="sourceLine" id="cb237-7" title="7">y                 <span class="co"># Se imprime y luego de evaluada la condicion</span></a></code></pre></div>
+<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb320-1" title="1"><span class="co"># Ejemplo 2 (la condicion resulta FALSE)</span></a>
+<a class="sourceLine" id="cb320-2" title="2">x &lt;-<span class="st"> </span><span class="fl">3.5</span>          <span class="co"># Se define x</span></a>
+<a class="sourceLine" id="cb320-3" title="3">y &lt;-<span class="st"> &#39;Gana&#39;</span>       <span class="co"># Se define y</span></a>
+<a class="sourceLine" id="cb320-4" title="4"><span class="cf">if</span>(x <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span>) {</a>
+<a class="sourceLine" id="cb320-5" title="5">  y &lt;-<span class="st"> &#39;Pierde&#39;</span>   <span class="co"># Se cambia y dependiendo de x</span></a>
+<a class="sourceLine" id="cb320-6" title="6">}</a>
+<a class="sourceLine" id="cb320-7" title="7">y                 <span class="co"># Se imprime y luego de evaluada la condicion</span></a></code></pre></div>
 <pre><code>[1] &quot;Gana&quot;</code></pre>
 <p>En los dos ejemplos anteriores la acción se escribe en una sóla línea de código (<code>y &lt;- 'Pierde'</code>). En el ejemplo siguiente la acción se evalua en dos líneas de código:</p>
-<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb239-1" title="1"><span class="co"># Ejemplo 3 (multiples lineas de codigo y la condicion resulta TRUE)</span></a>
-<a class="sourceLine" id="cb239-2" title="2">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="ot">NA</span>, <span class="dv">3</span>, <span class="ot">NA</span>)      <span class="co"># Se crea x</span></a>
-<a class="sourceLine" id="cb239-3" title="3">n_na &lt;-<span class="st"> </span><span class="kw">sum</span>( <span class="kw">is.na</span>(x) )      <span class="co"># Se crea n_na</span></a>
-<a class="sourceLine" id="cb239-4" title="4">res &lt;-<span class="st"> </span>n_na                  <span class="co"># Se crea res</span></a>
-<a class="sourceLine" id="cb239-5" title="5">p &lt;-<span class="st"> &#39;si&#39;</span>                    <span class="co"># Se crea p</span></a>
-<a class="sourceLine" id="cb239-6" title="6"></a>
-<a class="sourceLine" id="cb239-7" title="7"><span class="co"># Se construye la estructura condicional:</span></a>
-<a class="sourceLine" id="cb239-8" title="8"><span class="cf">if</span>(p <span class="op">==</span><span class="st"> &#39;si&#39;</span>) {</a>
-<a class="sourceLine" id="cb239-9" title="9">  p_na &lt;-<span class="st"> </span>n_na <span class="op">/</span><span class="st"> </span><span class="kw">length</span>(x)</a>
-<a class="sourceLine" id="cb239-10" title="10">  res &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">n =</span> n_na, <span class="dt">p =</span> p_na)</a>
-<a class="sourceLine" id="cb239-11" title="11">}</a>
-<a class="sourceLine" id="cb239-12" title="12"></a>
-<a class="sourceLine" id="cb239-13" title="13"><span class="co"># Se imprime res luego de evaluada la condicion</span></a>
-<a class="sourceLine" id="cb239-14" title="14">res           </a></code></pre></div>
+<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb322-1" title="1"><span class="co"># Ejemplo 3 (multiples lineas de codigo y la condicion resulta TRUE)</span></a>
+<a class="sourceLine" id="cb322-2" title="2">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="ot">NA</span>, <span class="dv">3</span>, <span class="ot">NA</span>)      <span class="co"># Se crea x</span></a>
+<a class="sourceLine" id="cb322-3" title="3">n_na &lt;-<span class="st"> </span><span class="kw">sum</span>( <span class="kw">is.na</span>(x) )      <span class="co"># Se crea n_na</span></a>
+<a class="sourceLine" id="cb322-4" title="4">res &lt;-<span class="st"> </span>n_na                  <span class="co"># Se crea res</span></a>
+<a class="sourceLine" id="cb322-5" title="5">p &lt;-<span class="st"> &#39;si&#39;</span>                    <span class="co"># Se crea p</span></a>
+<a class="sourceLine" id="cb322-6" title="6"></a>
+<a class="sourceLine" id="cb322-7" title="7"><span class="co"># Se construye la estructura condicional:</span></a>
+<a class="sourceLine" id="cb322-8" title="8"><span class="cf">if</span>(p <span class="op">==</span><span class="st"> &#39;si&#39;</span>) {</a>
+<a class="sourceLine" id="cb322-9" title="9">  p_na &lt;-<span class="st"> </span>n_na <span class="op">/</span><span class="st"> </span><span class="kw">length</span>(x)</a>
+<a class="sourceLine" id="cb322-10" title="10">  res &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">n =</span> n_na, <span class="dt">p =</span> p_na)</a>
+<a class="sourceLine" id="cb322-11" title="11">}</a>
+<a class="sourceLine" id="cb322-12" title="12"></a>
+<a class="sourceLine" id="cb322-13" title="13"><span class="co"># Se imprime res luego de evaluada la condicion</span></a>
+<a class="sourceLine" id="cb322-14" title="14">res           </a></code></pre></div>
 <pre><code>  n   p
 1 2 0.4</code></pre>
 <p>En este 3er. ejemplo, si <code>p</code> es el texto <code>si</code> se realizan dos acciones: un cálculo adicional (<code>p_na</code>), y el objeto <code>res</code> se actualiza a ser un data.frame. Si <code>p</code> es cualquier otra cosa, el objeto <code>res</code> no se actualizará.</p>
-<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb241-1" title="1"><span class="co"># Ejemplo 4 (multiples lineas de codigo y la condicion resulta FALSE)</span></a>
-<a class="sourceLine" id="cb241-2" title="2">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="ot">NA</span>, <span class="dv">3</span>, <span class="ot">NA</span>)      <span class="co"># Se crea x</span></a>
-<a class="sourceLine" id="cb241-3" title="3">n_na &lt;-<span class="st"> </span><span class="kw">sum</span>( <span class="kw">is.na</span>(x) )      <span class="co"># Se crea n_na</span></a>
-<a class="sourceLine" id="cb241-4" title="4">res &lt;-<span class="st"> </span>n_na                  <span class="co"># Se crea res</span></a>
-<a class="sourceLine" id="cb241-5" title="5">p &lt;-<span class="st"> &#39;no&#39;</span>                    <span class="co"># Se crea p</span></a>
-<a class="sourceLine" id="cb241-6" title="6"></a>
-<a class="sourceLine" id="cb241-7" title="7"><span class="co"># Se construye la estructura condicional:</span></a>
-<a class="sourceLine" id="cb241-8" title="8"><span class="cf">if</span>(p <span class="op">==</span><span class="st"> &#39;si&#39;</span>) {</a>
-<a class="sourceLine" id="cb241-9" title="9">  p_na &lt;-<span class="st"> </span>n_na <span class="op">/</span><span class="st"> </span><span class="kw">length</span>(x)</a>
-<a class="sourceLine" id="cb241-10" title="10">  res &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">n =</span> n_na, <span class="dt">p =</span> p_na)</a>
-<a class="sourceLine" id="cb241-11" title="11">}</a>
-<a class="sourceLine" id="cb241-12" title="12"></a>
-<a class="sourceLine" id="cb241-13" title="13"><span class="co"># Se imprime res luego de evaluada la condicion</span></a>
-<a class="sourceLine" id="cb241-14" title="14">res           </a></code></pre></div>
+<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb324-1" title="1"><span class="co"># Ejemplo 4 (multiples lineas de codigo y la condicion resulta FALSE)</span></a>
+<a class="sourceLine" id="cb324-2" title="2">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="ot">NA</span>, <span class="dv">3</span>, <span class="ot">NA</span>)      <span class="co"># Se crea x</span></a>
+<a class="sourceLine" id="cb324-3" title="3">n_na &lt;-<span class="st"> </span><span class="kw">sum</span>( <span class="kw">is.na</span>(x) )      <span class="co"># Se crea n_na</span></a>
+<a class="sourceLine" id="cb324-4" title="4">res &lt;-<span class="st"> </span>n_na                  <span class="co"># Se crea res</span></a>
+<a class="sourceLine" id="cb324-5" title="5">p &lt;-<span class="st"> &#39;no&#39;</span>                    <span class="co"># Se crea p</span></a>
+<a class="sourceLine" id="cb324-6" title="6"></a>
+<a class="sourceLine" id="cb324-7" title="7"><span class="co"># Se construye la estructura condicional:</span></a>
+<a class="sourceLine" id="cb324-8" title="8"><span class="cf">if</span>(p <span class="op">==</span><span class="st"> &#39;si&#39;</span>) {</a>
+<a class="sourceLine" id="cb324-9" title="9">  p_na &lt;-<span class="st"> </span>n_na <span class="op">/</span><span class="st"> </span><span class="kw">length</span>(x)</a>
+<a class="sourceLine" id="cb324-10" title="10">  res &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">n =</span> n_na, <span class="dt">p =</span> p_na)</a>
+<a class="sourceLine" id="cb324-11" title="11">}</a>
+<a class="sourceLine" id="cb324-12" title="12"></a>
+<a class="sourceLine" id="cb324-13" title="13"><span class="co"># Se imprime res luego de evaluada la condicion</span></a>
+<a class="sourceLine" id="cb324-14" title="14">res           </a></code></pre></div>
 <pre><code>[1] 2</code></pre>
 </div>
 <div id="si-entonces" class="section level3">
 <h3><span class="header-section-number">7.1.2</span> Si … Entonces</h3>
 <p>En los ejemplos anteriores sólo se ejecuta la acción si la condición es verdadera. Si la condición es falsa, no se hace nada. La pareja de comandos <code>if ... else</code> permite controlar lo que ocurre para ambos resultados: si la condición es verdadera o si la condición es falsa. La sintaxis de esta pareja de comandos es:</p>
-<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb243-1" title="1"><span class="cf">if</span>(condición) {</a>
-<a class="sourceLine" id="cb243-2" title="2">  acción_<span class="dv">1</span> (si condición es <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb243-3" title="3">} <span class="cf">else</span>{</a>
-<a class="sourceLine" id="cb243-4" title="4">  acción_<span class="dv">2</span> (si condición es <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb243-5" title="5">}</a></code></pre></div>
+<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb326-1" title="1"><span class="cf">if</span>(condición) {</a>
+<a class="sourceLine" id="cb326-2" title="2">  acción_<span class="dv">1</span> (si condición es <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb326-3" title="3">} <span class="cf">else</span>{</a>
+<a class="sourceLine" id="cb326-4" title="4">  acción_<span class="dv">2</span> (si condición es <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb326-5" title="5">}</a></code></pre></div>
 <p>La acción 1 se ejecuta si la condición es <code>TRUE</code>. La acción 2 se ejecutaría sólo sí la condición es <code>FALSE</code>. Aquí un ejemplo de <code>if ... else</code>:</p>
-<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb244-1" title="1"><span class="co"># Ejemplo 4: if ... else</span></a>
-<a class="sourceLine" id="cb244-2" title="2">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="ot">NA</span>, <span class="dv">3</span>, <span class="ot">NA</span>)      <span class="co"># Se crea x</span></a>
-<a class="sourceLine" id="cb244-3" title="3">n_na &lt;-<span class="st"> </span><span class="kw">sum</span>( <span class="kw">is.na</span>(x) )      <span class="co"># Se crea n_na</span></a>
-<a class="sourceLine" id="cb244-4" title="4">p &lt;-<span class="st"> &#39;no&#39;</span>                    <span class="co"># Se crea p</span></a>
-<a class="sourceLine" id="cb244-5" title="5"></a>
-<a class="sourceLine" id="cb244-6" title="6"><span class="co"># Se construye la estructura condicional (la condicion es FALSE)</span></a>
-<a class="sourceLine" id="cb244-7" title="7"><span class="cf">if</span>(p <span class="op">==</span><span class="st"> &#39;si&#39;</span>) {</a>
-<a class="sourceLine" id="cb244-8" title="8">  p_na &lt;-<span class="st"> </span>n_na <span class="op">/</span><span class="st"> </span><span class="kw">length</span>(x)</a>
-<a class="sourceLine" id="cb244-9" title="9">  res &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">n =</span> n_na, <span class="dt">p =</span> p_na)</a>
-<a class="sourceLine" id="cb244-10" title="10">} <span class="cf">else</span>{</a>
-<a class="sourceLine" id="cb244-11" title="11">  res &lt;-<span class="st"> </span>n_na</a>
-<a class="sourceLine" id="cb244-12" title="12">}</a>
-<a class="sourceLine" id="cb244-13" title="13"></a>
-<a class="sourceLine" id="cb244-14" title="14"><span class="co"># Se imprime res luego de evaluada la condicion</span></a>
-<a class="sourceLine" id="cb244-15" title="15">res           </a></code></pre></div>
+<div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb327-1" title="1"><span class="co"># Ejemplo 4: if ... else</span></a>
+<a class="sourceLine" id="cb327-2" title="2">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="ot">NA</span>, <span class="dv">3</span>, <span class="ot">NA</span>)      <span class="co"># Se crea x</span></a>
+<a class="sourceLine" id="cb327-3" title="3">n_na &lt;-<span class="st"> </span><span class="kw">sum</span>( <span class="kw">is.na</span>(x) )      <span class="co"># Se crea n_na</span></a>
+<a class="sourceLine" id="cb327-4" title="4">p &lt;-<span class="st"> &#39;no&#39;</span>                    <span class="co"># Se crea p</span></a>
+<a class="sourceLine" id="cb327-5" title="5"></a>
+<a class="sourceLine" id="cb327-6" title="6"><span class="co"># Se construye la estructura condicional (la condicion es FALSE)</span></a>
+<a class="sourceLine" id="cb327-7" title="7"><span class="cf">if</span>(p <span class="op">==</span><span class="st"> &#39;si&#39;</span>) {</a>
+<a class="sourceLine" id="cb327-8" title="8">  p_na &lt;-<span class="st"> </span>n_na <span class="op">/</span><span class="st"> </span><span class="kw">length</span>(x)</a>
+<a class="sourceLine" id="cb327-9" title="9">  res &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">n =</span> n_na, <span class="dt">p =</span> p_na)</a>
+<a class="sourceLine" id="cb327-10" title="10">} <span class="cf">else</span>{</a>
+<a class="sourceLine" id="cb327-11" title="11">  res &lt;-<span class="st"> </span>n_na</a>
+<a class="sourceLine" id="cb327-12" title="12">}</a>
+<a class="sourceLine" id="cb327-13" title="13"></a>
+<a class="sourceLine" id="cb327-14" title="14"><span class="co"># Se imprime res luego de evaluada la condicion</span></a>
+<a class="sourceLine" id="cb327-15" title="15">res           </a></code></pre></div>
 <pre><code>[1] 2</code></pre>
 </div>
 <div id="condiciones-con-mutiples-alternativas" class="section level3">
@@ -386,26 +393,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h4><span class="header-section-number">7.1.3.1</span> Estructuras <code>if ... else</code> anidadas</h4>
 <p>Una sintaxis para una estructura <code>if ... else</code> anidada para tres acciones diferentes sería:</p>
 <div class="column-left">
-<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb246-1" title="1"><span class="co"># Forma 1</span></a>
-<a class="sourceLine" id="cb246-2" title="2"><span class="cf">if</span>(condición_<span class="dv">1</span>) {</a>
-<a class="sourceLine" id="cb246-3" title="3">  acción_<span class="dv">1</span></a>
-<a class="sourceLine" id="cb246-4" title="4">} <span class="cf">else</span> {</a>
-<a class="sourceLine" id="cb246-5" title="5">  <span class="cf">if</span>(condición_<span class="dv">2</span>) {</a>
-<a class="sourceLine" id="cb246-6" title="6">  acción_<span class="dv">2</span></a>
-<a class="sourceLine" id="cb246-7" title="7">    } <span class="cf">else</span> {</a>
-<a class="sourceLine" id="cb246-8" title="8">  acción_<span class="dv">3</span></a>
-<a class="sourceLine" id="cb246-9" title="9">    }</a>
-<a class="sourceLine" id="cb246-10" title="10">}</a></code></pre></div>
+<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb329-1" title="1"><span class="co"># Forma 1</span></a>
+<a class="sourceLine" id="cb329-2" title="2"><span class="cf">if</span>(condición_<span class="dv">1</span>) {</a>
+<a class="sourceLine" id="cb329-3" title="3">  acción_<span class="dv">1</span></a>
+<a class="sourceLine" id="cb329-4" title="4">} <span class="cf">else</span> {</a>
+<a class="sourceLine" id="cb329-5" title="5">  <span class="cf">if</span>(condición_<span class="dv">2</span>) {</a>
+<a class="sourceLine" id="cb329-6" title="6">  acción_<span class="dv">2</span></a>
+<a class="sourceLine" id="cb329-7" title="7">    } <span class="cf">else</span> {</a>
+<a class="sourceLine" id="cb329-8" title="8">  acción_<span class="dv">3</span></a>
+<a class="sourceLine" id="cb329-9" title="9">    }</a>
+<a class="sourceLine" id="cb329-10" title="10">}</a></code></pre></div>
 </div>
 <div class="column-right">
-<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb247-1" title="1"><span class="co"># Forma 2</span></a>
-<a class="sourceLine" id="cb247-2" title="2"><span class="cf">if</span>(condición_<span class="dv">1</span>) {</a>
-<a class="sourceLine" id="cb247-3" title="3">  acción_<span class="dv">1</span></a>
-<a class="sourceLine" id="cb247-4" title="4">} <span class="cf">else</span> <span class="cf">if</span>(condición_<span class="dv">2</span>) {</a>
-<a class="sourceLine" id="cb247-5" title="5">  acción_<span class="dv">2</span></a>
-<a class="sourceLine" id="cb247-6" title="6">} <span class="cf">else</span> {</a>
-<a class="sourceLine" id="cb247-7" title="7">  acción_<span class="dv">3</span></a>
-<a class="sourceLine" id="cb247-8" title="8">}</a></code></pre></div>
+<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb330-1" title="1"><span class="co"># Forma 2</span></a>
+<a class="sourceLine" id="cb330-2" title="2"><span class="cf">if</span>(condición_<span class="dv">1</span>) {</a>
+<a class="sourceLine" id="cb330-3" title="3">  acción_<span class="dv">1</span></a>
+<a class="sourceLine" id="cb330-4" title="4">} <span class="cf">else</span> <span class="cf">if</span>(condición_<span class="dv">2</span>) {</a>
+<a class="sourceLine" id="cb330-5" title="5">  acción_<span class="dv">2</span></a>
+<a class="sourceLine" id="cb330-6" title="6">} <span class="cf">else</span> {</a>
+<a class="sourceLine" id="cb330-7" title="7">  acción_<span class="dv">3</span></a>
+<a class="sourceLine" id="cb330-8" title="8">}</a></code></pre></div>
 <p><br>
 <br></p>
 </div>
@@ -417,66 +424,66 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     \end{array} \right.\]</span></p>
 <p>En este caso, se deben evaluar <em>dos</em> expresiones lógicas sobre <span class="math inline">\(x\)</span> para producir tres posibles resultados. Aquí el código:</p>
 <div class="column-left">
-<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb248-1" title="1"><span class="co"># Forma 1</span></a>
-<a class="sourceLine" id="cb248-2" title="2">x =<span class="st"> </span><span class="fl">-0.5</span></a>
-<a class="sourceLine" id="cb248-3" title="3"><span class="cf">if</span>(x <span class="op">&lt;</span><span class="st"> </span><span class="dv">-1</span>) {</a>
-<a class="sourceLine" id="cb248-4" title="4">  y =<span class="st"> </span><span class="dv">-1</span></a>
-<a class="sourceLine" id="cb248-5" title="5">} <span class="cf">else</span> {</a>
-<a class="sourceLine" id="cb248-6" title="6">  <span class="cf">if</span>(x <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span>) {</a>
-<a class="sourceLine" id="cb248-7" title="7">  y =<span class="st"> </span><span class="dv">0</span></a>
-<a class="sourceLine" id="cb248-8" title="8">    } <span class="cf">else</span> {</a>
-<a class="sourceLine" id="cb248-9" title="9">  y =<span class="st"> </span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb248-10" title="10">    }</a>
-<a class="sourceLine" id="cb248-11" title="11">}</a>
-<a class="sourceLine" id="cb248-12" title="12">y</a></code></pre></div>
+<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb331-1" title="1"><span class="co"># Forma 1</span></a>
+<a class="sourceLine" id="cb331-2" title="2">x =<span class="st"> </span><span class="fl">-0.5</span></a>
+<a class="sourceLine" id="cb331-3" title="3"><span class="cf">if</span>(x <span class="op">&lt;</span><span class="st"> </span><span class="dv">-1</span>) {</a>
+<a class="sourceLine" id="cb331-4" title="4">  y =<span class="st"> </span><span class="dv">-1</span></a>
+<a class="sourceLine" id="cb331-5" title="5">} <span class="cf">else</span> {</a>
+<a class="sourceLine" id="cb331-6" title="6">  <span class="cf">if</span>(x <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span>) {</a>
+<a class="sourceLine" id="cb331-7" title="7">  y =<span class="st"> </span><span class="dv">0</span></a>
+<a class="sourceLine" id="cb331-8" title="8">    } <span class="cf">else</span> {</a>
+<a class="sourceLine" id="cb331-9" title="9">  y =<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb331-10" title="10">    }</a>
+<a class="sourceLine" id="cb331-11" title="11">}</a>
+<a class="sourceLine" id="cb331-12" title="12">y</a></code></pre></div>
 <pre><code>[1] 0</code></pre>
 </div>
 <div class="column-right">
-<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb250-1" title="1"><span class="co"># Forma 2</span></a>
-<a class="sourceLine" id="cb250-2" title="2">x =<span class="st"> </span><span class="fl">-0.5</span></a>
-<a class="sourceLine" id="cb250-3" title="3"><span class="cf">if</span>(x <span class="op">&lt;</span><span class="st"> </span><span class="dv">-1</span>) {</a>
-<a class="sourceLine" id="cb250-4" title="4">  y =<span class="st"> </span><span class="dv">-1</span></a>
-<a class="sourceLine" id="cb250-5" title="5">} <span class="cf">else</span> <span class="cf">if</span>(x <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span>) {</a>
-<a class="sourceLine" id="cb250-6" title="6">  y =<span class="st"> </span><span class="dv">0</span></a>
-<a class="sourceLine" id="cb250-7" title="7">} <span class="cf">else</span> {</a>
-<a class="sourceLine" id="cb250-8" title="8">  y =<span class="st"> </span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb250-9" title="9">}</a>
-<a class="sourceLine" id="cb250-10" title="10">y</a></code></pre></div>
+<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb333-1" title="1"><span class="co"># Forma 2</span></a>
+<a class="sourceLine" id="cb333-2" title="2">x =<span class="st"> </span><span class="fl">-0.5</span></a>
+<a class="sourceLine" id="cb333-3" title="3"><span class="cf">if</span>(x <span class="op">&lt;</span><span class="st"> </span><span class="dv">-1</span>) {</a>
+<a class="sourceLine" id="cb333-4" title="4">  y =<span class="st"> </span><span class="dv">-1</span></a>
+<a class="sourceLine" id="cb333-5" title="5">} <span class="cf">else</span> <span class="cf">if</span>(x <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span>) {</a>
+<a class="sourceLine" id="cb333-6" title="6">  y =<span class="st"> </span><span class="dv">0</span></a>
+<a class="sourceLine" id="cb333-7" title="7">} <span class="cf">else</span> {</a>
+<a class="sourceLine" id="cb333-8" title="8">  y =<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb333-9" title="9">}</a>
+<a class="sourceLine" id="cb333-10" title="10">y</a></code></pre></div>
 <pre><code>[1] 0</code></pre>
 </div>
 </div>
 <div id="comando-switch" class="section level4">
 <h4><span class="header-section-number">7.1.3.2</span> Comando <code>switch</code></h4>
 <p>Cuando se busca <em>seleccionar una</em> acción de una lista de múltiples acciones (dos o más), el comando <code>switch</code> resultá más fácil de usar que emplear <code>if ... else</code> anidados. La sintaxis es:</p>
-<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb252-1" title="1"><span class="cf">switch</span>(indicador,</a>
-<a class="sourceLine" id="cb252-2" title="2">  <span class="dt">etiqueta_1 =</span> acción_<span class="dv">1</span>, </a>
-<a class="sourceLine" id="cb252-3" title="3">  <span class="dt">etiqueta_2 =</span> acción_<span class="dv">2</span>,</a>
-<a class="sourceLine" id="cb252-4" title="4">  ...</a>
-<a class="sourceLine" id="cb252-5" title="5">)</a></code></pre></div>
+<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb335-1" title="1"><span class="cf">switch</span>(indicador,</a>
+<a class="sourceLine" id="cb335-2" title="2">  <span class="dt">etiqueta_1 =</span> acción_<span class="dv">1</span>, </a>
+<a class="sourceLine" id="cb335-3" title="3">  <span class="dt">etiqueta_2 =</span> acción_<span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb335-4" title="4">  ...</a>
+<a class="sourceLine" id="cb335-5" title="5">)</a></code></pre></div>
 <p>En la sintaxis de <code>switch</code>, el objeto <code>indicador</code> debe ser alguna (uno sólo) de las etiquetas (<code>etiqueta_1</code>, <code>etiqueta_2</code>, , etc.) dadas a las acciones (<code>acción_1</code>, <code>acción_2</code>, etc.). Si el indicador es un número entero, entonces, las etiquetas no deben usarse. El comando <code>switch</code> selecciona la acción que corresponda (match) con la posición o la etiqueta. Las acciones pueden estar escritas en una sóla línea de código o en varias líneas de código. En el último caso, las líneas de código deben estar encerradas en <code>{ }</code>.</p>
 <p>Por ejemplo, suponga que usted pudiese entregar un resultado compuesto de varios números en un vector, un data.frame o una lista, dependiendo de lo que el usuario prefiera. La preferencia del usuario se puede indicar en un objeto con letras tales como <code>v</code> (si quiere un vector), <code>d</code> (si un data.frame) o <code>l</code> (si desea una lista). Aqúi un ejemplo del código:</p>
-<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb253-1" title="1"><span class="co"># Se define la preferencia del usuario</span></a>
-<a class="sourceLine" id="cb253-2" title="2">preferencia &lt;-<span class="st"> &#39;l&#39;</span>   </a>
-<a class="sourceLine" id="cb253-3" title="3"></a>
-<a class="sourceLine" id="cb253-4" title="4"><span class="co"># Se crean un par de vectores de ejemplo que son comunes</span></a>
-<a class="sourceLine" id="cb253-5" title="5"><span class="co"># a las tres opciones de salida:</span></a>
-<a class="sourceLine" id="cb253-6" title="6">x &lt;-<span class="st"> </span><span class="dv">5</span></a>
-<a class="sourceLine" id="cb253-7" title="7">n &lt;-<span class="st"> </span><span class="dv">20</span></a>
-<a class="sourceLine" id="cb253-8" title="8"></a>
-<a class="sourceLine" id="cb253-9" title="9"><span class="co"># Uso de switch para seleccionar la opcion preferida</span></a>
-<a class="sourceLine" id="cb253-10" title="10"><span class="cf">switch</span>(preferencia, </a>
-<a class="sourceLine" id="cb253-11" title="11">       <span class="dt">v =</span> x,</a>
-<a class="sourceLine" id="cb253-12" title="12">       </a>
-<a class="sourceLine" id="cb253-13" title="13">       <span class="dt">d =</span> {</a>
-<a class="sourceLine" id="cb253-14" title="14">         p &lt;-<span class="st"> </span>x<span class="op">/</span>n</a>
-<a class="sourceLine" id="cb253-15" title="15">         <span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="dv">5</span>, <span class="dt">n =</span> <span class="dv">20</span>, <span class="dt">p =</span> p)</a>
-<a class="sourceLine" id="cb253-16" title="16">         }, </a>
-<a class="sourceLine" id="cb253-17" title="17">       </a>
-<a class="sourceLine" id="cb253-18" title="18">       <span class="dt">l =</span> {</a>
-<a class="sourceLine" id="cb253-19" title="19">         p &lt;-<span class="st"> </span>x<span class="op">/</span>n</a>
-<a class="sourceLine" id="cb253-20" title="20">         <span class="kw">list</span>(<span class="dt">x =</span> <span class="dv">5</span>, <span class="dt">p =</span> p)</a>
-<a class="sourceLine" id="cb253-21" title="21">         }</a>
-<a class="sourceLine" id="cb253-22" title="22">       )</a></code></pre></div>
+<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb336-1" title="1"><span class="co"># Se define la preferencia del usuario</span></a>
+<a class="sourceLine" id="cb336-2" title="2">preferencia &lt;-<span class="st"> &#39;l&#39;</span>   </a>
+<a class="sourceLine" id="cb336-3" title="3"></a>
+<a class="sourceLine" id="cb336-4" title="4"><span class="co"># Se crean un par de vectores de ejemplo que son comunes</span></a>
+<a class="sourceLine" id="cb336-5" title="5"><span class="co"># a las tres opciones de salida:</span></a>
+<a class="sourceLine" id="cb336-6" title="6">x &lt;-<span class="st"> </span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb336-7" title="7">n &lt;-<span class="st"> </span><span class="dv">20</span></a>
+<a class="sourceLine" id="cb336-8" title="8"></a>
+<a class="sourceLine" id="cb336-9" title="9"><span class="co"># Uso de switch para seleccionar la opcion preferida</span></a>
+<a class="sourceLine" id="cb336-10" title="10"><span class="cf">switch</span>(preferencia, </a>
+<a class="sourceLine" id="cb336-11" title="11">       <span class="dt">v =</span> x,</a>
+<a class="sourceLine" id="cb336-12" title="12">       </a>
+<a class="sourceLine" id="cb336-13" title="13">       <span class="dt">d =</span> {</a>
+<a class="sourceLine" id="cb336-14" title="14">         p &lt;-<span class="st"> </span>x<span class="op">/</span>n</a>
+<a class="sourceLine" id="cb336-15" title="15">         <span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="dv">5</span>, <span class="dt">n =</span> <span class="dv">20</span>, <span class="dt">p =</span> p)</a>
+<a class="sourceLine" id="cb336-16" title="16">         }, </a>
+<a class="sourceLine" id="cb336-17" title="17">       </a>
+<a class="sourceLine" id="cb336-18" title="18">       <span class="dt">l =</span> {</a>
+<a class="sourceLine" id="cb336-19" title="19">         p &lt;-<span class="st"> </span>x<span class="op">/</span>n</a>
+<a class="sourceLine" id="cb336-20" title="20">         <span class="kw">list</span>(<span class="dt">x =</span> <span class="dv">5</span>, <span class="dt">p =</span> p)</a>
+<a class="sourceLine" id="cb336-21" title="21">         }</a>
+<a class="sourceLine" id="cb336-22" title="22">       )</a></code></pre></div>
 <pre><code>$x
 [1] 5
 

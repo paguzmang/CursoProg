@@ -170,9 +170,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1.3" data-path="3-1-vectores.html"><a href="3-1-vectores.html#operaciones-aritmeticas-con-vectores"><i class="fa fa-check"></i><b>3.1.3</b> Operaciones aritméticas con vectores</a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html"><i class="fa fa-check"></i><b>3.2</b> Tipos de datos</a><ul>
-<li class="chapter" data-level="3.2.1" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#validando-el-tipo-de-datos"><i class="fa fa-check"></i><b>3.2.1</b> Validando el tipo de datos</a></li>
+<li class="chapter" data-level="3.2.1" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#numeros"><i class="fa fa-check"></i><b>3.2.1</b> Números</a></li>
+<li class="chapter" data-level="3.2.2" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#texto"><i class="fa fa-check"></i><b>3.2.2</b> Texto</a></li>
+<li class="chapter" data-level="3.2.3" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#logicos"><i class="fa fa-check"></i><b>3.2.3</b> Lógicos</a></li>
+<li class="chapter" data-level="3.2.4" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#fechas"><i class="fa fa-check"></i><b>3.2.4</b> Fechas</a></li>
+<li class="chapter" data-level="3.2.5" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#otros-tipos-datos"><i class="fa fa-check"></i><b>3.2.5</b> Otros tipos datos</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="3-3-logicas.html"><a href="3-3-logicas.html"><i class="fa fa-check"></i><b>3.3</b> Expresiones lógicas</a></li>
+<li class="chapter" data-level="3.3" data-path="3-3-logicas.html"><a href="3-3-logicas.html"><i class="fa fa-check"></i><b>3.3</b> Expresiones lógicas</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="3-3-logicas.html"><a href="3-3-logicas.html#tipos-de-expresions-logicas"><i class="fa fa-check"></i><b>3.3.1</b> Tipos de expresions lógicas</a></li>
+<li class="chapter" data-level="3.3.2" data-path="3-3-logicas.html"><a href="3-3-logicas.html#usando-expresiones-logicas-para-contar"><i class="fa fa-check"></i><b>3.3.2</b> Usando expresiones lógicas para contar</a></li>
+</ul></li>
 <li class="chapter" data-level="3.4" data-path="3-4-ejvecTiposDatos.html"><a href="3-4-ejvecTiposDatos.html"><i class="fa fa-check"></i><b>3.4</b> Ejercicios</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="4-otros-tipos-de-objeto.html"><a href="4-otros-tipos-de-objeto.html"><i class="fa fa-check"></i><b>4</b> Otros tipos de objeto</a><ul>
@@ -296,58 +303,237 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="tiposDatos" class="section level2">
 <h2><span class="header-section-number">3.2</span> Tipos de datos</h2>
-<p>En un vector podemos almacenar principalmente los siguientes tipos de datos:</p>
-<ul>
-<li>numeric = números con decimales (separador decimal: punto). También se llaman de <em>punto flotante</em> o de tipo <em>double</em>.</li>
-<li>integer = números enteros.</li>
-<li>character = texto (se escribe entre comillas, sencillas o dobles).</li>
-<li>logical = TRUE (o T), FALSE (o F). Resultado de expresiones lógicas.</li>
-<li>Date = fecha (aaaa-mm-dd).</li>
-<li>Inf = Infinito. También existe <code>-Inf</code></li>
-<li>NA = dato perdido o faltante</li>
-<li>NaN = no se puede calcular, “No un número”</li>
-<li>NULL = No existe o no hay nada.</li>
-</ul>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb103-1" title="1"><span class="co"># Ejemplo de escritura datos de diferente tipo</span></a>
-<a class="sourceLine" id="cb103-2" title="2">a &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">5.89</span>, <span class="dv">10</span>, <span class="fl">23.4</span>)        <span class="co"># numero con decimales (double)</span></a>
-<a class="sourceLine" id="cb103-3" title="3">b &lt;-<span class="st"> </span><span class="kw">c</span>(5L, 6L, 7L)            <span class="co"># numero entero (integer)</span></a>
-<a class="sourceLine" id="cb103-4" title="4">x &lt;-<span class="st"> &#39;semillero&#39;</span>              <span class="co"># texto</span></a>
-<a class="sourceLine" id="cb103-5" title="5">y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, F, F)     <span class="co"># valor logico</span></a>
-<a class="sourceLine" id="cb103-6" title="6">f1 &lt;-<span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&#39;2018-08-01&#39;</span>)   <span class="co"># fecha: aaaa-mm-dd</span></a>
-<a class="sourceLine" id="cb103-7" title="7">f2 &lt;-<span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&#39;2018-08-30&#39;</span>)   <span class="co"># fecha: aaaa-mm-dd</span></a>
-<a class="sourceLine" id="cb103-8" title="8">d &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">NA</span>, <span class="dv">7</span>, <span class="dv">4</span>, <span class="ot">NA</span>)          <span class="co"># vector con datos perdidos (not available)</span></a>
-<a class="sourceLine" id="cb103-9" title="9">w &lt;-<span class="st"> </span><span class="dv">0</span><span class="op">/</span><span class="dv">0</span>                      <span class="co"># No se puede calcular (NaN = Not a Number)</span></a>
-<a class="sourceLine" id="cb103-10" title="10">z &lt;-<span class="st"> </span><span class="dv">10</span><span class="op">/</span><span class="dv">0</span>                     <span class="co"># Infinito (Inf)</span></a>
-<a class="sourceLine" id="cb103-11" title="11">h &lt;-<span class="st"> </span><span class="kw">sqrt</span>(<span class="op">-</span><span class="dv">2</span>)                 <span class="co"># No se puede calcular (NaN = Not a Number)</span></a></code></pre></div>
-<div id="validando-el-tipo-de-datos" class="section level3">
-<h3><span class="header-section-number">3.2.1</span> Validando el tipo de datos</h3>
-<p>El comando <code>typeof</code> permite preguntar por el tipo de dato contenido en el objeto:</p>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" title="1"><span class="kw">typeof</span>(a)</a></code></pre></div>
+<p>Los objetos de <strong>R</strong>, tales como vectores o matrices, almacena datos de tipos específicos, p.e., números, texto, lógicos, fechas, etc. En seguida se presenta una breve descripción sobre los más importantes.</p>
+<div id="numeros" class="section level3">
+<h3><span class="header-section-number">3.2.1</span> Números</h3>
+<p>Los hay de dos tipos: <code>double</code> (o de punto flotante) e <code>integer</code> (enteros). La diferencia rádica en que los del primero ocupan más epacio en la memoría física del computador. Si no especificamos otra cosa, <strong>R</strong> almacena un número (con o sin decimales) como tipo <code>double</code>.</p>
+<div id="numeros-de-punto-flotante-o-de-tipo-double" class="section level4">
+<h4><span class="header-section-number">3.2.1.1</span> Números de punto flotante o de tipo <em>double</em></h4>
+<p>Considere algunos ejemplos:</p>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb109-1" title="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">8</span>)   <span class="co"># un vector numerico</span></a>
+<a class="sourceLine" id="cb109-2" title="2">x                 <span class="co"># se imprime</span></a></code></pre></div>
+<pre><code>[1] 3 5 8</code></pre>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb111-1" title="1"><span class="kw">typeof</span>(x)         <span class="co"># el tipo de x ?</span></a></code></pre></div>
 <pre><code>[1] &quot;double&quot;</code></pre>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb106-1" title="1"><span class="kw">typeof</span>(b)</a></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb113-1" title="1"><span class="kw">is.numeric</span>(x)     <span class="co"># es un numero?</span></a></code></pre></div>
+<pre><code>[1] TRUE</code></pre>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb115-1" title="1"><span class="kw">is.double</span>(x)      <span class="co"># es un double?</span></a></code></pre></div>
+<pre><code>[1] TRUE</code></pre>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb117-1" title="1"><span class="kw">is.integer</span>(x)     <span class="co"># es un entero?</span></a></code></pre></div>
+<pre><code>[1] FALSE</code></pre>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb119-1" title="1">y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">3.56</span>, <span class="fl">7.98</span>, <span class="fl">3.45</span>)   <span class="co"># un vector numerico</span></a>
+<a class="sourceLine" id="cb119-2" title="2">y                          <span class="co"># se imprime</span></a></code></pre></div>
+<pre><code>[1] 3.56 7.98 3.45</code></pre>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb121-1" title="1"><span class="kw">typeof</span>(y)                  <span class="co"># el tipo de y?</span></a></code></pre></div>
+<pre><code>[1] &quot;double&quot;</code></pre>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb123-1" title="1"><span class="kw">is.numeric</span>(y)     <span class="co"># es un numero?</span></a></code></pre></div>
+<pre><code>[1] TRUE</code></pre>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb125-1" title="1"><span class="kw">is.double</span>(y)      <span class="co"># es un double?</span></a></code></pre></div>
+<pre><code>[1] TRUE</code></pre>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb127-1" title="1"><span class="kw">is.integer</span>(y)     <span class="co"># es un entero?</span></a></code></pre></div>
+<pre><code>[1] FALSE</code></pre>
+</div>
+<div id="numeros-enteros" class="section level4">
+<h4><span class="header-section-number">3.2.1.2</span> Números enteros</h4>
+<p>Para declarar un número como entero (<code>integer</code>) se debe poner la <code>L</code> seguido del número. Considere los siguientes ejemplos:</p>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb129-1" title="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(3L, 5L, 8L, 34L)    <span class="co"># un vector de enteros</span></a>
+<a class="sourceLine" id="cb129-2" title="2">x</a></code></pre></div>
+<pre><code>[1]  3  5  8 34</code></pre>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb131-1" title="1"><span class="kw">typeof</span>(x)      <span class="co"># se pregunta por el tipo de x</span></a></code></pre></div>
 <pre><code>[1] &quot;integer&quot;</code></pre>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb108-1" title="1"><span class="kw">typeof</span>(x)</a></code></pre></div>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb133-1" title="1"><span class="kw">is.numeric</span>(x)  <span class="co"># es numeric?</span></a></code></pre></div>
+<pre><code>[1] TRUE</code></pre>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb135-1" title="1"><span class="kw">is.double</span>(x)   <span class="co"># es double?</span></a></code></pre></div>
+<pre><code>[1] FALSE</code></pre>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb137-1" title="1"><span class="kw">is.integer</span>(x)  <span class="co"># es un entero?</span></a></code></pre></div>
+<pre><code>[1] TRUE</code></pre>
+<p>Con un vector de enteros se puede realizar cualquier operación aritmética:</p>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb139-1" title="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(3L, 5L, 8L, 34L)    <span class="co"># un vector de enteros</span></a>
+<a class="sourceLine" id="cb139-2" title="2">x<span class="op">^</span><span class="dv">2</span> <span class="op">/</span><span class="st"> </span>x                    <span class="co"># operacion aritmetica</span></a></code></pre></div>
+<pre><code>[1]  3  5  8 34</code></pre>
+<style>
+/* Create two equal columns that floats next to each other */
+* {
+  box-sizing: border-box;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  /* height: 300px;  Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+</style>
+</div>
+<div id="notacion-cientifica" class="section level4">
+<h4><span class="header-section-number">3.2.1.3</span> Notación científica</h4>
+<p>En <strong>R</strong>, números muy grandes (desde <span class="math inline">\(1 \times 10^5\)</span>) o muy pequeños (desde <span class="math inline">\(1 \times 10^{-4}\)</span>) se imprimen <em>por defecto</em> en notación científica. Esta notación se observa en la consola con el formato: <code>1e+05</code> (<span class="math inline">\(1 \times 10^5\)</span>) ó <code>1e-05</code> (<span class="math inline">\(1 \times 10^{-5}\)</span>). Por ejemplo:</p>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb141-1" title="1">x &lt;-<span class="st"> </span><span class="fl">1.5e8</span>      <span class="co"># 1.5 x 10^9</span></a>
+<a class="sourceLine" id="cb141-2" title="2">x             </a></code></pre></div>
+<pre><code>[1] 1.5e+08</code></pre>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb143-1" title="1">y &lt;-<span class="st"> </span><span class="fl">0.000025</span>   <span class="co"># 2.5 x 10^-5</span></a>
+<a class="sourceLine" id="cb143-2" title="2">y</a></code></pre></div>
+<pre><code>[1] 2.5e-05</code></pre>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb145-1" title="1">x <span class="op">/</span><span class="st"> </span>y           <span class="co"># 6 x 10^12</span></a></code></pre></div>
+<pre><code>[1] 6e+12</code></pre>
+<p>Considere la impresión comparativa de los siguientes números (grandes a la izquierda y pequeños a la derecha):</p>
+<div class="row">
+<div class="column">
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb147-1" title="1"><span class="dv">1000</span>    <span class="co"># 3 ceros : 1 mil </span></a></code></pre></div>
+<pre><code>[1] 1000</code></pre>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb149-1" title="1"><span class="dv">10000</span>   <span class="co"># 4 ceros : 10 mil</span></a></code></pre></div>
+<pre><code>[1] 10000</code></pre>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb151-1" title="1"><span class="dv">100000</span>  <span class="co"># 5 ceros : 100 mil  </span></a></code></pre></div>
+<pre><code>[1] 1e+05</code></pre>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb153-1" title="1"><span class="dv">1000000</span> <span class="co"># 6 ceros : 1 millon </span></a></code></pre></div>
+<pre><code>[1] 1e+06</code></pre>
+</div>
+<div class="column">
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb155-1" title="1"><span class="dv">1</span><span class="op">/</span><span class="dv">1000</span>    <span class="co"># 3 ceros: 1 milesima</span></a></code></pre></div>
+<pre><code>[1] 0.001</code></pre>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb157-1" title="1"><span class="dv">1</span><span class="op">/</span><span class="dv">10000</span>   <span class="co"># 4 ceros: 10 milesimas     </span></a></code></pre></div>
+<pre><code>[1] 1e-04</code></pre>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb159-1" title="1"><span class="dv">1</span><span class="op">/</span><span class="dv">100000</span>  <span class="co"># 5 ceros: 100 milesimas</span></a></code></pre></div>
+<pre><code>[1] 1e-05</code></pre>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb161-1" title="1"><span class="dv">1</span><span class="op">/</span><span class="dv">1000000</span> <span class="co"># 6 ceros: 1 millonesima</span></a></code></pre></div>
+<pre><code>[1] 1e-06</code></pre>
+</div>
+</div>
+<p>Si usted quiere modificar la impresión en notación científica en una sesión de <strong>R</strong>, utilice el comando <code>options</code> con el argumento <code>scipen</code></p>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb163-1" title="1"><span class="co"># Aumentando el nro. limite para imprimir en notacion cientifica:</span></a>
+<a class="sourceLine" id="cb163-2" title="2"><span class="kw">options</span>(<span class="dt">scipen =</span> <span class="dv">3</span>)   <span class="co"># por defecto scipen = 0</span></a>
+<a class="sourceLine" id="cb163-3" title="3"><span class="dv">1</span><span class="op">/</span><span class="dv">100000</span>   <span class="co"># 1 x 10^-5</span></a></code></pre></div>
+<pre><code>[1] 0.00001</code></pre>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb165-1" title="1"><span class="dv">100000</span>    <span class="co"># 1 x 10^5</span></a></code></pre></div>
+<pre><code>[1] 100000</code></pre>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb167-1" title="1"><span class="co"># Se deja como estaba:</span></a>
+<a class="sourceLine" id="cb167-2" title="2"><span class="kw">options</span>(<span class="dt">scipen =</span> <span class="dv">0</span>)   <span class="co"># por defecto scipen = 0</span></a>
+<a class="sourceLine" id="cb167-3" title="3"><span class="dv">1</span><span class="op">/</span><span class="dv">100000</span>   <span class="co"># 1 x 10^-5</span></a></code></pre></div>
+<pre><code>[1] 1e-05</code></pre>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb169-1" title="1"><span class="dv">100000</span>     <span class="co"># 1 x 10^5</span></a></code></pre></div>
+<pre><code>[1] 1e+05</code></pre>
+</div>
+</div>
+<div id="texto" class="section level3">
+<h3><span class="header-section-number">3.2.2</span> Texto</h3>
+<p>Los datos tipo texto (<code>character</code>) se crean cuando se escribe algo entre comillas (dobles o sencillas). Aquí algunos ejemplos.</p>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb171-1" title="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;c&#39;</span>, <span class="st">&#39;d&#39;</span>)    <span class="co"># un vector de texto</span></a>
+<a class="sourceLine" id="cb171-2" title="2"><span class="kw">typeof</span>(x)                     <span class="co"># se pregunta por el tipo de x?</span></a></code></pre></div>
 <pre><code>[1] &quot;character&quot;</code></pre>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb110-1" title="1"><span class="kw">typeof</span>(y)</a></code></pre></div>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb173-1" title="1"><span class="kw">is.character</span>(x)               <span class="co"># es de tipo character?</span></a></code></pre></div>
+<pre><code>[1] TRUE</code></pre>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb175-1" title="1"><span class="kw">is.numeric</span>(x)                 <span class="co"># es numeric?</span></a></code></pre></div>
+<pre><code>[1] FALSE</code></pre>
+</div>
+<div id="logicos" class="section level3">
+<h3><span class="header-section-number">3.2.3</span> Lógicos</h3>
+<p>Los datos de tipo lógico sólo pueden ser falso (<code>FALSE</code> o <code>F</code>) o verdadero (<code>TRUE</code> o <code>T</code>). P.e., suponga que para cinco árboles, usted identifica si esta (<code>TRUE</code>) o no (<code>FALSE</code>) en floración:</p>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb177-1" title="1">flor &lt;-<span class="st"> </span><span class="kw">c</span>(T, F, T, T, T )   <span class="co"># vector logico</span></a>
+<a class="sourceLine" id="cb177-2" title="2">flor</a></code></pre></div>
+<pre><code>[1]  TRUE FALSE  TRUE  TRUE  TRUE</code></pre>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb179-1" title="1"><span class="kw">typeof</span>(flor)   </a></code></pre></div>
 <pre><code>[1] &quot;logical&quot;</code></pre>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb112-1" title="1"><span class="kw">typeof</span>(f1)</a></code></pre></div>
-<pre><code>[1] &quot;double&quot;</code></pre>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb114-1" title="1"><span class="kw">typeof</span>(d)</a></code></pre></div>
-<pre><code>[1] &quot;double&quot;</code></pre>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb116-1" title="1"><span class="kw">typeof</span>(w)</a></code></pre></div>
-<pre><code>[1] &quot;double&quot;</code></pre>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb118-1" title="1"><span class="kw">typeof</span>(z)           </a></code></pre></div>
-<pre><code>[1] &quot;double&quot;</code></pre>
-<p>Los comandos <code>is.numeric</code>, <code>is.logical</code>, <code>is.character</code>, <code>is.na</code>, <code>is.nan</code>, etc. permiten preguntar si un objeto es de cierto tipo o no:</p>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb120-1" title="1"><span class="co"># ¿es numeric?, ¿es logical?, ¿es character?, ¿es NA?</span></a>
-<a class="sourceLine" id="cb120-2" title="2"><span class="kw">is.numeric</span>(a)</a></code></pre></div>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb181-1" title="1"><span class="kw">is.numeric</span>(flor)</a></code></pre></div>
+<pre><code>[1] FALSE</code></pre>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb183-1" title="1"><span class="kw">is.logical</span>(flor)</a></code></pre></div>
 <pre><code>[1] TRUE</code></pre>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb122-1" title="1"><span class="kw">is.logical</span>(y)</a></code></pre></div>
-<pre><code>[1] TRUE</code></pre>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb124-1" title="1"><span class="kw">is.character</span>(x)</a></code></pre></div>
-<pre><code>[1] TRUE</code></pre>
-<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb126-1" title="1"><span class="kw">is.na</span>(d)</a></code></pre></div>
-<pre><code>[1]  TRUE FALSE FALSE  TRUE</code></pre>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb185-1" title="1"><span class="kw">is.character</span>(flor)</a></code></pre></div>
+<pre><code>[1] FALSE</code></pre>
+<p>A pesar de que los datos lógicos no son números, se puede hacer operaciones aritméticas con ellos. En este caso, el valor lógico <code>TRUE</code> se convierte en <code>1</code> y <code>FALSE</code> en <code>0</code>. Por ejemplo, si usted quiere <em>contar</em> el número de individuos en floración en el vector lógico <code>flor</code>, sólo <em>sume</em> el vector dado que la suma de <span class="math inline">\(0\)</span>’s y <span class="math inline">\(1\)</span>’s corresponde al <em>conteo</em> de <span class="math inline">\(1\)</span>’s, es decir:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+\text{conteo de individuos en floración} &amp; = &amp; \mathtt{TRUE} + \mathtt{FALSE} + \mathtt{TRUE} + \mathtt{TRUE} + \mathtt{TRUE} \\
+  &amp; = &amp; 1 + 0 + 1 + 1 + 1 \\
+  &amp; = &amp; 4
+\end{eqnarray*}\]</span></p>
+<p>Considere la suma del vector lógico <code>flor</code> creado en arriba:</p>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb187-1" title="1"><span class="co"># Sumando un vector logico:</span></a>
+<a class="sourceLine" id="cb187-2" title="2"><span class="kw">sum</span>(flor)</a></code></pre></div>
+<pre><code>[1] 4</code></pre>
+<p>Los valores lógicos también se usan en argumentos de comandos. Por ejemplo, el comando <code>sample</code> permite tomar una muestra aleatoria de un vector. La forma en la cual se toma la muestra puede ser <em>con reemplazo</em> o <em>sin reemplazo</em>. De acuerdo a la ayuda del comando (escribir en la consola: <code>?sample</code>), el argumento <code>replace</code> es uno de tipo lógico. Si <code>replace = F</code> (por defecto), la muestra se toma <em>sin reemplazo</em>, pero si <code>replace = T</code>, la muestra se toma con reemplazo.</p>
+<p>El usuario puede crear manualmente un vector lógico, así como creamos arriba el vector <code>flor</code>. Sin embargo, tradicionalmente los vectores lógicos se crean cuando ejecutamos <strong>expresiones lógicas</strong> tales <code>x &gt;5</code> o <code>x &lt;=5</code>. La creación de expresiones lógicas se estudiarán en la sección xxx.</p>
+</div>
+<div id="fechas" class="section level3">
+<h3><span class="header-section-number">3.2.4</span> Fechas</h3>
+<p>Las fechas en <strong>R</strong> son una clase (<code>class</code>) de datos tipo <code>double</code> (ver sección xxx). El formato por defecto que reconoce fechas es año-mes-día (<code>aaaa-mm-dd</code>). Para crear un fecha se debe escribir entre comillas (como si fuera un dato tipo <code>character</code>) y usar el comando <code>as.Date</code> para convertir en fecha. Considere el siguiente ejemplo donde se crea una fecha:</p>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb189-1" title="1">mi.fecha &lt;-<span class="st"> &#39;2012-02-15&#39;</span>       <span class="co"># vector de texto</span></a>
+<a class="sourceLine" id="cb189-2" title="2">mi.fecha &lt;-<span class="st"> </span><span class="kw">as.Date</span>(mi.fecha)  <span class="co"># se convierte en fecha</span></a>
+<a class="sourceLine" id="cb189-3" title="3">mi.fecha                       <span class="co"># observe la impresion</span></a></code></pre></div>
+<pre><code>[1] &quot;2012-02-15&quot;</code></pre>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb191-1" title="1"><span class="kw">typeof</span>(mi.fecha)               <span class="co"># el tipo de &#39;mi.fecha&#39;</span></a></code></pre></div>
+<pre><code>[1] &quot;double&quot;</code></pre>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb193-1" title="1"><span class="kw">class</span>(mi.fecha)                <span class="co"># la clase de &#39;mi.fecha&#39;</span></a></code></pre></div>
+<pre><code>[1] &quot;Date&quot;</code></pre>
+<p>Como se mencionó arriba, note que las fechas son una clase (<code>class</code>) de datos tipo <code>double</code> (ver sección xxx). Al hacer operaciones con vectores de clase <code>Date</code>, <strong>R</strong> imprime un resultado explicito en días:</p>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb195-1" title="1">f1 &lt;-<span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&#39;2012-02-15&#39;</span>)</a>
+<a class="sourceLine" id="cb195-2" title="2">f2 &lt;-<span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&#39;2012-03-15&#39;</span>)</a>
+<a class="sourceLine" id="cb195-3" title="3">f2 <span class="op">-</span><span class="st"> </span>f1   <span class="co"># operacion aritemetica entre fechas</span></a></code></pre></div>
+<pre><code>Time difference of 29 days</code></pre>
+</div>
+<div id="otros-tipos-datos" class="section level3">
+<h3><span class="header-section-number">3.2.5</span> Otros tipos datos</h3>
+<p>Otros tipos de datos en <strong>R</strong> son: <code>NA</code> (dato perdido); <code>Inf</code> y <code>-Inf</code> (Infinito); <code>NaN</code> (no un número), y <code>NULL</code> (nulo, que no existe). A continuación realizamos alguna descripción de cada uno.</p>
+<div id="datos-perdidos" class="section level4">
+<h4><span class="header-section-number">3.2.5.1</span> Datos perdidos</h4>
+<p>Se usa para identificar una entreda en un vector para la cuál el dato no se pudo registrar. Suponga que usted registrará el número de colonias bacterianas en cinco cajas de petri, pero en la 2da y 5ta cajas el cultivo se daño, entonces usted puede crear el vector como:</p>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb197-1" title="1">n.colonias &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">34</span>, <span class="ot">NA</span>, <span class="dv">40</span>, <span class="dv">45</span>, <span class="ot">NA</span>)  <span class="co"># vector con datos perdidos</span></a>
+<a class="sourceLine" id="cb197-2" title="2">n.colonias</a></code></pre></div>
+<pre><code>[1] 34 NA 40 45 NA</code></pre>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb199-1" title="1"><span class="kw">typeof</span>(n.colonias)</a></code></pre></div>
+<pre><code>[1] &quot;double&quot;</code></pre>
+<p>Usted puede validar si cada entrada de un vector esta perdida con el comando <code>is.na</code>:</p>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb201-1" title="1"><span class="co"># ¿Cuales entradas del vector estan perdidas? (expresion logica)</span></a>
+<a class="sourceLine" id="cb201-2" title="2"><span class="kw">is.na</span>(n.colonias)</a></code></pre></div>
+<pre><code>[1] FALSE  TRUE FALSE FALSE  TRUE</code></pre>
+<p>Los comandos que realizan operaciones aritméticas con vectores tales como <code>sum</code>, <code>min</code>, <code>max</code>, <code>range</code>, etc. no hacen la operación si el vector tiene datos perdidos, sin embargo cuentan con el argumento lógico <code>na.rm</code> que puede usarse para remover las entradas con datos perdidos antes de hacer el cálculo. Aquí algunos ejemplos:</p>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb203-1" title="1">n.colonias &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">34</span>, <span class="ot">NA</span>, <span class="dv">40</span>, <span class="dv">45</span>, <span class="ot">NA</span>)  <span class="co"># vector con datos perdidos</span></a>
+<a class="sourceLine" id="cb203-2" title="2"><span class="kw">sum</span>(n.colonias)                      <span class="co"># suma sin remover datos perdidos</span></a></code></pre></div>
+<pre><code>[1] NA</code></pre>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb205-1" title="1"><span class="kw">sum</span>(n.colonias, <span class="dt">na.rm =</span> T)           <span class="co"># suma, removiendo datos perdidos antes</span></a></code></pre></div>
+<pre><code>[1] 119</code></pre>
+</div>
+<div id="infinito" class="section level4">
+<h4><span class="header-section-number">3.2.5.2</span> Infinito</h4>
+<p>Este tipo de datos (<code>Inf</code> ó <code>-Inf</code>) se utiliza para suplir el uso matemático del concepto en cálculos numéricos. Algunas operaciones que pueden dar infinito son:</p>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb207-1" title="1"><span class="dv">10</span> <span class="op">/</span><span class="st"> </span><span class="dv">0</span>   <span class="co"># resulta en Infinito</span></a></code></pre></div>
+<pre><code>[1] Inf</code></pre>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb209-1" title="1"><span class="dv">-10</span> <span class="op">/</span><span class="dv">0</span>   <span class="co"># resulta en -Infinito</span></a></code></pre></div>
+<pre><code>[1] -Inf</code></pre>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb211-1" title="1"><span class="dv">10</span><span class="op">^</span><span class="ot">Inf</span>   <span class="co"># resulta en Infinito</span></a></code></pre></div>
+<pre><code>[1] Inf</code></pre>
+<p>También, <strong>R</strong> puede realizar cálculos de integración donde los límites de integración pueden ser <code>Inf</code> o <code>-Inf</code>.</p>
+</div>
+<div id="no-es-un-numero" class="section level4">
+<h4><span class="header-section-number">3.2.5.3</span> No es un número</h4>
+<p>Cuando realizamos una operación aritmética que no se puede ejecutar resulta el tipo de dato <code>NaN</code> (no un número). En matemática, esto corresponde a un resultado <em>indeterminado</em>. Aquí cuatro ejemplos:</p>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb213-1" title="1"><span class="dv">0</span><span class="op">/</span><span class="dv">0</span>       <span class="co"># No se puede calcular (NaN = Not a Number)</span></a></code></pre></div>
+<pre><code>[1] NaN</code></pre>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb215-1" title="1"><span class="kw">sqrt</span>(<span class="op">-</span><span class="dv">2</span>)  <span class="co"># No se puede calcular (NaN = Not a Number)</span></a></code></pre></div>
+<pre><code>[1] NaN</code></pre>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb217-1" title="1"><span class="kw">log</span>(<span class="op">-</span><span class="dv">2</span>)   <span class="co"># No se puede calcular (NaN = Not a Number)</span></a></code></pre></div>
+<pre><code>[1] NaN</code></pre>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb219-1" title="1"><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="ot">Inf</span>   <span class="co"># No se puede calcular (NaN = Not a Number)</span></a></code></pre></div>
+<pre><code>[1] NaN</code></pre>
+</div>
+<div id="nulo" class="section level4">
+<h4><span class="header-section-number">3.2.5.4</span> Nulo</h4>
+<p>El tipo de dato nulo (<code>NULL</code>) indica que algo no éxiste. Se usa en algunos comandos para asignarle a un argumento un valor por defecto que no exista, pero al mismo tiempo para que el argumento no sea obligatorio. Por ejemplo, al revisar la ayuda del comando <code>plot.default</code> (escriba en la consola: <code>?plot.default</code>) vemos que algunos argumentos (tales como: <code>y</code>, <code>xlim</code>, <code>ylim</code>, etc.) tienen como valor por defecto <code>NULL</code>; estos argumentos tienen un valor que no existe pero tampoco son obligatorios.</p>
+<p>También, algunos cálculos resultan como <code>NULL</code>. Por ejemplo, el comando <code>names</code> extrae los nombres o etiquetas de un vector (ver sección xxx) cuando el vector tiene nombres. Si el vector no tiene nombres, el comando <code>names</code> devuelve <code>NULL</code>:</p>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb221-1" title="1">x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">4</span>   <span class="co"># se crea vector con cuatro entradas</span></a>
+<a class="sourceLine" id="cb221-2" title="2"><span class="kw">names</span>(x)   <span class="co"># se pregunta por los nombres de x</span></a></code></pre></div>
+<pre><code>NULL</code></pre>
+<p>En otro ejemplo, un objeto tiene <em>dimensión</em> cuando posee filas y columnas, tal como una matriz (ver sección xxx) o un data.frame (ver sección xxx). La <em>dimensión</em> corresponde al <em>número</em> de filas y de columnas del objeto. Dado que un vector <em>no</em> tiene <em>dimensión</em>, al preguntarle por la dimensión a una vector resulta <code>NULL</code>:</p>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb223-1" title="1">x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">5</span>   <span class="co"># se crea un vector de numeros</span></a>
+<a class="sourceLine" id="cb223-2" title="2"><span class="kw">dim</span>(x)     <span class="co"># ¿cual es la dimesion de &#39;x&#39;? </span></a></code></pre></div>
+<pre><code>NULL</code></pre>
+</div>
 </div>
 </div>
             </section>

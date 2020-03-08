@@ -170,9 +170,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1.3" data-path="3-1-vectores.html"><a href="3-1-vectores.html#operaciones-aritmeticas-con-vectores"><i class="fa fa-check"></i><b>3.1.3</b> Operaciones aritméticas con vectores</a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html"><i class="fa fa-check"></i><b>3.2</b> Tipos de datos</a><ul>
-<li class="chapter" data-level="3.2.1" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#validando-el-tipo-de-datos"><i class="fa fa-check"></i><b>3.2.1</b> Validando el tipo de datos</a></li>
+<li class="chapter" data-level="3.2.1" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#numeros"><i class="fa fa-check"></i><b>3.2.1</b> Números</a></li>
+<li class="chapter" data-level="3.2.2" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#texto"><i class="fa fa-check"></i><b>3.2.2</b> Texto</a></li>
+<li class="chapter" data-level="3.2.3" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#logicos"><i class="fa fa-check"></i><b>3.2.3</b> Lógicos</a></li>
+<li class="chapter" data-level="3.2.4" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#fechas"><i class="fa fa-check"></i><b>3.2.4</b> Fechas</a></li>
+<li class="chapter" data-level="3.2.5" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#otros-tipos-datos"><i class="fa fa-check"></i><b>3.2.5</b> Otros tipos datos</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="3-3-logicas.html"><a href="3-3-logicas.html"><i class="fa fa-check"></i><b>3.3</b> Expresiones lógicas</a></li>
+<li class="chapter" data-level="3.3" data-path="3-3-logicas.html"><a href="3-3-logicas.html"><i class="fa fa-check"></i><b>3.3</b> Expresiones lógicas</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="3-3-logicas.html"><a href="3-3-logicas.html#tipos-de-expresions-logicas"><i class="fa fa-check"></i><b>3.3.1</b> Tipos de expresions lógicas</a></li>
+<li class="chapter" data-level="3.3.2" data-path="3-3-logicas.html"><a href="3-3-logicas.html#usando-expresiones-logicas-para-contar"><i class="fa fa-check"></i><b>3.3.2</b> Usando expresiones lógicas para contar</a></li>
+</ul></li>
 <li class="chapter" data-level="3.4" data-path="3-4-ejvecTiposDatos.html"><a href="3-4-ejvecTiposDatos.html"><i class="fa fa-check"></i><b>3.4</b> Ejercicios</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="4-otros-tipos-de-objeto.html"><a href="4-otros-tipos-de-objeto.html"><i class="fa fa-check"></i><b>4</b> Otros tipos de objeto</a><ul>
@@ -308,65 +315,65 @@ Figura 8.8: Curvas de (A) la función <span class="math inline">\(f(x) = (x+2)^2
 <div id="derivando-con-d-mosaiccalc" class="section level3">
 <h3><span class="header-section-number">8.3.1</span> Derivando con <code>D</code> (mosaicCalc)</h3>
 <p>El comando <code>D</code> trabaja similar a <a href="8-2-ceros.html#findZeros"><code>findZeros</code></a>. Recibe una fórmula que involucra la función que se desea derivar y devuelve otra función (objeto tipo <code>function</code>) que representa la derivada. Aquí un ejemplo con la función de la Figura <a href="8-3-deriv.html#fig:deriv">8.8</a>:</p>
-<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb352-1" title="1">g &lt;-<span class="st"> </span><span class="cf">function</span>(x) (x<span class="dv">-2</span>)<span class="op">^</span><span class="dv">2</span></a>
-<a class="sourceLine" id="cb352-2" title="2"></a>
-<a class="sourceLine" id="cb352-3" title="3"><span class="co"># Uso 1: Utilizando funcion definida previamente:</span></a>
-<a class="sourceLine" id="cb352-4" title="4"><span class="kw">D</span>(<span class="kw">g</span>(x) <span class="op">~</span><span class="st"> </span>x) </a></code></pre></div>
+<div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb435-1" title="1">g &lt;-<span class="st"> </span><span class="cf">function</span>(x) (x<span class="dv">-2</span>)<span class="op">^</span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb435-2" title="2"></a>
+<a class="sourceLine" id="cb435-3" title="3"><span class="co"># Uso 1: Utilizando funcion definida previamente:</span></a>
+<a class="sourceLine" id="cb435-4" title="4"><span class="kw">D</span>(<span class="kw">g</span>(x) <span class="op">~</span><span class="st"> </span>x) </a></code></pre></div>
 <pre><code>function (x) 
 2 * ((x) - 2)</code></pre>
-<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb354-1" title="1"><span class="co"># Uso 2: Definiendo la funcion al interior del comando</span></a>
-<a class="sourceLine" id="cb354-2" title="2"><span class="kw">D</span>((x<span class="dv">-2</span>)<span class="op">^</span><span class="dv">2</span> <span class="op">~</span><span class="st"> </span>x)</a></code></pre></div>
+<div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb437-1" title="1"><span class="co"># Uso 2: Definiendo la funcion al interior del comando</span></a>
+<a class="sourceLine" id="cb437-2" title="2"><span class="kw">D</span>((x<span class="dv">-2</span>)<span class="op">^</span><span class="dv">2</span> <span class="op">~</span><span class="st"> </span>x)</a></code></pre></div>
 <pre><code>function (x) 
 2 * (x - 2)</code></pre>
 <p>El objeto resultante del comando <code>D</code> (otra función) debe guardarse para emplearse en cálculos posteriores:</p>
-<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb356-1" title="1"><span class="co"># Se guarda la derivada (como una funcion):</span></a>
-<a class="sourceLine" id="cb356-2" title="2">df &lt;-<span class="st"> </span><span class="kw">D</span>((x<span class="dv">-2</span>)<span class="op">^</span><span class="dv">2</span> <span class="op">~</span><span class="st"> </span>x)</a>
-<a class="sourceLine" id="cb356-3" title="3"></a>
-<a class="sourceLine" id="cb356-4" title="4"><span class="co"># Se evalua la derivada obtenida en diferentes valores de x</span></a>
-<a class="sourceLine" id="cb356-5" title="5"><span class="kw">df</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">7</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb439"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb439-1" title="1"><span class="co"># Se guarda la derivada (como una funcion):</span></a>
+<a class="sourceLine" id="cb439-2" title="2">df &lt;-<span class="st"> </span><span class="kw">D</span>((x<span class="dv">-2</span>)<span class="op">^</span><span class="dv">2</span> <span class="op">~</span><span class="st"> </span>x)</a>
+<a class="sourceLine" id="cb439-3" title="3"></a>
+<a class="sourceLine" id="cb439-4" title="4"><span class="co"># Se evalua la derivada obtenida en diferentes valores de x</span></a>
+<a class="sourceLine" id="cb439-5" title="5"><span class="kw">df</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">7</span>))</a></code></pre></div>
 <pre><code>[1] -2  0 10</code></pre>
 <p>El comando <code>D</code> también permite obtener <strong>derivadas parciales</strong> en funciones de múltiples variables. Por ejemplo, suponga la función en dos variables:</p>
 <p><span class="math display">\[f(x,y) = x^3 + x^2y^3 - 2y^2\]</span></p>
 <p>La derivada parcial de <span class="math inline">\(f\)</span> con respecto a <span class="math inline">\(x\)</span> se obtiene asumiendo que <span class="math inline">\(y\)</span> es constante y derivando <span class="math inline">\(f\)</span> con respecto a <span class="math inline">\(x\)</span>:</p>
 <p><span class="math display">\[\dfrac{\delta f}{\delta x} = 3x^2 + 2xy^3\]</span></p>
 <p>Obtener esta derivada parcial (así como <span class="math inline">\(\delta f / \delta y\)</span>) es directo con el comando <code>D</code>:</p>
-<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb358-1" title="1"><span class="co"># Derivada parcial de f con respecto a x</span></a>
-<a class="sourceLine" id="cb358-2" title="2">dfx &lt;-<span class="st"> </span><span class="kw">D</span>(x<span class="op">^</span><span class="dv">3</span> <span class="op">+</span><span class="st"> </span>x<span class="op">^</span><span class="dv">2</span><span class="op">*</span>y<span class="op">^</span><span class="dv">3</span> <span class="op">-</span><span class="st"> </span><span class="dv">2</span><span class="op">*</span>y<span class="op">^</span><span class="dv">2</span> <span class="op">~</span><span class="st">  </span>x)  </a>
-<a class="sourceLine" id="cb358-3" title="3">dfx</a></code></pre></div>
+<div class="sourceCode" id="cb441"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb441-1" title="1"><span class="co"># Derivada parcial de f con respecto a x</span></a>
+<a class="sourceLine" id="cb441-2" title="2">dfx &lt;-<span class="st"> </span><span class="kw">D</span>(x<span class="op">^</span><span class="dv">3</span> <span class="op">+</span><span class="st"> </span>x<span class="op">^</span><span class="dv">2</span><span class="op">*</span>y<span class="op">^</span><span class="dv">3</span> <span class="op">-</span><span class="st"> </span><span class="dv">2</span><span class="op">*</span>y<span class="op">^</span><span class="dv">2</span> <span class="op">~</span><span class="st">  </span>x)  </a>
+<a class="sourceLine" id="cb441-3" title="3">dfx</a></code></pre></div>
 <pre><code>function (x, y = 0) 
 3 * x^2 + 2 * x * y^3</code></pre>
-<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb360-1" title="1"><span class="co"># Derivada parcial de f con respecto a y</span></a>
-<a class="sourceLine" id="cb360-2" title="2">dfy &lt;-<span class="st"> </span><span class="kw">D</span>(x<span class="op">^</span><span class="dv">3</span> <span class="op">+</span><span class="st"> </span>x<span class="op">^</span><span class="dv">2</span><span class="op">*</span>y<span class="op">^</span><span class="dv">3</span> <span class="op">-</span><span class="st"> </span><span class="dv">2</span><span class="op">*</span>y<span class="op">^</span><span class="dv">2</span> <span class="op">~</span><span class="st">  </span>y)</a>
-<a class="sourceLine" id="cb360-3" title="3">dfy</a></code></pre></div>
+<div class="sourceCode" id="cb443"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb443-1" title="1"><span class="co"># Derivada parcial de f con respecto a y</span></a>
+<a class="sourceLine" id="cb443-2" title="2">dfy &lt;-<span class="st"> </span><span class="kw">D</span>(x<span class="op">^</span><span class="dv">3</span> <span class="op">+</span><span class="st"> </span>x<span class="op">^</span><span class="dv">2</span><span class="op">*</span>y<span class="op">^</span><span class="dv">3</span> <span class="op">-</span><span class="st"> </span><span class="dv">2</span><span class="op">*</span>y<span class="op">^</span><span class="dv">2</span> <span class="op">~</span><span class="st">  </span>y)</a>
+<a class="sourceLine" id="cb443-3" title="3">dfy</a></code></pre></div>
 <pre><code>function (y, x = 4.9) 
 x^2 * (3 * y^2) - 2 * (2 * y)</code></pre>
 <p>Note que los objetos resultantes son de tipo <code>function</code>, de tal forma que se pueden usar para evaluarlos en alguna pareja de valores <span class="math inline">\((x, y)\)</span>:</p>
-<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb362-1" title="1"><span class="co"># Se evalua la derivada parcial con respecto a x </span></a>
-<a class="sourceLine" id="cb362-2" title="2"><span class="co"># en un par de valores x, y:</span></a>
-<a class="sourceLine" id="cb362-3" title="3"><span class="kw">dfx</span>(<span class="dt">x =</span> <span class="dv">2</span>, <span class="dt">y =</span> <span class="dv">1</span>) </a></code></pre></div>
+<div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb445-1" title="1"><span class="co"># Se evalua la derivada parcial con respecto a x </span></a>
+<a class="sourceLine" id="cb445-2" title="2"><span class="co"># en un par de valores x, y:</span></a>
+<a class="sourceLine" id="cb445-3" title="3"><span class="kw">dfx</span>(<span class="dt">x =</span> <span class="dv">2</span>, <span class="dt">y =</span> <span class="dv">1</span>) </a></code></pre></div>
 <pre><code>[1] 16</code></pre>
-<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb364-1" title="1"><span class="co"># Se evalua la derivada parcial con respecto a y </span></a>
-<a class="sourceLine" id="cb364-2" title="2"><span class="co"># en un par de valores x, y:</span></a>
-<a class="sourceLine" id="cb364-3" title="3"><span class="kw">dfy</span>(<span class="dt">x =</span> <span class="dv">2</span>, <span class="dt">y =</span> <span class="dv">1</span>) </a></code></pre></div>
+<div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb447-1" title="1"><span class="co"># Se evalua la derivada parcial con respecto a y </span></a>
+<a class="sourceLine" id="cb447-2" title="2"><span class="co"># en un par de valores x, y:</span></a>
+<a class="sourceLine" id="cb447-3" title="3"><span class="kw">dfy</span>(<span class="dt">x =</span> <span class="dv">2</span>, <span class="dt">y =</span> <span class="dv">1</span>) </a></code></pre></div>
 <pre><code>[1] 8</code></pre>
 </div>
 <div id="derivando-con-numdiff-pracma" class="section level3">
 <h3><span class="header-section-number">8.3.2</span> Derivando con <code>numdiff</code> (pracma)</h3>
 <p>El comando <code>numdiff</code> no entrega un objeto tipo <code>function</code> sino que entrega directamente el valor de la derivada en uno o más valores de <span class="math inline">\(x\)</span>. Tiene dos argumentos: la función a derivar y un vector con los valores de <span class="math inline">\(x\)</span> donde se evaluará la derivada. Aquí un ejemplo usando la función de la Figura <a href="8-3-deriv.html#fig:deriv">8.8</a>:</p>
-<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb366-1" title="1">g &lt;-<span class="st"> </span><span class="cf">function</span>(x) (x<span class="dv">-2</span>)<span class="op">^</span><span class="dv">2</span></a>
-<a class="sourceLine" id="cb366-2" title="2"><span class="kw">numdiff</span>(<span class="dt">f =</span> g, <span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">7</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb449"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb449-1" title="1">g &lt;-<span class="st"> </span><span class="cf">function</span>(x) (x<span class="dv">-2</span>)<span class="op">^</span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb449-2" title="2"><span class="kw">numdiff</span>(<span class="dt">f =</span> g, <span class="dt">x =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">7</span>))</a></code></pre></div>
 <pre><code>[1] -2  0 10</code></pre>
 <p>Si busca obtener derivadas parciales con <code>numdiff</code> debe definir una función donde ningún argumento se llame <code>x</code> y debe asignar un valor a la otra variable que se asume constante en la derivación:</p>
-<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb368-1" title="1"><span class="co"># Se define funcion de dos variables:</span></a>
-<a class="sourceLine" id="cb368-2" title="2">f &lt;-<span class="st"> </span><span class="cf">function</span>(w,y) w<span class="op">^</span><span class="dv">3</span> <span class="op">+</span><span class="st"> </span>w<span class="op">^</span><span class="dv">2</span><span class="op">*</span>y<span class="op">^</span><span class="dv">3</span> <span class="op">-</span><span class="st"> </span><span class="dv">2</span><span class="op">*</span>y<span class="op">^</span><span class="dv">2</span></a>
-<a class="sourceLine" id="cb368-3" title="3"></a>
-<a class="sourceLine" id="cb368-4" title="4"><span class="co"># Derivada parcial con respecto a &#39;w&#39;, en w = 2</span></a>
-<a class="sourceLine" id="cb368-5" title="5"><span class="co"># manteniendo constante &#39;y&#39; en 1:</span></a>
-<a class="sourceLine" id="cb368-6" title="6"><span class="kw">numdiff</span>(<span class="dt">f =</span> f, <span class="dt">x =</span> <span class="dv">2</span>, <span class="dt">y =</span> <span class="dv">1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb451-1" title="1"><span class="co"># Se define funcion de dos variables:</span></a>
+<a class="sourceLine" id="cb451-2" title="2">f &lt;-<span class="st"> </span><span class="cf">function</span>(w,y) w<span class="op">^</span><span class="dv">3</span> <span class="op">+</span><span class="st"> </span>w<span class="op">^</span><span class="dv">2</span><span class="op">*</span>y<span class="op">^</span><span class="dv">3</span> <span class="op">-</span><span class="st"> </span><span class="dv">2</span><span class="op">*</span>y<span class="op">^</span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb451-3" title="3"></a>
+<a class="sourceLine" id="cb451-4" title="4"><span class="co"># Derivada parcial con respecto a &#39;w&#39;, en w = 2</span></a>
+<a class="sourceLine" id="cb451-5" title="5"><span class="co"># manteniendo constante &#39;y&#39; en 1:</span></a>
+<a class="sourceLine" id="cb451-6" title="6"><span class="kw">numdiff</span>(<span class="dt">f =</span> f, <span class="dt">x =</span> <span class="dv">2</span>, <span class="dt">y =</span> <span class="dv">1</span>)</a></code></pre></div>
 <pre><code>[1] 16</code></pre>
-<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb370-1" title="1"><span class="co"># Derivada parcial con respecto a &#39;y&#39;, en y = 1</span></a>
-<a class="sourceLine" id="cb370-2" title="2"><span class="co"># manteniendo constante &#39;w&#39; en 2:</span></a>
-<a class="sourceLine" id="cb370-3" title="3"><span class="kw">numdiff</span>(<span class="dt">f =</span> f, <span class="dt">x =</span> <span class="dv">1</span>, <span class="dt">w =</span> <span class="dv">2</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb453-1" title="1"><span class="co"># Derivada parcial con respecto a &#39;y&#39;, en y = 1</span></a>
+<a class="sourceLine" id="cb453-2" title="2"><span class="co"># manteniendo constante &#39;w&#39; en 2:</span></a>
+<a class="sourceLine" id="cb453-3" title="3"><span class="kw">numdiff</span>(<span class="dt">f =</span> f, <span class="dt">x =</span> <span class="dv">1</span>, <span class="dt">w =</span> <span class="dv">2</span>)</a></code></pre></div>
 <pre><code>[1] 8</code></pre>
 </div>
 </div>

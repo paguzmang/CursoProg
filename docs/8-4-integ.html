@@ -170,9 +170,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1.3" data-path="3-1-vectores.html"><a href="3-1-vectores.html#operaciones-aritmeticas-con-vectores"><i class="fa fa-check"></i><b>3.1.3</b> Operaciones aritméticas con vectores</a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html"><i class="fa fa-check"></i><b>3.2</b> Tipos de datos</a><ul>
-<li class="chapter" data-level="3.2.1" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#validando-el-tipo-de-datos"><i class="fa fa-check"></i><b>3.2.1</b> Validando el tipo de datos</a></li>
+<li class="chapter" data-level="3.2.1" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#numeros"><i class="fa fa-check"></i><b>3.2.1</b> Números</a></li>
+<li class="chapter" data-level="3.2.2" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#texto"><i class="fa fa-check"></i><b>3.2.2</b> Texto</a></li>
+<li class="chapter" data-level="3.2.3" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#logicos"><i class="fa fa-check"></i><b>3.2.3</b> Lógicos</a></li>
+<li class="chapter" data-level="3.2.4" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#fechas"><i class="fa fa-check"></i><b>3.2.4</b> Fechas</a></li>
+<li class="chapter" data-level="3.2.5" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#otros-tipos-datos"><i class="fa fa-check"></i><b>3.2.5</b> Otros tipos datos</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="3-3-logicas.html"><a href="3-3-logicas.html"><i class="fa fa-check"></i><b>3.3</b> Expresiones lógicas</a></li>
+<li class="chapter" data-level="3.3" data-path="3-3-logicas.html"><a href="3-3-logicas.html"><i class="fa fa-check"></i><b>3.3</b> Expresiones lógicas</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="3-3-logicas.html"><a href="3-3-logicas.html#tipos-de-expresions-logicas"><i class="fa fa-check"></i><b>3.3.1</b> Tipos de expresions lógicas</a></li>
+<li class="chapter" data-level="3.3.2" data-path="3-3-logicas.html"><a href="3-3-logicas.html#usando-expresiones-logicas-para-contar"><i class="fa fa-check"></i><b>3.3.2</b> Usando expresiones lógicas para contar</a></li>
+</ul></li>
 <li class="chapter" data-level="3.4" data-path="3-4-ejvecTiposDatos.html"><a href="3-4-ejvecTiposDatos.html"><i class="fa fa-check"></i><b>3.4</b> Ejercicios</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="4-otros-tipos-de-objeto.html"><a href="4-otros-tipos-de-objeto.html"><i class="fa fa-check"></i><b>4</b> Otros tipos de objeto</a><ul>
@@ -309,33 +316,33 @@ Figura 8.9: Curva de la función <span class="math inline">\(f(x) = e^{-5x}\)</s
 <p>El comando <code>antiD</code> realice integrales e incluso puede mostrar la forma simbólica de la integral. Entrega un objeto tipo función (al igual que el comando <code>D</code> para derivadas) y este puede ser evaluado en los valores de <span class="math inline">\(x\)</span> requeridos. Por ejemplo, considere la integral indefinida de la función <span class="math inline">\(f(x) = e^{-5x}\)</span> (Figura <a href="8-4-integ.html#fig:garea">8.9</a>), es decir,</p>
 <p><span class="math display">\[ H = \int e^{-5x} dx \]</span></p>
 <p>La integral se puede obtener, con el comando <code>antiD</code>, como:</p>
-<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb372-1" title="1">H &lt;-<span class="st"> </span><span class="kw">antiD</span>(<span class="kw">exp</span>(<span class="op">-</span><span class="dv">5</span><span class="op">*</span>x) <span class="op">~</span><span class="st"> </span>x)</a>
-<a class="sourceLine" id="cb372-2" title="2">H</a></code></pre></div>
+<div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb455-1" title="1">H &lt;-<span class="st"> </span><span class="kw">antiD</span>(<span class="kw">exp</span>(<span class="op">-</span><span class="dv">5</span><span class="op">*</span>x) <span class="op">~</span><span class="st"> </span>x)</a>
+<a class="sourceLine" id="cb455-2" title="2">H</a></code></pre></div>
 <pre><code>function (x, C = 0) 
 -1/5 * exp(-5 * x) + C</code></pre>
 <p>Observe que <code>H</code> es una función y note que la forma simbólica incluye la constante de integración <span class="math inline">\(C\)</span>. Ahora suponga que se desea obtener la integral definida entre <span class="math inline">\(x = 0.1\)</span> y <span class="math inline">\(x = 0.6\)</span> (Figura <a href="8-4-integ.html#fig:garea">8.9</a>), es decir:</p>
 <p><span class="math display">\[ \int_{0.1}^{0.6} e^{-5x} dx = H(0.6) - H(0.1)\]</span></p>
 <p>El área (o integral) solicitada esta dada por:</p>
-<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb374-1" title="1"><span class="kw">H</span>(<span class="fl">0.6</span>) <span class="op">-</span><span class="st"> </span><span class="kw">H</span>(<span class="fl">0.1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb457-1" title="1"><span class="kw">H</span>(<span class="fl">0.6</span>) <span class="op">-</span><span class="st"> </span><span class="kw">H</span>(<span class="fl">0.1</span>)</a></code></pre></div>
 <pre><code>[1] 0.1113487</code></pre>
 <p>Es posible que el comando <code>antiD</code> no pueda encontrar la forma simbólica, pero aún así, realiza integración numérica. En este caso también entrega un objeto tipo función que puede ser evaluado en el valor de <span class="math inline">\(x\)</span> buscado. Considere el siguiente ejemplo:</p>
-<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb376-1" title="1">G &lt;-<span class="st"> </span><span class="kw">antiD</span>(<span class="kw">exp</span>(x<span class="op">^</span><span class="dv">2</span>) <span class="op">~</span><span class="st"> </span>x)</a>
-<a class="sourceLine" id="cb376-2" title="2">G</a></code></pre></div>
+<div class="sourceCode" id="cb459"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb459-1" title="1">G &lt;-<span class="st"> </span><span class="kw">antiD</span>(<span class="kw">exp</span>(x<span class="op">^</span><span class="dv">2</span>) <span class="op">~</span><span class="st"> </span>x)</a>
+<a class="sourceLine" id="cb459-2" title="2">G</a></code></pre></div>
 <pre><code>function (x, C = 0) 
 {
     numerical_integration(.newf, .wrt, as.list(match.call())[-1], 
         formals(), from, ciName = intC, .tol)
 }
-&lt;environment: 0x7f871ddf75e0&gt;</code></pre>
+&lt;environment: 0x7fd885c58e88&gt;</code></pre>
 <p>Note que no se imprime una forma simbólica, pero el resultado continua siendo un objeto tipo función que se puede evaluar en cualquier valor de <span class="math inline">\(x\)</span>:</p>
-<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb378-1" title="1"><span class="kw">G</span>(<span class="dv">3</span>) <span class="op">-</span><span class="st"> </span><span class="kw">G</span>(<span class="fl">0.5</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb461"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb461-1" title="1"><span class="kw">G</span>(<span class="dv">3</span>) <span class="op">-</span><span class="st"> </span><span class="kw">G</span>(<span class="fl">0.5</span>)</a></code></pre></div>
 <pre><code>[1] 1444</code></pre>
 </div>
 <div id="integrando-con-integral-pracma" class="section level3">
 <h3><span class="header-section-number">8.4.2</span> Integrando con <code>integral</code> (pracma)</h3>
 <p>El comando <code>integral</code> realiza una integración numérica (no muestra la forma simbólica) y requiere ademas los limites de la integración. Enseguida mostramos el uso de este comando para mismo ejemplo desarrollado arriba.</p>
-<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb380-1" title="1">f &lt;-<span class="st"> </span><span class="cf">function</span>(x) <span class="kw">exp</span>(<span class="op">-</span><span class="dv">5</span><span class="op">*</span>x)  <span class="co"># se define la funcion</span></a>
-<a class="sourceLine" id="cb380-2" title="2"><span class="kw">integral</span>(<span class="dt">fun =</span> f, <span class="dt">xmin =</span> <span class="fl">0.1</span>, <span class="dt">xmax =</span> <span class="fl">0.6</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb463"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb463-1" title="1">f &lt;-<span class="st"> </span><span class="cf">function</span>(x) <span class="kw">exp</span>(<span class="op">-</span><span class="dv">5</span><span class="op">*</span>x)  <span class="co"># se define la funcion</span></a>
+<a class="sourceLine" id="cb463-2" title="2"><span class="kw">integral</span>(<span class="dt">fun =</span> f, <span class="dt">xmin =</span> <span class="fl">0.1</span>, <span class="dt">xmax =</span> <span class="fl">0.6</span>)</a></code></pre></div>
 <pre><code>[1] 0.1113487</code></pre>
 <p>De la misma librería <strong>pracma</strong>, los comandos <code>integral2</code> e <code>integral3</code> calculan integrales dobles y triples respectivamente.</p>
 </div>

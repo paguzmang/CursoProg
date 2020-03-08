@@ -170,9 +170,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1.3" data-path="3-1-vectores.html"><a href="3-1-vectores.html#operaciones-aritmeticas-con-vectores"><i class="fa fa-check"></i><b>3.1.3</b> Operaciones aritméticas con vectores</a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html"><i class="fa fa-check"></i><b>3.2</b> Tipos de datos</a><ul>
-<li class="chapter" data-level="3.2.1" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#validando-el-tipo-de-datos"><i class="fa fa-check"></i><b>3.2.1</b> Validando el tipo de datos</a></li>
+<li class="chapter" data-level="3.2.1" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#numeros"><i class="fa fa-check"></i><b>3.2.1</b> Números</a></li>
+<li class="chapter" data-level="3.2.2" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#texto"><i class="fa fa-check"></i><b>3.2.2</b> Texto</a></li>
+<li class="chapter" data-level="3.2.3" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#logicos"><i class="fa fa-check"></i><b>3.2.3</b> Lógicos</a></li>
+<li class="chapter" data-level="3.2.4" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#fechas"><i class="fa fa-check"></i><b>3.2.4</b> Fechas</a></li>
+<li class="chapter" data-level="3.2.5" data-path="3-2-tiposDatos.html"><a href="3-2-tiposDatos.html#otros-tipos-datos"><i class="fa fa-check"></i><b>3.2.5</b> Otros tipos datos</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="3-3-logicas.html"><a href="3-3-logicas.html"><i class="fa fa-check"></i><b>3.3</b> Expresiones lógicas</a></li>
+<li class="chapter" data-level="3.3" data-path="3-3-logicas.html"><a href="3-3-logicas.html"><i class="fa fa-check"></i><b>3.3</b> Expresiones lógicas</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="3-3-logicas.html"><a href="3-3-logicas.html#tipos-de-expresions-logicas"><i class="fa fa-check"></i><b>3.3.1</b> Tipos de expresions lógicas</a></li>
+<li class="chapter" data-level="3.3.2" data-path="3-3-logicas.html"><a href="3-3-logicas.html#usando-expresiones-logicas-para-contar"><i class="fa fa-check"></i><b>3.3.2</b> Usando expresiones lógicas para contar</a></li>
+</ul></li>
 <li class="chapter" data-level="3.4" data-path="3-4-ejvecTiposDatos.html"><a href="3-4-ejvecTiposDatos.html"><i class="fa fa-check"></i><b>3.4</b> Ejercicios</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="4-otros-tipos-de-objeto.html"><a href="4-otros-tipos-de-objeto.html"><i class="fa fa-check"></i><b>4</b> Otros tipos de objeto</a><ul>
@@ -297,10 +304,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="appmat" class="section level1">
 <h1><span class="header-section-number">Capítulo 8</span> Aplicaciones en matemáticas</h1>
 <p>La programación computacional es muy útil como alternativa para dar respuestas a problemas matemáticos cuya resolución analítica es compleja. Así, la programación permite desarrollar soluciones <strong>numéricas</strong> para resolver derivadas (y problemas de optimización), integrales, ecuaciones diferenciales o cálculos matriciales grandes, entro otros. En esta sección exploraremos algunos de estos escenarios. Para esto, descargue, instale y active las siguientes librerías:</p>
-<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb328-1" title="1"><span class="co"># Librerias requeridas en esta seccion</span></a>
-<a class="sourceLine" id="cb328-2" title="2"><span class="kw">library</span>(pracma)       <span class="co"># rutinas de metodos numericos</span></a>
-<a class="sourceLine" id="cb328-3" title="3"><span class="kw">library</span>(mosaic)</a>
-<a class="sourceLine" id="cb328-4" title="4"><span class="kw">library</span>(mosaicCalc)   <span class="co"># Funciones para derivacion e integracion numerica</span></a></code></pre></div>
+<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb411-1" title="1"><span class="co"># Librerias requeridas en esta seccion</span></a>
+<a class="sourceLine" id="cb411-2" title="2"><span class="kw">library</span>(pracma)       <span class="co"># rutinas de metodos numericos</span></a>
+<a class="sourceLine" id="cb411-3" title="3"><span class="kw">library</span>(mosaic)</a>
+<a class="sourceLine" id="cb411-4" title="4"><span class="kw">library</span>(mosaicCalc)   <span class="co"># Funciones para derivacion e integracion numerica</span></a></code></pre></div>
 <p>Se recomienda al estudiante repasar los conceptos matemáticos mencionados arriba (derivación, integración, etc.) antes de abordar esta sección.</p> 
 </div>
             </section>
