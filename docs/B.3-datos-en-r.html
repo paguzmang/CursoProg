@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>B.3 Datos en R | Programación básica para las ciencias de la vida</title>
+  <meta name="description" content="Conceptos básicos de programación para biólogos con R" />
+  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="B.3 Datos en R | Programación básica para las ciencias de la vida" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Conceptos básicos de programación para biólogos con R" />
+  <meta name="github-repo" content="paguzmang/CursoProg" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="B.3 Datos en R | Programación básica para las ciencias de la vida" />
+  
+  <meta name="twitter:description" content="Conceptos básicos de programación para biólogos con R" />
+  
+
+<meta name="author" content="Pablo Andrés Guzmán; Juan Alberto Arias Programa de Biología - U.CES" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="B.2-cálculos-en-consola.html"/>
+<link rel="next" href="C-iniciando-con-phyton.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="misEstilos.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Presentación</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="0.1-justificación.html"><a href="0.1-justificación.html"><i class="fa fa-check"></i><b>0.1</b> Justificación</a></li>
+<li class="chapter" data-level="0.2" data-path="0.2-descripción-del-contenido.html"><a href="0.2-descripción-del-contenido.html"><i class="fa fa-check"></i><b>0.2</b> Descripción del contenido</a></li>
+<li class="chapter" data-level="0.3" data-path="0.3-software.html"><a href="0.3-software.html"><i class="fa fa-check"></i><b>0.3</b> Software</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="1-obj.html"><a href="1-obj.html"><i class="fa fa-check"></i><b>1</b> Datos y objetos</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="1.1-datos.html"><a href="1.1-datos.html"><i class="fa fa-check"></i><b>1.1</b> Datos</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="1.1-datos.html"><a href="1.1-datos.html#num"><i class="fa fa-check"></i><b>1.1.1</b> Datos numéricos</a></li>
+<li class="chapter" data-level="1.1.2" data-path="1.1-datos.html"><a href="1.1-datos.html#datos-de-texto"><i class="fa fa-check"></i><b>1.1.2</b> Datos de texto</a></li>
+<li class="chapter" data-level="1.1.3" data-path="1.1-datos.html"><a href="1.1-datos.html#datos-lógicos"><i class="fa fa-check"></i><b>1.1.3</b> Datos lógicos</a></li>
+<li class="chapter" data-level="1.1.4" data-path="1.1-datos.html"><a href="1.1-datos.html#validando-datos"><i class="fa fa-check"></i><b>1.1.4</b> Validando datos</a></li>
+<li class="chapter" data-level="1.1.5" data-path="1.1-datos.html"><a href="1.1-datos.html#ejercicios"><i class="fa fa-check"></i><b>1.1.5</b> Ejercicios</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="1.2-ident.html"><a href="1.2-ident.html"><i class="fa fa-check"></i><b>1.2</b> Identificadores y operadores</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="1.2-ident.html"><a href="1.2-ident.html#identificadores"><i class="fa fa-check"></i><b>1.2.1</b> Identificadores</a></li>
+<li class="chapter" data-level="1.2.2" data-path="1.2-ident.html"><a href="1.2-ident.html#operadores"><i class="fa fa-check"></i><b>1.2.2</b> Operadores</a></li>
+<li class="chapter" data-level="1.2.3" data-path="1.2-ident.html"><a href="1.2-ident.html#ejercicios-1"><i class="fa fa-check"></i><b>1.2.3</b> Ejercicios</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="1.3-objetos.html"><a href="1.3-objetos.html"><i class="fa fa-check"></i><b>1.3</b> Objetos</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="2-graficos.html"><a href="2-graficos.html"><i class="fa fa-check"></i><b>2</b> Gráficos</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="2.1-coordenadas.html"><a href="2.1-coordenadas.html"><i class="fa fa-check"></i><b>2.1</b> Coordenadas</a></li>
+<li class="chapter" data-level="2.2" data-path="2.2-tipos-de-gráficos.html"><a href="2.2-tipos-de-gráficos.html"><i class="fa fa-check"></i><b>2.2</b> Tipos de gráficos</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="3-algoritmo.html"><a href="3-algoritmo.html"><i class="fa fa-check"></i><b>3</b> Algoritmos</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="3.1-características-de-un-algoritmo.html"><a href="3.1-características-de-un-algoritmo.html"><i class="fa fa-check"></i><b>3.1</b> Características de un algoritmo</a></li>
+<li class="chapter" data-level="3.2" data-path="3.2-representación-de-un-algoritmo.html"><a href="3.2-representación-de-un-algoritmo.html"><i class="fa fa-check"></i><b>3.2</b> Representación de un algoritmo</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="3.2-representación-de-un-algoritmo.html"><a href="3.2-representación-de-un-algoritmo.html#pseudocódigo"><i class="fa fa-check"></i><b>3.2.1</b> Pseudocódigo</a></li>
+<li class="chapter" data-level="3.2.2" data-path="3.2-representación-de-un-algoritmo.html"><a href="3.2-representación-de-un-algoritmo.html#diagramas-de-flujo"><i class="fa fa-check"></i><b>3.2.2</b> Diagramas de flujo</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="3.3-prueba-de-escritorio.html"><a href="3.3-prueba-de-escritorio.html"><i class="fa fa-check"></i><b>3.3</b> Prueba de escritorio</a></li>
+<li class="chapter" data-level="3.4" data-path="3.4-recomendaciones-para-el-diseño-de-algoritmos.html"><a href="3.4-recomendaciones-para-el-diseño-de-algoritmos.html"><i class="fa fa-check"></i><b>3.4</b> Recomendaciones para el diseño de algoritmos</a></li>
+<li class="chapter" data-level="3.5" data-path="3.5-funciones.html"><a href="3.5-funciones.html"><i class="fa fa-check"></i><b>3.5</b> Funciones</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="4-tiposProg.html"><a href="4-tiposProg.html"><i class="fa fa-check"></i><b>4</b> Tipos de algoritmos</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="4.1-progSec.html"><a href="4.1-progSec.html"><i class="fa fa-check"></i><b>4.1</b> Algoritmos secuenciales</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="4.1-progSec.html"><a href="4.1-progSec.html#pseudocódigo-1"><i class="fa fa-check"></i><b>4.1.1</b> pseudocódigo</a></li>
+<li class="chapter" data-level="4.1.2" data-path="4.1-progSec.html"><a href="4.1-progSec.html#diagrama-de-flujo"><i class="fa fa-check"></i><b>4.1.2</b> Diagrama de flujo</a></li>
+<li class="chapter" data-level="4.1.3" data-path="4.1-progSec.html"><a href="4.1-progSec.html#probando-el-algoritmo"><i class="fa fa-check"></i><b>4.1.3</b> probando el algoritmo</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="4.2-progCond.html"><a href="4.2-progCond.html"><i class="fa fa-check"></i><b>4.2</b> Programas con condicionales</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="4.2-progCond.html"><a href="4.2-progCond.html#pseudocódigo-2"><i class="fa fa-check"></i><b>4.2.1</b> pseudocódigo</a></li>
+<li class="chapter" data-level="4.2.2" data-path="4.2-progCond.html"><a href="4.2-progCond.html#diagrama-de-flujo-1"><i class="fa fa-check"></i><b>4.2.2</b> Diagrama de flujo</a></li>
+<li class="chapter" data-level="4.2.3" data-path="4.2-progCond.html"><a href="4.2-progCond.html#probando-el-algoritmo-1"><i class="fa fa-check"></i><b>4.2.3</b> probando el algoritmo</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="4.3-ciclos.html"><a href="4.3-ciclos.html"><i class="fa fa-check"></i><b>4.3</b> Programas con ciclos</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="4.3-ciclos.html"><a href="4.3-ciclos.html#pseudocódigo-3"><i class="fa fa-check"></i><b>4.3.1</b> pseudocódigo</a></li>
+<li class="chapter" data-level="4.3.2" data-path="4.3-ciclos.html"><a href="4.3-ciclos.html#diagrama-de-flujo-2"><i class="fa fa-check"></i><b>4.3.2</b> Diagrama de flujo</a></li>
+<li class="chapter" data-level="4.3.3" data-path="4.3-ciclos.html"><a href="4.3-ciclos.html#probando-el-algoritmo-2"><i class="fa fa-check"></i><b>4.3.3</b> probando el algoritmo</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="5-conclu.html"><a href="5-conclu.html"><i class="fa fa-check"></i><b>5</b> Conclusiones</a></li>
+<li class="appendix"><span><b>Anexos</b></span></li>
+<li class="chapter" data-level="A" data-path="A-conceptos-de-matemáticas.html"><a href="A-conceptos-de-matemáticas.html"><i class="fa fa-check"></i><b>A</b> Conceptos de matemáticas</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="A.1-sumatorias.html"><a href="A.1-sumatorias.html"><i class="fa fa-check"></i><b>A.1</b> Sumatorias</a></li>
+<li class="chapter" data-level="A.2" data-path="A.2-propiedades-de-potencias.html"><a href="A.2-propiedades-de-potencias.html"><i class="fa fa-check"></i><b>A.2</b> Propiedades de potencias</a></li>
+<li class="chapter" data-level="A.3" data-path="A.3-propiedades-de-logaritmos.html"><a href="A.3-propiedades-de-logaritmos.html"><i class="fa fa-check"></i><b>A.3</b> Propiedades de logaritmos</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="B-iniciando-con-r.html"><a href="B-iniciando-con-r.html"><i class="fa fa-check"></i><b>B</b> Iniciando con R</a>
+<ul>
+<li class="chapter" data-level="B.1" data-path="B.1-instalación.html"><a href="B.1-instalación.html"><i class="fa fa-check"></i><b>B.1</b> Instalación</a></li>
+<li class="chapter" data-level="B.2" data-path="B.2-cálculos-en-consola.html"><a href="B.2-cálculos-en-consola.html"><i class="fa fa-check"></i><b>B.2</b> Cálculos en consola</a></li>
+<li class="chapter" data-level="B.3" data-path="B.3-datos-en-r.html"><a href="B.3-datos-en-r.html"><i class="fa fa-check"></i><b>B.3</b> Datos en R</a>
+<ul>
+<li class="chapter" data-level="B.3.1" data-path="B.3-datos-en-r.html"><a href="B.3-datos-en-r.html#datos-numéricos"><i class="fa fa-check"></i><b>B.3.1</b> Datos numéricos</a></li>
+<li class="chapter" data-level="B.3.2" data-path="B.3-datos-en-r.html"><a href="B.3-datos-en-r.html#datos-de-texto-1"><i class="fa fa-check"></i><b>B.3.2</b> Datos de texto</a></li>
+<li class="chapter" data-level="B.3.3" data-path="B.3-datos-en-r.html"><a href="B.3-datos-en-r.html#datos-lógicos-1"><i class="fa fa-check"></i><b>B.3.3</b> Datos lógicos</a></li>
+<li class="chapter" data-level="B.3.4" data-path="B.3-datos-en-r.html"><a href="B.3-datos-en-r.html#palabras-reservadas"><i class="fa fa-check"></i><b>B.3.4</b> Palabras reservadas</a></li>
+<li class="chapter" data-level="B.3.5" data-path="B.3-datos-en-r.html"><a href="B.3-datos-en-r.html#ejercicios-2"><i class="fa fa-check"></i><b>B.3.5</b> Ejercicios</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="C-iniciando-con-phyton.html"><a href="C-iniciando-con-phyton.html"><i class="fa fa-check"></i><b>C</b> Iniciando con Phyton</a>
+<ul>
+<li class="chapter" data-level="C.1" data-path="C.1-instalación-1.html"><a href="C.1-instalación-1.html"><i class="fa fa-check"></i><b>C.1</b> Instalación</a>
+<ul>
+<li class="chapter" data-level="C.1.1" data-path="C.1-instalación-1.html"><a href="C.1-instalación-1.html#descargando-python"><i class="fa fa-check"></i><b>C.1.1</b> Descargando Python</a></li>
+<li class="chapter" data-level="C.1.2" data-path="C.1-instalación-1.html"><a href="C.1-instalación-1.html#instalando-python"><i class="fa fa-check"></i><b>C.1.2</b> Instalando Python</a></li>
+<li class="chapter" data-level="C.1.3" data-path="C.1-instalación-1.html"><a href="C.1-instalación-1.html#mejorando-la-instalación"><i class="fa fa-check"></i><b>C.1.3</b> Mejorando la instalación</a></li>
+</ul></li>
+<li class="chapter" data-level="C.2" data-path="C.2-cálculos-en-consola-1.html"><a href="C.2-cálculos-en-consola-1.html"><i class="fa fa-check"></i><b>C.2</b> Cálculos en consola</a></li>
+<li class="chapter" data-level="C.3" data-path="C.3-datos-en-python.html"><a href="C.3-datos-en-python.html"><i class="fa fa-check"></i><b>C.3</b> Datos en Python</a>
+<ul>
+<li class="chapter" data-level="C.3.1" data-path="C.3-datos-en-python.html"><a href="C.3-datos-en-python.html#datos-numéricos-1"><i class="fa fa-check"></i><b>C.3.1</b> Datos numéricos</a></li>
+<li class="chapter" data-level="C.3.2" data-path="C.3-datos-en-python.html"><a href="C.3-datos-en-python.html#datos-enteros"><i class="fa fa-check"></i><b>C.3.2</b> Datos enteros</a></li>
+<li class="chapter" data-level="C.3.3" data-path="C.3-datos-en-python.html"><a href="C.3-datos-en-python.html#datos-de-texto-2"><i class="fa fa-check"></i><b>C.3.3</b> Datos de texto</a></li>
+<li class="chapter" data-level="C.3.4" data-path="C.3-datos-en-python.html"><a href="C.3-datos-en-python.html#datos-lógicos-2"><i class="fa fa-check"></i><b>C.3.4</b> Datos lógicos</a></li>
+<li class="chapter" data-level="C.3.5" data-path="C.3-datos-en-python.html"><a href="C.3-datos-en-python.html#palabras-reservadas-1"><i class="fa fa-check"></i><b>C.3.5</b> Palabras reservadas</a></li>
+<li class="chapter" data-level="C.3.6" data-path="C.3-datos-en-python.html"><a href="C.3-datos-en-python.html#ejercicios-3"><i class="fa fa-check"></i><b>C.3.6</b> Ejercicios</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"><em>Programación</em> básica para las ciencias de la vida</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="datos-en-r" class="section level2 hasAnchor" number="7.3">
+<h2><span class="header-section-number">B.3</span> Datos en R<a href="B.3-datos-en-r.html#datos-en-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="datos-numéricos" class="section level3 hasAnchor" number="7.3.1">
+<h3><span class="header-section-number">B.3.1</span> Datos numéricos<a href="B.3-datos-en-r.html#datos-numéricos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Para escribir datos <strong>numéricos</strong> en <strong>R</strong> con decimales use el “punto” como el separador decimal. Aquí algunos ejemplos:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="B.3-datos-en-r.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Codigo R ----</span></span>
+<span id="cb9-2"><a href="B.3-datos-en-r.html#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplos para mostrar escritura de numeros con decimales</span></span>
+<span id="cb9-3"><a href="B.3-datos-en-r.html#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fl">3.89</span></span>
+<span id="cb9-4"><a href="B.3-datos-en-r.html#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span><span class="fl">10.5609</span></span>
+<span id="cb9-5"><a href="B.3-datos-en-r.html#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fl">0.045</span></span></code></pre></div>
+<p><br></p>
+<p>Para escribir números con notación científica en <strong>R</strong> utilice la <code>e</code> seguida del exponente (negativo o positivo). Por ejemplo, si quiere escribir el número -0.00459 = -4.59 x 10<sup>-3</sup> esto se escribiría en <strong>R</strong> como <code>-4.59e-3</code>. A continuación algunos ejemplos:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="B.3-datos-en-r.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Codigo R ----</span></span>
+<span id="cb10-2"><a href="B.3-datos-en-r.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplos para mostrar escritura de numeros con decimales y</span></span>
+<span id="cb10-3"><a href="B.3-datos-en-r.html#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># con notacion cientifica</span></span>
+<span id="cb10-4"><a href="B.3-datos-en-r.html#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fl">1.231e6</span>    <span class="co"># 1.231 x 10^6</span></span>
+<span id="cb10-5"><a href="B.3-datos-en-r.html#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span><span class="fl">4.59e-3</span>   <span class="co"># -4.59 x 10^(-3)</span></span>
+<span id="cb10-6"><a href="B.3-datos-en-r.html#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="fl">67.096e7</span>   <span class="co"># 67.096 x 10^7</span></span></code></pre></div>
+<p>Valide la clase de un número usando el comando <code>class</code>. Ejemplos:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="B.3-datos-en-r.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Codigo R ----</span></span>
+<span id="cb11-2"><a href="B.3-datos-en-r.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplos para mostrar el uso del comando class para </span></span>
+<span id="cb11-3"><a href="B.3-datos-en-r.html#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># preguntar por la clase de un elemento:</span></span>
+<span id="cb11-4"><a href="B.3-datos-en-r.html#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="fl">3.89</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="B.3-datos-en-r.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="fl">1.231e6</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<p>La clase <code>numeric</code> es equivalente a los números <em>reales</em> (con decimales) descritos <a href="1.1-datos.html#num">atrás</a>. Para escribir números <strong>enteros</strong> en <strong>R</strong> sólo escriba los números y listo. Aquí algunos ejemplos:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="B.3-datos-en-r.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Codigo R ----</span></span>
+<span id="cb15-2"><a href="B.3-datos-en-r.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplos para mostrar escritura de numeros enteros</span></span>
+<span id="cb15-3"><a href="B.3-datos-en-r.html#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span></span>
+<span id="cb15-4"><a href="B.3-datos-en-r.html#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span><span class="dv">6</span></span>
+<span id="cb15-5"><a href="B.3-datos-en-r.html#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span></span></code></pre></div>
+<p>No obstante, el hecho de que escribamos números sin decimales, no garantiza que <strong>R</strong> los reconozca como tal. De hecho, la mayoría del tiempo, <strong>R</strong> tiende a reconocer los números como de clase <code>numeric</code>. Observe:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="B.3-datos-en-r.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Codigo R ----</span></span>
+<span id="cb16-2"><a href="B.3-datos-en-r.html#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ¿cual es la clase de numeros escritos sin decimales?</span></span>
+<span id="cb16-3"><a href="B.3-datos-en-r.html#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="B.3-datos-en-r.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="sc">-</span><span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<p>Para forzar a que <strong>R</strong> reconozca un número como entero se debe poner la letra <code>L</code> seguida del número:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="B.3-datos-en-r.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Codigo R ----</span></span>
+<span id="cb20-2"><a href="B.3-datos-en-r.html#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Letra L para forzar la clase &#39;entera&#39;:</span></span>
+<span id="cb20-3"><a href="B.3-datos-en-r.html#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(3L)</span></code></pre></div>
+<pre><code>## [1] &quot;integer&quot;</code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="B.3-datos-en-r.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="sc">-</span>2L)</span></code></pre></div>
+<pre><code>## [1] &quot;integer&quot;</code></pre>
+<p>En la práctica, sin embargo, no es importante hacer esta diferenciación a menos que se este manejando muchos (millones) de datos. En general, un número real tenderá a ocupar más espacio en memoria que uno entero. De resto, cualquier operación se puede realizar del mismo modo con ambas clases.</p>
+</div>
+<div id="datos-de-texto-1" class="section level3 hasAnchor" number="7.3.2">
+<h3><span class="header-section-number">B.3.2</span> Datos de texto<a href="B.3-datos-en-r.html#datos-de-texto-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>En <strong>R</strong> los datos de texto se escriben entre comillas. Pueden ser dobles o sencillas, aunque <strong>R</strong> los imprimirá siempre con comillas dobles. Aquí algunos ejemplos y como se imprimen en la consola de <strong>R</strong>:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="B.3-datos-en-r.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Codigo R ----</span></span>
+<span id="cb24-2"><a href="B.3-datos-en-r.html#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Escritura de valores de texto</span></span>
+<span id="cb24-3"><a href="B.3-datos-en-r.html#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;Puma concolor&quot;</span></span></code></pre></div>
+<pre><code>## [1] &quot;Puma concolor&quot;</code></pre>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="B.3-datos-en-r.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;Puma concolor&#39;</span></span></code></pre></div>
+<pre><code>## [1] &quot;Puma concolor&quot;</code></pre>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="B.3-datos-en-r.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;B456&#39;</span></span></code></pre></div>
+<pre><code>## [1] &quot;B456&quot;</code></pre>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="B.3-datos-en-r.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;El 6 es un numero &#39;par&#39;&quot;</span></span></code></pre></div>
+<pre><code>## [1] &quot;El 6 es un numero &#39;par&#39;&quot;</code></pre>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="B.3-datos-en-r.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;6&#39;</span></span></code></pre></div>
+<pre><code>## [1] &quot;6&quot;</code></pre>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="B.3-datos-en-r.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;7+8&#39;</span></span></code></pre></div>
+<pre><code>## [1] &quot;7+8&quot;</code></pre>
+<p>La clave para escribir un dato de texto es respetar las comillas de apertura y de cierre.</p>
+</div>
+<div id="datos-lógicos-1" class="section level3 hasAnchor" number="7.3.3">
+<h3><span class="header-section-number">B.3.3</span> Datos lógicos<a href="B.3-datos-en-r.html#datos-lógicos-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>En <strong>R</strong> los datos lógicos se escriben como <code>TRUE</code> (Verdadero) o <code>FALSE</code> (Falso). También sirve escribir, de forma abreviada, sólo <code>T</code> (Verdadero) o <code>F</code> (Falso). Observe la escritura de estos valores y su impresión en consola:</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="B.3-datos-en-r.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Codigo R ----</span></span>
+<span id="cb36-2"><a href="B.3-datos-en-r.html#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Escritura de valores logicos</span></span>
+<span id="cb36-3"><a href="B.3-datos-en-r.html#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="cn">TRUE</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="B.3-datos-en-r.html#cb38-1" aria-hidden="true" tabindex="-1"></a>T</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="B.3-datos-en-r.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="cn">FALSE</span></span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="B.3-datos-en-r.html#cb42-1" aria-hidden="true" tabindex="-1"></a>F</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<p>Los datos lógicos se originan cuando se evaluan expresiones lógicas tal como:</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="B.3-datos-en-r.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Codigo R ----</span></span>
+<span id="cb44-2"><a href="B.3-datos-en-r.html#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Escritura de valores logicos</span></span>
+<span id="cb44-3"><a href="B.3-datos-en-r.html#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="sc">&gt;</span> <span class="dv">2</span>     <span class="co"># ¿el 5  es mayor que 2?</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="B.3-datos-en-r.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="sc">&lt;</span> <span class="dv">5</span>    <span class="co"># ¿el 10 es menor que 5?</span></span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<p>Estudiaremos en detalle expresiones lógicas que involucran datos numéricos y de texto en la sección XXXXXXX.</p>
+</div>
+<div id="palabras-reservadas" class="section level3 hasAnchor" number="7.3.4">
+<h3><span class="header-section-number">B.3.4</span> Palabras reservadas<a href="B.3-datos-en-r.html#palabras-reservadas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>En <strong>R</strong> tenemos ciertas palabras que están reservadas para significar resultados (datos) especiales y por ende no van entre comillas y deben escribir tal como se indican. Algunas de estas son:</p>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Palabra reservada
+</th>
+<th style="text-align:left;">
+Descripción
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<code>TRUE</code>
+</td>
+<td style="text-align:left;">
+Verdadero
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>FALSE</code>
+</td>
+<td style="text-align:left;">
+Falso
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>NA</code>
+</td>
+<td style="text-align:left;">
+Dato perdido
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>NaN</code>
+</td>
+<td style="text-align:left;">
+No es número
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>NULL</code>
+</td>
+<td style="text-align:left;">
+Elemento Nulo, no existe
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>Inf</code>
+</td>
+<td style="text-align:left;">
+Infinito
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>-Inf</code>
+</td>
+<td style="text-align:left;">
+Menos infinito
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="ejercicios-2" class="section level3 hasAnchor" number="7.3.5">
+<h3><span class="header-section-number">B.3.5</span> Ejercicios<a href="B.3-datos-en-r.html#ejercicios-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>En <strong>R</strong>, escriba de tres formas diferentes el número 4.5625 en notación científica manteniendo tres decimales. (Ayuda. una forma sería: <code>4563e-3</code>)</li>
+</ol>
+<iframe width="100%" height="300" src="https://rdrr.io/snippets/embed/" frameborder="0">
+</iframe>
+<ol start="2" style="list-style-type: decimal">
+<li><p>En <strong>R</strong>, escriba el número <span class="math inline">\(\pi\)</span> (3.1415927) en notación científica de dos maneras diferentes y manteniendo tres decimales.</p></li>
+<li><p>En <strong>R</strong> valide la clase (<code>class</code>) de los siguientes números: <code>-3</code> y <code>-3L</code>, <code>0</code>, <code>0L</code> <code>3.78</code>, <code>45.124e-6</code>.</p></li>
+<li><p>En <strong>R</strong> escriba el texto <code>'Solo se: "que nada se"'</code>; <code>'Todos los modelos son incorrectos, algunos son útiles'</code></p></li>
+<li><p>Ejercicios de logicos en R</p></li>
+</ol>
+</div>
+</div>
+<!-- </div> -->
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="B.2-cálculos-en-consola.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="C-iniciando-con-phyton.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

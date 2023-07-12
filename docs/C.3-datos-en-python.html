@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>C.3 Datos en Python | Programación básica para las ciencias de la vida</title>
+  <meta name="description" content="Conceptos básicos de programación para biólogos con R" />
+  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="C.3 Datos en Python | Programación básica para las ciencias de la vida" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Conceptos básicos de programación para biólogos con R" />
+  <meta name="github-repo" content="paguzmang/CursoProg" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="C.3 Datos en Python | Programación básica para las ciencias de la vida" />
+  
+  <meta name="twitter:description" content="Conceptos básicos de programación para biólogos con R" />
+  
+
+<meta name="author" content="Pablo Andrés Guzmán; Juan Alberto Arias Programa de Biología - U.CES" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="C.2-cálculos-en-consola-1.html"/>
+<link rel="next" href="referencias.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="misEstilos.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Presentación</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="0.1-justificación.html"><a href="0.1-justificación.html"><i class="fa fa-check"></i><b>0.1</b> Justificación</a></li>
+<li class="chapter" data-level="0.2" data-path="0.2-descripción-del-contenido.html"><a href="0.2-descripción-del-contenido.html"><i class="fa fa-check"></i><b>0.2</b> Descripción del contenido</a></li>
+<li class="chapter" data-level="0.3" data-path="0.3-software.html"><a href="0.3-software.html"><i class="fa fa-check"></i><b>0.3</b> Software</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="1-obj.html"><a href="1-obj.html"><i class="fa fa-check"></i><b>1</b> Datos y objetos</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="1.1-datos.html"><a href="1.1-datos.html"><i class="fa fa-check"></i><b>1.1</b> Datos</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="1.1-datos.html"><a href="1.1-datos.html#num"><i class="fa fa-check"></i><b>1.1.1</b> Datos numéricos</a></li>
+<li class="chapter" data-level="1.1.2" data-path="1.1-datos.html"><a href="1.1-datos.html#datos-de-texto"><i class="fa fa-check"></i><b>1.1.2</b> Datos de texto</a></li>
+<li class="chapter" data-level="1.1.3" data-path="1.1-datos.html"><a href="1.1-datos.html#datos-lógicos"><i class="fa fa-check"></i><b>1.1.3</b> Datos lógicos</a></li>
+<li class="chapter" data-level="1.1.4" data-path="1.1-datos.html"><a href="1.1-datos.html#validando-datos"><i class="fa fa-check"></i><b>1.1.4</b> Validando datos</a></li>
+<li class="chapter" data-level="1.1.5" data-path="1.1-datos.html"><a href="1.1-datos.html#ejercicios"><i class="fa fa-check"></i><b>1.1.5</b> Ejercicios</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="1.2-ident.html"><a href="1.2-ident.html"><i class="fa fa-check"></i><b>1.2</b> Identificadores y operadores</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="1.2-ident.html"><a href="1.2-ident.html#identificadores"><i class="fa fa-check"></i><b>1.2.1</b> Identificadores</a></li>
+<li class="chapter" data-level="1.2.2" data-path="1.2-ident.html"><a href="1.2-ident.html#operadores"><i class="fa fa-check"></i><b>1.2.2</b> Operadores</a></li>
+<li class="chapter" data-level="1.2.3" data-path="1.2-ident.html"><a href="1.2-ident.html#ejercicios-1"><i class="fa fa-check"></i><b>1.2.3</b> Ejercicios</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="1.3-objetos.html"><a href="1.3-objetos.html"><i class="fa fa-check"></i><b>1.3</b> Objetos</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="2-graficos.html"><a href="2-graficos.html"><i class="fa fa-check"></i><b>2</b> Gráficos</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="2.1-coordenadas.html"><a href="2.1-coordenadas.html"><i class="fa fa-check"></i><b>2.1</b> Coordenadas</a></li>
+<li class="chapter" data-level="2.2" data-path="2.2-tipos-de-gráficos.html"><a href="2.2-tipos-de-gráficos.html"><i class="fa fa-check"></i><b>2.2</b> Tipos de gráficos</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="3-algoritmo.html"><a href="3-algoritmo.html"><i class="fa fa-check"></i><b>3</b> Algoritmos</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="3.1-características-de-un-algoritmo.html"><a href="3.1-características-de-un-algoritmo.html"><i class="fa fa-check"></i><b>3.1</b> Características de un algoritmo</a></li>
+<li class="chapter" data-level="3.2" data-path="3.2-representación-de-un-algoritmo.html"><a href="3.2-representación-de-un-algoritmo.html"><i class="fa fa-check"></i><b>3.2</b> Representación de un algoritmo</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="3.2-representación-de-un-algoritmo.html"><a href="3.2-representación-de-un-algoritmo.html#pseudocódigo"><i class="fa fa-check"></i><b>3.2.1</b> Pseudocódigo</a></li>
+<li class="chapter" data-level="3.2.2" data-path="3.2-representación-de-un-algoritmo.html"><a href="3.2-representación-de-un-algoritmo.html#diagramas-de-flujo"><i class="fa fa-check"></i><b>3.2.2</b> Diagramas de flujo</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="3.3-prueba-de-escritorio.html"><a href="3.3-prueba-de-escritorio.html"><i class="fa fa-check"></i><b>3.3</b> Prueba de escritorio</a></li>
+<li class="chapter" data-level="3.4" data-path="3.4-recomendaciones-para-el-diseño-de-algoritmos.html"><a href="3.4-recomendaciones-para-el-diseño-de-algoritmos.html"><i class="fa fa-check"></i><b>3.4</b> Recomendaciones para el diseño de algoritmos</a></li>
+<li class="chapter" data-level="3.5" data-path="3.5-funciones.html"><a href="3.5-funciones.html"><i class="fa fa-check"></i><b>3.5</b> Funciones</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="4-tiposProg.html"><a href="4-tiposProg.html"><i class="fa fa-check"></i><b>4</b> Tipos de algoritmos</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="4.1-progSec.html"><a href="4.1-progSec.html"><i class="fa fa-check"></i><b>4.1</b> Algoritmos secuenciales</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="4.1-progSec.html"><a href="4.1-progSec.html#pseudocódigo-1"><i class="fa fa-check"></i><b>4.1.1</b> pseudocódigo</a></li>
+<li class="chapter" data-level="4.1.2" data-path="4.1-progSec.html"><a href="4.1-progSec.html#diagrama-de-flujo"><i class="fa fa-check"></i><b>4.1.2</b> Diagrama de flujo</a></li>
+<li class="chapter" data-level="4.1.3" data-path="4.1-progSec.html"><a href="4.1-progSec.html#probando-el-algoritmo"><i class="fa fa-check"></i><b>4.1.3</b> probando el algoritmo</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="4.2-progCond.html"><a href="4.2-progCond.html"><i class="fa fa-check"></i><b>4.2</b> Programas con condicionales</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="4.2-progCond.html"><a href="4.2-progCond.html#pseudocódigo-2"><i class="fa fa-check"></i><b>4.2.1</b> pseudocódigo</a></li>
+<li class="chapter" data-level="4.2.2" data-path="4.2-progCond.html"><a href="4.2-progCond.html#diagrama-de-flujo-1"><i class="fa fa-check"></i><b>4.2.2</b> Diagrama de flujo</a></li>
+<li class="chapter" data-level="4.2.3" data-path="4.2-progCond.html"><a href="4.2-progCond.html#probando-el-algoritmo-1"><i class="fa fa-check"></i><b>4.2.3</b> probando el algoritmo</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="4.3-ciclos.html"><a href="4.3-ciclos.html"><i class="fa fa-check"></i><b>4.3</b> Programas con ciclos</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="4.3-ciclos.html"><a href="4.3-ciclos.html#pseudocódigo-3"><i class="fa fa-check"></i><b>4.3.1</b> pseudocódigo</a></li>
+<li class="chapter" data-level="4.3.2" data-path="4.3-ciclos.html"><a href="4.3-ciclos.html#diagrama-de-flujo-2"><i class="fa fa-check"></i><b>4.3.2</b> Diagrama de flujo</a></li>
+<li class="chapter" data-level="4.3.3" data-path="4.3-ciclos.html"><a href="4.3-ciclos.html#probando-el-algoritmo-2"><i class="fa fa-check"></i><b>4.3.3</b> probando el algoritmo</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="5-conclu.html"><a href="5-conclu.html"><i class="fa fa-check"></i><b>5</b> Conclusiones</a></li>
+<li class="appendix"><span><b>Anexos</b></span></li>
+<li class="chapter" data-level="A" data-path="A-conceptos-de-matemáticas.html"><a href="A-conceptos-de-matemáticas.html"><i class="fa fa-check"></i><b>A</b> Conceptos de matemáticas</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="A.1-sumatorias.html"><a href="A.1-sumatorias.html"><i class="fa fa-check"></i><b>A.1</b> Sumatorias</a></li>
+<li class="chapter" data-level="A.2" data-path="A.2-propiedades-de-potencias.html"><a href="A.2-propiedades-de-potencias.html"><i class="fa fa-check"></i><b>A.2</b> Propiedades de potencias</a></li>
+<li class="chapter" data-level="A.3" data-path="A.3-propiedades-de-logaritmos.html"><a href="A.3-propiedades-de-logaritmos.html"><i class="fa fa-check"></i><b>A.3</b> Propiedades de logaritmos</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="B-iniciando-con-r.html"><a href="B-iniciando-con-r.html"><i class="fa fa-check"></i><b>B</b> Iniciando con R</a>
+<ul>
+<li class="chapter" data-level="B.1" data-path="B.1-instalación.html"><a href="B.1-instalación.html"><i class="fa fa-check"></i><b>B.1</b> Instalación</a></li>
+<li class="chapter" data-level="B.2" data-path="B.2-cálculos-en-consola.html"><a href="B.2-cálculos-en-consola.html"><i class="fa fa-check"></i><b>B.2</b> Cálculos en consola</a></li>
+<li class="chapter" data-level="B.3" data-path="B.3-datos-en-r.html"><a href="B.3-datos-en-r.html"><i class="fa fa-check"></i><b>B.3</b> Datos en R</a>
+<ul>
+<li class="chapter" data-level="B.3.1" data-path="B.3-datos-en-r.html"><a href="B.3-datos-en-r.html#datos-numéricos"><i class="fa fa-check"></i><b>B.3.1</b> Datos numéricos</a></li>
+<li class="chapter" data-level="B.3.2" data-path="B.3-datos-en-r.html"><a href="B.3-datos-en-r.html#datos-de-texto-1"><i class="fa fa-check"></i><b>B.3.2</b> Datos de texto</a></li>
+<li class="chapter" data-level="B.3.3" data-path="B.3-datos-en-r.html"><a href="B.3-datos-en-r.html#datos-lógicos-1"><i class="fa fa-check"></i><b>B.3.3</b> Datos lógicos</a></li>
+<li class="chapter" data-level="B.3.4" data-path="B.3-datos-en-r.html"><a href="B.3-datos-en-r.html#palabras-reservadas"><i class="fa fa-check"></i><b>B.3.4</b> Palabras reservadas</a></li>
+<li class="chapter" data-level="B.3.5" data-path="B.3-datos-en-r.html"><a href="B.3-datos-en-r.html#ejercicios-2"><i class="fa fa-check"></i><b>B.3.5</b> Ejercicios</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="C-iniciando-con-phyton.html"><a href="C-iniciando-con-phyton.html"><i class="fa fa-check"></i><b>C</b> Iniciando con Phyton</a>
+<ul>
+<li class="chapter" data-level="C.1" data-path="C.1-instalación-1.html"><a href="C.1-instalación-1.html"><i class="fa fa-check"></i><b>C.1</b> Instalación</a>
+<ul>
+<li class="chapter" data-level="C.1.1" data-path="C.1-instalación-1.html"><a href="C.1-instalación-1.html#descargando-python"><i class="fa fa-check"></i><b>C.1.1</b> Descargando Python</a></li>
+<li class="chapter" data-level="C.1.2" data-path="C.1-instalación-1.html"><a href="C.1-instalación-1.html#instalando-python"><i class="fa fa-check"></i><b>C.1.2</b> Instalando Python</a></li>
+<li class="chapter" data-level="C.1.3" data-path="C.1-instalación-1.html"><a href="C.1-instalación-1.html#mejorando-la-instalación"><i class="fa fa-check"></i><b>C.1.3</b> Mejorando la instalación</a></li>
+</ul></li>
+<li class="chapter" data-level="C.2" data-path="C.2-cálculos-en-consola-1.html"><a href="C.2-cálculos-en-consola-1.html"><i class="fa fa-check"></i><b>C.2</b> Cálculos en consola</a></li>
+<li class="chapter" data-level="C.3" data-path="C.3-datos-en-python.html"><a href="C.3-datos-en-python.html"><i class="fa fa-check"></i><b>C.3</b> Datos en Python</a>
+<ul>
+<li class="chapter" data-level="C.3.1" data-path="C.3-datos-en-python.html"><a href="C.3-datos-en-python.html#datos-numéricos-1"><i class="fa fa-check"></i><b>C.3.1</b> Datos numéricos</a></li>
+<li class="chapter" data-level="C.3.2" data-path="C.3-datos-en-python.html"><a href="C.3-datos-en-python.html#datos-enteros"><i class="fa fa-check"></i><b>C.3.2</b> Datos enteros</a></li>
+<li class="chapter" data-level="C.3.3" data-path="C.3-datos-en-python.html"><a href="C.3-datos-en-python.html#datos-de-texto-2"><i class="fa fa-check"></i><b>C.3.3</b> Datos de texto</a></li>
+<li class="chapter" data-level="C.3.4" data-path="C.3-datos-en-python.html"><a href="C.3-datos-en-python.html#datos-lógicos-2"><i class="fa fa-check"></i><b>C.3.4</b> Datos lógicos</a></li>
+<li class="chapter" data-level="C.3.5" data-path="C.3-datos-en-python.html"><a href="C.3-datos-en-python.html#palabras-reservadas-1"><i class="fa fa-check"></i><b>C.3.5</b> Palabras reservadas</a></li>
+<li class="chapter" data-level="C.3.6" data-path="C.3-datos-en-python.html"><a href="C.3-datos-en-python.html#ejercicios-3"><i class="fa fa-check"></i><b>C.3.6</b> Ejercicios</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i>Referencias</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"><em>Programación</em> básica para las ciencias de la vida</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="datos-en-python" class="section level2 hasAnchor" number="8.3">
+<h2><span class="header-section-number">C.3</span> Datos en Python<a href="C.3-datos-en-python.html#datos-en-python" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="datos-numéricos-1" class="section level3 hasAnchor" number="8.3.1">
+<h3><span class="header-section-number">C.3.1</span> Datos numéricos<a href="C.3-datos-en-python.html#datos-numéricos-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Al igual que en <strong>R</strong>, para escribir datos con punto decimal en <strong>Python</strong>, utilice el caracter “punto” como separador decimal.</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb48-1"><a href="C.3-datos-en-python.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Codigo Python ----</span></span>
+<span id="cb48-2"><a href="C.3-datos-en-python.html#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplos para mostrar escritura de numeros con decimales</span></span>
+<span id="cb48-3"><a href="C.3-datos-en-python.html#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="fl">3.89</span></span>
+<span id="cb48-4"><a href="C.3-datos-en-python.html#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="op">-</span><span class="fl">10.5609</span></span>
+<span id="cb48-5"><a href="C.3-datos-en-python.html#cb48-5" aria-hidden="true" tabindex="-1"></a><span class="fl">0.045</span></span></code></pre></div>
+<p>Para escribir números con notación científica en <strong>Python</strong>, aplique la misma estrategía que en <strong>R</strong>, utilice la <code>e</code> seguida del exponente (negativo o positivo). Por ejemplo, si quiere escribir el número -0.00459 = -4.59 x 10<sup>-3</sup> esto se escribiría en <strong>Python</strong> como <code>-4.59e-3</code>. A continuación algunos ejemplos:</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb49-1"><a href="C.3-datos-en-python.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Codigo Python ----</span></span>
+<span id="cb49-2"><a href="C.3-datos-en-python.html#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplos para mostrar escritura de numeros con punto decimal</span></span>
+<span id="cb49-3"><a href="C.3-datos-en-python.html#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="co"># y con notacion cientifica:</span></span>
+<span id="cb49-4"><a href="C.3-datos-en-python.html#cb49-4" aria-hidden="true" tabindex="-1"></a><span class="fl">1.231e6</span>    <span class="co"># 1.231 x 10^6</span></span>
+<span id="cb49-5"><a href="C.3-datos-en-python.html#cb49-5" aria-hidden="true" tabindex="-1"></a><span class="op">-</span><span class="fl">4.59e-3</span>   <span class="co"># -4.59 x 10^(-3)</span></span></code></pre></div>
+</div>
+<div id="datos-enteros" class="section level3 hasAnchor" number="8.3.2">
+<h3><span class="header-section-number">C.3.2</span> Datos enteros<a href="C.3-datos-en-python.html#datos-enteros" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Para escribir datos enteros en <strong>Python</strong>, simplemente no utilice el punto. Aquí algunos ejemplos:</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb50-1"><a href="C.3-datos-en-python.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Codigo Python ----</span></span>
+<span id="cb50-2"><a href="C.3-datos-en-python.html#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplos para mostrar escritura de numeros enteros:</span></span>
+<span id="cb50-3"><a href="C.3-datos-en-python.html#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="dv">40</span></span>
+<span id="cb50-4"><a href="C.3-datos-en-python.html#cb50-4" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span></span>
+<span id="cb50-5"><a href="C.3-datos-en-python.html#cb50-5" aria-hidden="true" tabindex="-1"></a><span class="op">-</span><span class="dv">10</span></span></code></pre></div>
+<p>En <strong>Python</strong>, el comando <code>type</code> recibe un dato y devuelve su tipo. Por ejemplo:</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb51-1"><a href="C.3-datos-en-python.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Codigo Python</span></span>
+<span id="cb51-2"><a href="C.3-datos-en-python.html#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplos para validar tipos de datos con el comando &#39;type&#39;</span></span>
+<span id="cb51-3"><a href="C.3-datos-en-python.html#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(<span class="dv">10</span>)</span></code></pre></div>
+<pre><code>## &lt;class &#39;int&#39;&gt;</code></pre>
+<div class="sourceCode" id="cb53"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb53-1"><a href="C.3-datos-en-python.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(<span class="op">-</span><span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## &lt;class &#39;int&#39;&gt;</code></pre>
+<div class="sourceCode" id="cb55"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb55-1"><a href="C.3-datos-en-python.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(<span class="fl">10.</span>)</span></code></pre></div>
+<pre><code>## &lt;class &#39;float&#39;&gt;</code></pre>
+<p>El texto <code>int</code> es la abreviación de <code>integer</code>, mientras que el texto <code>float</code> es la abreviación de un número real o con punto decimal. Observe en el último ejemplo que al usar el “punto” en el número <code>10.</code>, <strong>Python</strong> lo considera directamente como un número con punto decimal. En otro ejemplo, ejecute el siguiente código <strong>Python</strong> para validar el tipo de dato en cada caso:</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb57-1"><a href="C.3-datos-en-python.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Codigo Python -----</span></span>
+<span id="cb57-2"><a href="C.3-datos-en-python.html#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplos para validar tipos de datos con el comando &#39;type&#39;</span></span>
+<span id="cb57-3"><a href="C.3-datos-en-python.html#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(<span class="dv">10000</span>)</span>
+<span id="cb57-4"><a href="C.3-datos-en-python.html#cb57-4" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(<span class="fl">1e4</span>)</span></code></pre></div>
+<p>También podemos usar el comando <code>isinstance</code> para validar si un dato es de cierto tipo o clase. Observe el siguiente ejemplo:</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb58-1"><a href="C.3-datos-en-python.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Codigo Python ----- </span></span>
+<span id="cb58-2"><a href="C.3-datos-en-python.html#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo de uso del comando &#39;isinstance&#39; para validar un tipo de dato</span></span>
+<span id="cb58-3"><a href="C.3-datos-en-python.html#cb58-3" aria-hidden="true" tabindex="-1"></a><span class="bu">isinstance</span>(<span class="dv">4</span>, <span class="bu">int</span>)      <span class="co"># el 4 es un entero?&#39;</span></span></code></pre></div>
+<pre><code>## True</code></pre>
+<div class="sourceCode" id="cb60"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb60-1"><a href="C.3-datos-en-python.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="bu">isinstance</span>(<span class="fl">4.</span>, <span class="bu">int</span>)     <span class="co"># el 4. es un entero?&#39;</span></span></code></pre></div>
+<pre><code>## False</code></pre>
+<div class="sourceCode" id="cb62"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb62-1"><a href="C.3-datos-en-python.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="bu">isinstance</span>(<span class="fl">4.</span>, <span class="bu">float</span>)   <span class="co"># el 4. es numerico (double o float)?&#39;</span></span></code></pre></div>
+<pre><code>## True</code></pre>
+<p><br></p>
+</div>
+<div id="datos-de-texto-2" class="section level3 hasAnchor" number="8.3.3">
+<h3><span class="header-section-number">C.3.3</span> Datos de texto<a href="C.3-datos-en-python.html#datos-de-texto-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>En <strong>Python</strong>, los datos de texto, al igual que en <strong>R</strong>, se escriben entre comillas, dobles o sencillas. Ejecute el siguiente código:</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb64-1"><a href="C.3-datos-en-python.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Codigo Python -----</span></span>
+<span id="cb64-2"><a href="C.3-datos-en-python.html#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplos para mostrar escritura de datos de texto:</span></span>
+<span id="cb64-3"><a href="C.3-datos-en-python.html#cb64-3" aria-hidden="true" tabindex="-1"></a><span class="co">&quot;Hola mundo&quot;</span></span>
+<span id="cb64-4"><a href="C.3-datos-en-python.html#cb64-4" aria-hidden="true" tabindex="-1"></a><span class="co">&#39;Hola mundo&#39;</span></span>
+<span id="cb64-5"><a href="C.3-datos-en-python.html#cb64-5" aria-hidden="true" tabindex="-1"></a><span class="co">&#39;45&#39;</span></span>
+<span id="cb64-6"><a href="C.3-datos-en-python.html#cb64-6" aria-hidden="true" tabindex="-1"></a><span class="co">&#39;45 + 89&#39;</span></span>
+<span id="cb64-7"><a href="C.3-datos-en-python.html#cb64-7" aria-hidden="true" tabindex="-1"></a><span class="co">&#39;56ABg&#39;</span></span></code></pre></div>
+<p>Al usar el comando <code>type</code> sobre un dato de texto, <strong>Python</strong> devuelve <code>str</code>, la abreviación de <code>string</code> (cadena). Aquí algunos ejemplos:</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb65-1"><a href="C.3-datos-en-python.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Codigo Python -----</span></span>
+<span id="cb65-2"><a href="C.3-datos-en-python.html#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplos para validar tipos de datos con el comando &#39;type&#39;</span></span>
+<span id="cb65-3"><a href="C.3-datos-en-python.html#cb65-3" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(<span class="st">&quot;Hola mundo&quot;</span>)</span></code></pre></div>
+<pre><code>## &lt;class &#39;str&#39;&gt;</code></pre>
+<div class="sourceCode" id="cb67"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb67-1"><a href="C.3-datos-en-python.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(<span class="st">&#39;45&#39;</span>)</span></code></pre></div>
+<pre><code>## &lt;class &#39;str&#39;&gt;</code></pre>
+</div>
+<div id="datos-lógicos-2" class="section level3 hasAnchor" number="8.3.4">
+<h3><span class="header-section-number">C.3.4</span> Datos lógicos<a href="C.3-datos-en-python.html#datos-lógicos-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>En <strong>Python</strong>, los datos lógicos se escriben como <code>True</code> y <code>False</code>. Así, sin comillas, con la primera mayúscula y las demas minúsculas.</p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb69-1"><a href="C.3-datos-en-python.html#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Codigo Python -----</span></span>
+<span id="cb69-2"><a href="C.3-datos-en-python.html#cb69-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplos para escribir valores logicos:</span></span>
+<span id="cb69-3"><a href="C.3-datos-en-python.html#cb69-3" aria-hidden="true" tabindex="-1"></a><span class="va">False</span></span>
+<span id="cb69-4"><a href="C.3-datos-en-python.html#cb69-4" aria-hidden="true" tabindex="-1"></a><span class="va">True</span></span></code></pre></div>
+<p>Al usar el comando <code>type</code> sobre un dato lógico, <strong>Python</strong> devuelve <code>bool</code>, la abreviación de <code>boolean</code> (<a href="https://es.wikipedia.org/wiki/Tipo_de_dato_l%C3%B3gico">booleano ó lógico</a>). Aquí algunos ejemplos:</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb70-1"><a href="C.3-datos-en-python.html#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Codigo Python -----</span></span>
+<span id="cb70-2"><a href="C.3-datos-en-python.html#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplos para validar tipos de datos con el comando &#39;type&#39;</span></span>
+<span id="cb70-3"><a href="C.3-datos-en-python.html#cb70-3" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(<span class="va">True</span>)</span></code></pre></div>
+<pre><code>## &lt;class &#39;bool&#39;&gt;</code></pre>
+<div class="sourceCode" id="cb72"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb72-1"><a href="C.3-datos-en-python.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(<span class="st">&quot;True&quot;</span>)</span></code></pre></div>
+<pre><code>## &lt;class &#39;str&#39;&gt;</code></pre>
+</div>
+<div id="palabras-reservadas-1" class="section level3 hasAnchor" number="8.3.5">
+<h3><span class="header-section-number">C.3.5</span> Palabras reservadas<a href="C.3-datos-en-python.html#palabras-reservadas-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>Python</strong> tiene ciertas palabras</p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb74-1"><a href="C.3-datos-en-python.html#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> keyword</span>
+<span id="cb74-2"><a href="C.3-datos-en-python.html#cb74-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span> (keyword.kwlist)</span></code></pre></div>
+<pre><code>## [&#39;False&#39;, &#39;None&#39;, &#39;True&#39;, &#39;and&#39;, &#39;as&#39;, &#39;assert&#39;, &#39;async&#39;, &#39;await&#39;, &#39;break&#39;, &#39;class&#39;, &#39;continue&#39;, &#39;def&#39;, &#39;del&#39;, &#39;elif&#39;, &#39;else&#39;, &#39;except&#39;, &#39;finally&#39;, &#39;for&#39;, &#39;from&#39;, &#39;global&#39;, &#39;if&#39;, &#39;import&#39;, &#39;in&#39;, &#39;is&#39;, &#39;lambda&#39;, &#39;nonlocal&#39;, &#39;not&#39;, &#39;or&#39;, &#39;pass&#39;, &#39;raise&#39;, &#39;return&#39;, &#39;try&#39;, &#39;while&#39;, &#39;with&#39;, &#39;yield&#39;]</code></pre>
+<p>Armar una tabla como esta para estos resultados equivalentes en Python:</p>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Palabra reservada
+</th>
+<th style="text-align:left;">
+Descripción
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<code>True</code>
+</td>
+<td style="text-align:left;">
+Verdadero
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>False</code>
+</td>
+<td style="text-align:left;">
+Falso
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>None</code>
+</td>
+<td style="text-align:left;">
+Dato perdido
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="ejercicios-3" class="section level3 hasAnchor" number="8.3.6">
+<h3><span class="header-section-number">C.3.6</span> Ejercicios<a href="C.3-datos-en-python.html#ejercicios-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li><p>En <strong>Python</strong>, escriba de tres formas diferentes el número 4.5625 en notación científica manteniendo tres decimales. (Ayuda. una forma sería: <code>4563e-3</code>)</p></li>
+<li><p>En <strong>Python</strong>, escriba el número <span class="math inline">\(\pi\)</span> (3.1415927) en notación científica de dos maneras diferentes y manteniendo tres decimales.</p></li>
+<li><p>En <strong>Python</strong> valide la clase (<code>type</code>) de los siguientes números: <code>-3</code> y <code>-3L</code>, <code>0</code>, <code>0L</code> <code>3.78</code>, <code>4.</code> <code>45.124e-6</code>.</p></li>
+<li><p>Ejercicios de texto</p></li>
+<li><p>Ejercicios de logicos</p></li>
+</ol>
+
+</div>
+</div>
+<!-- </div> -->
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="C.2-cálculos-en-consola-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="referencias.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
