@@ -2,7 +2,7 @@
 title: "_Programación_ básica para las ciencias de la vida"
 subtitle: "Con aplicaciones en **R** y **Phyton**"
 author: "Pablo Andrés Guzmán; Juan Alberto Arias<br>**Programa de Biología - U.CES**"
-date: "Feb 2023"
+date: "Feb 2023 (**Importante: Actualmente en construcción. No usar**)"
 site: bookdown::bookdown_site
 output: 
   bookdown::gitbook:
