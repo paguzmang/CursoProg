@@ -1,0 +1,398 @@
+
+# (APPENDIX) Anexos {-}
+
+# Conceptos de matemáticas
+
+## Sumatorias
+
+En la mayor parte de procesos estadísticos es necesario manipular conjuntos de observaciones numéricas. Para facilitar las operaciones se han desarrollado notaciones para abreviar tales como la notación de sumatoria o productoria.
+
+## Propiedades de potencias
+
+Bla bla
+
+## Propiedades de logaritmos
+
+Bla bla
+
+
+# Iniciando con R
+
+Bla bla
+
+## Instalación
+
+Bla bla
+
+## Cálculos en consola
+
+Bla bla
+
+## Datos en R
+
+### Datos numéricos
+
+Para escribir datos **numéricos** en **R** con decimales use el "punto" como el separador decimal. Aquí algunos ejemplos:
+
+```{r, eval = F}
+# Codigo R ----
+# Ejemplos para mostrar escritura de numeros con decimales
+3.89
+-10.5609
+0.045
+```
+
+<br>
+
+Para escribir números con notación científica en **R** utilice la `e` seguida del exponente (negativo o positivo). Por ejemplo, si quiere escribir el número -0.00459 = -4.59 x 10^-3^ esto se escribiría en **R** como `-4.59e-3`. A continuación algunos ejemplos:
+
+```{r, eval = F}
+# Codigo R ----
+# Ejemplos para mostrar escritura de numeros con decimales y
+# con notacion cientifica
+1.231e6    # 1.231 x 10^6
+-4.59e-3   # -4.59 x 10^(-3)
+67.096e7   # 67.096 x 10^7
+```
+
+Valide la clase de un número usando el comando `class`. Ejemplos:
+
+```{r}
+# Codigo R ----
+# Ejemplos para mostrar el uso del comando class para 
+# preguntar por la clase de un elemento:
+class(3.89)
+class(1.231e6)
+```
+
+La clase `numeric` es equivalente a los números _reales_ (con decimales) descritos [atrás](#num). Para escribir números **enteros** en **R** sólo escriba los números y listo. Aquí algunos ejemplos:
+
+```{r, eval = F}
+# Codigo R ----
+# Ejemplos para mostrar escritura de numeros enteros
+4
+-6
+0
+```
+
+No obstante, el hecho de que escribamos números sin decimales, no garantiza que **R** los reconozca como tal. De hecho, la mayoría del tiempo, **R** tiende a reconocer los números como de clase `numeric`. Observe:
+
+```{r, eval = T}
+# Codigo R ----
+# ¿cual es la clase de numeros escritos sin decimales?
+class(3)
+class(-2)
+```
+
+Para forzar a que **R** reconozca un número como entero se debe poner la letra `L` seguida del número:
+
+```{r, eval = T}
+# Codigo R ----
+# Letra L para forzar la clase 'entera':
+class(3L)
+class(-2L)
+```
+
+En la práctica, sin embargo, no es importante hacer esta diferenciación a menos que se este manejando muchos (millones) de datos. En general, un número real tenderá a ocupar más espacio en memoria que uno entero. De resto, cualquier operación se puede realizar del mismo modo con ambas clases.
+
+
+### Datos de texto
+
+En **R** los datos de texto se escriben entre comillas. Pueden ser dobles o sencillas, aunque **R** los imprimirá siempre con comillas dobles. Aquí algunos ejemplos y como se imprimen en la consola de **R**:
+
+```{r}
+# Codigo R ----
+# Escritura de valores de texto
+"Puma concolor"
+'Puma concolor'
+'B456'
+"El 6 es un numero 'par'"
+'6'
+'7+8'
+```
+
+La clave para escribir un dato de texto es respetar las comillas de apertura y de cierre.
+
+
+### Datos lógicos
+
+En **R** los datos lógicos se escriben como `TRUE` (Verdadero) o `FALSE` (Falso). También sirve escribir, de forma abreviada, sólo `T` (Verdadero) o `F` (Falso). Observe la escritura de estos valores y su impresión en consola:
+
+```{r}
+# Codigo R ----
+# Escritura de valores logicos
+TRUE
+T
+FALSE
+F
+```
+
+Los datos lógicos se originan cuando se evaluan expresiones lógicas tal como:
+
+```{r}
+# Codigo R ----
+# Escritura de valores logicos
+5 > 2     # ¿el 5  es mayor que 2?
+10 < 5    # ¿el 10 es menor que 5?
+```
+
+Estudiaremos en detalle expresiones lógicas que involucran datos numéricos y de texto en la sección XXXXXXX.
+
+
+
+
+### Palabras reservadas
+
+En **R** tenemos ciertas palabras que están reservadas para significar resultados (datos) especiales y por ende no van entre comillas y deben escribir tal como se indican. Algunas de estas son:
+
+```{r, echo = F}
+library(knitr)
+library(kableExtra)
+tibble::tibble(
+  `Palabra reservada` = c('`TRUE`', '`FALSE`',  '`NA`', '`NaN`', 
+                          '`NULL`', '`Inf`', '`-Inf`'),
+  Descripción         = c("Verdadero", "Falso",  "Dato perdido", 
+                          "No es número", "Elemento Nulo, no existe",
+                          "Infinito", "Menos infinito")
+) %>%
+  kable() %>%
+  kable_styling(full_width = F)
+```
+
+### Ejercicios
+
+1. En **R**, escriba de tres formas diferentes el número 4.5625 en notación científica  manteniendo tres decimales. (Ayuda. una forma sería: `4563e-3`)
+
+<iframe width='100%' height='300' src='https://rdrr.io/snippets/embed/' frameborder='0'></iframe>
+
+2. En **R**, escriba  el número $\pi$ (`r pi`) en notación científica de dos maneras diferentes y manteniendo tres decimales.
+
+3. En **R** valide la clase (`class`) de los siguientes números: `-3` y `-3L`, `0`, `0L` `3.78`, `45.124e-6`.
+
+4. En **R** escriba el texto `'Solo se: "que nada se"'`; `'Todos los modelos son incorrectos, algunos son útiles'`
+
+5. Ejercicios de logicos en R
+
+
+# Iniciando con Phyton
+
+[Phyton](https://www.python.org) es un software de alto nivel para programación, de propósito general y de libre distribución. Phyton viene con su propio editor, sin embargo, este es muy básico y se recomienda utilizar algunos otros con mayores atributos que mejoran sustancialmente el manejo del lenguaje. Algunos de estos editores se les conoce como _ambientes de desarrollo integrado_ (IDE, de sus siglas en inglés). Aquí recomendaremos dos editores o IDE's para Python: [PyCharm](https://www.jetbrains.com/es-es/pycharm/) y [Visual Studio Code](https://code.visualstudio.com/).
+
+En las secciones siguientes 
+
+
+http://tpcg.io/_IEWK4L
+
+
+<https://geekflare.com/es/online-python-compiler/>
+
+## Instalación
+
+### Descargando Python
+
+Para descargar el ejecutable (.exe) de Python realice lo siguiente:
+
+- Dirijase al sitio web oficial de Python: <https://www.python.org/downloads/windows/>
+
+- haga clic en el enlace de descarga que corresponda a su versión de Windows y descargue el archivo ejecutable (.exe).
+
+### Instalando Python
+
+Luego de tener el ejecutable descargado, para instalar Python en su computador realice lo siguiente:
+
+- Haga doble clic en el archivo ejecutable (.exe) que fue descargado 
+
+- Seleccione la opción "Add Python x.x to PATH" (x.x corresponde a la versión que usted está instalando).
+
+- Haga clic en "Install Now".
+
+- Espere a que la instalación termine.
+
+
+Para verificar la instalación:
+
+- Abra el símbolo del sistema (cmd).
+
+- Escribe "python" y presiona Enter.
+
+- Si todo está bien instalado, debería ver la versión de Python que acaba de instalar.
+
+Ahora debería tener instalado Python en tu sistema Windows y estar listo para comenzar a trabajar con él. 
+
+### Mejorando la instalación
+
+Si quiere trabajar con paquetes externos, te recomiendo instalar pip, que es el gestor de paquetes de Python. Puedes hacerlo siguiendo estas instrucciones:
+
+PRIMERO
+Descarga get-pip.py: a. Ve al sitio web oficial de pip: https://pip.pypa.io/en/stable/installation/ b. Haz clic en "Download get-pip.py".
+SEGUNDO
+Instala pip: a. Abre el símbolo del sistema (cmd). b. Navega hasta el directorio donde guardaste get-pip.py. c. Escribe "python get-pip.py" y presiona Enter. d. Espera a que la instalación termine.
+
+
+## Cálculos en consola
+
+Bla bla
+
+```{r, include = F}
+library(reticulate)
+```
+
+## Datos en Python
+
+### Datos numéricos 
+
+Al igual que en **R**, para escribir datos con punto decimal en **Python**, utilice el caracter "punto" como separador decimal.
+
+```{python, eval = F}
+# Codigo Python ----
+# Ejemplos para mostrar escritura de numeros con decimales
+3.89
+-10.5609
+0.045
+```
+
+Para escribir números con notación científica en **Python**, aplique la misma estrategía que en **R**, utilice la `e` seguida del exponente (negativo o positivo). Por ejemplo, si quiere escribir el número -0.00459 = -4.59 x 10^-3^ esto se escribiría en **Python** como `-4.59e-3`. A continuación algunos ejemplos:
+
+
+```{python, eval = F}
+# Codigo Python ----
+# Ejemplos para mostrar escritura de numeros con punto decimal
+# y con notacion cientifica:
+1.231e6    # 1.231 x 10^6
+-4.59e-3   # -4.59 x 10^(-3)
+```
+
+
+### Datos enteros 
+
+Para escribir datos enteros en **Python**, simplemente no utilice el punto. Aquí algunos ejemplos:
+
+
+```{python, eval = F}
+# Codigo Python ----
+# Ejemplos para mostrar escritura de numeros enteros:
+40
+5
+-10
+```
+
+
+En **Python**, el comando `type` recibe un dato y devuelve su tipo. Por ejemplo:
+
+```{python, eval = T}
+# Codigo Python
+# Ejemplos para validar tipos de datos con el comando 'type'
+type(10)
+type(-3)
+type(10.)
+```
+
+El texto `int` es la abreviación de `integer`, mientras que el texto `float` es la abreviación de un número real o con punto decimal. Observe en el último ejemplo que al usar el "punto" en el número `10.`, **Python** lo considera directamente como un número con punto decimal. En otro ejemplo, ejecute el siguiente código **Python** para validar el tipo de dato en cada caso:
+
+```{python, eval = F}
+# Codigo Python -----
+# Ejemplos para validar tipos de datos con el comando 'type'
+type(10000)
+type(1e4)
+```
+
+
+También podemos usar el comando `isinstance` para validar si un dato es de cierto tipo o clase. Observe el siguiente ejemplo:
+
+
+```{python}
+# Codigo Python ----- 
+# Ejemplo de uso del comando 'isinstance' para validar un tipo de dato
+isinstance(4, int)      # el 4 es un entero?'
+isinstance(4., int)     # el 4. es un entero?'
+isinstance(4., float)   # el 4. es numerico (double o float)?'
+```
+
+<br>
+
+
+### Datos de texto
+
+En **Python**, los datos de texto, al igual que en **R**, se escriben entre comillas, dobles o sencillas. Ejecute el siguiente código:
+
+```{python, eval = F}
+# Codigo Python -----
+# Ejemplos para mostrar escritura de datos de texto:
+"Hola mundo"
+'Hola mundo'
+'45'
+'45 + 89'
+'56ABg'
+```
+
+Al usar el comando `type` sobre un dato de texto, **Python** devuelve `str`, la abreviación de `string` (cadena). Aquí algunos ejemplos:
+
+```{python, eval = T}
+# Codigo Python -----
+# Ejemplos para validar tipos de datos con el comando 'type'
+type("Hola mundo")
+type('45')
+```
+
+
+### Datos lógicos
+
+En **Python**, los datos lógicos se escriben como `True` y `False`. Así, sin comillas, con la primera mayúscula y las demas minúsculas.
+
+
+```{python, eval = F}
+# Codigo Python -----
+# Ejemplos para escribir valores logicos:
+False
+True
+```
+
+Al usar el comando `type` sobre un dato lógico, **Python** devuelve `bool`, la abreviación de `boolean` ([booleano ó lógico](https://es.wikipedia.org/wiki/Tipo_de_dato_l%C3%B3gico)). Aquí algunos ejemplos:
+
+```{python, eval = T}
+# Codigo Python -----
+# Ejemplos para validar tipos de datos con el comando 'type'
+type(True)
+type("True")
+```
+
+
+### Palabras reservadas
+
+**Python** tiene ciertas palabras
+
+```{python}
+import keyword
+print (keyword.kwlist)
+```
+
+Armar una tabla como esta para estos resultados equivalentes en Python:
+
+```{r, echo = F}
+library(knitr)
+library(kableExtra)
+# No encontramos equivalentes de: NaN, NULL, Inf, -Inf en python
+tibble::tibble(
+  `Palabra reservada` = c('`True`', '`False`',  '`None`'),
+  Descripción         = c("Verdadero", "Falso",  "Dato perdido")
+) %>%
+  kable() %>%
+  kable_styling(full_width = F)
+```
+
+
+### Ejercicios
+
+1. En **Python**, escriba de tres formas diferentes el número 4.5625 en notación científica  manteniendo tres decimales. (Ayuda. una forma sería: `4563e-3`)
+
+2. En **Python**, escriba  el número $\pi$ (`r pi`) en notación científica de dos maneras diferentes y manteniendo tres decimales.
+
+3. En **Python** valide la clase (`type`) de los siguientes números: `-3` y `-3L`, `0`, `0L` `3.78`, `4.` `45.124e-6`.
+
+4. Ejercicios de texto
+
+5. Ejercicios de logicos
+
+
+
+

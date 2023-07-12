@@ -1,0 +1,52 @@
+
+# Tipos de algoritmos {#tiposProg}
+
+Bla bla
+
+## Algoritmos secuenciales {#progSec}
+
+### pseudocódigo
+
+Bla bla
+
+### Diagrama de flujo
+
+Bla bla
+
+### probando el algoritmo
+
+Bla bla
+
+## Programas con condicionales {#progCond}
+
+Bla bla
+
+### pseudocódigo
+
+Bla bla
+
+### Diagrama de flujo
+
+Bla bla
+
+### probando el algoritmo
+
+Bla bla
+
+
+
+
+## Programas con ciclos {#ciclos}
+
+Bla bla
+
+### pseudocódigo
+
+Bla bla
+
+### Diagrama de flujo
+
+Bla bla
+
+### probando el algoritmo
+

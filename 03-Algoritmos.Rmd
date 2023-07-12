@@ -1,0 +1,103 @@
+
+# Algoritmos {#algoritmo}
+
+Un algoritmo es una serie de pasos que permiten resolver un problema. En nuestra vida cotidiana usamos, sin querer, algoritmos. Cuando vamos al supermercado, usalmente colectamos los artículos en cierto orden (p.e., primero la carne, luego productos de aseo, etc.) para finalmente pagar. Cuando cocinamos siguiendo una receta, aplicamos un algoritmo, etc.
+
+En un contexto computacional, un algoritmo es lo mismo, una serie de pasos que permiten resolver un problema, pero que además, debe poder transcribirse a un lenguaje de programación. En este capítulo estudiaremos conceptos básicos sobre el diseño de algoritmos.
+
+## Características de un algoritmo
+
+En contexto computacional, un algoritmo debe ser:
+
+* **Preciso**: Es decir, debe indicar el orden en el cual se realizarán cada uno de los pasos que finalmente resultan en la solución del problema.
+
+* **Definido**: Esto implica que el resultado nunca debe cambiar bajo las mismas condiciones del problema, éste siempre debe ser el mismo.
+
+* **Finito**: No se debe caer en repeticiones del proceso innecesarias; deberá iniciar y terminar en algun momento.
+
+## Representación de un algoritmo
+
+Un algoritmo debería poder describirse en un lenguaje general y de manera precisa que facilite, luego, la transcripción a un lenguaje de programación específico tal como C++, C#, Phyton, R, etc. A dicho lenguaje general se le llama **pseudocódigo**.
+
+### Pseudocódigo
+
+El baljakdfjakdfjdkfjkd
+
+
+```{latex}
+Pseudocodigo para el calculo del volumen de un cubo
+
+Entradas:
+  A: altura (real)
+  B: ancho (real)
+  C: profundidad (real)
+Salidas:
+  V: Volumen
+
+Inicio:
+  1. Leer las medidas A, B y C
+  2. Realizar el producto A*B*C y guardarlo en V
+  3. Escribir el resultado V
+Fin
+```
+
+bakjfakdfjadk
+
+```{latex}
+Calculo del volumen de un cubo ----
+
+Informacion requerida ----
+Entradas:
+  A: altura (real)
+  B: ancho (real)
+  C: profundidad (real)
+Salidas:
+  V: Volumen
+
+Pseudocodigo ----
+Inicio
+  1. Leer las medidas A, B y C
+  2. Realizar el producto A*B*C y guardarlo en V
+  3. Escribir el resultado V
+Fin
+```
+
+
+### Diagramas de flujo
+
+Bla bla
+
+## Prueba de escritorio
+
+Bla bla
+
+## Recomendaciones para el diseño de algoritmos
+
+1. Estudie y entienda el contexto del problema a resolver. Luego, identifique de manera clara cual es:
+    - la información de entrada,
+    - cual será el proceso de transformación de dicha información
+    - y cual será el resultado que requiere ser entregado o impreso:
+
+
+2. Separe el proceso de transformación en componentes o pasos claramente definidos.
+
+3. Si es necesario, subdivida los pasos definidos en la parte (2) en sub-pasos.
+
+4. Identifique con letras o palabras cortas los valores relevantes que aparecieron en (1), (2) y (3).
+
+5. Reuna la información generada en (1), (2) y (3) y escriba el pseudocódigo de su algoritmo utilizando los identificadores definidos en (4).
+
+6. Realice una prueba manual. Asigne valores a la información de entrada y recorra de forma manual el pseudocódigo hasta finalizarlo. Valide que el resultado de dicho recorrido sea el esperado.
+
+7. Transcriba el pseudocódigo a un lenguaje de programación tal como **Python** o **R**.
+
+8. Realice pruebas a su programa. Similar a la prueba realizada en el paso (6) pero con el computador.
+
+9. **Manual de usuario**: Documente su programa para que pueda ser usado por otras personas.
+
+10. **Publicación**: Revise como otras personas tendrán acceso a su programa.
+
+## Funciones
+
+Bla bla
+
