@@ -1,0 +1,61 @@
+--- 
+title: "_Programación_ básica para las ciencias de la vida"
+subtitle: "Con aplicaciones en **R** y **Phyton**"
+author: "Pablo Andrés Guzmán; Juan Alberto Arias<br>**Programa de Biología - U.CES**"
+date: "Feb 2023"
+site: bookdown::bookdown_site
+output: 
+  bookdown::gitbook:
+    split_by: "section+number"
+    css: misEstilos.css
+documentclass: book
+bibliography: ref.bib
+csl: apa.csl
+biblio-style: apalike
+link-citations: yes
+github-repo: paguzmang/CursoProg
+description: "Conceptos básicos de programación para biólogos con R"
+---
+
+```{r include=FALSE, eval = F}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'  
+), 'packages.bib')
+```
+
+# Presentación {-}
+
+En esta cartilla desarrollamos un curso básico en Programación (computacional) dirigido a estudiantes de pregrado en ciencias biológicas y afines. Hace años, un curso sobre Programación en este tipo de pregrados podría parecer algo extraño. Historicamente la Programación ha sido un tema de pregrados en ciencias matemáticas o de la Ingenieria.  Sin embargo, hoy en día las Ciencias de la Vida se están tornando cada vez más cuantitativas y la necesidad de procesar miles o millones de datos en áreas como la Ecología, Genética o Epidemiología es creciente. 
+
+Creemos también que la Programación como disciplina constituye una forma de promover el pensamiento lógico en estudiantes que se están formando en tareas de investigación y que tienen que ver con el método científico. Por otro lado, el estudio de conceptos básicos en Programación constituye un buen complemento para temas ofrecidos en cursos previos de Matemática básica en carreras sobre Ciencias Biológicas. 
+
+La cartilla hace enfasis en conceptos generales y la lógica de programación sin estar asociado a un software en particular. Esto habilita la cartilla para ofrecer el curso sin el uso del computador. No obstante, también presentamos aplicaciones de los conceptos en **Python** y **R**, dos ambientes de programación usados hoy en día con alta frecuencia en ciencias biológicas y afines.
+
+Agredecemos al Programa de Biología de la Universidad CES por el apoyo en tiempo para la construcción de esta cartilla. También agredecemos a los docentes XXXXXX, y XXXXX de la misma Universidad por sus aportes en ideas, correcciones y precisiones realizadas al documento.
+
+
+## Justificación
+
+¿Porqué es importante el tema en el contexto de una malla curricular de un pregrado en ciencias biológicas.
+
+Promueve la resolución de prooblemas de una forma lógica o ordenada
+
+Muchos problemas actuales e biogía requieren programación
+
+De acuerdo a @carvajal2015 la programación es importante en biología por
+
+Deacuerdo a @trejos2018 la programaación en papel estimula el pensamiento lógico y la creatividad en los estudiantes
+
+
+## Descripción del contenido
+
+Describir brevemente el tema de cada capítulo.
+
+
+## Software
+
+Mandar al lector al anexo donde se le explique al lector como instarlar el o los programas
+
+
+
